@@ -42,7 +42,8 @@ postgresql:
 
 networking:
   type: ClusterIP
-  port: 80
+  service:
+    port: 80
 
 ingress:
   enabled: true
