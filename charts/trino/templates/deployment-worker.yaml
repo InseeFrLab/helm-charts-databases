@@ -53,7 +53,7 @@ spec:
               name: hdfs-config
           ports:
             - name: http
-              containerPort: {{ .Values.networking.port }}
+              containerPort: {{ .Values.networking.service.port }}
               protocol: TCP
           livenessProbe:
             httpGet:
