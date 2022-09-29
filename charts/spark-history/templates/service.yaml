@@ -10,7 +10,7 @@ spec:
   clusterIP: {{ .Values.networking.clusterIP }}
   {{- end }}
   ports:
-    - port: {{ .Values.networking.port }}
+    - port: {{ .Values.networking.service.port }}
       targetPort: http
       protocol: TCP
       name: http
