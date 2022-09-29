@@ -35,11 +35,11 @@ data:
 
   config.properties: |
     coordinator=false
-    http-server.http.port={{ .Values.networking.port }}
+    http-server.http.port={{ .Values.networking.service.port }}
     query.max-memory={{ .Values.server.config.query.maxMemory }}
     query.max-memory-per-node={{ .Values.server.config.query.maxMemoryPerNode }}
     memory.heap-headroom-per-node={{ .Values.server.config.memory.heapHeadroomPerNode }}
-    discovery.uri=http://{{ include "library-chart.fullname" . }}:{{ .Values.networking.port }}
+    discovery.uri=http://{{ include "library-chart.fullname" . }}:{{ .Values.networking.service.port }}
   {{- range $configValue := .Values.additionalConfigProperties }}
     {{ $configValue }}
   {{- end }}
