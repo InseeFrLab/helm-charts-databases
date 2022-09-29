@@ -381,6 +381,26 @@ entries:
   nocodb:
   - apiVersion: v2
     appVersion: latest
+    created: "2022-09-29T13:39:20.772123116Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-datascience-internal
+      version: 1.0.3
+    description: NocoDB is an open source NoCode platform that turns any database
+      into a smart spreadsheet
+    digest: 2f39df2511e6930d70ba4f85a72f7b523f4d5e9472cc2867381822eb507cbf05
+    home: https://www.nocodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/nocodb.png
+    name: nocodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/nocodb
+    - https://hub.docker.com/r/nocodb/nocodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/nocodb-0.1.0/nocodb-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2022-09-19T11:24:12.939985283Z"
     dependencies:
     - name: library-chart
@@ -536,4 +556,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-29T13:22:14.903670701Z"
+generated: "2022-09-29T13:39:20.772291487Z"
