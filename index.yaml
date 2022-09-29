@@ -92,6 +92,25 @@ entries:
   jena:
   - apiVersion: v2
     appVersion: latest
+    created: "2022-09-29T12:43:53.672752285Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-datascience-internal
+      version: 1.0.3
+    description: Apache Jena Fuseki is a SPARQL server.
+    digest: 5e192c8d3062d8ac7148267b589510936be15ab0367658f8f374b2ea5fc2af4c
+    home: https://jena.apache.org/jena
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/jena.png
+    name: jena
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/jena
+    - https://github.com/stain/jena-docker
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/jena-0.1.0/jena-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2022-09-19T11:24:11.202730098Z"
     dependencies:
     - name: library-chart
@@ -402,4 +421,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-29T12:30:47.82795109Z"
+generated: "2022-09-29T12:43:53.672775685Z"
