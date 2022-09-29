@@ -591,6 +591,32 @@ entries:
   spark-thrift-server:
   - apiVersion: v2
     appVersion: "1"
+    created: "2022-09-29T14:35:27.15239807Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-datascience-internal
+      version: 1.0.3
+    description: Spark SQL can also act as a distributed query engine using its JDBC/ODBC
+      or command-line interface. In this mode, end-users or applications can interact
+      with Spark SQL directly to run SQL queries, without the need to write any code.
+      The Thrift JDBC/ODBC server implemented here corresponds to the HiveServer2
+      in built-in Hive.
+    digest: 8eeecfb5246b12855f6e128f0132faa71c7e2c24625f759b845940f2035a9da8
+    home: https://spark.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/spark.png
+    keywords:
+    - spark
+    - distributed
+    name: spark-thrift-server
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/spark-thrift-server
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-thrift-server-0.1.0/spark-thrift-server-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
+    appVersion: "1"
     created: "2022-09-19T11:24:14.359198969Z"
     dependencies:
     - name: library-chart
@@ -639,4 +665,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-29T14:23:52.491866423Z"
+generated: "2022-09-29T14:35:27.152438374Z"
