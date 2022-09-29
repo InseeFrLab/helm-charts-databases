@@ -489,6 +489,26 @@ entries:
   pinot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-09-29T14:17:40.948685896Z"
+    dependencies:
+    - enabled: true
+      name: pinot
+      repository: https://raw.githubusercontent.com/apache/pinot/master/kubernetes/helm
+      version: 0.2.4
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-datascience-internal
+      version: 1.0.3
+    description: Realtime distributed OLAP datastore, designed to answer OLAP queries
+      with low latency
+    digest: 2f8a8d1a7572cee926f2173f058991a88415183c51d99aa8593c4909df491d7e
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/pinot.png
+    name: pinot
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pinot-0.0.2/pinot-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-09-19T11:24:13.485748454Z"
     dependencies:
     - enabled: true
@@ -600,4 +620,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-29T14:09:40.658324618Z"
+generated: "2022-09-29T14:17:40.948745795Z"
