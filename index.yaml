@@ -169,6 +169,32 @@ entries:
   kafka:
   - apiVersion: v2
     appVersion: "1"
+    created: "2022-10-04T11:20:55.827942435Z"
+    dependencies:
+    - enabled: true
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.4.2
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-datascience-internal
+      version: 1.0.1
+    description: Apache Kafka is an open-source distributed event streaming platform
+      used by thousands of companies for high-performance data pipelines, streaming
+      analytics, data integration, and mission-critical applications.
+    digest: cf0dfd74b20b472eecd303c450084eaf221d2a26738374a30316db78d31c7963
+    home: https://kafka.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/kafka.png
+    name: kafka
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/kafka
+    - https://github.com/bitnami/charts/tree/master/bitnami/kafka
+    - https://github.com/bitnami/bitnami-docker-kafka
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/kafka-0.0.2/kafka-0.0.2.tgz
+    version: 0.0.2
+  - apiVersion: v2
+    appVersion: "1"
     created: "2022-09-19T11:24:11.498047689Z"
     dependencies:
     - enabled: true
@@ -711,4 +737,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2022-09-29T14:54:07.458575274Z"
+generated: "2022-10-04T11:20:55.827995138Z"
