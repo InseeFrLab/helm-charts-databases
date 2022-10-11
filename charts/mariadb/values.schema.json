@@ -48,6 +48,7 @@
               "type": "string",
               "title": "Password for MariaDB custom user",
               "description": "Defaults to a random 10-character alphanumeric string if not set",
+              "default": "changeme",
               "x-form": {
                 "value": "{{project.password}}"
               },
@@ -69,6 +70,7 @@
               "properties": {
                 "enabled": {
                   "type": "boolean",
+                  "default": true,
                   "form": true,
                   "title": "Enable persistence",
                   "description": "Enable persistence using Persistent Volume Claims"
@@ -98,6 +100,7 @@
             "enabled": {
               "type": "boolean",
               "form": true,
+              "default": false,
               "title": "Enable Init Containers",
               "description": "Use an init container to set required folder permissions on the data volume before mounting it in the final destination"
             }
