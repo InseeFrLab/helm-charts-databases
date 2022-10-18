@@ -107,6 +107,28 @@
           "description": "security specific configuration",
           "type": "object",
           "properties": {
+            "mail": {
+              "type": "string",
+              "form": true,
+              "title": "Login",
+              "x-form": {
+                "value": "{{user.email}}"
+              },
+              "x-onyxia": {
+                "overwriteDefaultWith": "{{user.email}}"
+              }
+            },
+            "password": {
+                "type": "string",
+                "description": "Password",
+                "default": "changeme",
+                "x-form": {
+                    "value": "{{project.password}}"
+                },
+                "x-onyxia": {
+                  "overwriteDefaultWith": "{{project.password}}"
+                }
+            },
             "allowlist": {
               "type": "object",
               "description": "IP protection",
@@ -173,6 +195,55 @@
               }
             }
           }
+      },
+      "global": {
+        "description": "postgres specific configuration",
+        "type": "object",
+        "title": "Database",
+        "properties": {
+          "postgresql": {
+            "description": "postgres specific configuration",
+            "type": "object",
+            "title": "Database",
+            "properties": {
+              "auth": {
+                "description": "postgres specific configuration",
+                "type": "object",
+                "title": "Authentification",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "title": "Admin user",
+                    "default": "admin",
+                    "x-form": {
+                      "value": "{{project.id}}"
+                    },
+                    "x-onyxia": {
+                      "overwriteDefaultWith": "{{project.id}}"
+                    }
+                  },
+                  "password": {
+                    "type": "string",
+                    "title": "Password",
+                    "default": "changeme",
+                    "x-form": {
+                      "value": "{{project.password}}"
+                    },
+                    "x-onyxia": {
+                      "overwriteDefaultWith": "{{project.password}}"
+                    }
+                  },
+                  "database": {
+                    "description": "Name for the default database that is created when the image is first started.",
+                    "type": "string",
+                    "title": "Database",
+                    "default": "nocodb-metadata"
+                  }
+                }
+              }
+            }
+          }
+        }
       },
       "ingress": {
           "type": "object",

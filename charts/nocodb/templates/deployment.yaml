@@ -45,9 +45,9 @@ spec:
           imagePullPolicy: {{ .Values.service.image.pullPolicy }}
           env:
           - name: NC_ADMIN_EMAIL
-            value: {{ .Values.nocodb.NC_ADMIN_EMAIL }}
+            value: {{ .Values.security.mail }}
           - name: NC_ADMIN_PASSWORD
-            value: {{ .Values.nocodb.NC_ADMIN_PASSWORD }}
+            value: {{ .Values.security.password }}
           - name: DATABASE_URL
             value: "pg://{{ .Values.postgresql.fullnameOverride }}:5432?u={{ .Values.global.postgresql.auth.username }}&p={{ .Values.global.postgresql.auth.password }}&db={{ .Values.global.postgresql.auth.database}}"
           ports:
