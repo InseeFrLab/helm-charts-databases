@@ -7,10 +7,34 @@ service:
     # Overrides the image tag whose default is the chart appVersion.
     tag: ""
 
+nocodb:
+  NC_ADMIN_EMAIL: "changeme"
+  #password must have atleast 8 letters
+  NC_ADMIN_PASSWORD: "changeme"
+
+
+global:
+  postgresql:
+    auth:
+      username: "admin"
+      password: "changeme"
+      database: "nocodb-metadata"
+
+postgresql:
+  image:
+    tag: "12"
+  fullnameOverride: "nocodb-pg"
+
 security:
   networkPolicy: 
     enabled: false
-    from: []
+    from: 
+    - ipBlock:
+        cidr: 10.233.103.0/32
+    - ipBlock:
+        cidr: 10.233.111.0/32
+    - ipBlock:
+        cidr: 10.233.118.0/32
   allowlist:
     enabled: true
     ip: "0.0.0.0/0"  

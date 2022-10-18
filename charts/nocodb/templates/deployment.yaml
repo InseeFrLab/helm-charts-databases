@@ -43,6 +43,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.service.image.repository }}:{{ .Values.service.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          env:
+          - name: NC_ADMIN_EMAIL
+            value: {{ .Values.nocodb.NC_ADMIN_EMAIL }}
+          - name: NC_ADMIN_PASSWORD
+            value: {{ .Values.nocodb.NC_ADMIN_PASSWORD }}
+          - name: DATABASE_URL
+            value: "pg://{{ .Values.postgresql.fullnameOverride }}:5432?u={{ .Values.global.postgresql.auth.username }}&p={{ .Values.global.postgresql.auth.password }}&db={{ .Values.global.postgresql.auth.database}}"
           ports:
             - name: http
               containerPort: {{ .Values.networking.nocodb.port}}
@@ -61,6 +68,18 @@ spec:
             - mountPath: /data
               name: data   
       {{- with .Values.nodeSelector }}
+      initContainers:
+        - name: wait-for-postgresql
+          image: "alpine"
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - -c
+            - |
+              until printf "." && nc -z -w 2 {{ .Values.postgresql.fullnameOverride }} 5432; do
+                  sleep 2;
+              done;
+              echo 'PostgreSQL OK ✓'  
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
