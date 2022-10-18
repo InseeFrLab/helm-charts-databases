@@ -67,7 +67,6 @@ spec:
           volumeMounts:
             - mountPath: /data
               name: data   
-      {{- with .Values.nodeSelector }}
       initContainers:
         - name: wait-for-postgresql
           image: "alpine"
@@ -80,6 +79,8 @@ spec:
                   sleep 2;
               done;
               echo 'PostgreSQL OK ✓'  
+              
+      {{- with .Values.nodeSelector }} 
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
