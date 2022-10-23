@@ -76,33 +76,6 @@
             }
         }
       },
-      "persistence": {
-        "description": "Configuration for persistence",
-        "type": "object",
-        "properties": {
-            "enabled": {
-                "type": "boolean",
-                "description": "Create a persistent volume",
-                "default": true
-            },
-            "size": {
-              "type": "string",
-              "title": "Persistent volume size",
-              "description": "Size of the persistent volume",
-              "default": "10Gi",
-              "form": true,
-              "render": "slider",
-              "sliderMin": 1,
-              "sliderMax": 100,
-              "sliderStep": 1,
-              "sliderUnit": "Gi",
-              "hidden": {
-                "value": false,
-                "path": "persistence/enabled"
-              }                    
-          }
-        }
-      },
       "security": {
           "description": "security specific configuration",
           "type": "object",
