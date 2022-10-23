@@ -3,14 +3,35 @@
 service:
   image:
     repository: "nocodb/nocodb"
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     # Overrides the image tag whose default is the chart appVersion.
     tag: ""
 
+global:
+  postgresql:
+    auth:
+      username: "admin"
+      password: "changeme"
+      database: "nocodb-metadata"
+
+postgresql:
+  image:
+    tag: "12"
+  fullnameOverride: "nocodb-pg"
+
 security:
+  mail: example@example.com
+  password: password
+  maxLoginAttempts: 999
   networkPolicy: 
     enabled: false
-    from: []
+    from: 
+    - ipBlock:
+        cidr: 10.233.103.0/32
+    - ipBlock:
+        cidr: 10.233.111.0/32
+    - ipBlock:
+        cidr: 10.233.118.0/32
   allowlist:
     enabled: true
     ip: "0.0.0.0/0"  
@@ -61,8 +82,11 @@ persistence:
 
 networking:
   type: ClusterIP
-  service:
+  nocodb:
     port: 8080
+  service:
+    port: 80
+  
 
 ingress:
   enabled: true
