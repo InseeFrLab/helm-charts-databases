@@ -9,6 +9,6 @@ To use the repo on helm (version 3+) :
 helm repo add inseefrlab-datascience https://inseefrlab.github.io/helm-charts-bdd
 ```  
 
-The repo is also browsable directly https://inseefrlab.github.io/helm-charts-bdd/index.yaml
+The repo is also browsable directly https://inseefrlab.github.io/helm-charts-databases/index.yaml
 
 Contributions are welcome, feel free to open issues or submit pull requests :)
