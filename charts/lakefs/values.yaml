@@ -9,6 +9,11 @@ global:
       database: "lakefs"
 
 lakefs:
+  extraEnvVars:
+  - name: LAKEFS_DATABASE_POSTGRES_CONNECTION_MAX_LIFETIME
+    value: 24h
+  - name: LAKEFS_DATABASE_TYPE
+    value: "postgres"
   lakefsConfig: |
     blockstore:
       type: s3
@@ -21,7 +26,7 @@ lakefs:
         force_path_style: true
         discover_bucket_region: false
   secrets:
-    databaseConnectionString: postgres://admin:changeme@:5432/lakefs?sslmode=disable
+    databaseConnectionString: postgres://admin:changeme@lakefs-db:5432/lakefs?sslmode=disable
     authEncryptSecretKey: changeme
 
 security:
