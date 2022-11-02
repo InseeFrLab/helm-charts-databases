@@ -87,7 +87,8 @@ s3:
 coresite:
   configMapName: ""
 
-additionalCatalogs: []
+catalog:
+  additionalCatalogs: []
 #  custompg:
 #    connector.name=postgresql
 #    connection-url=jdbc:postgresql://postgresql-457086:5432/defaultdb
@@ -134,7 +135,7 @@ ingress:
   ingressClassName: ""  
   annotations: []
     # kubernetes.io/tls-acme: "true"
-  hostname: alexis-trino.kub.sspcloud.fr
+  hostname: chart-example.local
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local

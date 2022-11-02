@@ -52,11 +52,13 @@ data:
 {{- template "connector.elastic" $data -}}
 {{- end -}}
 {{- end -}}
-{{- end -}}   
-{{- range $catalogName, $catalogProperties := .Values.additionalCatalogs }}
+{{- end -}}
+{{- if .Values.catalog.enabled }}
+{{- range $catalogName, $catalogProperties := .Values.catalog.additionalCatalogs }}
   {{ $catalogName | lower }}.properties: |
     {{- $relname :=  $catalogProperties | trim | split " " }}
     {{- range $prop := $relname }}
     {{-  $prop | nindent 4}}
     {{- end }}
+{{- end }}
 {{- end }}

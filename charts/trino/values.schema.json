@@ -169,6 +169,31 @@
 				}
 			}
 		},
+		"catalog": {
+			"description": "configure extra datasource",
+			"type": "object",
+			"properties": {
+				"enabled": {
+					"type": "boolean",
+					"title": "add extra datasource",
+					"description": "add extra datasource",
+					"default": false
+				},
+				"additionalCatalogs": {
+					"type": "object",
+					"title": "configure extra datasource",
+					"description": "configure extra datasource",
+					"default": {
+						"custompg": "connector.name=postgresql connection-url=jdbc:postgresql://postgresql-457086:5432/defaultdb connection-user=admin connection-password=admin",
+						"customelastic": "connector.name=elasticsearch elasticsearch.host=elasticsearch-master"
+					},
+					"hidden": {
+						"value": false,
+						"path": "catalog/enabled"
+					}
+				}
+			}
+		},
 		"worker": {
 			"description": "configure your trino worker",
 			"type": "object",
