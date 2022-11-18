@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: discovery-config
+data:
+  data-sources.json: |
+    {
+    "folders": {},
+    "connections": {
+        "postgresql-template-1": {
+            "provider": "postgresql",
+            "driver": "postgres-jdbc",
+            "name": "PostgreSQL (Template)",
+            "save-password": true,
+            "show-system-objects": false,
+            "read-only": true,
+            "template": true,
+            "configuration": {
+                "host": "{{ .Values.autodiscovery.postgres.host }}",
+                "port": "{{ .Values.autodiscovery.postgres.port }}",
+                "database": "{{ .Values.autodiscovery.postgres.database }}",
+                "url": "jdbc:postgresql://{{ .Values.autodiscovery.postgres.host }}:{{ .Values.autodiscovery.postgres.port }}/{{ .Values.autodiscovery.postgres.database }}",
+                "type": "dev",
+                "provider-properties": {
+                    "@dbeaver-show-non-default-db@": "false"
+                }
+            }
+        },
+        "trino-template": {
+            "provider": "trino",
+            "driver": "trino_jdbc",
+            "name": "Trino (Template)",
+            "save-password": true,
+            "show-system-objects": false,
+            "read-only": true,
+            "template": true,
+            "configuration": {
+                "host": "{{ .Values.autodiscovery.trino.host }}",
+                "port": "{{ .Values.autodiscovery.trino.port }}",
+                "database": "{{ .Values.autodiscovery.trino.database }}",
+                "url": "jdbc:trino://{{ .Values.autodiscovery.trino.host }}:{{ .Values.autodiscovery.trino.port }}/?SSL=true",
+                "type": "dev",
+                "provider-properties": {
+                    "@dbeaver-show-non-default-db@": "false"
+                }
+            }
+        }
+    }
+    }

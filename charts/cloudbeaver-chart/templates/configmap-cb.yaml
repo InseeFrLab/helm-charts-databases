@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cb-config
+data:
+  cloudbeaver.conf: |
+    {
+    server: {
+        serverPort: 8978,
+
+        // Paths are absolute or relative to the server root folder
+        workspaceLocation: "workspace",
+        contentRoot: "web",
+        driversLocation: "drivers",
+
+        rootURI: "/",
+        serviceURI: "/api/",
+
+        // Webapp configuration file
+        productConfiguration: "conf/product.conf",
+
+        expireSessionAfterPeriod: 1800000,
+
+        develMode: false,
+
+        database: {
+            driver: "postgres-jdbc" ,
+            url : "jdbc:postgresql://{{ .Values.postgresql.fullnameOverride }}:5432/{{ .Values.global.postgresql.auth.database }}" ,
+            user : {{ .Values.global.postgresql.auth.username }} ,
+            password : {{ .Values.global.postgresql.auth.password }} ,
+            initialDataConfiguration: "conf/initial-data.conf",
+            pool: {
+                minIdleConnections: 4, 
+                maxIdleConnections: 10,
+                maxConnections: 100,
+                validationQuery: "SELECT 1"
+            }
+        }
+    },
+    app: {
+        anonymousAccessAllowed: false,
+        enableReverseProxyAuth: true,
+        anonymousUserRole: "user",
+        supportsCustomConnections: false,
+        publicCredentialsSaveEnabled: true,
+        adminCredentialsSaveEnabled: true,
+        resourceManagerEnabled: true,
+        resourceQuotas: {
+            dataExportFileSizeLimit: 10000000,
+            resourceManagerFileSizeLimit: 500000,
+            sqlMaxRunningQueries: 100,
+            sqlResultSetRowsLimit: 100000,
+            sqlResultSetMemoryLimit: 2000000,
+            sqlTextPreviewMaxLength: 4096,
+            sqlBinaryPreviewMaxLength: 261120
+        },
+        enabledAuthProviders: [
+            "local"
+        ],
+        disabledDrivers: [
+            "sqlite:sqlite_jdbc",
+            "h2:h2_embedded",
+            "clickhouse:yandex_clickhouse"
+        ]
+
+    }
+
+    }
