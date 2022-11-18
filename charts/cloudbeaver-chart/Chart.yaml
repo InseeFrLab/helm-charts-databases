@@ -1,7 +1,7 @@
 apiVersion: v2
 name: cloudbeaver
-description: NocoDB is an open source NoCode platform that turns any database into a smart spreadsheet
-icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/nocodb.png
+description: DBeaver CE is a popular open-source desktop application for working with SQL-databases. It supports all popular databases MySQL, PostgreSQL, SQLite, Oracle, DB2, SQL Server and others.
+icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/cloudbeaver.png
 keyworks:
   - Tool
   - Data

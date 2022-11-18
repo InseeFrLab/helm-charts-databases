@@ -22,18 +22,6 @@ postgresql:
 cloudbeaver: 
   serverName: "Cloudbeaver Server"
   
-autodiscovery:
-  postgres:
-    port: 5432
-    host: "postgresql-server"
-    database: "defaultdb"
-    user: "admin"
-    password: "changeme"
-  trino:
-    port: 8080
-    host: "trino-server"
-    user: "admin"
-    password: "changeme"
     
 security:
   username: "onyxia"

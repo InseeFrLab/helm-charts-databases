@@ -39,10 +39,6 @@ spec:
           - name: cb-config
             mountPath: /opt/cloudbeaver/conf/cloudbeaver.conf
             subPath: cloudbeaver.conf
-            
-          - name: discovery-config
-            mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
-            subPath: data-sources.json
 
           env:
           - name: CB_ADMIN_NAME
@@ -74,9 +70,6 @@ spec:
         - name: cb-config
           configMap: 
             name: cb-config
-        - name: discovery-config
-          configMap:
-            name: discovery-config
 
       initContainers:
         - name: wait-for-postgresql
