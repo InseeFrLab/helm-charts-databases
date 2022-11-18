@@ -210,7 +210,7 @@
                     "description": "Name for the default database that is created when the image is first started.",
                     "type": "string",
                     "title": "Database",
-                    "default": "nocodb-metadata"
+                    "default": "cloudbeaver-metadata"
                   }
                 }
               }
