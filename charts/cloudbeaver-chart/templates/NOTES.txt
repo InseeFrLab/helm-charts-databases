@@ -1,7 +1,7 @@
 {{- if .Values.ingress.enabled }}
 - You can connect to cloudbeaver with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
 {{- end }}
-- Your username is **{{ .Values.security.mail }}**
+- Your username is **{{ .Values.security.username }}**
 - Your password is **{{ .Values.security.password }}**
 
 *NOTES about deletion :*
