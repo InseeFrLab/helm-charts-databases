@@ -7,7 +7,7 @@ service:
     # Overrides the image tag whose default is the chart appVersion.
     tag: "22.2.4"
 
-autodiscovery:
+discovery:
   postgres: true
   mariadb: true
   trino: true
