@@ -218,7 +218,7 @@
           }
         }
       },
-      "autodiscovery": {
+      "discovery": {
         "description": "configure your service to autodetect some ressources.",
         "type": "object",
         "properties": {

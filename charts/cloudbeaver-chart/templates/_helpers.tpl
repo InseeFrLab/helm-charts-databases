@@ -1,6 +1,6 @@
 {{/* vim: set filetype=mustache: */}}
 
-{{- define "autodiscovery.configmap" -}}
+{{- define "discovery.configmap" -}}
 {{ printf "{" }}
 {{ printf "\"folders\": {}," | indent 2}}
 {{ printf "\"connections\": {" | indent 2}}
@@ -8,7 +8,7 @@
 {{- $namespace:= .Release.Namespace }}
 {{- range $index, $secret := (lookup "v1" "Secret" $namespace "").items }}
 {{- if (index $secret "metadata" "annotations") }}
-{{- if ( $.Values.autodiscovery.postgres) -}}
+{{- if ( $.Values.discovery.postgres) -}}
 {{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "postgres" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) }}
 {{- $service:= ( index $secret.data "postgres-service" | default "") | b64dec  }}
 {{- $username:= ( index $secret.data "postgres-username") | b64dec  }}
@@ -39,7 +39,7 @@
 {{- $comma = 1 }}
 {{- end }}
 {{- end }}
-{{- if $.Values.autodiscovery.mariadb }}
+{{- if $.Values.discovery.mariadb }}
 {{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "mariadb" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) }}
 {{- $service:= ( index $secret.data "mariadb-service" | default "") | b64dec  }}
 {{- $username:= ( index $secret.data "mariadb-username") | b64dec  }}
@@ -70,7 +70,7 @@
 {{- $comma = 1 }}
 {{- end }}
 {{- end }}
-{{- if $.Values.autodiscovery.trino }}
+{{- if $.Values.discovery.trino }}
 {{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "trino" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) }}
 {{- $service:= ( index $secret.data "trino-service" | default "") | b64dec  }}
 {{- $username:= ( index $secret.data "trino-username") | b64dec  }}
