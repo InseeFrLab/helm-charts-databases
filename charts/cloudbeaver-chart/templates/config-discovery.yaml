@@ -1,0 +1,11 @@
+{{- if or .Values.autodiscovery.postgres .Values.autodiscovery.mariadb .Values.autodiscovery.trino  -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "library-chart.fullname" . }}
+  labels: 
+    {{- include "library-chart.labels" . | nindent 4 }}
+data:
+  data-sources.json: |-
+    {{- include "autodiscovery.configmap" . | nindent 4 }}
+{{- end }}

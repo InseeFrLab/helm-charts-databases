@@ -218,6 +218,30 @@
           }
         }
       },
+      "autodiscovery": {
+        "description": "configure your service to autodetect some ressources.",
+        "type": "object",
+        "properties": {
+          "postgres": {
+            "type": "boolean",
+            "title": "Enable Postgres discovery",
+            "description": "discover your PostgreSQL service",
+            "default": true
+          },
+          "mariadb": {
+            "type": "boolean",
+            "title": "Enable mariadb discovery",
+            "description": "discover your MariaDB service",
+            "default": true
+          },
+          "trino": {
+            "type": "boolean",
+            "title": "Enable Trino discovery",
+            "description": "discover your Trino service",
+            "default": true
+          }
+        }
+      },
       "ingress": {
           "type": "object",
           "form": true,

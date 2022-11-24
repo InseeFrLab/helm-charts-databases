@@ -39,6 +39,12 @@ spec:
           - name: cb-config
             mountPath: /opt/cloudbeaver/conf/cloudbeaver.conf
             subPath: cloudbeaver.conf
+            
+          {{- if or .Values.autodiscovery.postgres .Values.autodiscovery.mariadb .Values.autodiscovery.trino  }}
+          - name: discovery-config
+            mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
+            subPath: data-sources.json
+          {{- end }}
 
           env:
           - name: CB_ADMIN_NAME
@@ -70,6 +76,12 @@ spec:
         - name: cb-config
           configMap: 
             name: cb-config
+
+        {{- if or .Values.autodiscovery.postgres .Values.autodiscovery.mariadb .Values.autodiscovery.trino }}
+        - name: discovery-config
+          configMap:
+            name: {{ include "library-chart.fullname" . }}
+        {{- end }}
 
       initContainers:
         - name: wait-for-postgresql
