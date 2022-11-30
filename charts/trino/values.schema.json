@@ -421,7 +421,6 @@
 						"value": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
 					},
                     "x-onyxia": {
-                        "hidden": true,
                         "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
                     }
 				},
