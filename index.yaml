@@ -652,6 +652,31 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mariadb-0.0.1/mariadb-0.0.1.tgz
     version: 0.0.1
+  metabase:
+  - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2022-12-07T14:07:33.898510975Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.0.3
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    description: Metabase is BI tool with a friendly UX and integrated tooling to
+      let you explore data.
+    digest: 07d10db25b4b7e4ee7d1209b9cf08bc1895002fcd6914a5a9e3cb84e4fb70273
+    home: https://www.metabase.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/metabase.png
+    name: metabase
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/main/charts/metabase
+    - https://hub.docker.com/r/metabase/metabase/
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/metabase-1.0.1/metabase-1.0.1.tgz
+    version: 1.0.1
   mongodb:
   - apiVersion: v2
     appVersion: "1"
@@ -1384,4 +1409,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2022-11-30T16:58:39.671197031Z"
+generated: "2022-12-07T14:07:33.898730375Z"
