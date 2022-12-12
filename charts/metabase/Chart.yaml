@@ -1,8 +1,8 @@
 apiVersion: v2
 name: metabase
-description: Metabase is BI tool with a friendly UX and integrated tooling to let you explore data.
+description: Metabase is a BI tool with a friendly UX and an integrated tooling to let you explore data.
 icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/metabase.png
-keyworks:
+keywords:
   - Tool
   - Data
 home: https://www.metabase.com/
@@ -22,7 +22,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.0.1
+version: 1.0.2
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
