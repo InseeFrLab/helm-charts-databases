@@ -1,5 +1,5 @@
 {{- $replicaCount := int .Values.mongodb.replicaCount }}
-{{- $portNumber := int .Values.mongodb.service.ports }}
+{{- $portNumber := int .Values.mongodb.service.ports.mongodb }}
 {{- $fullname := include "library-chart.fullname" . }}
 {{- $user := .Values.mongodb.auth.username }}
 {{- $password := .Values.mongodb.auth.password }}
