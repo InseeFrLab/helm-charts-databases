@@ -1,6 +1,6 @@
 {{- define "mongoList" -}}
 {{- $replicaCount := int .Values.mongodb.replicaCount }}
-{{- $portNumber := int .Values.mongodb.service.port }}
+{{- $portNumber := int .Values.mongodb.service.ports.mongodb }}
 {{- $fullname := include "library-chart.fullname" . }}
 {{- $mongoList := list }}
 {{- range $e, $i := until $replicaCount }}
