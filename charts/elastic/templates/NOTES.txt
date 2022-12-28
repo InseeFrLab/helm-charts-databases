@@ -6,6 +6,9 @@
 {{- if .Values.ingress.enabled }}
 - You can connect to the kibana with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
 {{- end }}
+{{- if .Values.route.enabled }}
+- You can connect to the kibana with your browser on this [link](https://{{ .Values.route.hostname }})
+{{- end }}
 - You connect to elastic from inside the datalab at this url : **http://elasticsearch-master:{{ .Values.elasticsearch.httpPort }}**
 - Each of the {{ .Values.elasticsearch.replicas }} nodes has a persistent volume with a size of **{{ .Values.elasticsearch.volumeClaimTemplate.resources.requests.storage }}** 
 - Only one cluster of {{ .Chart.Name }} can be started in a project
@@ -16,4 +19,3 @@
 - Data volumes will not be deleted
 - If you start a new {{ .Chart.Name }}, it will reuse those volumes silently.
 - If you want to delete those volume definitily : `kubectl delete pvc {{ join " " $pvcList }}`
-

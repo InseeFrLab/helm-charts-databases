@@ -190,6 +190,15 @@
           "form": true,
           "title": "Ingress Details",
           "properties": {
+              "enabled": {
+                "description": "Enable Ingress",
+                "type": "boolean",
+                "default": true,
+                "x-onyxia": {
+                  "hidden": true,
+                  "overwriteDefaultWith": "k8s.ingress"
+                }
+              },
               "hostnameUI": {
                   "type": "string",
                   "form": true,
@@ -228,6 +237,40 @@
                   "x-onyxia": {
                       "hidden": true,
                       "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+                  }
+              }
+          }
+      },
+      "route": {
+          "type": "object",
+          "form": true,
+          "title": "Route Details",
+          "properties": {
+              "enabled": {
+                "description": "Enable Route",
+                "type": "boolean",
+                "default": false,
+                "x-onyxia": {
+                  "hidden": true,
+                  "overwriteDefaultWith": "k8s.route"
+                }
+              },
+              "hostnameUI": {
+                  "type": "string",
+                  "form": true,
+                  "title": "Hostname",
+                  "x-onyxia": {
+                      "hidden": true,
+                      "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}"
+                  }
+              },
+              "hostnameBolt": {
+                  "type": "string",
+                  "form": true,
+                  "title": "Hostname",
+                  "x-onyxia": {
+                      "hidden": true,
+                      "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-bolt.{{k8s.domain}}"
                   }
               }
           }
