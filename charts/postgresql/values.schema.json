@@ -27,27 +27,27 @@
               "description": "Configuration for persistence",
               "type": "object",
               "properties": {
-                  "enabled": {
-                      "type": "boolean",
-                      "description": "Create a persistent volume",
-                      "default": true
-                  },
-                  "size": {
-                    "type": "string",
-                    "title": "Persistent volume size",
-                    "description": "Size of the persistent volume",
-                    "default": "10Gi",
-                    "form": true,
-                    "render": "slider",
-                    "sliderMin": 1,
-                    "sliderMax": 100,
-                    "sliderStep": 1,
-                    "sliderUnit": "Gi",
-                    "hidden": {
-                      "value": false,
-                      "path": "postgresql/primary/persistence/enabled"
-                    }                    
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Create a persistent volume",
+                  "default": true
+                },
+                "size": {
+                  "type": "string",
+                  "title": "Persistent volume size",
+                  "description": "Size of the persistent volume",
+                  "default": "10Gi",
+                  "form": true,
+                  "render": "slider",
+                  "sliderMin": 1,
+                  "sliderMax": 100,
+                  "sliderStep": 1,
+                  "sliderUnit": "Gi",
+                  "hidden": {
+                    "value": false,
+                    "path": "postgresql/primary/persistence/enabled"
                   }
+                }
               }
             }
           }
@@ -102,37 +102,37 @@
           "description": "Postgres extensions to enable",
           "type": "object",
           "properties": {
-              "postgis": {
-                  "type": "boolean",
-                  "title": "PostGIS",
-                  "default": false
-              }
+            "postgis": {
+              "type": "boolean",
+              "title": "PostGIS",
+              "default": false
             }
           }
+        }
       }
     },
     "security": {
       "description": "security specific configuration",
       "type": "object",
       "properties": {
-          "networkPolicy": {
-            "type": "object",
-            "description": "Define access policy to the service",
-            "properties": {
-              "enabled": {
-                "type": "boolean",
-                "title": "Enable network policy",
-                "description": "Only pod from the same namespace will be allowed",
-                "default": true,
-                "x-form": {
-                  "value": "{{region.defaultNetworkPolicy}}"
-                },
-                "x-onyxia": {
-                    "overwriteDefaultWith": "region.defaultNetworkPolicy"
-                }
+        "networkPolicy": {
+          "type": "object",
+          "description": "Define access policy to the service",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable network policy",
+              "description": "Only pod from the same namespace will be allowed",
+              "default": true,
+              "x-form": {
+                "value": "{{region.defaultNetworkPolicy}}"
+              },
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
               }
             }
           }
+        }
       }
     }
   }

@@ -2,12 +2,10 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
-
     "mariadb": {
       "description": "mariadb specific configuration",
       "type": "object",
       "properties": {
-
         "auth": {
           "type": "object",
           "title": "Authentication configuration",
@@ -106,7 +104,6 @@
             }
           }
         }
-
       }
     }
   }
