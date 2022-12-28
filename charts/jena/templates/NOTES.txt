@@ -1,6 +1,9 @@
 {{- if .Values.ingress.enabled }}
 - You can connect to Jena with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
 {{- end }}
+{{- if .Values.route.enabled }}
+- You can connect to Jena with your browser on this [link](https://{{ .Values.route.hostname }})
+{{- end }}
 - The login is **admin**
 - The password is **{{ .Values.security.password }}**
 
