@@ -135,7 +135,7 @@ ingress:
   ingressClassName: "" 
   annotations: []
     # kubernetes.io/tls-acme: "true"
-  hostname: chart-example.local
+  sparkHostname: chart-example-spark.local
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
