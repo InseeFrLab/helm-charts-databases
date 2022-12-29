@@ -1,10 +1,13 @@
 {{- if .Values.ingress.enabled }}
-- You can connect to the spark UI with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
+- You can connect to the spark UI with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.sparkHostname }})
+{{- end }}
+{{- if .Values.route.enabled }}
+- You can connect to the spark UI with your browser on this [link](https://{{ .Values.route.sparkHostname }})
 {{- end }}
 - The spark thrift service is only available from inside the datalab.
-- The url is : **thrift://{{ include "library-chart.fullname" . }}:10000**
+- The url is: **thrift://{{ include "library-chart.fullname" . }}:10000**
 
-*NOTES about deletion :*
+*NOTES about deletion:*
 
 - **You can safely delete this chart and recreate one later**
 - There is no data volume

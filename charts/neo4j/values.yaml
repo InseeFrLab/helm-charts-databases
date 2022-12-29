@@ -55,6 +55,7 @@ networking:
     port: 7474
   neo4jBolt:
     port: 7687
+
 ingress:
   enabled: true
   tls: true
@@ -62,10 +63,24 @@ ingress:
   annotations: []
     # kubernetes.io/tls-acme: "true"
   hostnameUI: chart-example.local
-  hostnameBolt: chart-example.local
+  hostnameBolt: chart-example-bolt.local
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+route:
+  enabled: false
+  annotations: []
+    # route.openshift.io/termination: "reencrypt"
+  hostnameUI: chart-example.local
+  hostnameBolt: chart-example-bolt.local
+  tls:
+    termination: edge
+    # key:
+    # certificate:
+    # caCertificate:
+    # destinationCACertificate:
+  wildcardPolicy: None
 
 persistence:
   enabled: true

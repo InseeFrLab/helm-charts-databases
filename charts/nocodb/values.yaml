@@ -60,14 +60,12 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-
 networking:
   type: ClusterIP
   nocodb:
     port: 8080
   service:
     port: 80
-  
 
 ingress:
   enabled: true
@@ -79,6 +77,19 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+route:
+  enabled: false
+  annotations: []
+    # route.openshift.io/termination: "reencrypt"
+  hostname: chart-example.local
+  tls:
+    termination: edge
+    # key:
+    # certificate:
+    # caCertificate:
+    # destinationCACertificate:
+  wildcardPolicy: None
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

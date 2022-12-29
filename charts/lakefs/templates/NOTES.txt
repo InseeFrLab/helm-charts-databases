@@ -1,6 +1,9 @@
 {{- if .Values.ingress.enabled }}
 - You can connect to the lakeFS UI with your browser on this [link](https://{{ .Values.ingress.hostname }})
 {{- end }}
+{{- if .Values.route.enabled }}
+- You can connect to the lakeFS UI with your browser on this [link](https://{{ .Values.route.hostname }})
+{{- end }}
 
 *NOTES about deletion :*
 

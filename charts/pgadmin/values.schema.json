@@ -6,179 +6,179 @@
       "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
       "type": "object",
       "properties": {
-          "requests": {
-              "description": "Guaranteed resources",
-              "type": "object",
-              "properties": {
-                "cpu": {
-                  "description": "The amount of cpu guaranteed",
-                  "title": "CPU",
-                  "type": "string",
-                  "default": "100m",
-                  "render": "slider",
-                  "sliderMin": 50,
-                  "sliderMax": 40000,
-                  "sliderStep": 50,
-                  "sliderUnit": "m",
-                  "sliderExtremity": "down",
-                  "sliderExtremitySemantic": "guaranteed",
-                  "sliderRangeId": "cpu"
-                },
-                "memory": {
-                  "description": "The amount of memory guaranteed",
-                  "title": "memory",
-                  "type": "string",
-                  "default": "2Gi",
-                  "render": "slider",
-                  "sliderMin": 1,
-                  "sliderMax": 200,
-                  "sliderStep": 1,
-                  "sliderUnit": "Gi",
-                  "sliderExtremity": "down",
-                  "sliderExtremitySemantic": "guaranteed",
-                  "sliderRangeId": "memory"
-                }
-              }
-          },
-          "limits": {
-              "description": "max resources",
-              "type": "object",
-              "properties": {
-                  "cpu": {
-                      "description": "The maximum amount of cpu",
-                      "title": "CPU",
-                      "type": "string",
-                      "default": "30000m",
-                      "render": "slider",
-                      "sliderMin": 50,
-                      "sliderMax": 40000,
-                      "sliderStep": 50,
-                      "sliderUnit": "m",
-                      "sliderExtremity": "up",
-                      "sliderExtremitySemantic": "Maximum",
-                      "sliderRangeId": "cpu"
-                    },
-                    "memory": {
-                      "description": "The maximum amount of memory",
-                      "title": "Memory", 
-                      "type": "string",
-                      "default": "50Gi",
-                      "render": "slider",
-                      "sliderMin": 1,
-                      "sliderMax": 200,
-                      "sliderStep": 1,
-                      "sliderUnit": "Gi",
-                      "sliderExtremity": "up",
-                      "sliderExtremitySemantic": "Maximum",
-                      "sliderRangeId": "memory"
-                    }
-              }
+        "requests": {
+          "description": "Guaranteed resources",
+          "type": "object",
+          "properties": {
+            "cpu": {
+              "description": "The amount of cpu guaranteed",
+              "title": "CPU",
+              "type": "string",
+              "default": "100m",
+              "render": "slider",
+              "sliderMin": 50,
+              "sliderMax": 40000,
+              "sliderStep": 50,
+              "sliderUnit": "m",
+              "sliderExtremity": "down",
+              "sliderExtremitySemantic": "guaranteed",
+              "sliderRangeId": "cpu"
+            },
+            "memory": {
+              "description": "The amount of memory guaranteed",
+              "title": "memory",
+              "type": "string",
+              "default": "2Gi",
+              "render": "slider",
+              "sliderMin": 1,
+              "sliderMax": 200,
+              "sliderStep": 1,
+              "sliderUnit": "Gi",
+              "sliderExtremity": "down",
+              "sliderExtremitySemantic": "guaranteed",
+              "sliderRangeId": "memory"
+            }
           }
+        },
+        "limits": {
+          "description": "max resources",
+          "type": "object",
+          "properties": {
+            "cpu": {
+              "description": "The maximum amount of cpu",
+              "title": "CPU",
+              "type": "string",
+              "default": "30000m",
+              "render": "slider",
+              "sliderMin": 50,
+              "sliderMax": 40000,
+              "sliderStep": 50,
+              "sliderUnit": "m",
+              "sliderExtremity": "up",
+              "sliderExtremitySemantic": "Maximum",
+              "sliderRangeId": "cpu"
+            },
+            "memory": {
+              "description": "The maximum amount of memory",
+              "title": "Memory",
+              "type": "string",
+              "default": "50Gi",
+              "render": "slider",
+              "sliderMin": 1,
+              "sliderMax": 200,
+              "sliderStep": 1,
+              "sliderUnit": "Gi",
+              "sliderExtremity": "up",
+              "sliderExtremitySemantic": "Maximum",
+              "sliderRangeId": "memory"
+            }
+          }
+        }
       }
-  },
-  "discovery": {
-    "description": "configure your service to autodetect some ressources.",
-    "type": "object",
-    "properties": {
-      "postgres": {
-        "type": "boolean",
-        "title": "Enable postgres discovery",
-        "description": "discover your postgres service",
-        "default": true
+    },
+    "discovery": {
+      "description": "configure your service to autodetect some ressources.",
+      "type": "object",
+      "properties": {
+        "postgres": {
+          "type": "boolean",
+          "title": "Enable postgres discovery",
+          "description": "discover your postgres service",
+          "default": true
+        }
       }
-    }
-  },
+    },
     "security": {
       "description": "security specific configuration",
       "type": "object",
       "properties": {
-          "mail": {
-            "type": "string",
-            "form": true,
-            "title": "Login",
-            "x-form": {
-              "value": "{{user.email}}"
-            },
-            "x-onyxia": {
-              "overwriteDefaultWith": "{{user.email}}"
-            }
+        "mail": {
+          "type": "string",
+          "form": true,
+          "title": "Login",
+          "x-form": {
+            "value": "{{user.email}}"
           },
-          "password": {
-              "type": "string",
-              "description": "Password",
-              "default": "changeme",
+          "x-onyxia": {
+            "overwriteDefaultWith": "{{user.email}}"
+          }
+        },
+        "password": {
+          "type": "string",
+          "description": "Password",
+          "default": "changeme",
+          "x-form": {
+            "value": "{{project.password}}"
+          },
+          "x-onyxia": {
+            "overwriteDefaultWith": "{{project.password}}"
+          }
+        },
+        "allowlist": {
+          "type": "object",
+          "description": "IP protection",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable IP protection",
+              "description": "Only the configured set of IPs will be able to reach the service",
+              "default": true,
               "x-form": {
-                  "value": "{{project.password}}"
+                "value": "{{region.defaultIpProtection}}"
               },
               "x-onyxia": {
-                "overwriteDefaultWith": "{{project.password}}"
+                "overwriteDefaultWith": "region.defaultIpProtection"
               }
-          },
-          "allowlist": {
-            "type": "object",
-            "description": "IP protection",
-            "properties": {
-              "enabled": {
-                "type": "boolean",
-                "title": "Enable IP protection",
-                "description": "Only the configured set of IPs will be able to reach the service",
-                "default": true,
-                "x-form": {
-                  "value": "{{region.defaultIpProtection}}"
-                },
-                "x-onyxia": {
-                    "overwriteDefaultWith": "region.defaultIpProtection"
-                }
+            },
+            "ip": {
+              "type": "string",
+              "description": "the white list of IP is whitespace",
+              "title": "Whitelist of IP",
+              "default": "0.0.0.0",
+              "x-form": {
+                "value": "{{user.ip}}"
               },
-              "ip": {
-                "type": "string",
-                "description": "the white list of IP is whitespace",
-                "title": "Whitelist of IP",
-                "default": "0.0.0.0",
-                "x-form": {
-                  "value": "{{user.ip}}"
-                },
-                "x-onyxia": {
-                    "overwriteDefaultWith": "{{user.ip}}"
-                },
-                "hidden": {
-                    "value": false,
-                    "path": "security/allowlist/enabled"
-                } 
-              }
-            }
-          },
-          "networkPolicy": {
-            "type": "object",
-            "description": "Define access policy to the service",
-            "properties": {
-              "enabled": {
-                "type": "boolean",
-                "title": "Enable network policy",
-                "description": "Only pod from the same namespace will be allowed",
-                "default": true,
-                "x-form": {
-                  "value": "{{region.defaultNetworkPolicy}}"
-                },
-                "x-onyxia": {
-                    "overwriteDefaultWith": "region.defaultNetworkPolicy"
-                }
+              "x-onyxia": {
+                "overwriteDefaultWith": "{{user.ip}}"
               },
-              "from": {
-                "type": "array",
-                "description": "Array of source allowed to have network access to your service",
-                "default" : [], 
-                "x-form": {
-                  "hidden": true,
-                  "value": "{{region.from}}"
-                },
-                "x-onyxia": {
-                    "hidden": true,
-                    "overwriteDefaultWith": "region.from"
-                }
+              "hidden": {
+                "value": false,
+                "path": "security/allowlist/enabled"
               }
             }
           }
+        },
+        "networkPolicy": {
+          "type": "object",
+          "description": "Define access policy to the service",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable network policy",
+              "description": "Only pod from the same namespace will be allowed",
+              "default": true,
+              "x-form": {
+                "value": "{{region.defaultNetworkPolicy}}"
+              },
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
+            },
+            "from": {
+              "type": "array",
+              "description": "Array of source allowed to have network access to your service",
+              "default": [],
+              "x-form": {
+                "hidden": true,
+                "value": "{{region.from}}"
+              },
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
+              }
+            }
+          }
+        }
       }
     },
     "ingress": {
@@ -186,6 +186,15 @@
       "form": true,
       "title": "Ingress Details",
       "properties": {
+        "enabled": {
+          "description": "Enable Ingress",
+          "type": "boolean",
+          "default": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.ingress"
+          }
+        },
         "hostname": {
           "type": "string",
           "form": true,
@@ -195,23 +204,48 @@
             "value": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
           },
           "x-onyxia": {
-              "hidden": true,
-              "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
           }
         },
         "ingressClassName": {
-            "type": "string",
-            "form": true,
-            "title": "ingressClassName",
-            "default": "",
-            "x-form": {
-                "hidden": true,
-                "value": "{{k8s.ingressClassName}}"
-            },
-            "x-onyxia": {
-                "hidden": true,
-                "overwriteDefaultWith": "{{k8s.ingressClassName}}"
-            }
+          "type": "string",
+          "form": true,
+          "title": "ingressClassName",
+          "default": "",
+          "x-form": {
+            "hidden": true,
+            "value": "{{k8s.ingressClassName}}"
+          },
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+          }
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "form": true,
+      "title": "Route details",
+      "properties": {
+        "enabled": {
+          "description": "Enable route",
+          "type": "boolean",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.route"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
+          }
         }
       }
     }

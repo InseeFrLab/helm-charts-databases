@@ -44,7 +44,6 @@ postgresql:
     tag: "12"
   fullnameOverride: "lakefs-db"
 
-
 networking:
   type: ClusterIP
   service:
@@ -61,6 +60,18 @@ ingress:
   #    hosts:
   #      - chart-example.local
 
+route:
+  enabled: false
+  annotations: []
+    # route.openshift.io/termination: "reencrypt"
+  hostname: chart-example.local
+  tls:
+    termination: edge
+    # key:
+    # certificate:
+    # caCertificate:
+    # destinationCACertificate:
+  wildcardPolicy: None
 
 imagePullSecrets: []
 nameOverride: ""
@@ -93,7 +104,6 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-
 
 nodeSelector: {}
 

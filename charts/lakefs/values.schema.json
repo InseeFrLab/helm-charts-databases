@@ -7,6 +7,15 @@
       "form": true,
       "title": "Ingress Details",
       "properties": {
+        "enabled": {
+          "description": "Enable Ingress",
+          "type": "boolean",
+          "default": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.ingress"
+          }
+        },
         "hostname": {
           "type": "string",
           "form": true,
@@ -16,23 +25,48 @@
             "value": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
           },
           "x-onyxia": {
-              "hidden": true,
-              "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
           }
         },
         "ingressClassName": {
-            "type": "string",
-            "form": true,
-            "title": "ingressClassName",
-            "default": "",
-            "x-form": {
-                "hidden": true,
-                "value": "{{k8s.ingressClassName}}"
-            },
-            "x-onyxia": {
-                "hidden": true,
-                "overwriteDefaultWith": "{{k8s.ingressClassName}}"
-            }
+          "type": "string",
+          "form": true,
+          "title": "ingressClassName",
+          "default": "",
+          "x-form": {
+            "hidden": true,
+            "value": "{{k8s.ingressClassName}}"
+          },
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+          }
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "form": true,
+      "title": "Route details",
+      "properties": {
+        "enabled": {
+          "description": "Enable route",
+          "type": "boolean",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.route"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
+          }
         }
       }
     },
@@ -40,81 +74,81 @@
       "description": "security specific configuration",
       "type": "object",
       "properties": {
-          "password": {
-              "type": "string",
-              "description": "Password",
-              "default": "changeme",
+        "password": {
+          "type": "string",
+          "description": "Password",
+          "default": "changeme",
+          "x-form": {
+            "value": "{{project.password}}"
+          },
+          "x-onyxia": {
+            "overwriteDefaultWith": "{{project.password}}"
+          }
+        },
+        "allowlist": {
+          "type": "object",
+          "description": "IP protection",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable IP protection",
+              "description": "Only the configured set of IPs will be able to reach the service",
+              "default": true,
               "x-form": {
-                  "value": "{{project.password}}"
+                "value": "{{region.defaultIpProtection}}"
               },
               "x-onyxia": {
-                "overwriteDefaultWith": "{{project.password}}"
+                "overwriteDefaultWith": "region.defaultIpProtection"
               }
-          },
-          "allowlist": {
-            "type": "object",
-            "description": "IP protection",
-            "properties": {
-              "enabled": {
-                "type": "boolean",
-                "title": "Enable IP protection",
-                "description": "Only the configured set of IPs will be able to reach the service",
-                "default": true,
-                "x-form": {
-                  "value": "{{region.defaultIpProtection}}"
-                },
-                "x-onyxia": {
-                    "overwriteDefaultWith": "region.defaultIpProtection"
-                }
+            },
+            "ip": {
+              "type": "string",
+              "description": "the white list of IP is whitespace",
+              "title": "Whitelist of IP",
+              "default": "0.0.0.0",
+              "x-form": {
+                "value": "{{user.ip}}"
               },
-              "ip": {
-                "type": "string",
-                "description": "the white list of IP is whitespace",
-                "title": "Whitelist of IP",
-                "default": "0.0.0.0",
-                "x-form": {
-                  "value": "{{user.ip}}"
-                },
-                "x-onyxia": {
-                    "overwriteDefaultWith": "{{user.ip}}"
-                },
-                "hidden": {
-                    "value": false,
-                    "path": "security/allowlist/enabled"
-                } 
+              "x-onyxia": {
+                "overwriteDefaultWith": "{{user.ip}}"
+              },
+              "hidden": {
+                "value": false,
+                "path": "security/allowlist/enabled"
               }
             }
+          }
         },
         "networkPolicy": {
-            "type": "object",
-            "description": "Define access policy to the service",
-            "properties": {
-              "enabled": {
-                "type": "boolean",
-                "title": "Enable network policy",
-                "description": "Only pod from the same namespace will be allowed",
-                "default": true,
-                "x-form": {
-                  "value": "{{region.defaultNetworkPolicy}}"
-                },
-                "x-onyxia": {
-                    "overwriteDefaultWith": "region.defaultNetworkPolicy"
-                }
+          "type": "object",
+          "description": "Define access policy to the service",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable network policy",
+              "description": "Only pod from the same namespace will be allowed",
+              "default": true,
+              "x-form": {
+                "value": "{{region.defaultNetworkPolicy}}"
               },
-              "from": {
-                "type": "array",
-                "description": "Array of source allowed to have network access to your service",
-                "default" : [], 
-                "x-form": {
-                  "hidden": true,
-                  "value": "{{region.from}}"
-                },
-                "x-onyxia": {
-                    "hidden": true,
-                    "overwriteDefaultWith": "region.from"
-                }
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
+            },
+            "from": {
+              "type": "array",
+              "description": "Array of source allowed to have network access to your service",
+              "default": [],
+              "x-form": {
+                "hidden": true,
+                "value": "{{region.from}}"
+              },
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
               }
             }
+          }
         }
       }
     },
@@ -195,7 +229,7 @@
             "value": "blockstore:\n  type: s3\n  s3:\n    region: {{s3.AWS_DEFAULT_REGION}}\n    discover_bucket_region: false\n    endpoint: https://{{s3.AWS_S3_ENDPOINT}}\n    force_path_style: true\n    credentials:\n      access_key_id: {{s3.AWS_ACCESS_KEY_ID}}\n      secret_access_key: {{s3.AWS_SECRET_ACCESS_KEY}}\n      session_token: {{s3.AWS_SESSION_TOKEN}}\n"
           },
           "x-onyxia": {
-              "overwriteDefaultWith": "blockstore:\n  type: s3\n  s3:\n    region: {{s3.AWS_DEFAULT_REGION}}\n    discover_bucket_region: false\n    endpoint: https://{{s3.AWS_S3_ENDPOINT}}\n    force_path_style: true\n    credentials:\n      access_key_id: {{s3.AWS_ACCESS_KEY_ID}}\n      secret_access_key: {{s3.AWS_SECRET_ACCESS_KEY}}\n      session_token: {{s3.AWS_SESSION_TOKEN}}\n"
+            "overwriteDefaultWith": "blockstore:\n  type: s3\n  s3:\n    region: {{s3.AWS_DEFAULT_REGION}}\n    discover_bucket_region: false\n    endpoint: https://{{s3.AWS_S3_ENDPOINT}}\n    force_path_style: true\n    credentials:\n      access_key_id: {{s3.AWS_ACCESS_KEY_ID}}\n      secret_access_key: {{s3.AWS_SECRET_ACCESS_KEY}}\n      session_token: {{s3.AWS_SESSION_TOKEN}}\n"
           }
         },
         "secrets": {

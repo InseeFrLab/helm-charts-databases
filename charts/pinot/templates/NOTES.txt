@@ -1,2 +1,7 @@
-pinot is running  at {{ .Values.ingress.hostname }} 
+{{- if .Values.ingress.enabled }}
+pinot is running  at {{ .Values.ingress.hostname }}
+{{- end }}
+{{- if .Values.route.enabled }}
+pinot is running  at {{ .Values.route.hostname }}
+{{- end }}
 good luck!
