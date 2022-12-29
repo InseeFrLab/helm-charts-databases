@@ -33,7 +33,7 @@ version: 0.0.2
 appVersion: 1
 dependencies:
   - name: postgresql
-    version: 10.16.2
+    version: 11.6.15
     repository:  https://charts.bitnami.com/bitnami
     enabled: true
   - name: library-chart
