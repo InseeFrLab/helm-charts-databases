@@ -55,6 +55,19 @@ networking:
   service:
     port: 8080
 
+s3:
+  # Specifies whether a config map should be created
+  enabled: false
+  # The name of the configmap to use.
+  # If not set and create is true, a name is generated using the fullname template
+  configMapName: ""
+  accessKeyId: ""
+  endpoint: ""
+  defaultRegion: ""
+  secretAccessKey: ""
+  sessionToken: ""
+  path: ""
+
 ingress:
   enabled: true
   tls: true

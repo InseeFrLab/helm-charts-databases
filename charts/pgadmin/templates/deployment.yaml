@@ -26,6 +26,8 @@ spec:
         configMap:
           name: {{ include "library-chart.fullname" . }}
       {{- end }}
+      - name: data
+        emptyDir: {}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -58,6 +60,8 @@ spec:
           {{- if .Values.discovery.postgres }}
           volumeMounts:
           - name: config
+            mountPath: "/config"
+          - name: data
             mountPath: "/data"
           {{- end }}
           env:
@@ -67,12 +71,28 @@ spec:
               value: {{ .Values.security.password }}
             {{- if .Values.discovery.postgres }}
             - name: PGADMIN_SERVER_JSON_FILE
-              value: "/data/servers.json"
+              value: "/config/servers.json"
             - name: MAX_LOGIN_ATTEMPTS
               value: {{ .Values.security.maxLoginAttempts | quote }}
             {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- if .Values.s3.enabled }}
+      initContainers:
+        - name: download-s3
+          image: "inseefrlab/onyxia-base"
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - -c
+            - MC_HOST_s3=https://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY:$AWS_SESSION_TOKEN@$AWS_S3_ENDPOINT mc cp -r s3/{{ .Values.s3.path }} /data/         
+          envFrom:    
+            - configMapRef:
+                name: {{ include "library-chart.configMapNameS3" . }}
+          volumeMounts:
+          - name: data
+            mountPath: "/data"
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
