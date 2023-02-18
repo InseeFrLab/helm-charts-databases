@@ -42,7 +42,8 @@ podAnnotations: {}
 podSecurityContext: {}
   # fsGroup: 2000
 
-securityContext: {}
+securityContext:
+  runAsUser: 5050
   # capabilities:
   #   drop:
   #   - ALL

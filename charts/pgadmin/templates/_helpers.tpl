@@ -32,3 +32,7 @@
 {{ printf "}" | indent 2}}
 {{ printf "}" }}
 {{- end }}
+
+{{- define "pgadmin.cleanemail" -}}
+{{ printf "%s" .Values.security.mail  |  replace "@" "_"}}
+{{- end }}
