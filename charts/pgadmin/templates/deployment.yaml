@@ -91,7 +91,7 @@ spec:
           envFrom:    
             - configMapRef:
                 name: {{ include "library-chart.configMapNameS3" . }}
-          env: HOME
+          env:
           - name: HOME
             value: /tmp
           volumeMounts:
