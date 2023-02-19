@@ -39,8 +39,8 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext:
+  runAsUser: 5050
 
 securityContext:
   runAsUser: 5050
