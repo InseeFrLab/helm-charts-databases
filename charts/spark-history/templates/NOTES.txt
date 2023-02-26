@@ -4,3 +4,8 @@
 {{- if .Values.spark.directory }}
 - the log's directory is **{{ .Values.spark.directory }}**
 {{- end }}
+
+*NOTES about deletion :*
+
+- **You can safely delete this chart and recreate one later**
+- Your application logs are on S3 and will not be deleted if you delete this spark history server

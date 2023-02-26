@@ -53,7 +53,7 @@ spec:
           image: "{{ .Values.service.image.version }}"
           {{- end }}
           command: ["/bin/sh","-c"]
-          args: ["/data/{{ .Values.init.filename}} /opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer"]
+          args: ["/opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer"]
           imagePullPolicy: {{ .Values.service.image.pullPolicy }}        
           env:
             - name: SPARK_HISTORY_OPTS
@@ -78,21 +78,11 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: /data
-              name: {{$volumeName}}
             - mountPath: /home/{{ .Values.service.user}}/work
               name: home
             - mountPath: /opt/hadoop/etc/hadoop/core-site.xml
               subPath: core-site.xml
               name: config-coresite
-      initContainers:
-        - name: standard-init
-          image: "busybox"
-          command: ["/bin/sh","-c"]
-          args: ["wget -O /data/{{ .Values.init.filename}} {{ .Values.init.standardInit}} && chmod +x /data/{{ .Values.init.filename}}"]
-          volumeMounts:
-          - mountPath: /data
-            name: {{$volumeName}}  
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

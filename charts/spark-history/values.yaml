@@ -3,11 +3,11 @@
 service:
   user: jovyan
   image:
-    version: "inseefrlab/jupyter-datascience:py3.9.7-spark3.2.0"
+    version: "inseefrlab/onyxia-pyspark:py3.10.8-spark3.3.1"
     pullPolicy: IfNotPresent
     custom:
       enabled: false
-      version: "inseefrlab/jupyter-datascience:py3.9.7-spark3.2.0"
+      version: "inseefrlab/onyxia-pyspark:py3.10.8-spark3.3.1"
 
 spark:
   directory: "file://tmp/spark-logs/"
@@ -22,9 +22,6 @@ security:
     enabled: true
     ip: "0.0.0.0/0"
 
-init:
-  standardInit: "https://git.lab.sspcloud.fr/innovation/plateforme-onyxia/services-ressources/-/raw/master/onyxia-init.sh"
-  filename: "onyxia-init.sh"
 
 s3:
   # Specifies whether a config map should be created
