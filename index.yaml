@@ -3,6 +3,29 @@ entries:
   cloudbeaver:
   - apiVersion: v2
     appVersion: latest
+    created: "2023-03-25T11:51:06.574564557Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    description: CloudBeaver is a light modern web-application for database management.
+    digest: dd86341244f4fb38d091c608c391063ccc4c8bb0f4a1cec6f1afb21754c27fe7
+    home: https://cloudbeaver.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/cloudbeaver.png
+    name: cloudbeaver
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/main/charts/cloudbeaver
+    - https://hub.docker.com/r/dbeaver/cloudbeaver
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/cloudbeaver-1.2.0/cloudbeaver-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2022-12-29T09:52:53.311644563Z"
     dependencies:
     - name: library-chart
@@ -117,6 +140,36 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/cloudbeaver-1.0.1/cloudbeaver-1.0.1.tgz
     version: 1.0.1
   elastic:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2023-03-25T11:51:06.726858051Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 7.17.3
+    - name: kibana
+      repository: https://helm.elastic.co
+      version: 7.17.3
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    description: Elasticsearch provides a full-text search engine with an HTTP web
+      interface and schema-free JSON documents.
+    digest: 28a55883315bc14c46ba5c032dec0a5cf7ae239b073ce53e0b8a194c297415cc
+    home: https://www.elastic.co/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/elk.png
+    keywords:
+    - Search
+    - Lucene
+    - Visualization
+    name: elastic
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/elastic
+    - https://github.com/elastic/helm-charts/tree/master/elasticsearch
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/elastic-0.2.0/elastic-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: "1"
     created: "2023-02-19T18:00:51.293708156Z"
@@ -274,6 +327,30 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: "1"
+    created: "2023-03-25T11:51:06.848387729Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.0.3
+    description: Hive metastore manage the metadata relational entities  in a relational
+      database.
+    digest: f4da525ae2328b4f0ae20c45e57c47379f8050ff5df4d298315dc3260be5432b
+    home: https://hive.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/hive.png
+    name: hive-metastore
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/hive-metastore
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/hive-metastore-0.2.0/hive-metastore-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "1"
     created: "2023-02-19T18:00:51.427025167Z"
     dependencies:
     - enabled: true
@@ -372,6 +449,25 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/hive-metastore-0.0.1/hive-metastore-0.0.1.tgz
     version: 0.0.1
   jena:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-03-25T11:51:06.993821787Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    description: Apache Jena Fuseki is a SPARQL server.
+    digest: 74e69fc723fb85c2dfcef4f13b43292ad6d677c759f6f91e1f1ad715bc85dd10
+    home: https://jena.apache.org/jena
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/jena.png
+    name: jena
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/jena
+    - https://github.com/stain/jena-docker
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/jena-0.3.0/jena-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: latest
     created: "2022-12-29T09:52:53.714964786Z"
@@ -508,6 +604,31 @@ entries:
   kafka:
   - apiVersion: v2
     appVersion: "1"
+    created: "2023-03-25T11:51:07.156028689Z"
+    dependencies:
+    - enabled: true
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.4.2
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.0.3
+    description: Apache Kafka is an event streaming platform for streaming analytics,
+      data integration.
+    digest: ac186d33807c6886ae52a81c32403457a7a9e0289cb626666c3be822c417ab55
+    home: https://kafka.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/kafka.png
+    name: kafka
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/kafka
+    - https://github.com/bitnami/charts/tree/master/bitnami/kafka
+    - https://github.com/bitnami/bitnami-docker-kafka
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/kafka-0.2.0/kafka-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "1"
     created: "2023-02-19T18:00:51.580343234Z"
     dependencies:
     - enabled: true
@@ -636,6 +757,34 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/kafka-0.0.1/kafka-0.0.1.tgz
     version: 0.0.1
   lakefs:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2023-03-25T11:51:07.295127005Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    - enabled: true
+      name: lakefs
+      repository: https://charts.lakefs.io
+      version: 0.6.6
+    description: Data version control for data lakes.  It enables zero copy isolated
+      environments, and more.
+    digest: 6abbc983abe71a3e56ff303aa55dc6fed671017ac2d8ecab2d81931d36de3fa1
+    home: https://lakefs.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/lakefs.jpg
+    name: lakefs
+    sources:
+    - https://github.com/treeverse/charts/tree/master/charts/lakefs
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/lakefs
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/lakefs-0.3.0/lakefs-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: "1"
     created: "2023-02-19T18:00:51.715453468Z"
@@ -835,6 +984,30 @@ entries:
   mariadb:
   - apiVersion: v2
     appVersion: "1"
+    created: "2023-03-25T11:51:07.414913199Z"
+    dependencies:
+    - enabled: true
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.4.2
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.0.3
+    description: MariaDB is a SQL database server. It's MySQL but libre.
+    digest: e05e8f892d2bbc6a3c45c335b755c7a5996c1baeb27b630f7b770b0bb04eb70d
+    home: https://github.com/bitnami/charts/tree/master/bitnami/mariadb
+    icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
+    name: mariadb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mariadb
+    - https://github.com/prometheus/mysqld_exporter
+    - https://mariadb.org
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mariadb-0.2.0/mariadb-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "1"
     created: "2023-02-19T18:00:51.839329758Z"
     dependencies:
     - enabled: true
@@ -964,6 +1137,33 @@ entries:
   metabase:
   - apiVersion: v2
     appVersion: 1.0.1
+    created: "2023-03-25T11:51:07.549557256Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    description: Metabase is a BI tool with a friendly UX and an integrated tooling
+      to let you explore data.
+    digest: 270f3a20576c438829b69a9c4bf1a75b7adb241562f90e65643f9b96fd2e037b
+    home: https://www.metabase.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/metabase.png
+    keywords:
+    - Tool
+    - Data
+    name: metabase
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/main/charts/metabase
+    - https://hub.docker.com/r/metabase/metabase/
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/metabase-1.2.0/metabase-1.2.0.tgz
+    version: 1.2.0
+  - apiVersion: v2
+    appVersion: 1.0.1
     created: "2022-12-29T09:52:54.327840477Z"
     dependencies:
     - name: library-chart
@@ -1041,6 +1241,34 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/metabase-1.0.1/metabase-1.0.1.tgz
     version: 1.0.1
   mongodb:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2023-03-25T11:51:07.683875816Z"
+    dependencies:
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.6.2
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.0.3
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas.
+    digest: cfa5cc3cde9c5e2f7b4afd81d63f578d5c73dc2b509f90793a1494775642fd33
+    home: https://www.mongodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/mongodb.png
+    keywords:
+    - nosql
+    - Database
+    - json
+    name: mongodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/mongodb
+    - https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+    - https://github.com/bitnami/bitnami-docker-mongodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mongodb-0.2.0/mongodb-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: "1"
     created: "2023-02-19T18:00:51.96811571Z"
@@ -1188,6 +1416,26 @@ entries:
   neo4j:
   - apiVersion: v2
     appVersion: latest
+    created: "2023-03-25T11:51:07.90875814Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    description: Neo4j is a graph database management system. It's ACID-compliant
+      transactional database with native graph storage.
+    digest: deb146b3d89dcfc56d2704a64499bd521eede0f9861c71fe5689aa1afa51405c
+    home: https://neo4j.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/neo4j.png
+    name: neo4j
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/neo4j
+    - https://github.com/neo4j/docker-neo4j-publish
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/neo4j-0.2.0/neo4j-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-02-19T18:00:52.295274508Z"
     dependencies:
     - name: library-chart
@@ -1291,6 +1539,30 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/neo4j-0.0.1/neo4j-0.0.1.tgz
     version: 0.0.1
   nocodb:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-03-25T11:51:08.056318278Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    description: NocoDB is an open source NoCode platform that turns any database
+      into a smart spreadsheet
+    digest: ed1501008c732cd2f8e0d748a31586caf0715802e0ed85ed498f6704ff67091a
+    home: https://www.nocodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/nocodb.png
+    name: nocodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/nocodb
+    - https://hub.docker.com/r/nocodb/nocodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/nocodb-1.2.0/nocodb-1.2.0.tgz
+    version: 1.2.0
   - apiVersion: v2
     appVersion: latest
     created: "2022-12-29T09:52:54.728029499Z"
@@ -1452,6 +1724,27 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/nocodb-0.0.1/nocodb-0.0.1.tgz
     version: 0.0.1
   pgadmin:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-03-25T11:51:08.1946736Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.8
+    description: pgAdmin is an administration and development platform for PostgreSQL.
+      It's a GUI for Postgress SQL.
+    digest: b4b044ad8f8d3a80cc92da99f97e47589b8cf2c4fbb4b133d4bbebfbefcb1867
+    home: https://www.pgadmin.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    name: pgadmin
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/pgadmin
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pgadmin-0.4.0/pgadmin-0.4.0.tgz
+    version: 0.4.0
   - apiVersion: v2
     appVersion: latest
     created: "2023-02-19T18:00:52.450101095Z"
@@ -1674,6 +1967,26 @@ entries:
   pinot:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-03-25T11:51:08.31603298Z"
+    dependencies:
+    - enabled: true
+      name: pinot
+      repository: https://raw.githubusercontent.com/apache/pinot/master/kubernetes/helm
+      version: 0.2.4
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    description: Realtime distributed OLAP datastore, designed to answer OLAP queries
+      with low latency
+    digest: b1528491e3121245b5ab10f38a8b1e91e68b69b78317faf3e907bcfb25156f3b
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/pinot.png
+    name: pinot
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pinot-0.2.0/pinot-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-12-29T09:52:54.997689831Z"
     dependencies:
     - enabled: true
@@ -1750,6 +2063,30 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pinot-0.0.1/pinot-0.0.1.tgz
     version: 0.0.1
   postgresql:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2023-03-25T11:51:08.495211926Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.9.13
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.0.3
+    description: An object-relational database management system, a database server.
+    digest: 6fff3c48e253b11a643c7a67b16f317195fa809cf3e2cfbc46245ad8681e0910
+    home: https://www.postgresql.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    name: postgresql
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/postgresql
+    - https://github.com/bitnami/charts/tree/master/bitnami/postgresql
+    - https://github.com/bitnami/bitnami-docker-postgresql
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-0.2.0/postgresql-0.2.0.tgz
+    version: 0.2.0
   - apiVersion: v2
     appVersion: "1"
     created: "2023-02-19T18:00:52.592853627Z"
@@ -1849,6 +2186,25 @@ entries:
   spark-history:
   - apiVersion: v2
     appVersion: latest
+    created: "2023-03-25T11:51:08.613480234Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    description: Spark history help you to review logs of your spark applications.
+    digest: 4bc582487c8b13981a66f064e4b6b9ec892776f0e123de1eea549b4b97c12e5c
+    home: https://spark.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/spark.png
+    name: spark-history
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/spark-history
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-history-0.4.0/spark-history-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-02-26T20:44:42.931063079Z"
     dependencies:
     - name: library-chart
@@ -1943,6 +2299,29 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-history-0.0.1/spark-history-0.0.1.tgz
     version: 0.0.1
   spark-thrift-server:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2023-03-25T11:51:08.771110579Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    description: Spark SQL can also act as a distributed query engine using its JDBC/ODBC
+      or command-line interface.
+    digest: e24587590e8044cff5e0b1393017c6fb448e2bd05c2ff44c45783dd28999ba2a
+    home: https://spark.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/spark.png
+    keywords:
+    - spark
+    - distributed
+    name: spark-thrift-server
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/spark-thrift-server
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-thrift-server-0.3.0/spark-thrift-server-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: "1"
     created: "2023-02-19T18:00:52.72793016Z"
@@ -2071,6 +2450,29 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-thrift-server-0.0.1/spark-thrift-server-0.0.1.tgz
     version: 0.0.1
   trino:
+  - apiVersion: v2
+    appVersion: "355"
+    created: "2023-03-25T11:51:08.941751103Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.3.0
+    description: Fast distributed SQL query engine for big data analytics
+    digest: 13134d033a13016d9081c31b68e924688809ca85630cd5da9b10ca8857d541cf
+    home: https://trino.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/trino.png
+    keywords:
+    - SQL
+    - distributed
+    - python
+    name: trino
+    sources:
+    - https://github.com/trinodb/charts
+    - https://github.com/trinodb/trino/tree/master/core/docker
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.3.0/trino-0.3.0.tgz
+    version: 0.3.0
   - apiVersion: v2
     appVersion: "355"
     created: "2022-12-29T09:52:55.561358161Z"
@@ -2232,4 +2634,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-26T20:44:42.931233884Z"
+generated: "2023-03-25T11:51:08.942034001Z"
