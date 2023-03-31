@@ -1,5 +1,3 @@
 *.tgz
 index.yaml
 Chart.lock
-utils/prepull-deployment-manifest.yaml
-utils/prepull-daemon-manifest.yaml
