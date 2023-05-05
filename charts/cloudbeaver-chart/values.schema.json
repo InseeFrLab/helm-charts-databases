@@ -91,7 +91,7 @@
 							"description": "The maximum amount of memory",
 							"title": "Memory",
 							"type": "string",
-							"default": "50Gi",
+							"default": "4Gi",
 							"render": "slider",
 							"sliderMin": 1,
 							"sliderMax": 8,
