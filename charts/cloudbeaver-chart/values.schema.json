@@ -21,7 +21,7 @@
 							"type": "string",
 							"listEnum": [
 								"dbeaver/cloudbeaver:22.2.4",
-								"inseefrlab/dbeaver:23.0.3"
+								"inseefrlab/cloudbeaver:23.0.3"
 							],
 							"render": "list",
 							"pattern": "^[a-z0-9-_./]+(:[a-z0-9-_.]+)?$",
