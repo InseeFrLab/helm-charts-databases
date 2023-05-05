@@ -25,9 +25,9 @@ data:
 
         database: {
             driver: "postgres-jdbc" ,
-            url : "jdbc:postgresql://{{ .Values.postgresql.fullnameOverride }}:5432/{{ .Values.global.postgresql.auth.database }}" ,
-            user : {{ .Values.global.postgresql.auth.username }} ,
-            password : {{ .Values.global.postgresql.auth.password }} ,
+            url : "jdbc:postgresql://{{ .Values.postgresql.fullnameOverride }}:5432/{{ .Values.postgresql.auth.database }}" ,
+            user : {{ .Values.postgresql.auth.username }} ,
+            password : {{ .Values.postgresql.auth.password }} ,
             initialDataConfiguration: "conf/initial-data.conf",
             pool: {
                 minIdleConnections: 4, 
