@@ -2,27 +2,34 @@
 
 service:
   image:
-    repository: "dbeaver/cloudbeaver"
+    version: "dbeaver/cloudbeaver:22.2.4"
     pullPolicy: IfNotPresent
-    # Overrides the image tag whose default is the chart appVersion.
-    tag: "22.2.4"
 
 discovery:
   postgres: true
   mariadb: true
   trino: true
   
-global:
-  postgresql:
-    auth:
-      username: "admin"
-      password: "changeme"
-      database: "cb-metadata"
-
 postgresql:
   image:
-    tag: "12"
-  fullnameOverride: "cloudbeaver-db-0"
+    tag: "15"
+  auth:
+    username: "admin"
+    password: "changeme"
+    postgresPassword: "changeme"
+    database: "cloudbeaver"
+  fullnameOverride: "cloudbeaver-db"
+  primary:
+    resources:
+      limits:
+        cpu: "1000m"
+        memory: "2000Mi"
+      requests:
+        memory: 256Mi
+        cpu: 250m
+    persistence:
+      enabled: true
+      size: 8Gi
 
 cloudbeaver: 
   serverName: "Cloudbeaver Server"
@@ -80,7 +87,7 @@ ingress:
   ingressClassName: ""  
   annotations: []
     # kubernetes.io/tls-acme: "true"
-  hostname: "chart-example.com"
+  hostname: "chart-example.local"
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
