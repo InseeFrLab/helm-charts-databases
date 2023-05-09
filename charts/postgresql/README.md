@@ -1,6 +1,6 @@
 # postgresql
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 An object-relational database management system, a database server.
 
@@ -17,7 +17,7 @@ An object-relational database management system, a database server.
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | postgresql | 12.2.6 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.0.3 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.11 |
 
 ## Values
 
@@ -33,6 +33,9 @@ An object-relational database management system, a database server.
 | postgresql.image.pullPolicy | string | `"IfNotPresent"` |  |
 | postgresql.image.tag | string | `"14"` |  |
 | postgresql.primary.initdb.scriptsConfigMap | string | `"{{ include \"library-chart.fullname\" . }}"` |  |
+| postgresql.primary.resources.limits | object | `{}` |  |
+| postgresql.primary.resources.requests.cpu | string | `"250m"` |  |
+| postgresql.primary.resources.requests.memory | string | `"256Mi"` |  |
 | security.networkPolicy.enabled | bool | `true` |  |
 
 ----------------------------------------------
