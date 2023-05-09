@@ -1,6 +1,6 @@
 # cloudbeaver
 
-![Version: 1.2.0](https://img.shields.io/badge/Version-1.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.3.4](https://img.shields.io/badge/Version-1.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 CloudBeaver is a light modern web-application for database management.
 
@@ -15,8 +15,8 @@ CloudBeaver is a light modern web-application for database management.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 11.6.15 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.0 |
+| https://charts.bitnami.com/bitnami | postgresql | 12.2.3 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.14 |
 
 ## Values
 
@@ -32,13 +32,10 @@ CloudBeaver is a light modern web-application for database management.
 | discovery.postgres | bool | `true` |  |
 | discovery.trino | bool | `true` |  |
 | fullnameOverride | string | `""` |  |
-| global.postgresql.auth.database | string | `"cb-metadata"` |  |
-| global.postgresql.auth.password | string | `"changeme"` |  |
-| global.postgresql.auth.username | string | `"admin"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.enabled | bool | `true` |  |
-| ingress.hostname | string | `"chart-example.com"` |  |
+| ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
 | nameOverride | string | `""` |  |
@@ -48,8 +45,18 @@ CloudBeaver is a light modern web-application for database management.
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| postgresql.fullnameOverride | string | `"cloudbeaver-db-0"` |  |
-| postgresql.image.tag | string | `"12"` |  |
+| postgresql.auth.database | string | `"cloudbeaver"` |  |
+| postgresql.auth.password | string | `"changeme"` |  |
+| postgresql.auth.postgresPassword | string | `"changeme"` |  |
+| postgresql.auth.username | string | `"admin"` |  |
+| postgresql.fullnameOverride | string | `"cloudbeaver-db"` |  |
+| postgresql.image.tag | string | `"15"` |  |
+| postgresql.primary.persistence.enabled | bool | `true` |  |
+| postgresql.primary.persistence.size | string | `"8Gi"` |  |
+| postgresql.primary.resources.limits.cpu | string | `"1000m"` |  |
+| postgresql.primary.resources.limits.memory | string | `"2000Mi"` |  |
+| postgresql.primary.resources.requests.cpu | string | `"250m"` |  |
+| postgresql.primary.resources.requests.memory | string | `"256Mi"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |
@@ -66,8 +73,7 @@ CloudBeaver is a light modern web-application for database management.
 | security.username | string | `"onyxia"` |  |
 | securityContext | object | `{}` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.repository | string | `"dbeaver/cloudbeaver"` |  |
-| service.image.tag | string | `"22.2.4"` |  |
+| service.image.version | string | `"dbeaver/cloudbeaver:22.2.4"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
