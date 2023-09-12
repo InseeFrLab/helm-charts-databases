@@ -1,6 +1,6 @@
 # cloudbeaver
 
-![Version: 1.3.4](https://img.shields.io/badge/Version-1.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.3.5](https://img.shields.io/badge/Version-1.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 CloudBeaver is a light modern web-application for database management.
 
@@ -38,6 +38,7 @@ CloudBeaver is a light modern web-application for database management.
 | ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
+| initContainerSecurityContext | object | `{}` |  |
 | nameOverride | string | `""` |  |
 | networking.beaver.port | int | `8978` |  |
 | networking.service.port | int | `80` |  |
