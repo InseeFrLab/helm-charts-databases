@@ -117,3 +117,9 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+initContainer:
+  image: "inseefrlab/onyxia-base"
+  resources: {}
+  securityContext: {}
+    
