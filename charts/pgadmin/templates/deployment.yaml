@@ -80,7 +80,9 @@ spec:
       {{- if .Values.s3.enabled }}
       initContainers:
         - name: download-s3
-          image: "inseefrlab/onyxia-base"
+          image: {{ .Values.initContainer.image }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
           imagePullPolicy: IfNotPresent
           command:
             - sh
@@ -97,6 +99,8 @@ spec:
           volumeMounts:
           - name: data
             mountPath: "/data"
+          securityContext:
+            {{- toYaml .Values.initContainer.securityContext | nindent 12 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
