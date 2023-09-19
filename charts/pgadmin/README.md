@@ -1,6 +1,6 @@
 # pgadmin
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 pgAdmin is an administration and development platform for PostgreSQL. It's a GUI for Postgress SQL.
 
@@ -14,7 +14,7 @@ pgAdmin is an administration and development platform for PostgreSQL. It's a GUI
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.8 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.4.3 |
 
 ## Values
 
@@ -35,6 +35,9 @@ pgAdmin is an administration and development platform for PostgreSQL. It's a GUI
 | ingress.enabled | bool | `true` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.tls | bool | `true` |  |
+| initContainer.image | string | `"inseefrlab/onyxia-base"` |  |
+| initContainer.resources | object | `{}` |  |
+| initContainer.securityContext | object | `{}` |  |
 | nameOverride | string | `""` |  |
 | networking.service.port | int | `8080` |  |
 | networking.type | string | `"ClusterIP"` |  |
