@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-db-connection"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "library-chart.fullname" . }}-test-connection
+    image: "postgres:16"
+    env:
+      - name: HOST
+        value: {{ include "library-chart.fullname" . }}
+      - name: DATABASE_NAME
+        value: {{ .Values.postgresql.auth.database }}
+      - name: USER
+        value: {{ .Values.postgresql.auth.username }}
+      - name: PGPASSWORD
+        value: {{ .Values.postgresql.auth.password }}
+    command: ["sh", "-c", "psql -U $USER -h $HOST -p5432 -d $DATABASE_NAME -l"]
+  restartPolicy: Never
