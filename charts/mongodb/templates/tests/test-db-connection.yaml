@@ -12,15 +12,11 @@ spec:
   - name: {{ include "library-chart.fullname" . }}-test-connection
     image: "bitnami/mongodb:7.0.2"
     env:
-      - name: HOST
-        value: {{ include "library-chart.fullname" . }}
       - name: DATABASE_NAME
         value: {{ .Values.mongodb.auth.database }}
       - name: USER
         value: {{ .Values.mongodb.auth.username }}
       - name: PASSWORD
         value: {{ .Values.mongodb.auth.password }}
-      - name: PORT
-        value: {{ .Values.mongodb.containerPorts.mongodb | quote }}
     command: ["sh", "-c", " mongosh mongodb://$USER:$PASSWORD@{{ include "mongoList" . }}/$DATABASE_NAME "]
   restartPolicy: Never
