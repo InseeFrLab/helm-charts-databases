@@ -1,5 +1,8 @@
 mongodb:
-  resources: {}
+  resources: 
+    limits:
+      cpu: 100m
+      memory: 512Mi
   fullnameOverride: mongodb
   architecture: replicaset
   image:
@@ -9,6 +12,8 @@ mongodb:
     username: username
     password: changeme
     database: defaultdb
+  containerPorts:
+    mongodb: 27017
   replicaCount: 2
   discoverable:
     allow: true

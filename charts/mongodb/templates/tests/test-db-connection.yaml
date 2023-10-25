@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-db-connection"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "library-chart.fullname" . }}-test-connection
+    image: "bitnami/mongodb:7.0.2"
+    env:
+      - name: HOST
+        value: {{ include "library-chart.fullname" . }}
+      - name: DATABASE_NAME
+        value: {{ .Values.mongodb.auth.database }}
+      - name: USER
+        value: {{ .Values.mongodb.auth.username }}
+      - name: PASSWORD
+        value: {{ .Values.mongodb.auth.password }}
+      - name: PORT
+        value: {{ .Values.mongodb.containerPorts.mongodb | quote }}
+    command: ["sh", "-c", " mongosh mongodb://$USER:$PASSWORD@mongodb-0.mongodb-headless:$PORT,mongodb-1.mongodb-headless:$PORT/$DATABASE_NAME "]
+  restartPolicy: Never
