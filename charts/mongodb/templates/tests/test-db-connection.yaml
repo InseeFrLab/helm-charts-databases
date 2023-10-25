@@ -22,5 +22,5 @@ spec:
         value: {{ .Values.mongodb.auth.password }}
       - name: PORT
         value: {{ .Values.mongodb.containerPorts.mongodb | quote }}
-    command: ["sh", "-c", " mongosh mongodb://$USER:$PASSWORD@mongodb-0.mongodb-headless:$PORT,mongodb-1.mongodb-headless:$PORT/$DATABASE_NAME "]
+    command: ["sh", "-c", " mongosh mongodb://$USER:$PASSWORD@{{ include "mongoList" . }}/$DATABASE_NAME "]
   restartPolicy: Never
