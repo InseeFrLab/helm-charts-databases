@@ -10,17 +10,17 @@ metadata:
 spec:
   containers:
   - name: {{ include "library-chart.fullname" . }}-test-connection
-    image: "postgres:16"
+    image: "mariadb:11.1"
     env:
       - name: HOST
         value: {{ include "library-chart.fullname" . }}
       - name: DATABASE_NAME
-        value: {{ .Values.postgresql.auth.database }}
+        value: {{ .Values.mariadb.auth.database }}
       - name: USER
-        value: {{ .Values.postgresql.auth.username }}
-      - name: PGPASSWORD
-        value: {{ .Values.postgresql.auth.password }}
+        value: {{ .Values.mariadb.auth.username }}
+      - name: PASSWORD
+        value: {{ .Values.mariadb.auth.password }}
       - name: PORT
-        value: {{ .Values.postgresql.global.postgresql.service.ports.postgresql | quote }}
-    command: ["sh", "-c", "psql -U $USER -h $HOST -p $PORT -d $DATABASE_NAME -l"]
+        value: {{ .Values.mariadb.primary.service.ports.mysql | quote }}
+    command: ["sh", "-c", " mariadb --user=$USER --password=$PASSWORD --host=$HOST --port=$PORT $DATABASE_NAME "]
   restartPolicy: Never
