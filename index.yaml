@@ -2605,6 +2605,29 @@ entries:
   spark-thrift-server:
   - apiVersion: v2
     appVersion: "1"
+    created: "2023-10-26T08:51:41.175354615Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.15
+    description: Spark SQL can also act as a distributed query engine using its JDBC/ODBC
+      or command-line interface.
+    digest: ae00bf17f556126ceb7d9c1ea4ca59355f6ff2b426a56220c90399dbf791599f
+    home: https://spark.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/spark.png
+    keywords:
+    - spark
+    - distributed
+    name: spark-thrift-server
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/spark-thrift-server
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-thrift-server-0.4.0/spark-thrift-server-0.4.0.tgz
+    version: 0.4.0
+  - apiVersion: v2
+    appVersion: "1"
     created: "2023-03-25T11:51:08.771110579Z"
     dependencies:
     - name: library-chart
@@ -2938,4 +2961,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2023-09-29T11:52:31.637688383Z"
+generated: "2023-10-26T08:51:41.175727314Z"
