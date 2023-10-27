@@ -6,12 +6,12 @@ postgresql:
     postgresql:
       service: 
         ports:
-          postgresql: 5432
+          postgresql: 7777
   auth:
     postgresPassword: ""
     username: ""
     password: ""
-    database: ""
+    database: "defaultdb"
   extensions:
     postgis: false
   primary:
