@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-db-root-connection"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "library-chart.fullname" . }}-test-root-connection
+    image: "mariadb:11.1"
+    env:
+      - name: HOST
+        value: {{ include "library-chart.fullname" . }}
+      - name: PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: {{ include "library-chart.fullname" . }}
+            key: mariadb-root-password
+      - name: PORT
+        value: {{ .Values.mariadb.primary.service.ports.mysql | quote }}
+    command: ["sh", "-c", " mariadb --password=$PASSWORD --host=$HOST --port=$PORT "]
+  restartPolicy: Never
