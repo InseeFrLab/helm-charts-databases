@@ -6,7 +6,7 @@ postgresql:
     postgresql:
       service: 
         ports:
-          postgresql: 7777
+          postgresql: 5432
   auth:
     postgresPassword: ""
     username: ""
