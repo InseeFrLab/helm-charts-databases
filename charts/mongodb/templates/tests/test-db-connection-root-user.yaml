@@ -1,0 +1,25 @@
+{{- if .Values.mongodb.auth.enabled }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-db-connection-root-user"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "library-chart.fullname" . }}-test-connection-root-user
+    image: "bitnami/mongodb:7.0.2"
+    env:
+      - name: ROOT_USER
+        value: {{ .Values.mongodb.auth.rootUser }}
+      - name: PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: {{ include "library-chart.fullname" . }}
+            key: mongodb-root-password
+    command: ["sh", "-c", " mongosh mongodb://$ROOT_USER:$PASSWORD@{{ include "mongoList" . }}/?authSource=admin  "]
+  restartPolicy: Never
+{{- end }}

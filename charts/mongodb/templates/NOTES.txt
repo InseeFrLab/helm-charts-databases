@@ -13,7 +13,7 @@
 {{- end }}
 - the connection string is : 
 
-**`mongodb://{{ $user }}:{{ $password }}@{{ (include "mongoList" .)}}/{{ $db }}?authSource{{ $db }}`**
+**`mongodb://{{ $user }}:{{ $password }}@{{ (include "mongoList" .)}}/{{ $db }}?authSource={{ $db }}`**
 - example for python :
 
 ```

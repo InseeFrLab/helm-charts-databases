@@ -1,0 +1,28 @@
+{{- if .Values.mongodb.auth.enabled }}
+{{- if not (empty  .Values.mongodb.auth.username) }}
+{{- if not (empty  .Values.mongodb.auth.password) }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-db-connection-custom-user"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "library-chart.fullname" . }}-test-connection-custom-user
+    image: "bitnami/mongodb:7.0.2"
+    env:
+      - name: DATABASE_NAME
+        value: {{ .Values.mongodb.auth.database }}
+      - name: USER
+        value: {{ .Values.mongodb.auth.username }}
+      - name: PASSWORD
+        value: {{ .Values.mongodb.auth.password }}
+    command: ["sh", "-c", " mongosh mongodb://$USER:$PASSWORD@{{ include "mongoList" . }}/$DATABASE_NAME?authSource=$DATABASE_NAME" ]
+  restartPolicy: Never
+{{- end }}
+{{- end }}
+{{- end }}
