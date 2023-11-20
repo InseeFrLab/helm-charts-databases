@@ -1,0 +1,19 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-connection"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }}']
+  restartPolicy: Never
+{{- end }}
+
