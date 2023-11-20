@@ -1,3 +1,4 @@
+{{- if .Values.ingress.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -9,9 +10,9 @@ metadata:
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   containers:
-    - name: curl
-      image: alpine/curl
-      command: ['curl']
-      args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.sparkHostname }}']
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }}']
   restartPolicy: Never
-  
+{{- end }}
