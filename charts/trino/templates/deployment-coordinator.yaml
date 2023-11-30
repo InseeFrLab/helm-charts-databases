@@ -28,9 +28,9 @@ spec:
         - name: catalog-volume
           configMap:
             name: {{ include "library-chart.fullname" . }}-catalog
-        - name: hdfs-config
-          configMap: 
-            name: {{ include "library-chart.configMapNameCoreSite" . }}
+        - name: secret-coresite
+          secret: 
+            secretName: {{ include "library-chart.secretNameCoreSite" . }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -53,7 +53,7 @@ spec:
             - mountPath: {{ .Values.server.config.path }}/catalog
               name: catalog-volume
             - mountPath: {{ .Values.server.config.path }}/hdfs
-              name: hdfs-config
+              name: secret-coresite
           ports:
             - name: http
               containerPort: {{ .Values.networking.service.port }}

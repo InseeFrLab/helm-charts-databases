@@ -1,6 +1,6 @@
 # spark-thrift-server
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Spark SQL can also act as a distributed query engine using its JDBC/ODBC or command-line interface.
 
@@ -15,7 +15,7 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.0 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.15 |
 
 ## Values
 
@@ -74,9 +74,9 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 | security.password | string | `"changeme"` |  |
 | securityContext | object | `{}` |  |
 | service.image.custom.enabled | bool | `false` |  |
-| service.image.custom.version | string | `"inseefrlab/jupyter-datascience:py3.9.7-spark3.2.0"` |  |
+| service.image.custom.version | string | `"inseefrlab/onyxia-pyspark:py3.11.4-spark3.5.0"` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.version | string | `"inseefrlab/jupyter-datascience:py3.9.7-spark3.2.0"` |  |
+| service.image.version | string | `"inseefrlab/onyxia-pyspark:py3.11.4-spark3.5.0"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
@@ -93,7 +93,7 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 | spark.config."spark.master" | string | `"k8s://https://kubernetes.default.svc:443"` |  |
 | spark.configMapName | string | `""` |  |
 | spark.default | bool | `true` |  |
-| spark.sparkui | bool | `false` |  |
+| spark.sparkui | bool | `true` |  |
 | tolerations | list | `[]` |  |
 
 ----------------------------------------------

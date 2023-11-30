@@ -29,3 +29,6 @@ discoverable:
 security:
   networkPolicy: 
     enabled: true
+
+userPreferences:
+  language: "en"
