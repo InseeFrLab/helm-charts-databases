@@ -1151,6 +1151,30 @@ entries:
   mariadb:
   - apiVersion: v2
     appVersion: "1"
+    created: "2023-12-01T12:56:11.909580939Z"
+    dependencies:
+    - enabled: true
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.0.3
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.14
+    description: MariaDB is a SQL database server. It's MySQL but libre.
+    digest: 68c3bb54d63e4ba2096494d9252d366dd15a63503f7da58e2ee0ff6486bea8b2
+    home: https://github.com/bitnami/charts/tree/master/bitnami/mariadb
+    icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
+    name: mariadb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mariadb
+    - https://github.com/prometheus/mysqld_exporter
+    - https://mariadb.org
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mariadb-0.2.1/mariadb-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: "1"
     created: "2023-03-25T11:51:07.414913199Z"
     dependencies:
     - enabled: true
@@ -1408,6 +1432,34 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/metabase-1.0.1/metabase-1.0.1.tgz
     version: 1.0.1
   mongodb:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2023-12-01T12:56:12.056674169Z"
+    dependencies:
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.6.2
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.14
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas.
+    digest: 2f2b2c6e6d492bb8e94592bf96bdc4e4700c8b35476930981f7792128ccadbf4
+    home: https://www.mongodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/mongodb.png
+    keywords:
+    - nosql
+    - Database
+    - json
+    name: mongodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/mongodb
+    - https://github.com/bitnami/charts/tree/master/bitnami/mongodb
+    - https://github.com/bitnami/bitnami-docker-mongodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mongodb-0.2.1/mongodb-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     appVersion: "1"
     created: "2023-03-25T11:51:07.683875816Z"
@@ -2294,6 +2346,31 @@ entries:
     version: 0.0.1
   postgresql:
   - apiVersion: v2
+    created: "2023-12-01T12:56:12.223957923Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.6
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.16
+    description: An object-relational database management system, a database server.
+    digest: 57770ee551e535cd1e3caaf4aecba984abafdb347490842c5acbb469f01e6cf9
+    home: https://www.postgresql.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    - Database
+    name: postgresql
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/postgresql
+    - https://github.com/bitnami/charts/tree/master/bitnami/postgresql
+    - https://github.com/bitnami/bitnami-docker-postgresql
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-0.6.1/postgresql-0.6.1.tgz
+    version: 0.6.1
+  - apiVersion: v2
     created: "2023-11-08T19:31:42.715616884Z"
     dependencies:
     - name: postgresql
@@ -3009,4 +3086,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2023-11-29T16:16:31.748143431Z"
+generated: "2023-12-01T12:56:12.224212544Z"
