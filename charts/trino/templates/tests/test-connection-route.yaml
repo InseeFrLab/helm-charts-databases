@@ -16,4 +16,3 @@ spec:
       args: ['https://{{ .Values.route.hostname }}']
   restartPolicy: Never
 {{- end }}
-
