@@ -1,6 +1,6 @@
 # mongodb
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 NoSQL document-oriented database that stores JSON-like documents with dynamic schemas.
 
@@ -17,7 +17,7 @@ NoSQL document-oriented database that stores JSON-like documents with dynamic sc
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | mongodb | 13.6.2 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.0.3 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.14 |
 
 ## Values
 

@@ -17,7 +17,7 @@ Elasticsearch provides a full-text search engine with an HTTP web interface and 
 |------------|------|---------|
 | https://helm.elastic.co | elasticsearch | 7.17.3 |
 | https://helm.elastic.co | kibana | 7.17.3 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.0 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.16 |
 
 ## Values
 

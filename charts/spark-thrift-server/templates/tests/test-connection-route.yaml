@@ -1,4 +1,4 @@
-{{- if .Values.ingress.enabled }}
+{{- if .Values.route.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -10,9 +10,9 @@ metadata:
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   containers:
-    - name: wget
-      image: busybox
-      command: ['wget']
-      args: ['http://elasticsearch-master:{{ .Values.elasticsearch.httpPort }}']
+    - name: curl
+      image: alpine/curl
+      command: ['curl']
+      args: ['https://{{ .Values.route.sparkHostname }}']
   restartPolicy: Never
-{{- end }}
+{{- end }}  

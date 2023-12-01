@@ -11,7 +11,7 @@ postgresql:
     postgresPassword: ""
     username: ""
     password: ""
-    database: ""
+    database: "defaultdb"
   extensions:
     postgis: false
   primary:

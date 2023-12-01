@@ -1,3 +1,4 @@
+{{- if .Values.route.enabled }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -5,11 +6,13 @@ metadata:
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
   annotations:
-    "helm.sh/hook": test-success
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
 spec:
   containers:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "library-chart.fullname" . }}:{{ .Values.service.port }}']
+      args: ['https://{{ .Values.route.hostname }}']
   restartPolicy: Never
+{{- end }}

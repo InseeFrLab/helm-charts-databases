@@ -1,0 +1,33 @@
+{{- if .Values.postgresql.auth.enablePostgresUser }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-db-connection-postgres-user"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "library-chart.fullname" . }}-test-connection-postgres-user
+    image: "postgres:16"
+    env:
+      - name: HOST
+        value: {{ include "library-chart.fullname" . }}
+      - name: PGPASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: {{ include "library-chart.fullname" . }}
+            key: postgres-password
+      - name: PORT
+        value: {{ .Values.postgresql.global.postgresql.service.ports.postgresql | quote }}
+      - name: DATABASE_NAME
+        value: {{ .Values.postgresql.auth.database }}
+    command: 
+      - sh
+      - -c
+      - psql -h $HOST -p $PORT -U postgres -d $DATABASE_NAME
+
+  restartPolicy: Never
+{{- end }}

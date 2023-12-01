@@ -1,0 +1,18 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-connection"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+    - name: curl
+      image: alpine/curl
+      command: ['curl']
+      args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.sparkHostname }}']
+  restartPolicy: Never
+{{- end }}  
