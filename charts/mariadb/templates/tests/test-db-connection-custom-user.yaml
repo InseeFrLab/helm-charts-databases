@@ -1,0 +1,28 @@
+{{ if not ( empty .Values.mariadb.auth.username ) }}
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "library-chart.fullname" . }}-test-db-connection"
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "library-chart.fullname" . }}-test-connection
+    image: "mariadb:11.1"
+    env:
+      - name: HOST
+        value: {{ include "library-chart.fullname" . }}
+      - name: DATABASE_NAME
+        value: {{ .Values.mariadb.auth.database }}
+      - name: USER
+        value: {{ .Values.mariadb.auth.username }}
+      - name: PASSWORD
+        value: {{ .Values.mariadb.auth.password }}
+      - name: PORT
+        value: {{ .Values.mariadb.primary.service.ports.mysql | quote }}
+    command: ["sh", "-c", " mariadb --user=$USER --password=$PASSWORD --host=$HOST --port=$PORT $DATABASE_NAME "]
+  restartPolicy: Never
+{{- end -}}
