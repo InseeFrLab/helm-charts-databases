@@ -1,6 +1,6 @@
 {{- define "kafkaList" -}}
 {{- $replicaCount := int .Values.kafka.replicaCount }}
-{{- $portNumber := int .Values.kafka.service.port }}
+{{- $portNumber := int .Values.kafka.service.ports.client }}
 {{- $fullname := include "library-chart.fullname" . }}
 {{- $kafkaList := list }}
 {{- range $e, $i := until $replicaCount }}
