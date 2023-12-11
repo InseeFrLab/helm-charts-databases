@@ -16,7 +16,7 @@ Hive metastore manage the metadata relational entities  in a relational database
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | postgresql | 11.6.15 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.0.3 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.17 |
 
 ## Values
 
