@@ -6,11 +6,11 @@ replicaCount: 1
 
 service:
   image:
-    version: "inseefrlab/onyxia-pyspark:py3.11.4-spark3.5.0"
+    version: "inseefrlab/onyxia-pyspark:py3.11.6-spark3.5.0"
     pullPolicy: IfNotPresent
     custom:
       enabled: false
-      version: "inseefrlab/onyxia-pyspark:py3.11.4-spark3.5.0"
+      version: "inseefrlab/onyxia-pyspark:py3.11.6-spark3.5.0"
 
 spark:
   sparkui: true
