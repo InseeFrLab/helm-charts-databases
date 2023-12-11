@@ -74,9 +74,9 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 | security.password | string | `"changeme"` |  |
 | securityContext | object | `{}` |  |
 | service.image.custom.enabled | bool | `false` |  |
-| service.image.custom.version | string | `"inseefrlab/onyxia-pyspark:py3.11.4-spark3.5.0"` |  |
+| service.image.custom.version | string | `"inseefrlab/onyxia-pyspark:py3.11.6-spark3.5.0"` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.version | string | `"inseefrlab/onyxia-pyspark:py3.11.4-spark3.5.0"` |  |
+| service.image.version | string | `"inseefrlab/onyxia-pyspark:py3.11.6-spark3.5.0"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
