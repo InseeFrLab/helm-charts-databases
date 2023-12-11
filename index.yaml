@@ -442,6 +442,30 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: "1"
+    created: "2023-12-11T17:49:05.372113756Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 11.6.15
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.17
+    description: Hive metastore manage the metadata relational entities  in a relational
+      database.
+    digest: d6e9b3483bcaa2884ecf8fae4845eeb5a10cbb84fb4f678c00e7c7e71df6bb12
+    home: https://hive.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/hive.png
+    name: hive-metastore
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/hive-metastore
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/hive-metastore-0.3.1/hive-metastore-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
+    appVersion: "1"
     created: "2023-03-27T20:50:53.529628332Z"
     dependencies:
     - enabled: true
@@ -2729,6 +2753,29 @@ entries:
   spark-thrift-server:
   - apiVersion: v2
     appVersion: "1"
+    created: "2023-12-11T17:49:05.556420259Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.17
+    description: Spark SQL can also act as a distributed query engine using its JDBC/ODBC
+      or command-line interface.
+    digest: 102fcb0d64aef998a131e14d33246854dcc3127aa047d5451077da4c121804bd
+    home: https://spark.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/spark.png
+    keywords:
+    - spark
+    - distributed
+    name: spark-thrift-server
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/spark-thrift-server
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-thrift-server-0.4.3/spark-thrift-server-0.4.3.tgz
+    version: 0.4.3
+  - apiVersion: v2
+    appVersion: "1"
     created: "2023-10-26T08:51:41.175354615Z"
     dependencies:
     - name: library-chart
@@ -3131,4 +3178,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2023-12-11T17:32:31.950525736Z"
+generated: "2023-12-11T17:49:05.556651303Z"
