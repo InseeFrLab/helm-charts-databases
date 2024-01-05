@@ -318,6 +318,15 @@
             "hidden": true,
             "overwriteDefaultWith": "{{k8s.ingressClassName}}"
           }
+        },
+        "useDefaultCertificate":{
+          "type": "boolean",
+          "description": "certificate",
+          "default": "true",
+          "x-onyxia": {
+              "hidden": true,
+              "overwriteDefaultWith": "ingress.useDefaultCertificate"
+          }
         }
       }
     },
