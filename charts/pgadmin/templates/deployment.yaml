@@ -92,8 +92,8 @@ spec:
               MC_HOST_s3=https://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY:$AWS_SESSION_TOKEN@$AWS_S3_ENDPOINT mc cp -r s3/{{ .Values.s3.path }} /data/{{ include "pgadmin.cleanemail" . }}
               exit 0
           envFrom:
-            - configMapRef:
-                name: {{ include "library-chart.configMapNameS3" . }}
+            - secretRef:
+                name: {{ include "library-chart.secretNameS3" . }}
           env:
           - name: HOME
             value: /tmp
