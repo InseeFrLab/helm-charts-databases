@@ -1,6 +1,6 @@
 {{/* vim: set filetype=mustache: */}}
 
-{{- define "discovery.configmap" -}}
+{{- define "discovery.secret" -}}
 {{ printf "{" }}
 {{ printf "\"folders\": {}," | indent 2}}
 {{ printf "\"connections\": {" | indent 2}}

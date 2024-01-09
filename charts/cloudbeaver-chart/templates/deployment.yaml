@@ -41,7 +41,7 @@ spec:
             subPath: cloudbeaver.conf
             
           {{- if or .Values.discovery.postgres .Values.discovery.mariadb .Values.discovery.trino  }}
-          - name: discovery-config
+          - name: discovery-secret
             mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
             subPath: data-sources.json
           {{- end }}
@@ -78,9 +78,9 @@ spec:
             name: cb-config
 
         {{- if or .Values.discovery.postgres .Values.discovery.mariadb .Values.discovery.trino }}
-        - name: discovery-config
-          configMap:
-            name: {{ include "library-chart.fullname" . }}
+        - name: discovery-secret
+          secret:
+            secretName: {{ include "library-chart.fullname" . }}
         {{- end }}
 
       initContainers:
