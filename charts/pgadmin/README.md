@@ -1,6 +1,6 @@
 # pgadmin
 
-![Version: 0.6.1](https://img.shields.io/badge/Version-0.6.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.6.2](https://img.shields.io/badge/Version-0.6.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 pgAdmin is an administration and development platform for PostgreSQL. It's a GUI for Postgress SQL.
 
@@ -32,9 +32,11 @@ pgAdmin is an administration and development platform for PostgreSQL. It's a GUI
 | image.tag | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
+| ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.tls | bool | `true` |  |
+| ingress.useCertManager | bool | `false` |  |
 | initContainer.image | string | `"inseefrlab/onyxia-base"` |  |
 | initContainer.resources | object | `{}` |  |
 | initContainer.securityContext | object | `{}` |  |
