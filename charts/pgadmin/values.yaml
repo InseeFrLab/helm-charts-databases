@@ -72,7 +72,9 @@ s3:
 ingress:
   enabled: true
   tls: true
-  
+  useCertManager: false
+  certManagerClusterIssuer: ""
+
   annotations: []
     # kubernetes.io/tls-acme: "true"
   hostname: chart-example.local
