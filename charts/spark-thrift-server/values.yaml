@@ -83,7 +83,7 @@ serviceAccount:
   name: ""
 
 kubernetes:
-  enable: true
+  enabled: true
   role: "edit"
 
 readiness:
@@ -138,6 +138,8 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+  useCertManager: false
+  certManagerClusterIssuer: ""
 
 route:
   enabled: false
