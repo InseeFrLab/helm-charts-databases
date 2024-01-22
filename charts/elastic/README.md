@@ -1,6 +1,6 @@
 # elastic
 
-![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Elasticsearch provides a full-text search engine with an HTTP web interface and schema-free JSON documents.
 
@@ -17,7 +17,7 @@ Elasticsearch provides a full-text search engine with an HTTP web interface and 
 |------------|------|---------|
 | https://helm.elastic.co | elasticsearch | 7.17.3 |
 | https://helm.elastic.co | kibana | 7.17.3 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.16 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.18 |
 
 ## Values
 
@@ -33,10 +33,12 @@ Elasticsearch provides a full-text search engine with an HTTP web interface and 
 | elasticsearch.volumeClaimTemplate.accessModes[0] | string | `"ReadWriteOnce"` |  |
 | elasticsearch.volumeClaimTemplate.resources.requests.storage | string | `"30Gi"` |  |
 | ingress.annotations | list | `[]` |  |
+| ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
+| ingress.useCertManager | bool | `false` |  |
 | kibana.image | string | `"kibana"` |  |
 | route.annotations | list | `[]` |  |
 | route.enabled | bool | `false` |  |
