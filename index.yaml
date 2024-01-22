@@ -2474,6 +2474,31 @@ entries:
     version: 0.0.1
   postgresql:
   - apiVersion: v2
+    created: "2024-01-22T12:53:40.116691793Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.2.6
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.18
+    description: An object-relational database management system, a database server.
+    digest: 25266bdb17930f98c743185d4b712758673620dfbb86bbe7408ca4f40e0200d3
+    home: https://www.postgresql.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    - Database
+    name: postgresql
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/postgresql
+    - https://github.com/bitnami/charts/tree/master/bitnami/postgresql
+    - https://github.com/bitnami/bitnami-docker-postgresql
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-0.6.2/postgresql-0.6.2.tgz
+    version: 0.6.2
+  - apiVersion: v2
     created: "2023-12-01T12:56:12.223957923Z"
     dependencies:
     - name: postgresql
@@ -3283,4 +3308,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-01-22T12:52:31.001528291Z"
+generated: "2024-01-22T12:53:40.116908439Z"
