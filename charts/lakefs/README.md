@@ -1,6 +1,6 @@
 # lakefs
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Data version control for data lakes.  It enables zero copy isolated environments, and more.
 
@@ -17,7 +17,7 @@ Data version control for data lakes.  It enables zero copy isolated environments
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | postgresql | 11.6.15 |
 | https://charts.lakefs.io | lakefs | 0.9.4 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.0 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.18 |
 
 ## Values
 
@@ -30,10 +30,12 @@ Data version control for data lakes.  It enables zero copy isolated environments
 | global.postgresql.auth.username | string | `"admin"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
+| ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
+| ingress.useCertManager | bool | `false` |  |
 | lakefs.extraEnvVars[0].name | string | `"LAKEFS_DATABASE_POSTGRES_CONNECTION_MAX_LIFETIME"` |  |
 | lakefs.extraEnvVars[0].value | string | `"24h"` |  |
 | lakefs.extraEnvVars[1].name | string | `"LAKEFS_DATABASE_TYPE"` |  |
