@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "library-chart.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ .Values.ingress.hostname }}:{{ .Values.networking.openrefine.port }}']
   restartPolicy: Never
