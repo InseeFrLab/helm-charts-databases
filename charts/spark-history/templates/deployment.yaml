@@ -33,9 +33,9 @@ spec:
         {{- end }}
         - name: {{$volumeName}}
           emptyDir: {}
-        - name: config-coresite
-          configMap:
-            name: {{ include "library-chart.configMapNameCoreSite" . }}
+        - name: secret-coresite
+          secret:
+            secretName: {{ include "library-chart.secretNameCoreSite" . }}
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -60,8 +60,8 @@ spec:
               value: "-Dspark.history.fs.logDirectory={{ .Values.spark.directory }} -Dcom.amazonaws.sdk.disableCertChecking={{ .Values.spark.disabledCertChecking }}"
           envFrom: 
             {{- if .Values.s3.enabled }}
-            - configMapRef:
-                name: {{ include "library-chart.configMapNameS3" . }}
+            - secretRef:
+                name: {{ include "library-chart.secretNameS3" . }}
             {{- end }}
           ports:
             - name: http
@@ -82,7 +82,7 @@ spec:
               name: home
             - mountPath: /opt/hadoop/etc/hadoop/core-site.xml
               subPath: core-site.xml
-              name: config-coresite
+              name: secret-coresite
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

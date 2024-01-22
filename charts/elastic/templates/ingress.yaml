@@ -16,6 +16,9 @@ spec:
   tls:
     - hosts:
         - {{ .Values.ingress.hostname | quote }}
+    {{- if .Values.ingress.useCertManager }}
+      secretName: tls-cert-{{ include "library-chart.fullname" . }}
+    {{- end }}
 {{- end }}
   rules:
     - host: {{ .Values.ingress.hostname | quote }}
