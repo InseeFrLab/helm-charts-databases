@@ -1,6 +1,6 @@
 # neo4j
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 Neo4j is a graph database management system. It's ACID-compliant transactional database with native graph storage.
 
@@ -15,7 +15,7 @@ Neo4j is a graph database management system. It's ACID-compliant transactional d
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.0 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.18 |
 
 ## Values
 
@@ -29,11 +29,13 @@ Neo4j is a graph database management system. It's ACID-compliant transactional d
 | fullnameOverride | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
+| ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hostnameBolt | string | `"chart-example-bolt.local"` |  |
 | ingress.hostnameUI | string | `"chart-example.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
+| ingress.useCertManager | bool | `false` |  |
 | nameOverride | string | `""` |  |
 | networking.neo4jBolt.port | int | `7687` |  |
 | networking.neo4jUI.port | int | `7474` |  |
