@@ -1,6 +1,6 @@
 # spark-thrift-server
 
-![Version: 0.4.4](https://img.shields.io/badge/Version-0.4.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.4.5](https://img.shields.io/badge/Version-0.4.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Spark SQL can also act as a distributed query engine using its JDBC/ODBC or command-line interface.
 
@@ -15,7 +15,7 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.17 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.18 |
 
 ## Values
 
@@ -34,13 +34,15 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 | hive.configMapName | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
+| ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.sparkHostname | string | `"chart-example-spark.local"` |  |
 | ingress.tls | bool | `true` |  |
+| ingress.useCertManager | bool | `false` |  |
 | init.filename | string | `"onyxia-init.sh"` |  |
 | init.standardInit | string | `"https://git.lab.sspcloud.fr/innovation/plateforme-onyxia/services-ressources/-/raw/master/onyxia-init.sh"` |  |
-| kubernetes.enable | bool | `true` |  |
+| kubernetes.enabled | bool | `true` |  |
 | kubernetes.role | string | `"edit"` |  |
 | liveness.enabled | string | `"true"` |  |
 | nameOverride | string | `""` |  |
