@@ -1,6 +1,6 @@
 # spark-history
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 0.4.1](https://img.shields.io/badge/Version-0.4.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 Spark history help you to review logs of your spark applications.
 
@@ -15,7 +15,7 @@ Spark history help you to review logs of your spark applications.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.3.0 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.18 |
 
 ## Values
 
@@ -30,11 +30,13 @@ Spark history help you to review logs of your spark applications.
 | fullnameOverride | string | `""` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
+| ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
-| kubernetes.enable | bool | `true` |  |
+| ingress.useCertManager | bool | `false` |  |
+| kubernetes.enabled | bool | `true` |  |
 | kubernetes.role | string | `"view"` |  |
 | nameOverride | string | `""` |  |
 | networking.clusterIP | string | `"None"` |  |
