@@ -55,7 +55,7 @@ networking:
   type: ClusterIP
   service:
     port: 8080
-
+    targetPort: main
 s3:
   # Specifies whether a config map should be created
   enabled: false
