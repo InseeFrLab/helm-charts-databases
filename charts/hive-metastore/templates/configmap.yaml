@@ -60,11 +60,6 @@ data:
         </property>
 
         <property>
-          <name>fs.s3a.aws.credentials.provider</name>
-          <value>org.apache.hadoop.fs.s3a.TemporaryAWSCredentialsProvider</value>
-        </property>
-
-        <property>
           <name>fs.s3a.access.key</name>
           <value>{{ .Values.s3.accessKeyId }}</value>
         </property>
@@ -73,11 +68,21 @@ data:
           <name>fs.s3a.secret.key</name>
           <value>{{ .Values.s3.secretAccessKey }}</value>
         </property>
-
+        {{- if .Values.s3.sessionToken }} 
         <property>
           <name>fs.s3a.session.token</name>
           <value>{{ .Values.s3.sessionToken }}</value>
         </property>
+        <property>
+          <name>fs.s3a.aws.credentials.provider</name>
+          <value>org.apache.hadoop.fs.s3a.TemporaryAWSCredentialsProvider</value>
+        </property>
+        {{- else }}
+        <property>
+          <name>fs.s3a.aws.credentials.provider</name>
+          <value>org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider</value>
+        </property>
+        {{- end }} 
         {{- end }} 
 
     </configuration>
