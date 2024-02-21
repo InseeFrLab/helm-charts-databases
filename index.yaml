@@ -3,6 +3,29 @@ entries:
   cloudbeaver:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-02-21T13:41:52.680826852Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.20
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 14.1.2
+    description: CloudBeaver is a light modern web-application for database management.
+    digest: 7984d73841b0f4950532abfb442cc254cd3b66e46a8ec772f3328b48191bc331
+    home: https://cloudbeaver.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/cloudbeaver.png
+    name: cloudbeaver
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/main/charts/cloudbeaver
+    - https://hub.docker.com/r/dbeaver/cloudbeaver
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/cloudbeaver-1.3.7/cloudbeaver-1.3.7.tgz
+    version: 1.3.7
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-02-21T13:25:23.264382753Z"
     dependencies:
     - name: library-chart
@@ -3675,4 +3698,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-21T13:25:23.264701235Z"
+generated: "2024-02-21T13:41:52.681103648Z"
