@@ -2,7 +2,7 @@
 
 service:
   image:
-    version: "dbeaver/cloudbeaver:22.2.4"
+    version: "dbeaver/cloudbeaver:23.3.5"
     pullPolicy: IfNotPresent
 
 discovery:
@@ -82,7 +82,7 @@ networking:
     port: 80
 
 ingress:
-  enabled: true
+  enabled: false
   tls: true
   ingressClassName: ""  
   annotations: []
