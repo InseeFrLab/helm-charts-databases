@@ -1083,6 +1083,34 @@ entries:
   lakefs:
   - apiVersion: v2
     appVersion: "1"
+    created: "2024-02-22T15:06:37.355751467Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 12.12.10
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.21
+    - enabled: true
+      name: lakefs
+      repository: https://charts.lakefs.io
+      version: 1.2.1
+    description: Data version control for data lakes.  It enables zero copy isolated
+      environments, and more.
+    digest: 1d9162cd251520941863a8cb2e7464319d961ea459946aabd09c82c437876f74
+    home: https://lakefs.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/lakefs.jpg
+    name: lakefs
+    sources:
+    - https://github.com/treeverse/charts/tree/master/charts/lakefs
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/lakefs
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/lakefs-0.4.2/lakefs-0.4.2.tgz
+    version: 0.4.2
+  - apiVersion: v2
+    appVersion: "1"
     created: "2024-01-22T17:12:43.799265868Z"
     dependencies:
     - enabled: true
@@ -3723,4 +3751,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-22T14:50:46.31906883Z"
+generated: "2024-02-22T15:06:37.356033495Z"
