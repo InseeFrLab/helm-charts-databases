@@ -4,7 +4,7 @@
 {{- $fullname := include "library-chart.fullname" . }}
 {{- $kafkaList := list }}
 {{- range $e, $i := until $replicaCount }}
-{{- $kafkaList = append $kafkaList (printf "%s-%d.%s-headless:%d" $fullname $i $fullname $portNumber) }}
+{{- $kafkaList = append $kafkaList (printf "%s-controller-%d.%s-controller-headless:%d" $fullname $i $fullname $portNumber) }}
 {{- end }}
 {{- printf "%s"  (join "," $kafkaList) -}}
 {{- end }}

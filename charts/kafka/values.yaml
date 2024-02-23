@@ -5,5 +5,12 @@ kafka:
     allow: true
   zookeeper:
     fullnameOverride: kafka-zookeeper
+  listeners:
+    client:
+      protocol: PLAINTEXT
+    controller:
+      protocol: PLAINTEXT
+    interbroker:
+      protocol: PLAINTEXT
 fullnameOverride: kafka
 
