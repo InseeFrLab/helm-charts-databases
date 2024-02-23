@@ -9,8 +9,8 @@ data:
   enable-extensions.sh: |
     #!/bin/sh
     export PGPASSWORD=$POSTGRES_PASSWORD
-    psql -U postgres -d $POSTGRES_DB -c "CREATE EXTENSION postgis;"
-    psql -U postgres -d $POSTGRES_DB -c "CREATE EXTENSION postgis_topology;"
+    psql -U postgres -d $POSTGRES_DATABASE -c "CREATE EXTENSION postgis;"
+    psql -U postgres -d $POSTGRES_DATABASE -c "CREATE EXTENSION postgis_topology;"
   {{ else }}
   enable-extensions.sh: |
     #!/bin/sh
