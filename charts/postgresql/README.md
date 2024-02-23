@@ -1,6 +1,6 @@
 # postgresql
 
-![Version: 0.6.3](https://img.shields.io/badge/Version-0.6.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.6.4](https://img.shields.io/badge/Version-0.6.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 An object-relational database management system, a database server.
 
@@ -16,7 +16,7 @@ An object-relational database management system, a database server.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 12.12.10 |
+| https://charts.bitnami.com/bitnami | postgresql | 12.2.6 |
 | https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.21 |
 
 ## Values
