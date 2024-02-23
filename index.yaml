@@ -928,6 +928,31 @@ entries:
   kafka:
   - apiVersion: v2
     appVersion: "1"
+    created: "2024-02-23T14:08:02.123792192Z"
+    dependencies:
+    - enabled: true
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: 26.11.2
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.21
+    description: Apache Kafka is an event streaming platform for streaming analytics,
+      data integration.
+    digest: b8cecdd7c812685eda4ea9e370b7ed63438b086116ea894c6ce973b06f6c62dd
+    home: https://kafka.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/kafka.png
+    name: kafka
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/kafka
+    - https://github.com/bitnami/charts/tree/master/bitnami/kafka
+    - https://github.com/bitnami/bitnami-docker-kafka
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/kafka-0.2.3/kafka-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
+    appVersion: "1"
     created: "2024-02-22T15:58:53.311478901Z"
     dependencies:
     - enabled: true
@@ -3878,4 +3903,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-02-23T13:13:49.856149742Z"
+generated: "2024-02-23T14:08:02.124158417Z"
