@@ -1,6 +1,6 @@
 # kafka
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Apache Kafka is an event streaming platform for streaming analytics, data integration.
 
@@ -16,7 +16,7 @@ Apache Kafka is an event streaming platform for streaming analytics, data integr
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | kafka | 18.5.0 |
+| https://charts.bitnami.com/bitnami | kafka | 26.11.2 |
 | https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.21 |
 
 ## Values
@@ -26,6 +26,9 @@ Apache Kafka is an event streaming platform for streaming analytics, data integr
 | fullnameOverride | string | `"kafka"` |  |
 | kafka.discoverable.allow | bool | `true` |  |
 | kafka.fullnameOverride | string | `"kafka"` |  |
+| kafka.listeners.client.protocol | string | `"PLAINTEXT"` |  |
+| kafka.listeners.controller.protocol | string | `"PLAINTEXT"` |  |
+| kafka.listeners.interbroker.protocol | string | `"PLAINTEXT"` |  |
 | kafka.replicaCount | int | `3` |  |
 | kafka.zookeeper.fullnameOverride | string | `"kafka-zookeeper"` |  |
 
