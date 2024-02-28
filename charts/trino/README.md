@@ -1,92 +1,108 @@
-# trino
 
-![Version: 0.3.3](https://img.shields.io/badge/Version-0.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 355](https://img.shields.io/badge/AppVersion-355-informational?style=flat-square)
+Trino
+===========
 
-Fast distributed SQL query engine for big data analytics
+Fast distributed SQL query engine for big data analytics that helps you explore your data universe
 
-**Homepage:** <https://trino.io/>
 
-## Source Code
+## Configuration
 
-* <https://github.com/trinodb/charts>
-* <https://github.com/trinodb/trino/tree/master/core/docker>
+The following table lists the configurable parameters of the Trino chart and their default values.
 
-## Requirements
+| Parameter                | Description             | Default        |
+| ------------------------ | ----------------------- | -------------- |
+| `image.repository` |  | `"trinodb/trino"` |
+| `image.pullPolicy` |  | `"IfNotPresent"` |
+| `image.tag` |  | `432` |
+| `imagePullSecrets` |  | `[{"name": "registry-credentials"}]` |
+| `server.workers` |  | `2` |
+| `server.node.environment` |  | `"production"` |
+| `server.node.dataDir` |  | `"/data/trino"` |
+| `server.node.pluginDir` |  | `"/usr/lib/trino/plugin"` |
+| `server.log.trino.level` |  | `"INFO"` |
+| `server.config.path` |  | `"/etc/trino"` |
+| `server.config.http.port` |  | `8080` |
+| `server.config.https.enabled` |  | `false` |
+| `server.config.https.port` |  | `8443` |
+| `server.config.https.keystore.path` |  | `""` |
+| `server.config.authenticationType` |  | `""` |
+| `server.config.query.maxMemory` |  | `"4GB"` |
+| `server.exchangeManager.name` |  | `"filesystem"` |
+| `server.exchangeManager.baseDir` |  | `"/tmp/trino-local-file-system-exchange-manager"` |
+| `server.workerExtraConfig` |  | `""` |
+| `server.coordinatorExtraConfig` |  | `""` |
+| `server.autoscaling.enabled` |  | `false` |
+| `server.autoscaling.maxReplicas` |  | `5` |
+| `server.autoscaling.targetCPUUtilizationPercentage` |  | `50` |
+| `server.autoscaling.behavior` |  | `{}` |
+| `accessControl` |  | `{}` |
+| `resourceGroups` |  | `{}` |
+| `additionalNodeProperties` |  | `{}` |
+| `additionalConfigProperties` |  | `{}` |
+| `additionalLogProperties` |  | `{}` |
+| `additionalExchangeManagerProperties` |  | `{}` |
+| `eventListenerProperties` |  | `{}` |
+| `additionalCatalogs` |  | `{}` |
+| `env` |  | `[]` |
+| `envFrom` |  | `[]` |
+| `initContainers` |  | `{}` |
+| `sidecarContainers` |  | `{}` |
+| `securityContext.runAsUser` |  | `1000` |
+| `securityContext.runAsGroup` |  | `1000` |
+| `shareProcessNamespace.coordinator` |  | `false` |
+| `shareProcessNamespace.worker` |  | `false` |
+| `service.type` |  | `"ClusterIP"` |
+| `service.port` |  | `8080` |
+| `auth` |  | `{}` |
+| `serviceAccount.create` |  | `false` |
+| `serviceAccount.name` |  | `""` |
+| `serviceAccount.annotations` |  | `{}` |
+| `secretMounts` |  | `[]` |
+| `coordinator.jvm.maxHeapSize` |  | `"8G"` |
+| `coordinator.jvm.gcMethod.type` |  | `"UseG1GC"` |
+| `coordinator.jvm.gcMethod.g1.heapRegionSize` |  | `"32M"` |
+| `coordinator.config.memory.heapHeadroomPerNode` |  | `""` |
+| `coordinator.config.query.maxMemoryPerNode` |  | `"1GB"` |
+| `coordinator.additionalJVMConfig` |  | `{}` |
+| `coordinator.additionalExposedPorts` |  | `{}` |
+| `coordinator.resources` |  | `{}` |
+| `coordinator.livenessProbe` |  | `{}` |
+| `coordinator.readinessProbe` |  | `{}` |
+| `coordinator.nodeSelector` |  | `{}` |
+| `coordinator.tolerations` |  | `[]` |
+| `coordinator.affinity` |  | `{}` |
+| `coordinator.additionalConfigFiles` |  | `{}` |
+| `coordinator.annotations` |  | `{}` |
+| `coordinator.labels` |  | `{}` |
+| `coordinator.secretMounts` |  | `[]` |
+| `worker.jvm.maxHeapSize` |  | `"8G"` |
+| `worker.jvm.gcMethod.type` |  | `"UseG1GC"` |
+| `worker.jvm.gcMethod.g1.heapRegionSize` |  | `"32M"` |
+| `worker.config.memory.heapHeadroomPerNode` |  | `""` |
+| `worker.config.query.maxMemoryPerNode` |  | `"1GB"` |
+| `worker.additionalJVMConfig` |  | `{}` |
+| `worker.additionalExposedPorts` |  | `{}` |
+| `worker.resources` |  | `{}` |
+| `worker.livenessProbe` |  | `{}` |
+| `worker.readinessProbe` |  | `{}` |
+| `worker.nodeSelector` |  | `{}` |
+| `worker.tolerations` |  | `[]` |
+| `worker.affinity` |  | `{}` |
+| `worker.additionalConfigFiles` |  | `{}` |
+| `worker.annotations` |  | `{}` |
+| `worker.labels` |  | `{}` |
+| `worker.secretMounts` |  | `[]` |
+| `kafka.mountPath` |  | `"/etc/trino/schemas"` |
+| `kafka.tableDescriptions` |  | `{}` |
+| `commonLabels` | Labels that get applied to every resource's metadata | `{}` |
+| `ingress.enabled` |  | `false` |
+| `ingress.className` |  | `""` |
+| `ingress.annotations` |  | `{}` |
+| `ingress.hosts` |  | `[]` |
+| `ingress.tls` |  | `[]` |
 
-| Repository | Name | Version |
-|------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.18 |
 
-## Values
 
-| Key | Type | Default | Description |
-|-----|------|---------|-------------|
-| additionalConfigProperties | object | `{}` |  |
-| additionalJVMConfig | object | `{}` |  |
-| additionalLogProperties | object | `{}` |  |
-| additionalNodeProperties | object | `{}` |  |
-| affinity | object | `{}` |  |
-| catalog.additionalCatalogs | list | `[]` |  |
-| coordinator.extraConfigs | string | `""` |  |
-| coresite.configMapName | string | `""` |  |
-| discoverable.allow | bool | `true` |  |
-| discovery.elastic | bool | `true` |  |
-| discovery.hive | bool | `true` |  |
-| discovery.mongodb | bool | `true` |  |
-| discovery.postgres | bool | `true` |  |
-| env | list | `[]` |  |
-| environment.s3 | bool | `true` |  |
-| ingress.annotations | list | `[]` |  |
-| ingress.certManagerClusterIssuer | string | `""` |  |
-| ingress.enabled | bool | `true` |  |
-| ingress.hostname | string | `"chart-example.local"` |  |
-| ingress.ingressClassName | string | `""` |  |
-| ingress.tls | bool | `true` |  |
-| ingress.useCertManager | bool | `false` |  |
-| networking.service.port | int | `8080` |  |
-| networking.type | string | `"ClusterIP"` |  |
-| nodeSelector | object | `{}` |  |
-| resources | object | `{}` |  |
-| route.annotations | list | `[]` |  |
-| route.enabled | bool | `false` |  |
-| route.hostname | string | `"chart-example.local"` |  |
-| route.tls.termination | string | `"edge"` |  |
-| route.wildcardPolicy | string | `"None"` |  |
-| s3.accessKeyId | string | `""` |  |
-| s3.configMapName | string | `""` |  |
-| s3.defaultRegion | string | `""` |  |
-| s3.enabled | bool | `true` |  |
-| s3.endpoint | string | `""` |  |
-| s3.secretAccessKey | string | `""` |  |
-| s3.sessionToken | string | `""` |  |
-| security.allowlist.enabled | bool | `true` |  |
-| security.allowlist.ip | string | `"0.0.0.0/0"` |  |
-| security.networkPolicy.enabled | bool | `false` |  |
-| security.networkPolicy.from | list | `[]` |  |
-| security.password | string | `"changeme"` |  |
-| security.username | string | `"admin"` |  |
-| securityContext.runAsGroup | int | `1000` |  |
-| securityContext.runAsUser | int | `1000` |  |
-| server.config.http.port | int | `8080` |  |
-| server.config.memory.heapHeadroomPerNode | string | `"1GB"` |  |
-| server.config.path | string | `"/etc/trino"` |  |
-| server.config.query.maxMemory | string | `"4GB"` |  |
-| server.config.query.maxMemoryPerNode | string | `"1GB"` |  |
-| server.config.query.maxTotalMemoryPerNode | string | `"2GB"` |  |
-| server.jvm.gcMethod.g1.heapRegionSize | string | `"32M"` |  |
-| server.jvm.gcMethod.type | string | `"UseG1GC"` |  |
-| server.jvm.maxHeapSize | string | `"8G"` |  |
-| server.log.trino.level | string | `"INFO"` |  |
-| server.node.dataDir | string | `"/data/trino"` |  |
-| server.node.environment | string | `"production"` |  |
-| server.node.pluginDir | string | `"/usr/lib/trino/plugin"` |  |
-| server.workers | int | `2` |  |
-| service.image.custom.enabled | bool | `false` |  |
-| service.image.custom.version | string | `"inseefrlab/trino:374"` |  |
-| service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.version | string | `"inseefrlab/trino:374"` |  |
-| tolerations | list | `[]` |  |
-| worker.replicas | string | `"2"` |  |
+---
+_Documentation generated by [Frigate](https://frigate.readthedocs.io)._
 
-----------------------------------------------
-Autogenerated from chart metadata using [helm-docs v1.11.0](https://github.com/norwoodj/helm-docs/releases/v1.11.0)

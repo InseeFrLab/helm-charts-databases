@@ -4,6 +4,9 @@ metadata:
   name: {{ include "library-chart.fullname" . }}-catalog
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
+    {{- if .Values.commonLabels }}
+    {{- tpl (toYaml .Values.commonLabels) . | nindent 4 }}
+    {{- end }}
 data:
   tpch.properties: |
     connector.name=tpch

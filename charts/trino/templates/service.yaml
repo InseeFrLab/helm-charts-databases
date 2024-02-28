@@ -5,12 +5,18 @@ metadata:
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.networking.type }}
+  type: {{ .Values.networking.service.type }}
   ports:
     - port: {{ .Values.networking.service.port }}
       targetPort: http
       protocol: TCP
       name: http
+    {{- range $key, $value := .Values.coordinator.additionalExposedPorts }}
+    - port: {{ $value.servicePort }}
+      name: {{ $value.name }}
+      targetPort: {{ $value.port }}
+      protocol: {{ $value.protocol }}
+    {{- end }}
   selector:
     {{- include "library-chart.selectorLabels" . | nindent 4 }}
     component: coordinator
