@@ -57,6 +57,9 @@ data:
         enabledAuthProviders: [
             "local"
         ],
+        enabledDrivers: [
+            "generic:duckdb_jdbc"
+        ],
         disabledDrivers: [
             "sqlite:sqlite_jdbc",
             "h2:h2_embedded",

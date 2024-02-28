@@ -42,8 +42,8 @@ spec:
             
           {{- if or .Values.discovery.postgres .Values.discovery.mariadb .Values.discovery.trino  }}
           - name: discovery-secret
-            mountPath: /opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
-            subPath: data-sources.json
+            mountPath: /opt/cloudbeaver/conf/initial-data-sources.conf
+            subPath: initial-data-sources.conf
           {{- end }}
 
           env:
