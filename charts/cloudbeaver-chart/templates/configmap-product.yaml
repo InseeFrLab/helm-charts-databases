@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: product-config
+data:
+  product.conf: |
+    {
+        // Global properties
+        core: {
+            // User defaults
+            user: {
+                defaultTheme: {{ if .Values.user.darkMode }} "dark" {{ else }} "light" {{ end }},
+                defaultLanguage: "{{ .Values.user.lang }}"
+            },
+            app: {
+                // Log viewer config
+                logViewer: {
+                    refreshTimeout: 3000,
+                    logBatchSize: 1000,
+                    maxLogRecords: 2000,
+                    maxFailedRequests: 3
+                }
+            }
+        },
+        // Notifications config
+        core_events: {
+            notificationsPool: 20
+        },
+        plugin_data_spreadsheet_new: {
+            hidden: false
+        },
+        plugin_data_export: {
+            disabled: false
+        },
+        sql.proposals.insert.table.alias: true
+    }

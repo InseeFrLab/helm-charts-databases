@@ -39,7 +39,9 @@ spec:
           - name: cb-config
             mountPath: /opt/cloudbeaver/conf/cloudbeaver.conf
             subPath: cloudbeaver.conf
-            
+          - name: product-config
+            mountPath: /opt/cloudbeaver/conf/product.conf
+            subPath: product.conf
           {{- if or .Values.discovery.postgres .Values.discovery.mariadb .Values.discovery.trino  }}
           - name: discovery-secret
             mountPath: /opt/cloudbeaver/conf/initial-data-sources.conf
@@ -55,7 +57,6 @@ spec:
             value: "{{ .Values.cloudbeaver.serverName }}"
           - name: CB_SERVER_URL
             value: "https://{{ .Values.ingress.hostname }}"
-
 
           ports:
             - name: http
@@ -76,7 +77,9 @@ spec:
         - name: cb-config
           configMap: 
             name: cb-config
-
+        - name: product-config
+          configMap:
+            name: product-config
         {{- if or .Values.discovery.postgres .Values.discovery.mariadb .Values.discovery.trino }}
         - name: discovery-secret
           secret:
