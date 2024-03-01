@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: product-config
+  name: {{ include "library-chart.fullname" . }}-product-config
 data:
   product.conf: |
     {

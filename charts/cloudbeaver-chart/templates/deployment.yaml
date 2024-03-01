@@ -76,10 +76,10 @@ spec:
       volumes:
         - name: cb-config
           configMap: 
-            name: cb-config
+            name: {{ include "library-chart.fullname" . }}-cb-config
         - name: product-config
           configMap:
-            name: product-config
+            name: {{ include "library-chart.fullname" . }}-product-config
         {{- if or .Values.discovery.postgres .Values.discovery.mariadb .Values.discovery.trino }}
         - name: discovery-secret
           secret:

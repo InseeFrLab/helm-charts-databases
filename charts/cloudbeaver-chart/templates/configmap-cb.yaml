@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: cb-config
+  name: {{ include "library-chart.fullname" . }}-cb-config
 data:
   cloudbeaver.conf: |
     {
