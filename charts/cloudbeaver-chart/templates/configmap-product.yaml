@@ -9,8 +9,8 @@ data:
         core: {
             // User defaults
             user: {
-                defaultTheme: {{ if .Values.user.darkMode }} "dark" {{ else }} "light" {{ end }},
-                defaultLanguage: "{{ .Values.user.lang }}"
+                defaultTheme: {{ if .Values.userPreferences.darkMode }} "dark" {{ else }} "light" {{ end }},
+                defaultLanguage: {{ if eq .Values.userPreferences.language "fr" }} "fr" {{ else }} "en" {{ end }}
             },
             app: {
                 // Log viewer config
