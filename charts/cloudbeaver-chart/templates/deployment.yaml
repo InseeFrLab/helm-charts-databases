@@ -98,10 +98,10 @@ spec:
                   sleep 2;
               done;
               echo 'PostgreSQL OK ✓'  
-          resources:
-            limits:
-              cpu: 50m
-              memory: 100Mi
+           resources:
+             requests:
+                cpu: "0.05"
+                mem: "128Mi"
       {{- with .Values.nodeSelector }} 
       nodeSelector:
         {{- toYaml . | nindent 8 }}
