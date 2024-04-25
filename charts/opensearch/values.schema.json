@@ -1,0 +1,342 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "security": {
+      "description": "security specific configuration",
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string",
+          "description": "Password",
+          "default": "MyStr0ngP@ssword",
+          "render": "password",
+          "x-onyxia": {
+            "overwriteDefaultWith": "{{project.password}}"
+          }
+        },
+        "allowlist": {
+          "type": "object",
+          "description": "IP protection",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable IP protection",
+              "description": "Only the configured set of IPs will be able to reach the service",
+              "default": true,
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultIpProtection"
+              }
+            },
+            "ip": {
+              "type": "string",
+              "description": "the white list of IP is whitespace",
+              "title": "Whitelist of IP",
+              "x-onyxia": {
+                "overwriteDefaultWith": "{{user.ip}}"
+              },
+              "hidden": {
+                "value": false,
+                "path": "security/allowlist/enabled"
+              }
+            }
+          }
+        },
+        "networkPolicy": {
+          "type": "object",
+          "description": "Define access policy to the service",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable network policy",
+              "description": "Only pod from the same namespace will be allowed",
+              "default": true,
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
+            },
+            "from": {
+              "type": "array",
+              "description": "Array of source allowed to have network access to your service",
+              "default": [],
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ingress": {
+      "type": "object",
+      "form": true,
+      "title": "Ingress Details",
+      "properties": {
+        "enabled": {
+          "description": "Enable Ingress",
+          "type": "boolean",
+          "default": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.ingress"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-opensearch.{{k8s.domain}}"
+          }
+        },
+        "ingressClassName": {
+          "type": "string",
+          "form": true,
+          "title": "ingressClassName",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+          }
+        },
+        "useCertManager": {
+          "type": "boolean",
+          "description": "Whether CertManager should be used to generate a certificate",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.useCertManager"
+          }
+        },
+        "certManagerClusterIssuer":{
+          "type": "string",
+          "description": "certManager cluster issuer",
+          "title": "CertManager Cluster Issuer",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.certManagerClusterIssuer"
+          }
+        }
+      }
+    },
+    "ingressDashboard": {
+      "type": "object",
+      "form": true,
+      "title": "Ingress opensearch dashboards Details",
+      "properties": {
+        "enabled": {
+          "description": "Enable Ingress",
+          "type": "boolean",
+          "default": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.ingress"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-dashboards.{{k8s.domain}}"
+          }
+        },
+        "ingressClassName": {
+          "type": "string",
+          "form": true,
+          "title": "ingressClassName",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+          }
+        },
+        "useCertManager": {
+          "type": "boolean",
+          "description": "Whether CertManager should be used to generate a certificate",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.useCertManager"
+          }
+        },
+        "certManagerClusterIssuer":{
+          "type": "string",
+          "description": "certManager cluster issuer",
+          "title": "CertManager Cluster Issuer",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.certManagerClusterIssuer"
+          }
+        }
+      }
+    },
+    "opensearch": {
+      "description": "opensearch specific configuration",
+      "type": "object",
+      "properties": {
+        "resources": {
+          "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
+          "type": "object",
+          "properties": {
+            "requests": {
+              "description": "Guaranteed resources",
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "description": "The amount of cpu guaranteed",
+                  "title": "CPU",
+                  "type": "string",
+                  "default": "1000m",
+                  "render": "slider",
+                  "sliderMin": 50,
+                  "sliderMax": 40000,
+                  "sliderStep": 50,
+                  "sliderUnit": "m",
+                  "sliderExtremity": "down",
+                  "sliderExtremitySemantic": "guaranteed",
+                  "sliderRangeId": "cpu"
+                },
+                "memory": {
+                  "description": "The amount of memory guaranteed",
+                  "title": "memory",
+                  "type": "string",
+                  "default": "100Mi",
+                  "render": "slider",
+                  "sliderMin": 100,
+                  "sliderMax": 200000,
+                  "sliderStep": 100,
+                  "sliderUnit": "Mi",
+                  "sliderExtremity": "down",
+                  "sliderExtremitySemantic": "guaranteed",
+                  "sliderRangeId": "memory"
+                }
+              }
+            },
+            "limits": {
+              "description": "max resources",
+              "type": "object",
+              "properties": {
+                "cpu": {
+                  "description": "The maximum amount of cpu",
+                  "title": "CPU",
+                  "type": "string",
+                  "default": "1000m",
+                  "render": "slider",
+                  "sliderMin": 50,
+                  "sliderMax": 40000,
+                  "sliderStep": 50,
+                  "sliderUnit": "m",
+                  "sliderExtremity": "up",
+                  "sliderExtremitySemantic": "Maximum",
+                  "sliderRangeId": "cpu"
+                },
+                "memory": {
+                  "description": "The maximum amount of memory",
+                  "title": "Memory",
+                  "type": "string",
+                  "default": "10000Mi",
+                  "render": "slider",
+                  "sliderMin": 100,
+                  "sliderMax": 200000,
+                  "sliderStep": 100,
+                  "sliderUnit": "Mi",
+                  "sliderExtremity": "up",
+                  "sliderExtremitySemantic": "Maximum",
+                  "sliderRangeId": "memory"
+                }
+              }
+            }
+          }
+        },
+        "persistence": {
+          "description": "Configuration for persistence",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Create a persistent volume",
+              "default": true
+            },
+            "size": {
+              "type": "string",
+              "title": "Persistent volume size",
+              "description": "Size of the persistent volume",
+              "default": "8Gi",
+              "form": true,
+              "render": "slider",
+              "sliderMin": 1,
+              "sliderMax": 100,
+              "sliderStep": 1,
+              "sliderUnit": "Gi",
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.resources.disk",
+                "useRegionSliderConfig": "disk"
+              },
+              "hidden": {
+                "value": false,
+                "path": "opensearch/persistence/enabled"
+              }
+            }
+          }
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "form": true,
+      "title": "Route details",
+      "properties": {
+        "enabled": {
+          "description": "Enable route",
+          "type": "boolean",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.route"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}"
+          }
+        }
+      }
+    },
+    "routeDashboard": {
+      "type": "object",
+      "form": true,
+      "title": "Route details",
+      "properties": {
+        "enabled": {
+          "description": "Enable route",
+          "type": "boolean",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.route"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-dashboards.{{k8s.domain}}"
+          }
+        }
+      }
+    }
+
+  }
+}

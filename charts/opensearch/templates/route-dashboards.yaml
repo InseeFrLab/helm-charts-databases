@@ -1,0 +1,35 @@
+{{- if .Values.route.enabled -}}
+{{- $fullName := include "opensearch.fullname" . -}}
+{{- $svcPort := .Values.networking.dashboard.port -}}
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ $fullName }}-dashboards
+  labels:
+    {{- include "opensearch.labels" . | nindent 4 }}
+  annotations:
+    {{- include "opensearch.routeDashboard.annotations" . | nindent 4 }}
+spec:
+  host: {{ .Values.routeDashboard.hostname | quote }}
+  path: /
+  to:
+    kind: Service
+    name: opensearch-cluster-master
+  port: 
+    targetPort: {{ $svcPort }}
+  tls:
+    termination: {{ .Values.routeDashboard.tls.termination }}
+    {{- if .Values.routeDashboard.tls.key }}
+    key: {{- .Values.routeDashboard.tls.key }}
+    {{- end }}
+    {{- if .Values.routeDashboard.tls.certificate }}
+    certificate: {{- .Values.routeDashboard.tls.certificate }}
+    {{- end }}
+    {{- if .Values.routeDashboard.tls.caCertificate }}
+    caCertificate: {{- .Values.routeDashboard.tls.caCertificate }}
+    {{- end }}
+    {{- if .Values.routeDashboard.tls.destinationCACertificate }}
+    destinationCACertificate: {{- .Values.routeDashboard.tls.destinationCACertificate }}
+    {{- end }}
+  wildcardPolicy: {{ .Values.routeDashboard.wildcardPolicy }}
+{{- end }}
