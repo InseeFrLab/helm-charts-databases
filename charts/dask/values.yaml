@@ -1,0 +1,99 @@
+ingress:
+  enabled: false
+  tls: true
+  ingressClassName: ""
+  annotations: []
+    # kubernetes.io/tls-acme: "true"
+  hostname: chart-example.local
+  userHostname: chart-example-user.local
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+route:
+  enabled: false
+  annotations: []
+    # route.openshift.io/termination: "reencrypt"
+  hostname: chart-example.local
+  tls:
+    termination: edge
+    # key:
+    # certificate:
+    # caCertificate:
+    # destinationCACertificate:
+  wildcardPolicy: None
+
+networking:
+  service:
+    port: 80
+
+security:
+  allowlist:
+    enabled: false
+    ip: "0.0.0.0/0"
+
+dask:
+  jupyter:
+    enabled: false
+
+  worker:
+    image:
+      repository: "inseefrlab/onyxia-python-datascience" # Container image repository.
+      tag: "py3.12.2" # Container image tag.
+      pullPolicy: IfNotPresent # Container image pull policy.
+    env:
+      - name: AWS_DEFAULT_REGION
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_DEFAULT_REGION
+      - name: AWS_SECRET_ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_SECRET_ACCESS_KEY
+      - name: AWS_ACCESS_KEY_ID
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_ACCESS_KEY_ID
+      - name: AWS_SESSION_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_SESSION_TOKEN
+
+  scheduler:
+    image:
+      repository: "inseefrlab/onyxia-python-datascience" # Container image repository.
+      tag: "py3.12.2" # Container image tag.
+      pullPolicy: IfNotPresent # Container image pull policy.
+    env:
+      - name: AWS_DEFAULT_REGION
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_DEFAULT_REGION
+      - name: AWS_SECRET_ACCESS_KEY
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_SECRET_ACCESS_KEY
+      - name: AWS_ACCESS_KEY_ID
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_ACCESS_KEY_ID
+      - name: AWS_SESSION_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: dask-env
+            key: AWS_SESSION_TOKEN
+
+s3:
+  enabled: false
+  accessKeyId: ""
+  defaultRegion: ""
+  secretAccessKey: ""
+  sessionToken: ""
+  endpoint: ""

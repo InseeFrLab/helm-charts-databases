@@ -1,0 +1,30 @@
+
+This release includes a Dask scheduler and {{ .Values.dask.worker.replicas }} Dask workers.
+
+{{- if .Values.ingress.enabled}}
+You can connect to the dask ui using your navigator at the following [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
+{{- end }}
+
+{{- if .Values.route.enabled}}
+You can connect to the dask ui using your navigator at the following address [link](http{{ if $.Values.route.tls }}s{{ end }}://{{ .Values.route.hostname }})
+{{- end }}
+
+To connect to the Dask cluster, use the following address of the scheduler:
+"{{ template "dask.fullname" . }}-scheduler:{{ .Values.dask.scheduler.servicePort }}"
+
+If you want, you can access dask scheduler from a jupyter notebook. Be careful to choose a compatible python version.
+
+The version is {{ .Values.dask.scheduler.image.tag }}
+
+{{- if .Values.s3.enabled }}
+If you want to connect to s3 storage, add the following storage_options:
+
+storage_options={
+    "client_kwargs": {
+        "endpoint_url": 'https://'+'{{ .Values.s3.endpoint }}',
+    },
+}
+
+{{- end }}
+
+NOTE: It may take a few minutes before the service is ready to accept connections 
