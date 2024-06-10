@@ -106,7 +106,7 @@ Create the name of the service account to use
 {{ $password:= .password }}
 {{ $database:= .database }}
 {{- if $postgres }}
-{{- printf "postgresql%d.properties: |" $index | indent 2}}
+{{- printf "%s.properties: |" $service | indent 2}}
     connector.name=postgresql
 {{ printf "connection-url=jdbc:postgresql://%s:%s/%s"  $service $port $database | indent 4}}
 {{ printf "connection-user=%s"  $username | indent 4}}
