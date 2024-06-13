@@ -20,12 +20,12 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.0
+version: 0.1.1
 
 dependencies:
   - name: dask
     version: 2024.1.1
     repository: https://helm.dask.org
   - name: library-chart
-    version: 1.5.20
+    version: 1.5.23
     repository: https://inseefrlab.github.io/helm-charts-interactive-services
