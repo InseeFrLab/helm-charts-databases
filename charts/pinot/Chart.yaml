@@ -24,7 +24,7 @@ version: 0.2.1
 appVersion: "1.16.0"
 dependencies:
   - name: pinot
-    version: 0.2.4
+    version: 0.2.9
     repository:  https://raw.githubusercontent.com/apache/pinot/master/kubernetes/helm
     enabled: true
   - name: library-chart
