@@ -58,8 +58,7 @@ Apache Jena Fuseki is a SPARQL server.
 | security.password | string | `"password"` |  |
 | securityContext | object | `{}` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.repository | string | `"stain/jena-fuseki"` |  |
-| service.image.tag | string | `""` |  |
+| service.image.repository | string | `"ghcr.io/zazuko/fuseki-geosparql:v3"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
