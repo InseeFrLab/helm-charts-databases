@@ -9,7 +9,7 @@ keywords:
 home: https://www.elastic.co/
 sources:
   - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/elastic
-  - https://github.com/elastic/helm-charts/tree/master/elasticsearch
+  - https://github.com/bitnami/charts/blob/main/bitnami/elasticsearch
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
@@ -23,7 +23,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.2.2
+version: 1.0.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -31,11 +31,8 @@ version: 0.2.2
 appVersion: "1"
 dependencies:
   - name: elasticsearch
-    version: 7.17.3
-    repository: https://helm.elastic.co
-  - name: kibana
-    version: 7.17.3
-    repository: https://helm.elastic.co
+    version: 21.0.7
+    repository: https://charts.bitnami.com/bitnami
   - name: library-chart
-    version: 1.5.18
+    version: 1.5.23
     repository: https://inseefrlab.github.io/helm-charts-interactive-services

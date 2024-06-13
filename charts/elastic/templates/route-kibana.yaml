@@ -3,7 +3,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ .Release.Name }}-elastic
+  name: {{ .Release.Name }}-kibana
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
   annotations:
@@ -15,7 +15,7 @@ spec:
   path: /
   to:
     kind: Service
-    name:  {{ .Release.Name }}-elasticsearch
+    name:  {{ .Release.Name }}-kibana
   port: 
     targetPort: {{ $svcPort }}
   tls:
