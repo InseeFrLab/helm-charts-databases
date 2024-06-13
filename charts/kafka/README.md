@@ -1,6 +1,6 @@
 # kafka
 
-![Version: 0.2.3](https://img.shields.io/badge/Version-0.2.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Apache Kafka is an event streaming platform for streaming analytics, data integration.
 
@@ -17,7 +17,7 @@ Apache Kafka is an event streaming platform for streaming analytics, data integr
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | kafka | 26.11.2 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.21 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.23 |
 
 ## Values
 
