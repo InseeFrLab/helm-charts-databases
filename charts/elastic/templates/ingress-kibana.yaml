@@ -1,9 +1,9 @@
-{{- if .Values.ingress.enabled -}}
-{{- $svcPort := .Values.elasticsearch.service.ports.restAPI -}}
+{{- if .Values.ingressKibana.enabled -}}
+{{- $svcPort := .Values.elasticsearch.kibana.service.ports.http -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-elastic
+  name: {{ .Release.Name }}-kibana
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
   annotations:
@@ -11,26 +11,26 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
     {{- include "library-chart.ingress.annotations" . | nindent 4 }}
 spec:
-  {{- if and .Values.ingress.ingressClassName (eq "true" (include "library-chart.ingress.supportsIngressClassname" .)) }}
-  ingressClassName: {{ .Values.ingress.ingressClassName | quote }}
+  {{- if and .Values.ingressKibana.ingressClassName (eq "true" (include "library-chart.ingress.supportsIngressClassname" .)) }}
+  ingressClassName: {{ .Values.ingressKibana.ingressClassName | quote }}
   {{- end }}
-{{- if .Values.ingress.tls }}
+{{- if .Values.ingressKibana.tls }}
   tls:
     - hosts:
-        - {{ .Values.ingress.hostname | quote }}
-    {{- if .Values.ingress.useCertManager }}
+        - {{ .Values.ingressKibana.hostname | quote }}
+    {{- if .Values.ingressKibana.useCertManager }}
       secretName: tls-cert-{{ include "library-chart.fullname" . }}
     {{- end }}
 {{- end }}
   rules:
-    - host: {{ .Values.ingress.hostname | quote }}
+    - host: {{ .Values.ingressKibana.hostname | quote }}
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: {{ .Release.Name }}-elasticsearch
+                name: {{ .Release.Name }}-kibana
                 port: 
                   number: {{ $svcPort }}
 {{- end }}

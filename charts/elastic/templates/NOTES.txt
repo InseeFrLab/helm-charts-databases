@@ -1,16 +1,65 @@
 {{- $pvcList := list }}
-{{- $replicas := int .Values.elasticsearch.replicas }}
+{{- $replicas := int .Values.elasticsearch.master.replicaCount }}
 {{- range $e, $i := until $replicas }}
-{{- $pvcList = append $pvcList (printf "%s-%s-%d" "elasticsearch-master" "elasticsearch-master" $i) }}
+{{- $pvcList = append $pvcList (printf "%s-%s-%d" "data-elastic-elasticsearch" "master" $i) }}
 {{- end }}
+{{- $replicasdata := int .Values.elasticsearch.data.replicaCount }}
+{{- range $e, $i := until $replicasdata }}
+{{- $pvcList = append $pvcList (printf "%s-%s-%d" "data-elastic-elasticsearch" "data" $i) }}
+{{- end }}
+
+{{- if eq .Values.userPreferences.language "fr" }}
+
+{{- if .Values.elasticsearch.security.enabled }}
+- Votre nom d'utilisateur est **elastic**
+- Votre mot de passe est **{{ .Values.elasticsearch.security.elasticPassword }}**
+{{- end }}
+
 {{- if .Values.ingress.enabled }}
-- You can connect to the kibana with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
+- Vous pouvez vous connecter à elastic avec votre navigateur à ce [lien](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
 {{- end }}
 {{- if .Values.route.enabled }}
-- You can connect to the kibana with your browser on this [link](https://{{ .Values.route.hostname }})
+- Vous pouvez vous connecter à elastic avec votre navigateur à ce [lien](https://{{ .Values.route.hostname }})
 {{- end }}
-- You connect to elastic from inside the datalab at this url : **http://elasticsearch-master:{{ .Values.elasticsearch.httpPort }}**
-- Each of the {{ .Values.elasticsearch.replicas }} nodes has a persistent volume with a size of **{{ .Values.elasticsearch.volumeClaimTemplate.resources.requests.storage }}** 
+- Vous pouvez vous connectez à elastic depuis l'intérieur du datalab à cette URL : **https://{{ .Release.Name }}-elasticsearch:{{ .Values.elasticsearch.service.ports.restAPI }}**
+{{- if .Values.ingressKibana.enabled }}
+- Vous pouvez vous connecter à kibana avec votre navigateur à ce [lien](http{{ if $.Values.ingressKibana.tls }}s{{ end }}://{{ .Values.ingressKibana.hostname }})
+{{- end }}
+{{- if .Values.routeKibana.enabled }}
+- Vous pouvez vous connecter à kibana avec votre navigateur à ce [lien](https://{{ .Values.routeKibana.hostname }})
+{{- end }}
+
+- Un seul cluster de {{ .Chart.Name }} peut être démarré dans un projet
+
+**NOTES sur la suppression :**
+
+- **Vous pouvez supprimer ce chart en toute sécurité et en recréer un plus tard**
+- Les volumes de données ne seront pas supprimés
+- Si vous démarrez un nouveau {{ .Chart.Name }}, il réutilisera ces volumes en silence.
+- Si vous souhaitez supprimer définitivement ces volumes : `kubectl delete pvc {{ join " " $pvcList }}`
+{{- else }}
+
+{{- if .Values.elasticsearch.security.enabled }}
+- Your username is **elastic** 
+- Your password is **{{ .Values.elasticsearch.security.elasticPassword}}**
+{{- end }}
+
+{{- if .Values.ingress.enabled }}
+- You can connect to elastic with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
+{{- end }}
+{{- if .Values.route.enabled }}
+- You can connect to elastic with your browser on this [link](https://{{ .Values.route.hostname }})
+{{- end }}
+
+- You can connect to elastic from inside the datalab at this url : **https://{{ .Release.Name }}-elasticsearch:{{ .Values.elasticsearch.service.ports.restAPI }}**
+
+{{- if .Values.ingressKibana.enabled }}
+- You can connect to the kibana with your browser on this [link](http{{ if $.Values.ingressKibana.tls }}s{{ end }}://{{ .Values.ingressKibana.hostname }})
+{{- end }}
+{{- if .Values.routeKibana.enabled }}
+- You can connect to the kibana with your browser on this [link](https://{{ .Values.routeKibana.hostname }})
+{{- end }}
+
 - Only one cluster of {{ .Chart.Name }} can be started in a project
 
 *NOTES about deletion :*
@@ -18,4 +67,5 @@
 - **You can safely delete this chart and recreate one later**
 - Data volumes will not be deleted
 - If you start a new {{ .Chart.Name }}, it will reuse those volumes silently.
-- If you want to delete those volume definitily : `kubectl delete pvc {{ join " " $pvcList }}`
+- If you want to delete those volume definitely : `kubectl delete pvc {{ join " " $pvcList }}`
+{{- end }}
