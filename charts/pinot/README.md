@@ -9,7 +9,7 @@ Realtime distributed OLAP datastore, designed to answer OLAP queries with low la
 | Repository | Name | Version |
 |------------|------|---------|
 | https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.23 |
-| https://raw.githubusercontent.com/apache/pinot/master/kubernetes/helm | pinot | 0.2.4 |
+| https://raw.githubusercontent.com/apache/pinot/master/kubernetes/helm | pinot | 0.2.9 |
 
 ## Values
 
