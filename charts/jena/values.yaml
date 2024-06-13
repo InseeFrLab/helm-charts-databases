@@ -2,7 +2,7 @@
 
 service:
   image:
-    repository: ""
+    repository: "ghcr.io/zazuko/fuseki-geosparql:v3"
     pullPolicy: IfNotPresent
 
 security:
