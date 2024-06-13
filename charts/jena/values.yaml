@@ -2,10 +2,8 @@
 
 service:
   image:
-    repository: "stain/jena-fuseki"
+    repository: "ghcr.io/zazuko/fuseki-geosparql:v3"
     pullPolicy: IfNotPresent
-    # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
 
 security:
   password: password
