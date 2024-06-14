@@ -51,7 +51,14 @@ data:
 {{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "elastic" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) }}
 {{ $service:= ( index $secret.data "elastic-service" | default "") | b64dec  }}
 {{ $port:= ( index $secret.data "elastic-port" | default "") | b64dec  }}
-{{ $data := dict "elastic" $elastic "service" $service  "index" $index "port" $port }}
+{{ $password := ( index $secret.data "elastic-password" | default "") | b64dec }}
+{{ $name:= ( index $secret.data "elastic-name") | b64dec  }}
+{{ $security := (index $secret.data "elastic-security" | default "") | b64dec }}
+{{ $username := ( index $secret.data "elastic-username" | default "") | b64dec }}
+{{ $tls := ( index $secret.data "elastic-tls" | default "ZmFsc2U=") | b64dec  }}
+{{ $ignoreAddress := ( index $secret.data "elastic-ignore-publish-address" | default "ZmFsc2U=") | b64dec }}
+{{ $schema := ( index $secret.data "elastic-schema" | default "ZGVmYXVsdA==") | b64dec }}
+{{ $data := dict "elastic" $elastic "service" $service  "index" $index "port" $port "password" $password "name" $name "security" $security "username" $username "tls" $tls "ignoreAddress" $ignoreAddress "schema" $schema }}
 {{- template "connector.elastic" $data -}}
 {{- end -}}
 {{- end -}}
