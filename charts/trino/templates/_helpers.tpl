@@ -160,7 +160,7 @@ Create the name of the service account to use
 
 {{- define "connector.elastic" -}}
 {{ $elastic:= .elastic }}
-{{ $host:= .host }}
+{{ $service:= .service }}
 {{ $index:= .index }}
 {{ $port:= .port }}
 {{ $password:= .password }}
@@ -173,7 +173,7 @@ Create the name of the service account to use
 {{- if $elastic }}
 {{- printf "%s.properties: |"  $name | indent 2}}
     connector.name=elasticsearch
-{{ printf "elasticsearch.host=%s"  $host | indent 4}}
+{{ printf "elasticsearch.host=%s"  $service | indent 4}}
 {{ printf "elasticsearch.port=%s"  $port | indent 4}}
 {{ printf "elasticsearch.default-schema-name=%s" $schema | indent 4 }}
 {{ printf "elasticsearch.security=%s" $security | indent 4 }}
