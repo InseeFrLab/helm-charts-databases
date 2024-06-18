@@ -7,8 +7,10 @@ metadata:
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
   annotations:
+    {{- if .Values.elasticsearch.security.enabled }}
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    {{- end }}
     {{- include "library-chart.ingress.annotations" . | nindent 4 }}
 spec:
   {{- if and .Values.ingressKibana.ingressClassName (eq "true" (include "library-chart.ingress.supportsIngressClassname" .)) }}
