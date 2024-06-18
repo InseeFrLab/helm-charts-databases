@@ -125,6 +125,7 @@
 					"type": "string",
 					"description": "Password",
 					"default": "changeme",
+					"render": "password",
 					"x-form": {
 						"value": "{{project.password}}"
 					},
