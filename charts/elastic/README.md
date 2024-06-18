@@ -1,6 +1,6 @@
 # elastic
 
-![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 8.14.1](https://img.shields.io/badge/AppVersion-8.14.1-informational?style=flat-square)
 
 Elasticsearch provides a full-text search engine with an HTTP web interface and schema-free JSON documents.
 
@@ -28,7 +28,7 @@ Elasticsearch provides a full-text search engine with an HTTP web interface and 
 | elasticsearch.image.pullPolicy | string | `"IfNotPresent"` |  |
 | elasticsearch.image.registry | string | `"docker.io"` |  |
 | elasticsearch.image.repository | string | `"bitnami/elasticsearch"` |  |
-| elasticsearch.image.tag | string | `"8.13.4-debian-12-r0"` |  |
+| elasticsearch.image.tag | string | `"8.14.1-debian-12-r0"` |  |
 | elasticsearch.ingress.enabled | bool | `false` |  |
 | elasticsearch.kibana.elasticsearch.security.auth.createSystemUser | bool | `true` |  |
 | elasticsearch.kibana.elasticsearch.security.auth.elasticsearchPasswordSecret | string | `"elastic-elasticsearch"` |  |
