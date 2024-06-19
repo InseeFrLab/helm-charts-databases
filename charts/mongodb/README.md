@@ -1,6 +1,6 @@
 # mongodb
 
-![Version: 0.2.4](https://img.shields.io/badge/Version-0.2.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.2.5](https://img.shields.io/badge/Version-0.2.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 NoSQL document-oriented database that stores JSON-like documents with dynamic schemas.
 
@@ -8,8 +8,7 @@ NoSQL document-oriented database that stores JSON-like documents with dynamic sc
 
 ## Source Code
 
-* <https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/mongodb>
-* <https://github.com/bitnami/charts/tree/master/bitnami/mongodb>
+* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/mongodb>
 * <https://github.com/bitnami/bitnami-docker-mongodb>
 
 ## Requirements

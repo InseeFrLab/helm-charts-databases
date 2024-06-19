@@ -1,6 +1,6 @@
 # lakefs
 
-![Version: 0.4.3](https://img.shields.io/badge/Version-0.4.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.4.4](https://img.shields.io/badge/Version-0.4.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Data version control for data lakes.  It enables zero copy isolated environments, and more.
 
@@ -9,7 +9,7 @@ Data version control for data lakes.  It enables zero copy isolated environments
 ## Source Code
 
 * <https://github.com/treeverse/charts/tree/master/charts/lakefs>
-* <https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/lakefs>
+* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/lakefs>
 
 ## Requirements
 

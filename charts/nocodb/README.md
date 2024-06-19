@@ -1,6 +1,6 @@
 # nocodb
 
-![Version: 1.2.2](https://img.shields.io/badge/Version-1.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 NocoDB is an open source NoCode platform that turns any database into a smart spreadsheet
 
@@ -8,7 +8,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 
 ## Source Code
 
-* <https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/nocodb>
+* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/nocodb>
 * <https://hub.docker.com/r/nocodb/nocodb>
 
 ## Requirements

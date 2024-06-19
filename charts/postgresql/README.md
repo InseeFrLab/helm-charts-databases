@@ -1,6 +1,6 @@
 # postgresql
 
-![Version: 0.6.6](https://img.shields.io/badge/Version-0.6.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.6.7](https://img.shields.io/badge/Version-0.6.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 An object-relational database management system, a database server.
 
@@ -8,7 +8,7 @@ An object-relational database management system, a database server.
 
 ## Source Code
 
-* <https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/postgresql>
+* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/postgresql>
 * <https://github.com/bitnami/charts/tree/master/bitnami/postgresql>
 * <https://github.com/bitnami/bitnami-docker-postgresql>
 

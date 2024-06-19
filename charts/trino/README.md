@@ -1,6 +1,6 @@
 # trino
 
-![Version: 0.4.4](https://img.shields.io/badge/Version-0.4.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 436](https://img.shields.io/badge/AppVersion-436-informational?style=flat-square)
+![Version: 0.4.5](https://img.shields.io/badge/Version-0.4.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 436](https://img.shields.io/badge/AppVersion-436-informational?style=flat-square)
 
 Fast distributed SQL query engine for big data analytics that helps you explore your data universe
 
@@ -8,8 +8,8 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 
 ## Source Code
 
-* <https://github.com/trinodb/charts>
-* <https://github.com/trinodb/trino/tree/master/core/docker>
+* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/trino>
+* <https://github.com/InseeFrLab/trino/blob/main/Dockerfile>
 
 ## Requirements
 

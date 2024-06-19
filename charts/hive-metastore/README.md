@@ -1,6 +1,6 @@
 # hive-metastore
 
-![Version: 0.3.3](https://img.shields.io/badge/Version-0.3.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Hive metastore manage the metadata relational entities  in a relational database.
 
@@ -9,7 +9,7 @@ Hive metastore manage the metadata relational entities  in a relational database
 ## Source Code
 
 * <https://github.com/InseeFrLab/jupyter-datascience>
-* <https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/hive-metastore>
+* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/hive-metastore>
 
 ## Requirements
 
