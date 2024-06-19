@@ -1,6 +1,6 @@
 # trino
 
-![Version: 0.4.3](https://img.shields.io/badge/Version-0.4.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 432](https://img.shields.io/badge/AppVersion-432-informational?style=flat-square)
+![Version: 0.4.4](https://img.shields.io/badge/Version-0.4.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 436](https://img.shields.io/badge/AppVersion-436-informational?style=flat-square)
 
 Fast distributed SQL query engine for big data analytics that helps you explore your data universe
 
@@ -53,13 +53,14 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 | discovery.elastic | bool | `true` |  |
 | discovery.hive | bool | `true` |  |
 | discovery.mongodb | bool | `true` |  |
+| discovery.opensearch | bool | `true` |  |
 | discovery.postgres | bool | `true` |  |
 | env | list | `[]` |  |
 | envFrom | list | `[]` |  |
 | eventListenerProperties | object | `{}` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"trinodb/trino"` |  |
-| image.tag | int | `432` |  |
+| image.tag | int | `436` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
