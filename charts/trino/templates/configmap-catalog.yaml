@@ -18,6 +18,7 @@ data:
 {{ $namespace:= .Release.Namespace }}
 {{ $hive:= .Values.discovery.hive }}
 {{ $elastic:= .Values.discovery.elastic }}
+{{ $opensearch:= .Values.discovery.opensearch }}
 {{ $mongodb:= .Values.discovery.mongodb }}
 {{ $postgres:= .Values.discovery.postgres }}
 {{ $username:= .Values.security.username }} 
@@ -60,6 +61,19 @@ data:
 {{ $schema := ( index $secret.data "elastic-schema" | default "ZGVmYXVsdA==") | b64dec }}
 {{ $data := dict "elastic" $elastic "service" $service  "index" $index "port" $port "password" $password "name" $name "security" $security "username" $username "tls" $tls "ignoreAddress" $ignoreAddress "schema" $schema }}
 {{- template "connector.elastic" $data -}}
+{{- end -}}
+{{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "opensearch" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) }}
+{{ $service:= ( index $secret.data "opensearch-service" | default "") | b64dec  }}
+{{ $port:= ( index $secret.data "opensearch-port" | default "") | b64dec  }}
+{{ $password := ( index $secret.data "opensearch-password" | default "") | b64dec }}
+{{ $name:= ( index $secret.data "opensearch-name") | default "" | b64dec  }}
+{{ $security := (index $secret.data "opensearch-security" | default "") | b64dec }}
+{{ $username := ( index $secret.data "opensearch-username" | default "") | b64dec }}
+{{ $tls := ( index $secret.data "opensearch-tls" | default "ZmFsc2U=") | b64dec  }}
+{{ $ignoreAddress := ( index $secret.data "opensearch-ignore-publish-address" | default "ZmFsc2U=") | b64dec }}
+{{ $schema := ( index $secret.data "opensearch-schema" | default "ZGVmYXVsdA==") | b64dec }}
+{{ $data := dict "opensearch" $opensearch "service" $service  "index" $index "port" $port "password" $password "name" $name "security" $security "username" $username "tls" $tls "ignoreAddress" $ignoreAddress "schema" $schema }}
+{{- template "connector.opensearch" $data -}}
 {{- end -}}
 {{- end -}}
 {{- end -}}

@@ -183,3 +183,29 @@ Create the name of the service account to use
 {{ printf "elasticsearch.ignore-publish-address=%s" $ignoreAddress | indent 4 }}
 {{- end }}
 {{- end -}}
+
+{{- define "connector.opensearch" -}}
+{{ $opensearch:= .opensearch }}
+{{ $service:= .service }}
+{{ $index:= .index }}
+{{ $port:= .port }}
+{{ $password:= .password }}
+{{ $name:= .name }}
+{{ $security:= .security }}
+{{ $username:= .username }}
+{{ $tls:= .tls }}
+{{ $ignoreAddress:= .ignoreAddress }}
+{{ $schema:= .schema }}
+{{- if $opensearch }}
+{{- printf "%s.properties: |"  $name | indent 2}}
+    connector.name=opensearch
+{{ printf "opensearch.host=%s"  $service | indent 4}}
+{{ printf "opensearch.port=%s"  $port | indent 4}}
+{{ printf "opensearch.default-schema-name=%s" $schema | indent 4 }}
+{{ printf "opensearch.security=%s" $security | indent 4 }}
+{{ printf "opensearch.auth.user=%s" $username | indent 4 }}
+{{ printf "opensearch.auth.password=%s" $password | indent 4 }}
+{{ printf "opensearch.tls.enabled=%s" $tls | indent 4}}
+{{ printf "opensearch.ignore-publish-address=%s" $ignoreAddress | indent 4 }}
+{{- end }}
+{{- end -}}

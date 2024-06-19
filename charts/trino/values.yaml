@@ -7,9 +7,8 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart version.
   # Same value as Chart.yaml#appVersion
-  tag: 432
+  tag: 436
 
- 
 server:
   workers: 2
   node:
@@ -437,6 +436,7 @@ discovery:
   mongodb: true
   postgres: true
   elastic: true
+  opensearch: true
 
 security:
   username: "admin"
