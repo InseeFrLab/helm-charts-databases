@@ -180,6 +180,16 @@
       "description": "opensearch specific configuration",
       "type": "object",
       "properties": {
+        "dicoverable": {
+          "type": "object",
+          "properties": {
+              "allow": {
+                  "type": "boolean",
+                  "description": "Allow discovery",
+                  "default": true
+              }
+          }
+},
         "resources": {
           "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
           "type": "object",
@@ -337,6 +347,5 @@
         }
       }
     }
-
   }
 }

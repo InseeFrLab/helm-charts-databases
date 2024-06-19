@@ -34,6 +34,8 @@ ingressDashboard:
   annotations: []
 
 opensearch: 
+  discoverable:
+    allow: true
   replicas: 3
   networkPolicy:
     create: false
