@@ -1,6 +1,6 @@
 # opensearch
 
-![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Opensearch provides a full-text search engine with an HTTP web interface and schema-free JSON documents.
 
@@ -42,6 +42,7 @@ Opensearch provides a full-text search engine with an HTTP web interface and sch
 | networking.type | string | `"ClusterIP"` |  |
 | opensearch-dashboards.rbac.create | bool | `false` |  |
 | opensearch-dashboards.serviceAccount.create | bool | `false` |  |
+| opensearch.discoverable.allow | bool | `true` |  |
 | opensearch.envFrom[0].secretRef.name | string | `"opensearch-env-secret"` |  |
 | opensearch.networkPolicy.create | bool | `false` |  |
 | opensearch.networkPolicy.http.enabled | bool | `false` |  |
