@@ -7,12 +7,12 @@ keyworks:
   - mysql
   - database
   - sql
-  - prometheus
-home: https://github.com/bitnami/charts/tree/master/bitnami/mariadb
+
+home: https://mariadb.org
 sources:
   - https://github.com/bitnami/bitnami-docker-mariadb
-  - https://github.com/prometheus/mysqld_exporter
-  - https://mariadb.org
+  - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/mariadb
+
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
@@ -26,7 +26,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.2.3
+version: 0.2.4
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to

@@ -7,8 +7,8 @@ keywords:
   - distributed
 home: https://spark.apache.org/
 sources: 
-  - https://github.com/InseeFrLab/jupyter-datascience
-  - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/spark-thrift-server
+  - https://github.com/InseeFrLab/images-datascience/blob/main/spark/Dockerfile
+  - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/spark-thrift-server
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
@@ -22,7 +22,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.4.6
+version: 0.4.7
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to

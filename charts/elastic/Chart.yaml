@@ -8,7 +8,7 @@ keywords:
   - Visualization
 home: https://www.elastic.co/
 sources:
-  - https://github.com/InseeFrLab/helm-charts-datascience/tree/master/charts/elastic
+  - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/elastic
   - https://github.com/bitnami/charts/blob/main/bitnami/elasticsearch
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -23,7 +23,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 1.0.6
+version: 1.0.7
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
