@@ -36,10 +36,19 @@ data:
     -XX:+UnlockDiagnosticVMOptions
     # Reduce starvation of threads by GClocker, recommend to set about the number of cpu cores (JDK-8192647)
     -XX:GCLockerRetryAllocationCount=32
+    # Allow loading dynamic agent used by JOL
+    -XX:+EnableDynamicAgentLoading
+  {{/* only check the version number if the image is not overriden in any way */}}
+  {{- with .Values.image -}}
+  {{- if and (eq .repository "trinodb/trino") (not .useRepositoryAsSoleImageReference) (not .registry) (not .digest) (gt (default $.Chart.AppVersion .tag | int ) 447 ) }}
+    # https://bugs.openjdk.org/browse/JDK-8329528
+    -XX:+UnlockDiagnosticVMOptions
+    -XX:G1NumCollectionsKeepPinned=10000000
+  {{- end }}
+  {{- end }}
   {{- range $configValue := .Values.worker.additionalJVMConfig }}
     {{ $configValue }}
   {{- end }}
-
   config.properties: |
     coordinator=false
     internal-communication.shared-secret={{ .Values.security.password }}

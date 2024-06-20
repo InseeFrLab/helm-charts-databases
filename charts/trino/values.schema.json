@@ -20,14 +20,14 @@
                 "description": "supported versions",
                 "type": "string",
                 "enum": [
-                    "trinodb/trino:432"
+                    "trinodb/trino:449"
                 ],
                 "pattern": "^[a-z0-9-_./]+(:[a-z0-9-_.]+)?$",
                 "hidden": {
                   "value": true,
                   "path": "service/image/custom/enabled"
                 },
-                "default": "trinodb/trino:432"
+                "default": "trinodb/trino:449"
               },
               "custom": {
                 "description": "use a custom trino image",
@@ -42,7 +42,7 @@
                   "version": {
                     "description": "trino unsupported version",
                     "type": "string",
-                    "default": "trinodb/trino:432",
+                    "default": "trinodb/trino:449",
                     "pattern": "^[a-z0-9-_./]+(:[a-z0-9-_.]+)?$",
                     "hidden": {
                       "value": false,
