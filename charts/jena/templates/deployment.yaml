@@ -41,7 +41,7 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.service.image.repository }}"
+          image: "{{ ternary .Values.service.image.custom.version .Values.service.image.version .Values.service.image.custom.enabled }}"
           imagePullPolicy: {{ .Values.service.image.pullPolicy }}
           env:
             - name: ADMIN_PASSWORD
