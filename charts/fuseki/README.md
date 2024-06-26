@@ -1,15 +1,14 @@
-# jena
+# Fuseki
 
-![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.0](https://img.shields.io/badge/AppVersion-4.0.0-informational?style=flat-square)
+![Version: 0.3.5](https://img.shields.io/badge/Version-0.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.0](https://img.shields.io/badge/AppVersion-4.0.0-informational?style=flat-square)
 
 Apache Jena Fuseki is a SPARQL server.
 
-**Homepage:** <https://jena.apache.org/jena>
+**Homepage:** <https://jena.apache.org/documentation/fuseki2/index.html>
 
 ## Source Code
 
 * <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/jena>
-* <https://github.com/stain/jena-docker>
 
 ## Requirements
 

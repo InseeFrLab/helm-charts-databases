@@ -1,15 +1,14 @@
 apiVersion: v2
-name: jena
+name: fuseki
 description: Apache Jena Fuseki is a SPARQL server.
 icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/jena.png
-keyworks:
+keywords:
   - RDF
   - Triplestore
   - Linked Data
-home: https://jena.apache.org/jena
+home: https://jena.apache.org/documentation/fuseki2/index.html
 sources:
-  - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/jena
-  - https://github.com/stain/jena-docker
+  - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/fuseki
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
