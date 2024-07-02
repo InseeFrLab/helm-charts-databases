@@ -24,8 +24,7 @@
               "description": "supported versions",
               "type": "string",
               "listEnum": [
-                "ghcr.io/zazuko/fuseki-geosparql:v3",
-                "stain/jena-fuseki:4.8.0"
+                "ghcr.io/zazuko/fuseki-geosparql:v3"
               ],
               "render": "list",
               "hidden": {
@@ -35,7 +34,7 @@
               "default": "ghcr.io/zazuko/fuseki-geosparql:v3"
             },
             "custom": {
-              "description": "use a custom jupyter docker image",
+              "description": "use a custom Jena docker image",
               "type": "object",
               "properties": {
                 "enabled": {
