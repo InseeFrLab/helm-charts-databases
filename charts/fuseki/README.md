@@ -1,4 +1,4 @@
-# Fuseki
+# fuseki
 
 ![Version: 0.3.5](https://img.shields.io/badge/Version-0.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 4.0.0](https://img.shields.io/badge/AppVersion-4.0.0-informational?style=flat-square)
 
@@ -8,7 +8,7 @@ Apache Jena Fuseki is a SPARQL server.
 
 ## Source Code
 
-* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/jena>
+* <https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/fuseki>
 
 ## Requirements
 
@@ -42,7 +42,10 @@ Apache Jena Fuseki is a SPARQL server.
 | persistence.enabled | bool | `true` |  |
 | persistence.size | string | `"10Gi"` |  |
 | podAnnotations | object | `{}` |  |
-| podSecurityContext | object | `{}` |  |
+| podSecurityContext.fsGroup | int | `1000` |  |
+| podSecurityContext.runAsGroup | int | `1000` |  |
+| podSecurityContext.runAsNonRoot | bool | `true` |  |
+| podSecurityContext.runAsUser | int | `1000` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |
@@ -56,8 +59,10 @@ Apache Jena Fuseki is a SPARQL server.
 | security.networkPolicy.from | list | `[]` |  |
 | security.password | string | `"password"` |  |
 | securityContext | object | `{}` |  |
+| service.image.custom.enabled | bool | `false` |  |
+| service.image.custom.version | string | `""` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.repository | string | `"ghcr.io/zazuko/fuseki-geosparql:v3"` |  |
+| service.image.version | string | `"ghcr.io/zazuko/fuseki-geosparql:v3"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
