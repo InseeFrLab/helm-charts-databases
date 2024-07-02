@@ -33,9 +33,9 @@ version: 0.3.4
 appVersion: 1
 dependencies:
   - name: postgresql
-    version: 11.6.15
+    version: 11.9.13
     repository:  https://charts.bitnami.com/bitnami
     enabled: true
   - name: library-chart
-    version: 1.5.23
+    version: 1.5.17
     repository: https://inseefrlab.github.io/helm-charts-interactive-services
