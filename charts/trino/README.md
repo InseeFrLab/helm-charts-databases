@@ -60,7 +60,7 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 | eventListenerProperties | object | `{}` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"trinodb/trino"` |  |
-| image.tag | int | `449` |  |
+| image.tag | int | `451` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
