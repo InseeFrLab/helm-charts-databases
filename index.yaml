@@ -3020,6 +3020,31 @@ entries:
     version: 3.6.0
   opensearch:
   - apiVersion: v2
+    created: "2024-07-03T12:23:55.742995936Z"
+    dependencies:
+    - name: opensearch-dashboards
+      repository: https://opensearch-project.github.io/helm-charts/
+      version: 2.19.0
+    - name: opensearch
+      repository: https://opensearch-project.github.io/helm-charts/
+      version: 2.21.0
+    description: Opensearch provides a full-text search engine with an HTTP web interface
+      and schema-free JSON documents.
+    digest: 069e408e2682d0ebfd29c3863055490f5a8c8769cb5e04aab0c6b84052908b23
+    home: https://opensearch.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/opensearch.png
+    keywords:
+    - BI
+    - Visualization
+    name: opensearch
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/opensearch
+    - https://github.com/opensearch-project/helm-charts
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/opensearch-0.1.2/opensearch-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2024-06-19T17:19:24.40549494Z"
     dependencies:
     - name: opensearch-dashboards
@@ -4797,4 +4822,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-07-03T12:14:53.96473321Z"
+generated: "2024-07-03T12:23:55.743375767Z"
