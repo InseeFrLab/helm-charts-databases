@@ -1,6 +1,6 @@
 # elastic
 
-![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 8.14.1](https://img.shields.io/badge/AppVersion-8.14.1-informational?style=flat-square)
+![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 8.14.1](https://img.shields.io/badge/AppVersion-8.14.1-informational?style=flat-square)
 
 Elasticsearch provides a full-text search engine with an HTTP web interface and schema-free JSON documents.
 
@@ -15,7 +15,7 @@ Elasticsearch provides a full-text search engine with an HTTP web interface and 
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | elasticsearch | 21.2.3 |
+| https://charts.bitnami.com/bitnami | elasticsearch | 21.2.7 |
 | https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.23 |
 
 ## Values
