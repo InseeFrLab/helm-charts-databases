@@ -1,6 +1,6 @@
 mariadb:
   image:
-    tag: "10.5.15"
+    tag: "11.3.2"
     pullPolicy: IfNotPresent
   auth:
     rootPassword: ""
