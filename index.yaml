@@ -2015,6 +2015,29 @@ entries:
   mariadb:
   - apiVersion: v2
     appVersion: "1"
+    created: "2024-07-04T10:42:50.124088067Z"
+    dependencies:
+    - enabled: true
+      name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 18.2.6
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    description: MariaDB is a SQL database server. It's MySQL but libre.
+    digest: 69b08efcefcfdce7d64f1c25353a2c4c2f686666ec8a395449b62b07b9a1872d
+    home: https://mariadb.org
+    icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
+    name: mariadb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mariadb
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/mariadb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mariadb-0.2.5/mariadb-0.2.5.tgz
+    version: 0.2.5
+  - apiVersion: v2
+    appVersion: "1"
     created: "2024-06-19T18:09:54.50844075Z"
     dependencies:
     - enabled: true
@@ -5015,4 +5038,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-07-04T10:09:02.303638286Z"
+generated: "2024-07-04T10:42:50.124422694Z"
