@@ -1,6 +1,6 @@
 # nocodb
 
-![Version: 1.2.3](https://img.shields.io/badge/Version-1.2.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.2.4](https://img.shields.io/badge/Version-1.2.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.251.1](https://img.shields.io/badge/AppVersion-0.251.1-informational?style=flat-square)
 
 NocoDB is an open source NoCode platform that turns any database into a smart spreadsheet
 
@@ -15,7 +15,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 11.6.15 |
+| https://charts.bitnami.com/bitnami | postgresql | 15.5.13 |
 | https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.23 |
 
 ## Values
@@ -47,7 +47,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.fullnameOverride | string | `"nocodb-pg"` |  |
-| postgresql.image.tag | string | `"12"` |  |
+| postgresql.image.tag | string | `"15"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |
@@ -63,9 +63,9 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 | security.networkPolicy.from | list | `[]` |  |
 | security.password | string | `"password"` |  |
 | securityContext | object | `{}` |  |
-| service.image.pullPolicy | string | `"Always"` |  |
+| service.image.pullPolicy | string | `"IfNotPresent"` |  |
 | service.image.repository | string | `"nocodb/nocodb"` |  |
-| service.image.tag | string | `""` |  |
+| service.image.tag | string | `"0.251.1"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
