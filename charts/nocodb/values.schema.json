@@ -2,6 +2,35 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
+    "service": {
+      "description": "Service specific configuration",
+      "type": "object",
+      "properties": {
+        "image": {
+          "description": "image docker",
+          "type": "object",
+          "properties": {
+            "pullPolicy": {
+              "type": "string",
+              "description": "option when pulling the docker image",
+              "default": "IfNotPresent",
+              "enum": ["IfNotPresent", "Always", "Never"]
+            },
+            "repository": {
+              "description": "repository",
+              "type": "string",
+              "default": "nocodb/nocodb"
+            },
+            "tag": {
+              "description": "supported tag",
+              "type": "string",
+              "default": "0.251.1"
+            }
+            
+          }
+        }
+      }
+    },
     "resources": {
       "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
       "type": "object",

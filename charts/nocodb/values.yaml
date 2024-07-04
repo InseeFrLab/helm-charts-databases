@@ -3,9 +3,9 @@
 service:
   image:
     repository: "nocodb/nocodb"
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: ""
+    tag: "0.251.1"
 
 global:
   postgresql:
@@ -16,7 +16,7 @@ global:
 
 postgresql:
   image:
-    tag: "12"
+    tag: "15"
   fullnameOverride: "nocodb-pg"
 
 security:
