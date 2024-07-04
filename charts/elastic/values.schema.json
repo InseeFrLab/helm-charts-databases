@@ -23,9 +23,9 @@
                         "tag": {
                             "description": "tag",
                             "type": "string",
-                            "default": "8.14.1-debian-12-r0",
+                            "default": "8.14.1-debian-12-r1",
                             "enum": [
-                                "8.14.1-debian-12-r0",
+                                "8.14.1-debian-12-r1",
                                 "8.13.4-debian-12-r0",
                                 "7.17.3"
                             ]
