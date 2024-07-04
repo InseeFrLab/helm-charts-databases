@@ -1,6 +1,6 @@
 # openrefine
 
-![Version: 3.6.3](https://img.shields.io/badge/Version-3.6.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 3.6.4](https://img.shields.io/badge/Version-3.6.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 OpenRefine (previously Google Refine) is a powerful tool for working with messy data, cleaning it; transforming it from one format into another; and extending it with web services and external data.
 
@@ -54,7 +54,7 @@ OpenRefine (previously Google Refine) is a powerful tool for working with messy 
 | securityContext | object | `{}` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
 | service.image.repository | string | `"easypi/openrefine"` |  |
-| service.image.tag | string | `"3.7.0"` |  |
+| service.image.tag | string | `"3.8.1"` |  |
 | service.memory | string | `"1024M"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
