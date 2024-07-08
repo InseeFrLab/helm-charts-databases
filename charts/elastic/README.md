@@ -28,7 +28,7 @@ Elasticsearch provides a full-text search engine with an HTTP web interface and 
 | elasticsearch.image.pullPolicy | string | `"IfNotPresent"` |  |
 | elasticsearch.image.registry | string | `"docker.io"` |  |
 | elasticsearch.image.repository | string | `"bitnami/elasticsearch"` |  |
-| elasticsearch.image.tag | string | `"8.14.1-debian-12-r1"` |  |
+| elasticsearch.image.tag | string | `"8.14.2-debian-12-r1"` |  |
 | elasticsearch.ingress.enabled | bool | `false` |  |
 | elasticsearch.kibana.elasticsearch.security.auth.createSystemUser | bool | `true` |  |
 | elasticsearch.kibana.elasticsearch.security.auth.elasticsearchPasswordSecret | string | `"elastic-elasticsearch"` |  |
