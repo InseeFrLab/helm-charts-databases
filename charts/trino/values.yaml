@@ -7,7 +7,7 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart version.
   # Same value as Chart.yaml#appVersion
-  tag: 451
+  tag: 452
 
 server:
   workers: 2
