@@ -1150,6 +1150,30 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: "1"
+    created: "2024-07-18T12:03:43.064341609Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.5.17
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    description: Hive metastore manage the metadata relational entities  in a relational
+      database.
+    digest: 5610f2e6395b5caa3c37eadfebc7ecd5ea6909f5be6897d266b023193c77b750
+    home: https://hive.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/hive.png
+    name: hive-metastore
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/hive-metastore
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/hive-metastore-0.3.5/hive-metastore-0.3.5.tgz
+    version: 0.3.5
+  - apiVersion: v2
+    appVersion: "1"
     created: "2024-06-19T18:09:53.951408633Z"
     dependencies:
     - enabled: true
@@ -5090,4 +5114,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-07-16T14:35:05.321724064Z"
+generated: "2024-07-18T12:03:43.064688054Z"
