@@ -6,7 +6,7 @@ service:
     repository: "easypi/openrefine"
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "3.8.1"
+    tag: "3.8.2"
 
 security:
   networkPolicy: 
