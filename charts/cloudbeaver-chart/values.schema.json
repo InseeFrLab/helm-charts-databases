@@ -134,26 +134,33 @@
 						"overwriteDefaultWith": "{{project.password}}"
 					}
 				},
-				"networkPolicy": {
-					"type": "object",
-					"description": "Define access policy to the service",
-					"x-onyxia": {
+                "networkPolicy": {
+                    "type": "object",
+                    "description": "Define access policy to the service",
+                    "x-onyxia": {
                         "overwriteSchemaWith": "network-policy.json"
                     },
-					"properties": {
-						"enabled": {
-							"type": "boolean",
-							"title": "Enable network policy",
-							"description": "Only pod from the same namespace will be allowed",
-							"default": false
-						},
-						"from": {
-							"type": "array",
-							"description": "Array of source allowed to have network access to your service",
-							"default": []
-						}
-					}
-				}
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "title": "Enable network policy",
+                            "description": "Only pod from the same namespace will be allowed",
+                            "default": false,
+                            "x-onyxia": {
+                                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+                            }
+                        },
+                        "from": {
+                            "type": "array",
+                            "description": "Array of source allowed to have network access to your service",
+                            "default": [],
+                            "x-onyxia": {
+                                "hidden": true,
+                                "overwriteDefaultWith": "region.from"
+                            }
+                        }
+                    }
+                }
 			}
 		},
 		"postgresql": {
