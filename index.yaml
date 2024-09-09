@@ -2529,6 +2529,33 @@ entries:
   mongodb:
   - apiVersion: v2
     appVersion: "1"
+    created: "2024-09-09T14:03:41.294506324Z"
+    dependencies:
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.18.5
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas.
+    digest: 87b244b5424221867ad063e1373d7a6b2eb9bbdb6da83f24dcc457b52f14e5fd
+    home: https://www.mongodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/mongodb.png
+    keywords:
+    - nosql
+    - Database
+    - json
+    name: mongodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/mongodb
+    - https://github.com/bitnami/bitnami-docker-mongodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mongodb-1.0.0/mongodb-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: "1"
     created: "2024-06-19T18:09:54.637830608Z"
     dependencies:
     - name: mongodb
@@ -5281,4 +5308,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-09-09T14:02:46.677366224Z"
+generated: "2024-09-09T14:03:41.294786137Z"
