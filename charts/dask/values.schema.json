@@ -71,46 +71,6 @@
                 }
             }
         },
-        "security": {
-            "description": "security specific configuration",
-            "type": "object",
-            "properties": {
-                "allowlist": {
-                    "type": "object",
-                    "description": "IP protection",
-                    "properties": {
-                        "enabled": {
-                            "type": "boolean",
-                            "title": "Enable IP protection",
-                            "description": "Only the configured set of IPs will be able to reach the service",
-                            "default": true,
-                            "x-form": {
-                                "value": "{{region.defaultIpProtection}}"
-                            },
-                            "x-onyxia": {
-                                "overwriteDefaultWith": "region.defaultIpProtection"
-                            }
-                        },
-                        "ip": {
-                            "type": "string",
-                            "description": "the allow list of IP is whitespace",
-                            "title": "Allowed IP",
-                            "default": "0.0.0.0/0",
-                            "x-form": {
-                                "value": "{{user.ip}}"
-                            },
-                            "x-onyxia": {
-                                "overwriteDefaultWith": "{{user.ip}}"
-                            },
-                            "hidden": {
-                                "value": false,
-                                "path": "security/allowlist/enabled"
-                            }
-                        }
-                    }
-                }
-            }
-        },
         "ingress": {
             "type": "object",
             "form": true,
