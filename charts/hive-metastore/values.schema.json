@@ -153,78 +153,31 @@
       "type": "object",
       "properties": {
         "networkPolicy": {
-          "type": "object",
-          "description": "Define access policy to the service",
-          "properties": {
-            "enabled": {
-              "type": "boolean",
-              "title": "Enable network policy",
-              "description": "Only pod from the same namespace will be allowed",
-              "default": true,
-              "x-form": {
-                "value": "{{region.defaultNetworkPolicy}}"
-              },
-              "x-onyxia": {
-                "overwriteDefaultWith": "region.defaultNetworkPolicy"
-              }
+            "type": "object",
+            "description": "Define access policy to the service",
+            "x-onyxia": {
+                "overwriteSchemaWith": "network-policy.json"
+            },
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Enable network policy",
+                    "description": "Only pod from the same namespace will be allowed",
+                    "default": false,
+                    "x-onyxia": {
+                        "overwriteDefaultWith": "region.defaultNetworkPolicy"
+                    }
+                },
+                "from": {
+                    "type": "array",
+                    "description": "Array of source allowed to have network access to your service",
+                    "default": [],
+                    "x-onyxia": {
+                        "hidden": true,
+                        "overwriteDefaultWith": "region.from"
+                    }
+                }
             }
-          }
-        }
-      }
-    },
-    "listener": {
-      "description": "Configuration of hive meta store listener",
-      "type": "object",
-      "properties": {
-        "enabled": {
-          "description": "enable hive metastore listener",
-          "type": "boolean",
-          "default": false
-        },
-        "kafkaBrokerUrl": {
-          "description": "kafka broker url for pushing your hive metastore event",
-          "type": "string",
-          "default": "change.me",
-          "hidden": {
-            "value": false,
-            "path": "listener/enabled"
-          },
-          "x-form": {
-            "value": "{{region.kafka.url}}"
-          },
-          "x-onyxia": {
-            "overwriteDefaultWith": "{{region.kafka.url}}"
-          }
-        },
-        "kafkaTopicName": {
-          "description": "kafka topic name for pushing your hive metastore event",
-          "type": "string",
-          "default": "changeMe",
-          "hidden": {
-            "value": false,
-            "path": "listener/enabled"
-          },
-          "x-form": {
-            "value": "{{region.kafka.topicName}}"
-          },
-          "x-onyxia": {
-            "overwriteDefaultWith": "{{region.kafka.topicName}}"
-          }
-        },
-        "domainNamespace": {
-          "description": "domain name where your hive metastore is located inside your organization",
-          "type": "string",
-          "x-form": {
-            "value": "{{project.id}}"
-          },
-          "x-onyxia": {
-            "overwriteDefaultWith": "{{project.id}}"
-          },
-          "default": "changeMe",
-          "hidden": {
-            "value": false,
-            "path": "listener/enabled"
-          }
         }
       }
     },
