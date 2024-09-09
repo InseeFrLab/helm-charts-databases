@@ -4562,6 +4562,25 @@ entries:
   spark-history:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-09-09T14:11:06.897312297Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    description: Spark history help you to review logs of your spark applications.
+    digest: adeb93c084ebb1d257719543119eeda0295b1884c15b5547667f6544ea712191
+    home: https://spark.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/spark.png
+    name: spark-history
+    sources:
+    - https://github.com/InseeFrLab/images-datascience/blob/main/spark/Dockerfile
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/spark-history
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/spark-history-1.0.0/spark-history-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-06-19T18:09:55.458143886Z"
     dependencies:
     - name: library-chart
@@ -5442,4 +5461,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-09-09T14:10:09.811446584Z"
+generated: "2024-09-09T14:11:06.897649856Z"
