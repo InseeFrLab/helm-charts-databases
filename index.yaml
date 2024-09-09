@@ -3,6 +3,29 @@ entries:
   cloudbeaver:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-09-09T13:44:49.093565411Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.5.13
+    description: CloudBeaver is a light modern web-application for database management.
+    digest: 05fdae554f1d5587a7d6e8ae798c83ec364648873a5f1c33bdc08884d37dacb6
+    home: https://cloudbeaver.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/cloudbeaver.png
+    name: cloudbeaver
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/main/charts/cloudbeaver
+    - https://hub.docker.com/r/dbeaver/cloudbeaver
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/cloudbeaver-2.0.0/cloudbeaver-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-07-04T08:35:16.105675094Z"
     dependencies:
     - name: library-chart
@@ -577,6 +600,26 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/cloudbeaver-1.0.1/cloudbeaver-1.0.1.tgz
     version: 1.0.1
   dask:
+  - apiVersion: v2
+    created: "2024-09-09T13:44:49.217579575Z"
+    dependencies:
+    - name: dask
+      repository: https://helm.dask.org
+      version: 2024.1.1
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    description: Dask is a flexible open-source Python library for parallel computing
+    digest: f9f30abe1a076ae75ed1d9c08e2bd682ebba07ff08de5fe42b1a05d49657f5a3
+    home: https://www.dask.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/dask.png
+    name: dask
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/dask-1.0.0/dask-1.0.0.tgz
+    version: 1.0.0
   - apiVersion: v2
     created: "2024-06-19T18:09:53.658889688Z"
     dependencies:
@@ -5114,4 +5157,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-07-18T12:03:43.064688054Z"
+generated: "2024-09-09T13:44:49.218115958Z"
