@@ -708,6 +708,33 @@ entries:
   elastic:
   - apiVersion: v2
     appVersion: 8.14.1
+    created: "2024-09-09T13:57:13.625660842Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.2.8
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    description: Elasticsearch provides a full-text search engine with an HTTP web
+      interface and schema-free JSON documents.
+    digest: e3fde28205e2c9c024a097512b4f67c7293e1a1c0888544e5a1af69574483b0e
+    home: https://www.elastic.co/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/elk.png
+    keywords:
+    - Search
+    - Lucene
+    - Visualization
+    name: elastic
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/elastic
+    - https://github.com/bitnami/charts/blob/main/bitnami/elasticsearch
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/elastic-2.0.0/elastic-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 8.14.1
     created: "2024-07-08T14:17:19.706614324Z"
     dependencies:
     - name: elasticsearch
@@ -5180,4 +5207,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-09-09T13:56:00.919879977Z"
+generated: "2024-09-09T13:57:13.625982342Z"
