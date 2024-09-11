@@ -55,10 +55,11 @@
                                 "tag": {
                                     "description": "tag of the dask worker image",
                                     "type": "string",
-                                    "enum": [
+                                    "listEnum": [
                                         "py3.11.8",
                                         "py3.12.2"
                                     ],
+                                    "render": "list",
                                     "default": "py3.12.2"
                                 }
                             }
