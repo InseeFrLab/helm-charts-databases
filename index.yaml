@@ -624,6 +624,26 @@ entries:
     version: 1.0.1
   dask:
   - apiVersion: v2
+    created: "2024-09-11T09:44:43.154789379Z"
+    dependencies:
+    - name: dask
+      repository: https://helm.dask.org
+      version: 2024.1.1
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.23
+    description: Dask is a flexible open-source Python library for parallel computing
+    digest: 3b9f12195cb36d089556c48a59dc0ba797b66809a6d40add197a182dbfa66774
+    home: https://www.dask.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/dask.png
+    name: dask
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/dask-1.0.3/dask-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
     created: "2024-09-11T09:42:29.439584961Z"
     dependencies:
     - name: dask
@@ -5548,4 +5568,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-09-11T09:42:29.439907161Z"
+generated: "2024-09-11T09:44:43.155152567Z"
