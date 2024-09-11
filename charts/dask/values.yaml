@@ -41,6 +41,15 @@ dask:
       repository: "inseefrlab/onyxia-python-datascience" # Container image repository.
       tag: "py3.12.2" # Container image tag.
       pullPolicy: IfNotPresent # Container image pull policy.
+    resources:
+      limits:
+        cpu: 1
+        memory: 4G
+    #    nvidia.com/gpu: 1
+      requests:
+        cpu: 1
+        memory: 4G
+    #    nvidia.com/gpu: 1
     env:
       - name: AWS_DEFAULT_REGION
         valueFrom:
