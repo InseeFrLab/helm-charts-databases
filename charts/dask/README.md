@@ -1,6 +1,6 @@
 # dask
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Dask is a flexible open-source Python library for parallel computing
 
@@ -52,6 +52,10 @@ Dask is a flexible open-source Python library for parallel computing
 | dask.worker.image.pullPolicy | string | `"IfNotPresent"` |  |
 | dask.worker.image.repository | string | `"inseefrlab/onyxia-python-datascience"` |  |
 | dask.worker.image.tag | string | `"py3.12.2"` |  |
+| dask.worker.resources.limits.cpu | int | `1` |  |
+| dask.worker.resources.limits.memory | string | `"4G"` |  |
+| dask.worker.resources.requests.cpu | int | `1` |  |
+| dask.worker.resources.requests.memory | string | `"4G"` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
