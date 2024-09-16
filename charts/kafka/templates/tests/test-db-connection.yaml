@@ -10,10 +10,9 @@ metadata:
 spec:
   containers:
   - name: {{ include "library-chart.fullname" . }}-test-connection
-    image: "bitnami/kafka:3.6"
+    image: "bitnami/kafka:3.8"
     env:
       - name: HOST
         value: {{ include "library-chart.fullname" . }}
-    command: ["sh", "-c", "/opt/bitnami/kafka/bin/kafka-topics.sh --list --bootstrap-server {{ include "kafkaList" . }}"]
+    command: ["sh", "-c", "/opt/bitnami/kafka/bin/kafka-topics.sh --list --bootstrap-server {{ .Values.kafka.fullnameOverride }}:9092"]
   restartPolicy: Never
-

@@ -1,24 +1,18 @@
 {{- $replicaCount := int .Values.kafka.replicaCount }}
-{{- $portNumber := int .Values.kafka.service.ports.client }}
 {{- $fullname := include "library-chart.fullname" . }}
 {{- $pvcList := list }}
-{{- $kafkaList := list }}
-{{- range $e, $i := until $replicaCount }}
+{{- range $i, $e := until $replicaCount }}
 {{- $pvcList = append $pvcList (printf "data-%s-%d" $fullname $i) }}
-{{- $kafkaList = append $kafkaList (printf "%s-%d.%s-headless:%d" $fullname $i $fullname $portNumber) }}
 {{- end }}
 - You can connect to this kafka only within the cluster itself.
-- the connection string is : 
-```
-**{{ (include "kafkaList" .)}}**
-```
+- the connection string is : `{{ .Values.kafka.fullnameOverride }}:9092`
 - example for producer python :
 
 ```
 from confluent_kafka import Producer
 import socket
 
-conf = {'bootstrap.servers': "{{ (include "kafkaList" .) }}",
+conf = {'bootstrap.servers': "{{ .Values.kafka.fullnameOverride }}:9092",
         'client.id': socket.gethostname()}
 
 producer = Producer(conf)
@@ -29,4 +23,4 @@ producer = Producer(conf)
 - **You can safely delete this chart and recreate one later**
 - Data volumes will not be deleted
 - If you start a new {{ .Chart.Name }}, it will reuse those volumes silently.
-- If you want to delete those volume definitily : `kubectl delete pvc {{ join " " $pvcList }}`
+- If you want to delete those volume definitely : `kubectl delete pvc {{ join " " $pvcList }}`
