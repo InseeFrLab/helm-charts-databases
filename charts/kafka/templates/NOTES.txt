@@ -1,18 +1,18 @@
 {{- $replicaCount := int .Values.kafka.replicaCount }}
-{{- $fullname := include "library-chart.fullname" . }}
+{{- $fullname := include "common.names.fullname" . }}
 {{- $pvcList := list }}
-{{- range $i, $e := until $replicaCount }}
-{{- $pvcList = append $pvcList (printf "data-%s-%d" $fullname $i) }}
+{{- range $i := until $replicaCount }}
+{{- $pvcList = append $pvcList (printf "data-%s-controller-%d" $fullname $i) }}
 {{- end }}
 - You can connect to this kafka only within the cluster itself.
-- the connection string is : `{{ .Values.kafka.fullnameOverride }}:9092`
+- the connection string is : `{{ $fullname }}:{{ .Values.kafka.service.ports.client }}`
 - example for producer python :
 
 ```
 from confluent_kafka import Producer
 import socket
 
-conf = {'bootstrap.servers': "{{ .Values.kafka.fullnameOverride }}:9092",
+conf = {'bootstrap.servers': "{{ $fullname }}:{{ .Values.kafka.service.ports.client }}",
         'client.id': socket.gethostname()}
 
 producer = Producer(conf)

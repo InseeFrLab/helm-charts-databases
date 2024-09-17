@@ -26,7 +26,7 @@ spec:
         mountPath: "/tmp"
         readOnly: true
     command: ["/bin/sh","-c"]
-    args: ["pip3 install confluent-kafka && timeout 2m python3 /tmp/confluent_kafka_test.py {{ .Values.kafka.fullnameOverride }}:9092"]
+    args: ["pip3 install confluent-kafka && timeout 2m python3 /tmp/confluent_kafka_test.py {{ template "common.names.fullname" . }}:{{ .Values.kafka.service.ports.client }}"]
   volumes:
     - name: scripts
       configMap:
