@@ -34,7 +34,7 @@ version: 0.2.6
 appVersion: "1"
 dependencies:
   - name: mariadb
-    version: 18.2.6
+    version: 19.0.6
     repository:  https://charts.bitnami.com/bitnami
     enabled: true
   - name: library-chart
