@@ -1,6 +1,6 @@
 # trino
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 449](https://img.shields.io/badge/AppVersion-449-informational?style=flat-square)
+![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 458](https://img.shields.io/badge/AppVersion-458-informational?style=flat-square)
 
 Fast distributed SQL query engine for big data analytics that helps you explore your data universe
 
@@ -60,7 +60,7 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 | eventListenerProperties | object | `{}` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"trinodb/trino"` |  |
-| image.tag | int | `451` |  |
+| image.tag | int | `458` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
