@@ -15,7 +15,7 @@ MariaDB is a SQL database server. It's MySQL but libre.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | mariadb | 18.2.6 |
+| https://charts.bitnami.com/bitnami | mariadb | 19.0.6 |
 | https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
 
 ## Values
@@ -29,7 +29,7 @@ MariaDB is a SQL database server. It's MySQL but libre.
 | mariadb.auth.rootPassword | string | `""` |  |
 | mariadb.auth.username | string | `""` |  |
 | mariadb.image.pullPolicy | string | `"IfNotPresent"` |  |
-| mariadb.image.tag | string | `"11.3.2"` |  |
+| mariadb.image.tag | string | `"11.5.2"` |  |
 | mariadb.primary.existingConfigmap | string | `""` |  |
 | mariadb.primary.resources.limits | object | `{}` |  |
 | mariadb.primary.resources.requests.cpu | string | `"1000m"` |  |
