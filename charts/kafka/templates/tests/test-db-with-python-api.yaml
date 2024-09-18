@@ -1,14 +1,4 @@
 apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "library-chart.fullname" . }}-test-confluent-kafka-scripts
-  labels:
-    {{- include "library-chart.labels" . | nindent 4 }}
-data:
-  confluent_kafka_test.py: |-
-{{ .Files.Get "scripts/confluent_kafka_test.py" | indent 4 }}
----
-apiVersion: v1
 kind: Pod
 metadata:
   name: "{{ include "library-chart.fullname" . }}-test-confluent-kafka"
@@ -21,17 +11,43 @@ spec:
   containers:
   - name: {{ include "library-chart.fullname" . }}-test-confluent-kafka
     image: "inseefrlab/onyxia-python-minimal"
-    volumeMounts:
-      - name: scripts
-        mountPath: "/tmp"
-        readOnly: true
     command: ["/bin/sh","-c"]
-    args: ["pip3 install confluent-kafka && timeout 2m python3 /tmp/confluent_kafka_test.py {{ template "common.names.fullname" . }}:{{ .Values.kafka.service.ports.client }}"]
-  volumes:
-    - name: scripts
-      configMap:
-        name: {{ include "library-chart.fullname" . }}-test-confluent-kafka-scripts
-        items:
-          - key: confluent_kafka_test.py
-            path: "confluent_kafka_test.py"
+    args:
+    - |
+      pip3 install confluent-kafka && timeout 2m python3 <<EOF
+      from confluent_kafka import Producer, Consumer
+      import socket
+
+      kafka_server = "{{ template "common.names.fullname" . }}:{{ .Values.kafka.service.ports.client }}"
+
+      print("Setting up producer...")
+      pconf = {
+          'bootstrap.servers': kafka_server,
+          'client.id': socket.gethostname()
+      }
+      producer = Producer(pconf)
+
+      print("Sending message to topic `helm-test-kafka-db`...")
+      producer.produce("helm-test-kafka-db", key="Test result", value="Success!")
+      producer.flush()
+
+      print("Setting up consumer...")
+      cconf = {'bootstrap.servers': kafka_server,
+              'group.id': 'foo',
+              'auto.offset.reset': 'smallest'}
+      consumer = Consumer(cconf)
+      consumer.subscribe(["helm-test-kafka-db"])
+
+      print("Waiting message from topic `helm-test-kafka-db`...")
+      while True:
+          try:
+              msg = consumer.poll(1.0)
+              if msg is None:
+                  continue
+              else:
+                  print(msg.value())
+                  exit(0)
+          except KeyboardInterrupt:
+              exit(1)
+      EOF
   restartPolicy: Never
