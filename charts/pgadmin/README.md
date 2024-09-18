@@ -1,6 +1,6 @@
 # pgadmin
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 pgAdmin is an administration and development platform for PostgreSQL. It's a GUI for Postgress SQL.
 
@@ -14,7 +14,7 @@ pgAdmin is an administration and development platform for PostgreSQL. It's a GUI
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.23 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
 
 ## Values
 

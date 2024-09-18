@@ -1,6 +1,6 @@
 # trino
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 449](https://img.shields.io/badge/AppVersion-449-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 449](https://img.shields.io/badge/AppVersion-449-informational?style=flat-square)
 
 Fast distributed SQL query engine for big data analytics that helps you explore your data universe
 
@@ -15,7 +15,7 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.23 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
 
 ## Values
 

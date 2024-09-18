@@ -1,6 +1,6 @@
 # mariadb
 
-![Version: 0.2.5](https://img.shields.io/badge/Version-0.2.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.2.6](https://img.shields.io/badge/Version-0.2.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 MariaDB is a SQL database server. It's MySQL but libre.
 
@@ -16,7 +16,7 @@ MariaDB is a SQL database server. It's MySQL but libre.
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | mariadb | 18.2.6 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.23 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
 
 ## Values
 
