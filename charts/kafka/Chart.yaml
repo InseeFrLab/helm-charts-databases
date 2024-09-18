@@ -23,7 +23,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.2.6
+version: 0.2.7
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -35,5 +35,5 @@ dependencies:
     repository:  https://charts.bitnami.com/bitnami
     enabled: true
   - name: library-chart
-    version: 1.5.23
+    version: 1.5.25
     repository: https://inseefrlab.github.io/helm-charts-interactive-services
