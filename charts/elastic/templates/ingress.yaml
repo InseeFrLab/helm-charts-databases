@@ -1,5 +1,4 @@
 {{- if .Values.ingress.enabled -}}
-{{- $svcPort := .Values.elasticsearch.service.ports.restAPI -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -32,7 +31,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Release.Name }}-elasticsearch
+                name: {{ include "elasticsearch.service.name" .Subcharts.elasticsearch }}
                 port: 
-                  number: {{ $svcPort }}
+                  number: {{ include "elasticsearch.service.ports.restAPI" .Subcharts.elasticsearch }}
 {{- end }}

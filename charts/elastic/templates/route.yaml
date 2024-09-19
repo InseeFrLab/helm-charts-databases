@@ -15,7 +15,7 @@ spec:
   path: /
   to:
     kind: Service
-    name:  {{ .Release.Name }}-elasticsearch
+    name:  {{ include "elasticsearch.service.name" .Subcharts.elasticsearch }}
   port: 
     targetPort: {{ $svcPort }}
   tls:
