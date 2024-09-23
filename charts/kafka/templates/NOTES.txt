@@ -1,5 +1,5 @@
 {{- $replicaCount := int .Values.kafka.replicaCount }}
-{{- $fullname := include "common.names.fullname" . }}
+{{- $fullname := include "common.names.fullname" .Subcharts.kafka }}
 {{- $pvcList := list }}
 {{- range $i := until $replicaCount }}
 {{- $pvcList = append $pvcList (printf "data-%s-controller-%d" $fullname $i) }}
