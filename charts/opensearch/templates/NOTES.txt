@@ -1,7 +1,7 @@
 {{- $pvcList := list }}
 {{- $replicas := int .Values.opensearch.replicas }}
 {{- range $i := until $replicas }}
-{{- $pvcList = append $pvcList (printf "%s-%d" (include "opensearch.uname" $.Subcharts.opensearch) $i) }}
+{{- $pvcList = append $pvcList (printf "%s-%s-%d" (include "opensearch.uname" $.Subcharts.opensearch) (include "opensearch.uname" $.Subcharts.opensearch) $i) }}
 {{- end }}
 - Your username is **admin**
 - Your password is **{{ include "opensearch.StrongPassword" . }}**
