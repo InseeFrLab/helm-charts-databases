@@ -7,16 +7,8 @@ security:
     enabled: false
     ip: 0.0.0.0/0
 
-networking:
-  type: ClusterIP
-  clusterIP: None
-  service:
-    port: 9200
-  dashboard: 
-    port: 5601
-
 ingress:
-  enabled: false
+  enabled: true
   ingressClassName: ""
   hostname: chart-example.local
   tls: true
@@ -25,7 +17,7 @@ ingress:
   annotations: []
   
 ingressDashboard:
-  enabled: false
+  enabled: true
   ingressClassName: ""
   hostname: chart-example-dashboards.local
   tls: true
@@ -33,7 +25,7 @@ ingressDashboard:
   certManagerClusterIssuer: ""
   annotations: []
 
-opensearch: 
+opensearch:
   discoverable:
     allow: true
   replicas: 3
@@ -79,7 +71,7 @@ opensearch:
 
 opensearch-dashboards:
   serviceAccount:
-    create: false 
+    create: false
   rbac:
     create: false
 

@@ -1,14 +1,14 @@
 {{- if .Values.route.enabled -}}
-{{- $fullName := include "opensearch.fullname" . -}}
+{{- $fullName := include "opensearch.fullname" .Subcharts.opensearch -}}
 {{- $svcPort := .Values.networking.dashboard.port -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: {{ $fullName }}-dashboards
   labels:
-    {{- include "opensearch.labels" . | nindent 4 }}
+    {{- include "opensearch.labels" .Subcharts.opensearch | nindent 4 }}
   annotations:
-    {{- include "opensearch.routeDashboard.annotations" . | nindent 4 }}
+    {{- include "opensearch.routeDashboard.annotations" .Subcharts.opensearch | nindent 4 }}
 spec:
   host: {{ .Values.routeDashboard.hostname | quote }}
   path: /

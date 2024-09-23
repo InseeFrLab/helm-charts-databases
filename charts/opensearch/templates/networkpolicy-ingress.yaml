@@ -9,11 +9,9 @@ spec:
     matchLabels:
       {{- include "opensearch.selectorLabels" . | nindent 6 }}
   ingress:
-  {{- with .Values.security.networkPolicy.from }}
-  - from: 
-  {{- toYaml . | nindent 4 }}
-  {{- end }}
+  - from:
+    {{- toYaml .Values.security.networkPolicy.from | nindent 4 }}
   policyTypes:
   - Ingress
 {{- end }}
-{{- end }} 
+{{- end }}
