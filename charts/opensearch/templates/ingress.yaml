@@ -1,5 +1,5 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullName := include "opensearch.serviceName" .Subcharts.opensearch -}}
+{{- $fullName := include "opensearch.fullname" .Subcharts.opensearch -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -18,7 +18,7 @@ spec:
     - hosts:
         - {{ .Values.ingress.hostname | quote }}
     {{- if .Values.ingress.useCertManager }}
-      secretName: tls-cert-{{ $fullName }}
+      secretName: tls-cert-{{ $fullName ) }}
     {{- end }}
 {{- end }}
   rules:
@@ -29,7 +29,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}
+                name: {{ include "opensearch.serviceName" .Subcharts.opensearch }}
                 port: 
                   number: {{ .Values.opensearch.httpPort }}
 {{- end }}
