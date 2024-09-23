@@ -5,11 +5,11 @@ kind: Ingress
 metadata:
   name: {{ $fullName }}-dashboards
   labels:
-    {{- include "opensearch.labels" .Subcharts.opensearch | nindent 4 }}
+    {{- include "opensearch-dashboards.labels" (index .Subcharts "opensearch-dashboards") | nindent 4 }}
   annotations:
     {{- include "opensearch.ingressDashboard.annotations" . | nindent 4 }}
 spec:
-  {{- if and .Values.ingressDashboard.ingressClassName (eq "true" (include "opensearch.ingress.supportsIngressClassName" .Subcharts.opensearch)) }}
+  {{- if and .Values.ingressDashboard.ingressClassName (eq "true" (include "opensearch-dashboards.ingress.supportsIngressClassName" (index .Subcharts "opensearch-dashboards"))) }}
   ingressClassName: {{ .Values.ingressDashboard.ingressClassName | quote }}
   {{- end }}
 {{- if .Values.ingressDashboard.tls }}
@@ -17,7 +17,7 @@ spec:
     - hosts:
         - {{ .Values.ingressDashboard.hostname | quote }}
     {{- if .Values.ingressDashboard.useCertManager }}
-      secretName: tls-cert-{{ include "opensearch.fullname" .Subcharts.opensearch }}-dashboard
+      secretName: tls-cert-{{ include "opensearch-dashboards.fullname" (index .Subcharts "opensearch-dashboards") }}-dashboard
     {{- end }}
 {{- end }}
   rules:
