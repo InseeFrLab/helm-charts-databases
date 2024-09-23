@@ -18,7 +18,7 @@ spec:
     - hosts:
         - {{ .Values.ingress.hostname | quote }}
     {{- if .Values.ingress.useCertManager }}
-      secretName: tls-cert-{{ $fullName ) }}
+      secretName: tls-cert-{{ $fullName }}
     {{- end }}
 {{- end }}
   rules:
