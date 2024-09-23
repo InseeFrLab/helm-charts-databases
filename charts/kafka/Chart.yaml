@@ -2,7 +2,7 @@ apiVersion: v2
 name: kafka
 description: Apache Kafka is an event streaming platform for streaming analytics, data integration.
 icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/kafka.png
-keyworks:
+keywords:
   - streaming
   - messaging
 home: https://kafka.apache.org/
@@ -31,9 +31,8 @@ version: 0.2.7
 appVersion: "1"
 dependencies:
   - name: kafka
-    version: 29.3.14
+    version: 30.1.4
     repository:  https://charts.bitnami.com/bitnami
-    enabled: true
   - name: library-chart
-    version: 1.5.23
+    version: 1.5.25
     repository: https://inseefrlab.github.io/helm-charts-interactive-services
