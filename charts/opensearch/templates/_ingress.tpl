@@ -36,3 +36,12 @@ acme.cert-manager.io/http01-ingress-class: {{ .Values.ingressDashboard.ingressCl
 {{- printf "%s" .Values.ingress.hostname }}
 {{- end }}
 {{- end }}
+
+{{/* Ingress Dashboard hostname */}}
+{{- define "opensearch.ingressDasboard.hostname" -}}
+{{- if .Values.ingress.generate }}
+{{- printf "%s" .Values.ingress.userHostname }}
+{{- else }}
+{{- printf "%s" .Values.ingress.hostname }}
+{{- end }}
+{{- end }}

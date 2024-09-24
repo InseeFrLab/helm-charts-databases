@@ -8,9 +8,9 @@ metadata:
   labels:
     {{- include "opensearch.labels" .Subcharts.opensearch | nindent 4 }}
   annotations:
-    {{- include "opensearch.routeDashboard.annotations" .Subcharts.opensearch | nindent 4 }}
+    {{- include "opensearch.routeDashboard.annotations" . | nindent 4 }}
 spec:
-  host: {{ .Values.routeDashboard.hostname | quote }}
+  host: {{ include "opensearch.routeDasboard.hostname" . | quote }}
   path: /
   to:
     kind: Service

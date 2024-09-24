@@ -3,7 +3,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}-dashboards
+  name: "opensearch.ingressDasboard.hostname" {{ $fullName }}-dashboards
   labels:
     {{- include "opensearch-dashboards.labels" (index .Subcharts "opensearch-dashboards") | nindent 4 }}
   annotations:
@@ -15,13 +15,13 @@ spec:
 {{- if .Values.ingressDashboard.tls }}
   tls:
     - hosts:
-        - {{ .Values.ingressDashboard.hostname | quote }}
+        - {{ include "opensearch.ingressDasboard.hostname" . | quote }}
     {{- if .Values.ingressDashboard.useCertManager }}
       secretName: tls-cert-{{ $fullName }}
     {{- end }}
 {{- end }}
   rules:
-    - host: {{ .Values.ingressDashboard.hostname | quote }}
+    - host: {{ include "opensearch.ingressDasboard.hostname" . | quote }}
       http:
         paths:
           - path: /
