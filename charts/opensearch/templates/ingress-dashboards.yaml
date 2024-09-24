@@ -3,7 +3,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: "opensearch.ingressDasboard.hostname" {{ $fullName }}-dashboards
+  name: {{ $fullName }}-dashboards
   labels:
     {{- include "opensearch-dashboards.labels" (index .Subcharts "opensearch-dashboards") | nindent 4 }}
   annotations:
