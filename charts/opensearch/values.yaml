@@ -1,5 +1,5 @@
 security:
-  password: "changeme"
+  password: "MyStr0ngP@ssword"
   networkPolicy:
     enabled: false
     from: []
@@ -8,7 +8,7 @@ security:
     ip: 0.0.0.0/0
 
 ingress:
-  enabled: true
+  enabled: false
   ingressClassName: ""
   hostname: chart-example.local
   tls: true
@@ -17,7 +17,7 @@ ingress:
   annotations: []
   
 ingressDashboard:
-  enabled: true
+  enabled: false
   ingressClassName: ""
   hostname: chart-example-dashboards.local
   tls: true

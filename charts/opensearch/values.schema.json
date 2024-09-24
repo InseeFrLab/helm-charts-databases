@@ -9,7 +9,7 @@
         "password": {
           "type": "string",
           "description": "Password",
-          "default": "changeme",
+          "default": "MyStr0ngP@ssword",
           "render": "password",
           "x-onyxia": {
             "overwriteDefaultWith": "{{project.password}}"
