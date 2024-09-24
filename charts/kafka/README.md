@@ -16,7 +16,7 @@ Apache Kafka is an event streaming platform for streaming analytics, data integr
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | kafka | 29.3.7 |
+| https://charts.bitnami.com/bitnami | kafka | 30.1.4 |
 | https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
 
 ## Values
