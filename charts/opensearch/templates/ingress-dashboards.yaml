@@ -15,13 +15,13 @@ spec:
 {{- if .Values.ingressDashboard.tls }}
   tls:
     - hosts:
-        - {{ include "opensearch.ingressDasboard.hostname" . | quote }}
+        - {{ .Values.ingressDashboard.hostname | quote }}
     {{- if .Values.ingressDashboard.useCertManager }}
       secretName: tls-cert-{{ $fullName }}
     {{- end }}
 {{- end }}
   rules:
-    - host: {{ include "opensearch.ingressDasboard.hostname" . | quote }}
+    - host: {{ .Values.ingressDashboard.hostname | quote }}
       http:
         paths:
           - path: /

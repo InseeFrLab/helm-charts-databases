@@ -27,21 +27,3 @@ cert-manager.io/cluster-issuer: {{ .Values.ingressDashboard.certManagerClusterIs
 acme.cert-manager.io/http01-ingress-class: {{ .Values.ingressDashboard.ingressClassName }}
 {{- end }}
 {{- end }}
-
-{{/* Ingress hostname */}}
-{{- define "opensearch.ingress.hostname" -}}
-{{- if .Values.ingress.generate }}
-{{- printf "%s" .Values.ingress.userHostname }}
-{{- else }}
-{{- printf "%s" .Values.ingress.hostname }}
-{{- end }}
-{{- end }}
-
-{{/* Ingress Dashboard hostname */}}
-{{- define "opensearch.ingressDasboard.hostname" -}}
-{{- if .Values.ingress.generate }}
-{{- printf "%s" .Values.ingress.userHostname }}
-{{- else }}
-{{- printf "%s" .Values.ingress.hostname }}
-{{- end }}
-{{- end }}
