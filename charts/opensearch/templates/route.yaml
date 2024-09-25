@@ -1,6 +1,5 @@
 {{- if .Values.route.enabled -}}
 {{- $fullName := include "opensearch.fullname" . -}}
-{{- $svcPort := .Values.networking.service.port -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -10,13 +9,13 @@ metadata:
   annotations:
     {{- include "opensearch.route.annotations" . | nindent 4 }}
 spec:
-  host: {{ include "opensearch.route.hostname" . | quote }}
+  host: {{ .Values.route.hostname | quote }}
   path: /
   to:
     kind: Service
     name: opensearch-cluster-master
   port: 
-    targetPort: {{ $svcPort }}
+    targetPort: {{ .Values.opensearch.httpPort }}
   tls:
     termination: {{ .Values.route.tls.termination }}
     {{- if .Values.route.tls.key }}

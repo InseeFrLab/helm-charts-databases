@@ -1,22 +1,21 @@
 {{- if .Values.route.enabled -}}
-{{- $fullName := include "opensearch.fullname" .Subcharts.opensearch -}}
-{{- $svcPort := .Values.networking.dashboard.port -}}
+{{- $fullName := include "opensearch-dashboards.fullname" (index .Subcharts "opensearch-dashboards") -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ $fullName }}-dashboards
+  name: {{ $fullName }}
   labels:
     {{- include "opensearch.labels" .Subcharts.opensearch | nindent 4 }}
   annotations:
     {{- include "opensearch.routeDashboard.annotations" . | nindent 4 }}
 spec:
-  host: {{ include "opensearch.routeDasboard.hostname" . | quote }}
+  host: {{ .Values.routeDasboard.hostname | quote }}
   path: /
   to:
     kind: Service
     name: opensearch-cluster-master
   port: 
-    targetPort: {{ $svcPort }}
+    targetPort: {{ (index .Values "opensearch-dashboards").service.port }}
   tls:
     termination: {{ .Values.routeDashboard.tls.termination }}
     {{- if .Values.routeDashboard.tls.key }}

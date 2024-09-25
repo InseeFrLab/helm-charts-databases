@@ -29,6 +29,7 @@ opensearch:
   discoverable:
     allow: true
   replicas: 3
+  httpPort: 9200
   networkPolicy:
     create: false
     http:
@@ -70,6 +71,8 @@ opensearch:
       memory: "10Gi"
 
 opensearch-dashboards:
+  service:
+    port: 5601
   serviceAccount:
     create: false
   rbac:
