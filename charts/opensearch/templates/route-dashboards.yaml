@@ -9,7 +9,7 @@ metadata:
   annotations:
     {{- include "opensearch.routeDashboard.annotations" . | nindent 4 }}
 spec:
-  host: {{ .Values.routeDasboard.hostname | quote }}
+  host: {{ .Values.routeDashboard.hostname | quote }}
   path: /
   to:
     kind: Service
