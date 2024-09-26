@@ -13,7 +13,7 @@ spec:
   path: /
   to:
     kind: Service
-    name: opensearch-cluster-master
+    name: {{ include "opensearch.serviceName" .Subcharts.opensearch }}
   port: 
     targetPort: {{ .Values.opensearch.httpPort }}
   tls:
