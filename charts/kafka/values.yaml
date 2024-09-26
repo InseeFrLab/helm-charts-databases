@@ -13,4 +13,3 @@ kafka:
     interbroker:
       protocol: PLAINTEXT
 fullnameOverride: kafka
-
