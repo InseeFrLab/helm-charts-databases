@@ -2,14 +2,14 @@
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: {{ include "opensearch.fullname" . }}
+  name: {{ include "opensearch.fullname" .Subcharts.opensearch }}
 spec:
   podSelector:
     matchLabels:
-      {{- include "opensearch.selectorLabels" . | nindent 6 }}
+      {{- include "opensearch.selectorLabels" .Subcharts.opensearch | nindent 6 }}
   ingress:
   - from:
     - podSelector: {}
   policyTypes:
   - Ingress
-{{- end }} 
+{{- end }}

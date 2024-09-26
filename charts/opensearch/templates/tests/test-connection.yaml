@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "opensearch.serviceName" .Subcharts.opensearch }}-test-connection"
+  labels:
+    {{- include "opensearch.labels" .Subcharts.opensearch | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  containers:
+  - name: {{ include "opensearch.serviceName" .Subcharts.opensearch }}-test-connection
+    image: "inseefrlab/onyxia-python-minimal"
+    command: ["/bin/sh","-c"]
+    args:
+    - |
+      pip3 install opensearch-py && timeout 1m python3 <<EOF
+      # Minimal OpenSearch Python API sample program
+      # Cf https://opensearch.org/docs/latest/clients/python-low-level/
+      from opensearchpy import OpenSearch
+      host = "{{ .Values.opensearch.masterService }}"
+      port = {{ .Values.opensearch.httpPort }}
+      # Create the client with SSL/TLS and hostname verification disabled.
+      client = OpenSearch(
+          hosts = [{'host': host, 'port': port}],
+          http_auth = ('admin', '{{ include "opensearch.StrongPassword" . }}'),
+          use_ssl = True,
+          verify_certs = False,
+          ssl_show_warn = False
+      )
+
+      # Create an index with non-default settings.
+      index_name = 'python-test-index'
+      index_body = {
+        'settings': {
+          'index': {
+            'number_of_shards': 4
+          }
+        }
+      }
+
+      response = client.indices.create(index_name, body=index_body)
+      print('\nCreating index:')
+      print(response)
+
+      # Add a document to the index.
+      document = {
+        'title': 'Moneyball',
+        'director': 'Bennett Miller',
+        'year': '2011'
+      }
+      id = '1'
+
+      response = client.index(
+          index = index_name,
+          body = document,
+          id = id,
+          refresh = True
+      )
+
+      print('\nAdding document:')
+      print(response)
+
+      # Perform bulk operations
+
+      movies = '{ "index" : { "_index" : "my-dsl-index", "_id" : "2" } } \n { "title" : "Interstellar", "director" : "Christopher Nolan", "year" : "2014"} \n { "create" : { "_index" : "my-dsl-index", "_id" : "3" } } \n { "title" : "Star Trek Beyond", "director" : "Justin Lin", "year" : "2015"} \n { "update" : {"_id" : "3", "_index" : "my-dsl-index" } } \n { "doc" : {"year" : "2016"} }'
+
+      client.bulk(movies)
+
+      # Search for the document.
+      q = 'miller'
+      query = {
+        'size': 5,
+        'query': {
+          'multi_match': {
+            'query': q,
+            'fields': ['title^2', 'director']
+          }
+        }
+      }
+
+      response = client.search(
+          body = query,
+          index = index_name
+      )
+      print('\nSearch results:')
+      print(response)
+
+      # Delete the document.
+      response = client.delete(
+          index = index_name,
+          id = id
+      )
+
+      print('\nDeleting document:')
+      print(response)
+
+      # Delete the index.
+      response = client.indices.delete(
+          index = index_name
+      )
+
+      print('\nDeleting index:')
+      print(response)
+      EOF
+  restartPolicy: Never

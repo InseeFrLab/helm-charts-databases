@@ -1,16 +1,15 @@
 {{- if .Values.ingressDashboard.enabled -}}
-{{- $fullName := include "opensearch.fullname" . -}}
-{{- $svcPort := .Values.networking.dashboard.port -}}
+{{- $fullName := include "opensearch-dashboards.fullname" (index .Subcharts "opensearch-dashboards") -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}-dashboards
   labels:
-    {{- include "opensearch.labels" . | nindent 4 }}
+    {{- include "opensearch-dashboards.labels" (index .Subcharts "opensearch-dashboards") | nindent 4 }}
   annotations:
     {{- include "opensearch.ingressDashboard.annotations" . | nindent 4 }}
 spec:
-  {{- if and .Values.ingressDashboard.ingressClassName (eq "true" (include "opensearch.ingress.supportsIngressClassname" .)) }}
+  {{- if and .Values.ingressDashboard.ingressClassName (eq "true" (include "opensearch-dashboards.ingress.supportsIngressClassName" (index .Subcharts "opensearch-dashboards"))) }}
   ingressClassName: {{ .Values.ingressDashboard.ingressClassName | quote }}
   {{- end }}
 {{- if .Values.ingressDashboard.tls }}
@@ -18,7 +17,7 @@ spec:
     - hosts:
         - {{ .Values.ingressDashboard.hostname | quote }}
     {{- if .Values.ingressDashboard.useCertManager }}
-      secretName: tls-cert-{{ include "opensearch.fullname" . }}-dashboard
+      secretName: tls-cert-{{ $fullName }}
     {{- end }}
 {{- end }}
   rules:
@@ -29,7 +28,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}-opensearch-dashboards
+                name: {{ $fullName }}
                 port: 
-                  number: {{ $svcPort }}
+                  number: {{ (index .Values "opensearch-dashboards").service.port }}
 {{- end }}
