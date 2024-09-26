@@ -28,7 +28,6 @@
 {{- if .Values.routeKibana.enabled }}
 - Vous pouvez vous connecter à kibana avec votre navigateur à ce [lien](https://{{ .Values.routeKibana.hostname }})
 {{- end }}
-
 - Un seul cluster de {{ .Chart.Name }} peut être démarré dans un projet
 
 **NOTES sur la suppression :**
@@ -50,16 +49,13 @@
 {{- if .Values.route.enabled }}
 - You can connect to elastic with your browser on this [link](https://{{ .Values.route.hostname }})
 {{- end }}
-
 - You can connect to elastic from inside the datalab at this url : **https://{{ .Release.Name }}-elasticsearch:{{ .Values.elasticsearch.service.ports.restAPI }}**
-
 {{- if .Values.ingressKibana.enabled }}
-- You can connect to the kibana with your browser on this [link](http{{ if $.Values.ingressKibana.tls }}s{{ end }}://{{ .Values.ingressKibana.hostname }})
+- You can connect to kibana with your browser on this [link](http{{ if $.Values.ingressKibana.tls }}s{{ end }}://{{ .Values.ingressKibana.hostname }})
 {{- end }}
 {{- if .Values.routeKibana.enabled }}
-- You can connect to the kibana with your browser on this [link](https://{{ .Values.routeKibana.hostname }})
+- You can connect to kibana with your browser on this [link](https://{{ .Values.routeKibana.hostname }})
 {{- end }}
-
 - Only one cluster of {{ .Chart.Name }} can be started in a project
 
 *NOTES about deletion :*
@@ -67,5 +63,5 @@
 - **You can safely delete this chart and recreate one later**
 - Data volumes will not be deleted
 - If you start a new {{ .Chart.Name }}, it will reuse those volumes silently.
-- If you want to delete those volume definitely : `kubectl delete pvc {{ join " " $pvcList }}`
+- If you want to delete those volumes definitely : `kubectl delete pvc {{ join " " $pvcList }}`
 {{- end }}

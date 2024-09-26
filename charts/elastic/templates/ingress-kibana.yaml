@@ -1,5 +1,4 @@
 {{- if .Values.ingressKibana.enabled -}}
-{{- $svcPort := .Values.elasticsearch.kibana.service.ports.http -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -32,7 +31,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Release.Name }}-kibana
+                name: {{ include "common.names.fullname" .Subcharts.elasticsearch.Subcharts.kibana }}
                 port: 
-                  number: {{ $svcPort }}
+                  number: {{ .Values.elasticsearch.kibana.service.ports.http }}
 {{- end }}

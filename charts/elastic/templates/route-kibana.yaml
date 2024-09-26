@@ -1,5 +1,4 @@
 {{- if .Values.route.enabled -}}
-{{- $svcPort := .Values.elasticsearch.service.ports.restAPI  -}}
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -15,9 +14,9 @@ spec:
   path: /
   to:
     kind: Service
-    name:  {{ .Release.Name }}-kibana
+    name: {{ include "common.names.fullname" .Subcharts.elasticsearch.Subcharts.kibana }}
   port: 
-    targetPort: {{ $svcPort }}
+    targetPort: {{ include "elasticsearch.service.ports.restAPI" .Subcharts.elasticsearch }}
   tls:
     termination: {{ .Values.route.tls.termination }}
     {{- if .Values.route.tls.key }}
