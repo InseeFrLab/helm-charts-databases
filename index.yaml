@@ -4189,6 +4189,27 @@ entries:
   pgadmin:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-10-11T18:45:39.337053577Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.25
+    description: pgAdmin is an administration and development platform for PostgreSQL.
+      It's a GUI for Postgress SQL.
+    digest: d6765fb6b523903b24ddbceaf9934c0b991377fa01c513bba9acb114da35c3ba
+    home: https://www.pgadmin.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    name: pgadmin
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/pgadmin
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pgadmin-1.0.3/pgadmin-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-10-11T17:11:00.604882648Z"
     dependencies:
     - name: library-chart
@@ -4701,6 +4722,29 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pgadmin-0.0.1/pgadmin-0.0.1.tgz
     version: 0.0.1
   postgresql:
+  - apiVersion: v2
+    created: "2024-10-11T18:45:39.448966718Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.0.1
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.26
+    description: An object-relational database management system, a database server.
+    digest: 3b220c5b6e371457f44dbb0d972a1f0edd1f8c1f8dc09d2368f6e174c74b8c88
+    home: https://www.postgresql.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    - Database
+    name: postgresql
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/postgresql
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-1.0.3/postgresql-1.0.3.tgz
+    version: 1.0.3
   - apiVersion: v2
     created: "2024-10-11T17:11:00.809407629Z"
     dependencies:
@@ -6249,4 +6293,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-10-11T17:11:00.809870381Z"
+generated: "2024-10-11T18:45:39.449437951Z"
