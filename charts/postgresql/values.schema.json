@@ -143,6 +143,7 @@
               "type": "string",
               "title": "Admin password",
               "default": "changeme",
+              "render": "password",
               "x-form": {
                 "value": "{{project.password}}"
               },
@@ -165,6 +166,7 @@
               "type": "string",
               "title": "User password",
               "default": "changeme",
+              "render": "password",
               "x-form": {
                 "value": "{{project.password}}"
               },
