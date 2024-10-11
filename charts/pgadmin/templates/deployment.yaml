@@ -76,7 +76,7 @@ spec:
           value: {{ .Values.security.maxLoginAttempts | quote }}
         {{- end }}
         resources:
-          {{- toYaml .Values.resources | nindent 12 }}
+          {{- toYaml .Values.resources | nindent 10 }}
       {{- if .Values.s3.enabled }}
       initContainers:
       - name: download-s3
