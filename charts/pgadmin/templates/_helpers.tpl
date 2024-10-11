@@ -10,7 +10,6 @@
 {{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "postgres" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) }}
 {{- $service:= ( index $secret.data "postgres-service" | default "") | b64dec  }}
 {{- $username:= ( index $secret.data "postgres-username") | b64dec  }}
-{{- $password:= ( index $secret.data "postgres-password") | b64dec  }}
 {{- $database:= ( index $secret.data "postgres-database") | b64dec  }}
 {{- $port:= ( index $secret.data "postgres-port")  }}
 {{- if $virgule }}

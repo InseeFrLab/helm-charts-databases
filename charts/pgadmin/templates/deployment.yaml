@@ -36,72 +36,71 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            failureThreshold: 30
-            timeoutSeconds: 5
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            failureThreshold: 30
-            timeoutSeconds: 5
-            httpGet:
-              path: /
-              port: http
-          {{- if .Values.discovery.postgres }}
-          volumeMounts:
-          - name: config
-            mountPath: "/config"
-          - name: data
-            mountPath: "/var/lib/pgadmin/storage"
-          {{- end }}
-          env:
-            - name: PGADMIN_DEFAULT_EMAIL
-              value: {{ .Values.security.mail }}
-            - name: PGADMIN_DEFAULT_PASSWORD
-              value: {{ .Values.security.password }}
-            {{- if .Values.discovery.postgres }}
-            - name: PGADMIN_SERVER_JSON_FILE
-              value: "/config/servers.json"
-            - name: MAX_LOGIN_ATTEMPTS
-              value: {{ .Values.security.maxLoginAttempts | quote }}
-            {{- end }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+      - name: {{ .Chart.Name }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 10 }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
+        livenessProbe:
+          failureThreshold: 30
+          timeoutSeconds: 5
+          httpGet:
+            path: /
+            port: http
+        readinessProbe:
+          failureThreshold: 30
+          timeoutSeconds: 5
+          httpGet:
+            path: /
+            port: http
+        {{- if .Values.discovery.postgres }}
+        volumeMounts:
+        - name: config
+          mountPath: "/config"
+        - name: data
+          mountPath: "/var/lib/pgadmin/storage"
+        {{- end }}
+        env:
+        - name: PGADMIN_DEFAULT_EMAIL
+          value: {{ .Values.security.mail }}
+        - name: PGADMIN_DEFAULT_PASSWORD
+          value: {{ .Values.security.password }}
+        {{- if .Values.discovery.postgres }}
+        - name: PGADMIN_SERVER_JSON_FILE
+          value: "/config/servers.json"
+        - name: MAX_LOGIN_ATTEMPTS
+          value: {{ .Values.security.maxLoginAttempts | quote }}
+        {{- end }}
+        resources:
+          {{- toYaml .Values.resources | nindent 12 }}
       {{- if .Values.s3.enabled }}
       initContainers:
-        - name: download-s3
-          image: {{ .Values.initContainer.image }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
-          imagePullPolicy: IfNotPresent
-          command:
-            - sh
-            - -c
-            - |
-              mkdir /data/{{ include "pgadmin.cleanemail" . }} ;
-              MC_HOST_s3=https://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY:$AWS_SESSION_TOKEN@$AWS_S3_ENDPOINT mc cp -r s3/{{ .Values.s3.path }} /data/{{ include "pgadmin.cleanemail" . }}
-              exit 0
-          envFrom:
-            - secretRef:
-                name: {{ include "library-chart.secretNameS3" . }}
-          env:
-          - name: HOME
-            value: /tmp
-          volumeMounts:
-          - name: data
-            mountPath: "/data"
-          securityContext:
-            {{- toYaml .Values.initContainer.securityContext | nindent 12 }}
+      - name: download-s3
+        image: {{ .Values.initContainer.image }}
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        imagePullPolicy: IfNotPresent
+        command: ["sh", "-c"]
+        args:
+        - |
+          mkdir /data/{{ include "pgadmin.cleanemail" . }} ;
+          MC_HOST_s3=https://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY:$AWS_SESSION_TOKEN@$AWS_S3_ENDPOINT mc cp -r s3/{{ .Values.s3.path }} /data/{{ include "pgadmin.cleanemail" . }}
+          exit 0
+        envFrom:
+        - secretRef:
+            name: {{ include "library-chart.secretNameS3" . }}
+        env:
+        - name: HOME
+          value: /tmp
+        volumeMounts:
+        - name: data
+          mountPath: "/data"
+        securityContext:
+          {{- toYaml .Values.initContainer.securityContext | nindent 10 }}
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

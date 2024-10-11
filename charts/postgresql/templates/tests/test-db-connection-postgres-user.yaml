@@ -13,21 +13,17 @@ spec:
   - name: {{ include "library-chart.fullname" . }}-test-connection-postgres-user
     image: "postgres:16"
     env:
-      - name: HOST
-        value: {{ include "library-chart.fullname" . }}
-      - name: PGPASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: {{ include "library-chart.fullname" . }}
-            key: postgres-password
-      - name: PORT
-        value: {{ .Values.postgresql.global.postgresql.service.ports.postgresql | quote }}
-      - name: DATABASE_NAME
-        value: {{ .Values.postgresql.auth.database }}
-    command: 
-      - sh
-      - -c
-      - psql -h $HOST -p $PORT -U postgres -d $DATABASE_NAME
-
+    - name: HOST
+      value: {{ include "postgresql.v1.primary.fullname" .Subcharts.postgresql }}
+    - name: DATABASE_NAME
+      value: {{ .Values.postgresql.auth.database | quote }}
+    - name: PORT
+      value: {{ .Values.postgresql.service.ports.postgresql | quote }}
+    - name: PGPASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: {{ include "library-chart.fullname" . }}
+          key: postgres-password
+    command: ["sh", "-c", "psql -h $HOST -p $PORT -U postgres -d $DATABASE_NAME"]
   restartPolicy: Never
 {{- end }}

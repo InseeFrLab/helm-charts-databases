@@ -1,7 +1,7 @@
 {{- if eq .Values.userPreferences.language "fr" }}
 - Vous pouvez vous connecter à ce service (depuis l'intérieur du cluster) avec les informations de connexion suivantes :
     - Hostname : **{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}**
-    - Port : **{{ .Values.postgresql.global.postgresql.service.ports.postgresql }}**
+    - Port : **{{ .Values.postgresql.service.ports.postgresql }}**
     - Database : **{{ .Values.postgresql.auth.database }}**
     - Username : **{{ .Values.postgresql.auth.username }}**
     - Password : **{{ .Values.postgresql.auth.password }}**
@@ -10,9 +10,13 @@
     - Admin username : **postgres**
     - Admin password : **{{ .Values.postgresql.auth.postgresPassword }}**
 {{- else }}
+  {{- if ne .Values.userPreferences.language "en" -}}
+*NOTES are not supported for language `{{ .Values.userPreferences.language }}`... Defaulting to english.*
+
+  {{ end -}}
 - You can connect to this service (within the cluster itself) using the following connection information :
     - Hostname : **{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}**
-    - Port : **{{ .Values.postgresql.global.postgresql.service.ports.postgresql }}**
+    - Port : **{{ .Values.postgresql.service.ports.postgresql }}**
     - Database : **{{ .Values.postgresql.auth.database }}**
     - Username : **{{ .Values.postgresql.auth.username }}**
     - Password : **{{ .Values.postgresql.auth.password }}**
@@ -20,4 +24,4 @@
 - If you need admin access to this database (e.g. to add extensions), the connection information are :
     - Admin username : **postgres**
     - Admin password : **{{ .Values.postgresql.auth.postgresPassword }}**
-{{- end }}
+{{- end -}}

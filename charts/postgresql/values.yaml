@@ -1,12 +1,10 @@
 postgresql:
   image:
-    tag: "14"
+    tag: "16"
     pullPolicy: IfNotPresent
-  global:
-    postgresql:
-      service: 
-        ports:
-          postgresql: 5432
+  service: 
+    ports:
+      postgresql: 5432
   auth:
     postgresPassword: ""
     username: ""
