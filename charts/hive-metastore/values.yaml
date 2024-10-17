@@ -49,7 +49,7 @@ postgresql:
   fullnameOverride: "hive-metastore-db"
 
 listener:
-  enabled: true
+  enabled: false
   className: org.pengfei.hive.listener.CustomHiveListener
   kafkaBrokerUrl: kafka-0.kafka-headless:9092
   kafkaTopicName: hive-meta
