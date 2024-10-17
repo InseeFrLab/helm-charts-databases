@@ -78,10 +78,6 @@ spec:
         - name: PGADMIN_DEFAULT_PASSWORD
           value: {{ .Values.security.password }}
         {{- end }}
-        {{- if .Values.env.password }}
-        - name: PGADMIN_DEFAULT_PASSWORD
-          value: {{ .Values.security.password }}
-        {{- end }}
         {{- if .Values.discovery.postgres }}
         - name: PGADMIN_SERVER_JSON_FILE
           value: "/config/servers.json"
