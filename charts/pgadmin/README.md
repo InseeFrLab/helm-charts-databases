@@ -1,6 +1,6 @@
 # pgadmin
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 pgAdmin is an administration and development platform for PostgreSQL. It's a GUI for Postgress SQL.
 
@@ -26,6 +26,7 @@ pgAdmin is an administration and development platform for PostgreSQL. It's a GUI
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | discovery.postgres | bool | `true` |  |
+| env.existingSecretName | string | `""` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
 | image.repository | string | `"dpage/pgadmin4"` |  |
@@ -35,6 +36,7 @@ pgAdmin is an administration and development platform for PostgreSQL. It's a GUI
 | ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `true` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
+| ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
 | ingress.useCertManager | bool | `false` |  |
 | initContainer.image | string | `"inseefrlab/onyxia-base"` |  |
