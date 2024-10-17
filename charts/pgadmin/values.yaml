@@ -6,6 +6,9 @@ replicaCount: 1
 
 discovery:
   postgres: true
+
+env:
+  existingSecretName: ""
   
 security:
   mail: example@example.com
@@ -17,7 +20,8 @@ security:
   allowlist:
     enabled: true
     ip: "0.0.0.0/0"
-    
+
+
 image:
   repository: dpage/pgadmin4
   pullPolicy: Always
@@ -41,7 +45,7 @@ podAnnotations: {}
 
 podSecurityContext:
   runAsUser: 5050
-
+  
 securityContext:
   runAsUser: 5050
   # capabilities:
@@ -74,7 +78,7 @@ ingress:
   tls: true
   useCertManager: false
   certManagerClusterIssuer: ""
-
+  ingressClassName: ""
   annotations: []
     # kubernetes.io/tls-acme: "true"
   hostname: chart-example.local
