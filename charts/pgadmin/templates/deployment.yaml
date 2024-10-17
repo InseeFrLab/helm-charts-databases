@@ -64,14 +64,25 @@ spec:
         - name: data
           mountPath: "/var/lib/pgadmin/storage"
         {{- end }}
+        {{- if .Values.env.existingSecretName }}
+        envFrom:
+        - secretRef:
+            name: {{ .Values.env.existingSecretName }}
+        {{- end }}
         env:
+        {{- if .Values.security.mail }}
         - name: PGADMIN_DEFAULT_EMAIL
           value: {{ .Values.security.mail }}
+        {{- end }}
+        {{- if .Values.security.password }}
         - name: PGADMIN_DEFAULT_PASSWORD
           value: {{ .Values.security.password }}
+        {{- end }}
         {{- if .Values.discovery.postgres }}
         - name: PGADMIN_SERVER_JSON_FILE
           value: "/config/servers.json"
+        {{- end }}
+        {{- if .Values.security.maxLoginAttempts }}
         - name: MAX_LOGIN_ATTEMPTS
           value: {{ .Values.security.maxLoginAttempts | quote }}
         {{- end }}
