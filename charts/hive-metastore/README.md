@@ -1,6 +1,6 @@
 # hive-metastore
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Hive metastore manage the metadata relational entities  in a relational database.
 
@@ -36,7 +36,7 @@ Hive metastore manage the metadata relational entities  in a relational database
 | imagePullSecrets | list | `[]` |  |
 | listener.className | string | `"org.pengfei.hive.listener.CustomHiveListener"` |  |
 | listener.domainNamespace | string | `"user-pengfei"` |  |
-| listener.enabled | bool | `true` |  |
+| listener.enabled | bool | `false` |  |
 | listener.jarPath | string | `"/opt/hive/lib/hive-listener.jar"` |  |
 | listener.kafkaBrokerUrl | string | `"kafka-0.kafka-headless:9092"` |  |
 | listener.kafkaTopicName | string | `"hive-meta"` |  |
