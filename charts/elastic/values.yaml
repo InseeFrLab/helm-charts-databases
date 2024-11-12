@@ -48,7 +48,8 @@ elasticsearch:
           existingSecret: "elastic-elasticsearch-coordinating-crt"
           # As the certs are auto-generated, they are pemCerts so set to true
           usePemCerts: true
-    
+    extraConfiguration:
+      monitoring.ui.ccs.enabled: false
     tls:
       enabled: true
       # AutoGenerate TLS certs for kibana

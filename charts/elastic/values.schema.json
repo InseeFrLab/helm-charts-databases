@@ -96,6 +96,16 @@
                                             }
                                         }
                                     }
+                                },
+                                "extraConfiguration": {
+                                    "type": "object",
+                                    "properties": {
+                                        "monitoring.ui.ccs.enabled": {
+                                            "type": "string",
+                                            "description": "monitoring.ui.ccs.enabled",
+                                            "default": false
+                                        }
+                                    }
                                 }
                             }
                         }
