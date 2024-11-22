@@ -1,11 +1,13 @@
 {{- $pvcList := list }}
 {{- $replicas := int .Values.elasticsearch.master.replicaCount }}
 {{- range $e, $i := until $replicas }}
-{{- $pvcList = append $pvcList (printf "%s-%s-%d" "data-elastic-elasticsearch" "master" $i) }}
+{{- $masterName := include "elasticsearch.master.fullname" .Subcharts.elasticsearch }}
+{{- $pvcList = append $pvcList (printf "%s-%s-%d" "data" $masterName $i) }}
 {{- end }}
 {{- $replicasdata := int .Values.elasticsearch.data.replicaCount }}
+{{- $dataName := include "elasticsearch.data.fullname" .Subcharts.elasticsearch }}
 {{- range $e, $i := until $replicasdata }}
-{{- $pvcList = append $pvcList (printf "%s-%s-%d" "data-elastic-elasticsearch" "data" $i) }}
+{{- $pvcList = append $pvcList (printf "%s-%s-%d" "data" $dataName $i) }}
 {{- end }}
 
 {{- if eq .Values.userPreferences.language "fr" }}
@@ -21,7 +23,7 @@
 {{- if .Values.route.enabled }}
 - Vous pouvez vous connecter à elastic avec votre navigateur à ce [lien](https://{{ .Values.route.hostname }})
 {{- end }}
-- Vous pouvez vous connectez à elastic depuis l'intérieur du datalab à cette URL : **https://{{ .Release.Name }}-elasticsearch:{{ .Values.elasticsearch.service.ports.restAPI }}**
+- Vous pouvez vous connectez à elastic depuis l'intérieur du datalab à cette URL : **http://{{ include "elasticsearch.service.name" .Subcharts.elasticsearch }}:{{ include "elasticsearch.service.ports.restAPI" .Subcharts.elasticsearch }}**
 {{- if .Values.ingressKibana.enabled }}
 - Vous pouvez vous connecter à kibana avec votre navigateur à ce [lien](http{{ if $.Values.ingressKibana.tls }}s{{ end }}://{{ .Values.ingressKibana.hostname }})
 {{- end }}
@@ -39,22 +41,22 @@
 {{- else }}
 
 {{- if .Values.elasticsearch.security.enabled }}
-- Your username is **elastic** 
+- Your username is **elastic**
 - Your password is **{{ .Values.elasticsearch.security.elasticPassword}}**
 {{- end }}
 
 {{- if .Values.ingress.enabled }}
-- You can connect to elastic with your browser on this [link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
+- You can connect to elastic with your browser on [this link](http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
 {{- end }}
 {{- if .Values.route.enabled }}
-- You can connect to elastic with your browser on this [link](https://{{ .Values.route.hostname }})
+- You can connect to elastic with your browser on [this link](https://{{ .Values.route.hostname }})
 {{- end }}
-- You can connect to elastic from inside the datalab at this url : **https://{{ .Release.Name }}-elasticsearch:{{ .Values.elasticsearch.service.ports.restAPI }}**
+- You can connect to elastic from inside the datalab at this url: **http://{{ include "elasticsearch.service.name" .Subcharts.elasticsearch }}:{{ include "elasticsearch.service.ports.restAPI" .Subcharts.elasticsearch }}**
 {{- if .Values.ingressKibana.enabled }}
-- You can connect to kibana with your browser on this [link](http{{ if $.Values.ingressKibana.tls }}s{{ end }}://{{ .Values.ingressKibana.hostname }})
+- You can connect to kibana with your browser on [this link](http{{ if $.Values.ingressKibana.tls }}s{{ end }}://{{ .Values.ingressKibana.hostname }})
 {{- end }}
 {{- if .Values.routeKibana.enabled }}
-- You can connect to kibana with your browser on this [link](https://{{ .Values.routeKibana.hostname }})
+- You can connect to kibana with your browser on [this link](https://{{ .Values.routeKibana.hostname }})
 {{- end }}
 - Only one cluster of {{ .Chart.Name }} can be started in a project
 
