@@ -1,7 +1,7 @@
 {{- $pvcList := list }}
 {{- $replicas := int .Values.elasticsearch.master.replicaCount }}
-{{- range $e, $i := until $replicas }}
 {{- $masterName := include "elasticsearch.master.fullname" .Subcharts.elasticsearch }}
+{{- range $e, $i := until $replicas }}
 {{- $pvcList = append $pvcList (printf "%s-%s-%d" "data" $masterName $i) }}
 {{- end }}
 {{- $replicasdata := int .Values.elasticsearch.data.replicaCount }}
