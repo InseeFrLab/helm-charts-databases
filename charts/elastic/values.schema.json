@@ -3,11 +3,11 @@
   "type": "object",
   "properties": {
     "elasticsearch": {
-      "description": "elasticsearch configuration",
+      "description": "Elasticsearch configuration",
       "type": "object",
       "properties": {
         "image": {
-          "description": "elasticsearch image",
+          "description": "Elasticsearch image",
           "type": "object",
           "properties": {
             "registry": {
@@ -21,15 +21,13 @@
               "default": "bitnami/elasticsearch"
             },
             "tag": {
-              "description": "tag",
+              "description": "Tag Elasticsearch",
               "type": "string",
-              "default": "8.15.1-debian-12-r2",
+              "default": "8.16.1-debian-12-r0",
               "enum": [
+                "8.16.1-debian-12-r0",
                 "8.15.1-debian-12-r2",
-                "8.14.2-debian-12-r1",
-                "8.14.1-debian-12-r1",
-                "8.13.4-debian-12-r0",
-                "7.17.3"
+                "8.14.2-debian-12-r1"
               ]
             },
             "pullPolicy": {
@@ -74,6 +72,22 @@
           "description": "kibana specific configuration",
           "type": "object",
           "properties": {
+            "image": {
+              "description": "Kibana image",
+              "type": "object",
+              "properties": {
+                "tag": {
+                  "description": "Tag Kibana",
+                  "type": "string",
+                  "default": "8.16.1-debian-12-r0",
+                  "enum": [
+                    "8.16.1-debian-12-r0",
+                    "8.16.0-debian-12-r0",
+                    "8.15.3-debian-12-r0"
+                  ]
+                }
+              }
+            },
             "elasticsearch": {
               "type": "object",
               "properties": {
