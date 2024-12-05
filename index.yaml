@@ -4029,6 +4029,27 @@ entries:
   openrefine:
   - apiVersion: v2
     appVersion: latest
+    created: "2024-12-05T12:07:38.862506101Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.33
+    description: OpenRefine (previously Google Refine) is a powerful tool for working
+      with messy data, cleaning it; transforming it from one format into another;
+      and extending it with web services and external data.
+    digest: 8a47d9f39855acf71a308b2c1b9905e144b948dc92568455cb68fc4cc76e01f8
+    home: https://openrefine.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/openrefine.png
+    name: openrefine
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/openrefine
+    - https://github.com/vimagick/dockerfiles/blob/master/openrefine/Dockerfile
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/openrefine-4.0.4/openrefine-4.0.4.tgz
+    version: 4.0.4
+  - apiVersion: v2
+    appVersion: latest
     created: "2024-09-18T12:58:47.303212363Z"
     dependencies:
     - name: library-chart
@@ -6567,4 +6588,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2024-12-05T11:58:41.320711285Z"
+generated: "2024-12-05T12:07:38.863009525Z"
