@@ -24,7 +24,7 @@
             "tag": {
               "description": "supported tag",
               "type": "string",
-              "default": "0.255.2"
+              "default": "0.258.3"
             }
             
           }
