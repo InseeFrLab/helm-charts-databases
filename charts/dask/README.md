@@ -1,6 +1,6 @@
 # dask
 
-![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 Dask is a flexible open-source Python library for parallel computing
 
@@ -15,7 +15,7 @@ Dask is a flexible open-source Python library for parallel computing
 | Repository | Name | Version |
 |------------|------|---------|
 | https://helm.dask.org | dask | 2024.1.1 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
 
 ## Values
 
