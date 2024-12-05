@@ -1,6 +1,6 @@
 # lakefs
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Data version control for data lakes.  It enables zero copy isolated environments, and more.
 
@@ -15,9 +15,9 @@ Data version control for data lakes.  It enables zero copy isolated environments
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 15.5.32 |
-| https://charts.lakefs.io | lakefs | 1.3.10 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
+| https://charts.bitnami.com/bitnami | postgresql | 16.2.5 |
+| https://charts.lakefs.io | lakefs | 1.3.21 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
 
 ## Values
 
