@@ -1,6 +1,6 @@
 # nocodb
 
-![Version: 2.0.3](https://img.shields.io/badge/Version-2.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.255.2](https://img.shields.io/badge/AppVersion-0.255.2-informational?style=flat-square)
+![Version: 2.0.4](https://img.shields.io/badge/Version-2.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.258.3](https://img.shields.io/badge/AppVersion-0.258.3-informational?style=flat-square)
 
 NocoDB is an open source NoCode platform that turns any database into a smart spreadsheet
 
@@ -15,8 +15,8 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 15.5.32 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.25 |
+| https://charts.bitnami.com/bitnami | postgresql | 16.2.5 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
 
 ## Values
 
@@ -65,7 +65,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 | securityContext | object | `{}` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
 | service.image.repository | string | `"nocodb/nocodb"` |  |
-| service.image.tag | string | `"0.255.2"` |  |
+| service.image.tag | string | `"0.258.3"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
