@@ -61,9 +61,9 @@ spec:
         volumeMounts:
         - name: config
           mountPath: "/config"
+        {{- end }}
         - name: data
           mountPath: "/var/lib/pgadmin/storage"
-        {{- end }}
         {{- if .Values.env.existingSecretName }}
         envFrom:
         - secretRef:
