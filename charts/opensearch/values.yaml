@@ -15,7 +15,7 @@ ingress:
   useCertManager: false
   certManagerClusterIssuer: ""
   annotations: []
-  
+
 ingressDashboard:
   enabled: false
   ingressClassName: ""
@@ -26,8 +26,6 @@ ingressDashboard:
   annotations: []
 
 opensearch:
-  discoverable:
-    allow: true
   replicas: 3
   httpPort: 9200
   networkPolicy:
@@ -37,7 +35,7 @@ opensearch:
   securityConfig:
     enabled: true
   envFrom:
-  - secretRef: 
+  - secretRef:
       name: opensearch-env-secret
   persistence:
     enabled: true
@@ -69,6 +67,9 @@ opensearch:
     limits:
       cpu: "1000m"
       memory: "10Gi"
+
+discovery:
+  enabled: true
 
 opensearch-dashboards:
   service:

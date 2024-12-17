@@ -18,7 +18,7 @@ spark:
   default: true
   config:
     spark.master: k8s://https://kubernetes.default.svc:443
-    spark.kubernetes.authenticate.driver.serviceAccountName: '{{ include "library-chart.fullname" . }}'                
+    spark.kubernetes.authenticate.driver.serviceAccountName: '{{ include "library-chart.fullname" . }}'
     spark.kubernetes.driver.pod.name: '{{ include "library-chart.fullname" . }}-0'
     spark.kubernetes.namespace: '{{ .Release.Namespace }}'
     spark.dynamicAllocation.enabled: "true"
@@ -34,10 +34,8 @@ init:
   filename: "onyxia-init.sh"
 
 discovery:
+  enabled: true
   hive: true
-
-discoverable:
-  allow: true
 
 environment:
   s3: true
@@ -60,13 +58,9 @@ s3:
   secretAccessKey: ""
   sessionToken: ""
 
-
-liveness:
-  enabled : "true"
-
 security:
   password: "changeme"
-  networkPolicy: 
+  networkPolicy:
     enabled: false
     from: []
   allowlist:
@@ -85,9 +79,6 @@ serviceAccount:
 kubernetes:
   enabled: true
   role: "edit"
-
-readiness:
-  enabled: "true"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -131,7 +122,7 @@ resources: {}
 ingress:
   enabled: true
   tls: true
-  ingressClassName: "" 
+  ingressClassName: ""
   annotations: []
     # kubernetes.io/tls-acme: "true"
   sparkHostname: chart-example-spark.local

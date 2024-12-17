@@ -42,7 +42,7 @@ spec:
           env:
             - name: SPARK_NO_DAEMONIZE
               value: "true"
-          envFrom: 
+          envFrom:
             {{- if .Values.environment.s3 }}
             - secretRef:
                 name: {{ include "library-chart.secretNameS3" . }}
@@ -65,7 +65,7 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 20
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}         
+            {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - mountPath: /data
               name: {{$volumeName}}
@@ -87,7 +87,7 @@ spec:
           args: ["wget -O /data/{{ .Values.init.filename}} {{ .Values.init.standardInit}} && chmod +x /data/{{ .Values.init.filename}}"]
           volumeMounts:
           - mountPath: /data
-            name: {{$volumeName}}   
+            name: {{$volumeName}}
       volumes:
         - name: {{$volumeName}}
           emptyDir: {}

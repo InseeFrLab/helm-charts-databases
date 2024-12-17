@@ -7,7 +7,7 @@ global:
       username: "admin"
       password: "changeme"
       database: "metastore"
-  
+
 replicaCount: 1
 
 service:
@@ -22,7 +22,6 @@ service:
 environment:
   s3: true
 
-
 s3:
   # Specifies whether a config map should be created
   enabled: false
@@ -34,13 +33,12 @@ s3:
   defaultRegion: ""
   secretAccessKey: ""
   sessionToken: ""
-discoverable:
-  allow: true
-liveness:
-  enabled : "true"
+
+discovery:
+  enabled: true
 
 security:
-  networkPolicy: 
+  networkPolicy:
     enabled: true
 
 postgresql:
@@ -55,10 +53,6 @@ listener:
   kafkaTopicName: hive-meta
   domainNamespace: user-pengfei
   jarPath: /opt/hive/lib/hive-listener.jar
-
-readiness:
-  enabled: "true"
-
 
 imagePullSecrets: []
 nameOverride: ""

@@ -2,7 +2,7 @@ postgresql:
   image:
     tag: "16"
     pullPolicy: IfNotPresent
-  service: 
+  service:
     ports:
       postgresql: 5432
   auth:
@@ -22,12 +22,12 @@ postgresql:
         cpu: 250m
     initdb:
       scriptsConfigMap: '{{ include "library-chart.fullname" . }}'
-  
-discoverable:
-  allow: true
+
+discovery:
+  enabled: true
 
 security:
-  networkPolicy: 
+  networkPolicy:
     enabled: true
 
 userPreferences:

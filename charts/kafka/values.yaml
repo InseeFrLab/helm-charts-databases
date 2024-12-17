@@ -1,8 +1,6 @@
 kafka:
   fullnameOverride: kafka
   replicaCount: 3
-  discoverable:
-    allow: true
   zookeeper:
     fullnameOverride: kafka-zookeeper
   listeners:
@@ -12,4 +10,8 @@ kafka:
       protocol: PLAINTEXT
     interbroker:
       protocol: PLAINTEXT
+
 fullnameOverride: kafka
+
+discovery:
+  enabled: true
