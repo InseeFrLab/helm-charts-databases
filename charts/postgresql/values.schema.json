@@ -234,8 +234,8 @@
       "properties": {
         "enabled": {
           "type": "boolean",
-          "title": "Enable discovery of this databse",
-          "description": "Allows clients to automatically preconfigure connections to this database",
+          "title": "Enable discovery of this database",
+          "description": "Allows clients to automatically preconfigure a connexion to this database",
           "default": true
         }
       }

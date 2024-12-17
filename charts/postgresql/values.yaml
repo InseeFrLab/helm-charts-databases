@@ -23,7 +23,7 @@ postgresql:
     initdb:
       scriptsConfigMap: '{{ include "library-chart.fullname" . }}'
 
-discoverable:
+discovery:
   enabled: true
 
 security:

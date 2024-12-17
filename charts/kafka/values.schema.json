@@ -1,13 +1,13 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
   "properties": {
     "kafka": {
-      "description": "postgres specific configuration",
+      "description": "Kafka specific configuration",
       "type": "object",
       "properties": {
         "replicaCount": {
-          "description": "number of worker",
+          "description": "Number of workers",
           "type": "integer",
           "default": 3
         },
@@ -37,6 +37,18 @@
               }
             }
           }
+        }
+      }
+    },
+    "discovery": {
+      "description": "Database discovery",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enable discovery of this database",
+          "description": "Allows clients to automatically preconfigure a connexion to this database",
+          "default": true
         }
       }
     }
