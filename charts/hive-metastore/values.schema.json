@@ -148,6 +148,18 @@
         }
       }
     },
+    "discovery": {
+      "description": "Database discovery",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enable discovery of this databse",
+          "description": "Allows clients to automatically preconfigure connections to this database",
+          "default": true
+        }
+      }
+    },
     "security": {
       "description": "security specific configuration",
       "type": "object",
