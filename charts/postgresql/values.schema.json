@@ -228,7 +228,7 @@
         }
       }
     },
-    "discoverable": {
+    "discovery": {
       "description": "Database discovery",
       "type": "object",
       "properties": {
