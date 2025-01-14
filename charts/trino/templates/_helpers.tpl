@@ -125,19 +125,19 @@ Create the name of the service account to use
     hive.config.resources=/etc/trino/hdfs/core-site.xml
 {{ printf "hive.metastore.uri=thrift://%s:9083" $service | indent 4}}
 {{ printf "hive.s3.endpoint=%s" $endpoint | indent 4 }}
-{{/*   hive.non-managed-table-writes-enabled=true */}} 
+{{/*   hive.non-managed-table-writes-enabled=true */}}
 {{ printf "iceberg.properties: |" | indent 2}}
     connector.name=iceberg
     hive.config.resources=/etc/trino/hdfs/core-site.xml
 {{ printf "hive.metastore.uri=thrift://%s:9083" $service | indent 4}}
 {{ printf "hive.s3.endpoint=%s" $endpoint | indent 4 }}
-{{/*   hive.non-managed-table-writes-enabled=true */}} 
+{{/*   hive.non-managed-table-writes-enabled=true */}}
 {{ printf "deltalake.properties: |" | indent 2}}
     connector.name=delta-lake
     hive.config.resources=/etc/trino/hdfs/core-site.xml
 {{ printf "hive.metastore.uri=thrift://%s:9083" $service | indent 4}}
 {{ printf "hive.s3.endpoint=%s" $endpoint | indent 4 }}
-{{/*   hive.non-managed-table-writes-enabled=true */}} 
+{{/*   hive.non-managed-table-writes-enabled=true */}}
 {{- end }}
 {{- end -}}
 

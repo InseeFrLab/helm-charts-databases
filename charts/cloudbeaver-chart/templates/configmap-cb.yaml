@@ -30,7 +30,7 @@ data:
             password : {{ .Values.postgresql.auth.password }} ,
             initialDataConfiguration: "conf/initial-data.conf",
             pool: {
-                minIdleConnections: 4, 
+                minIdleConnections: 4,
                 maxIdleConnections: 10,
                 maxConnections: 100,
                 validationQuery: "SELECT 1"

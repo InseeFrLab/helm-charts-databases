@@ -49,7 +49,7 @@ spec:
           configMap:
             name: {{ include "library-chart.fullname" . }}-schemas-volume-coordinator
         - name: secret-coresite
-          secret: 
+          secret:
             secretName:  {{ include "library-chart.secretNameCoreSite" . }}
         {{- if .Values.accessControl }}{{- if eq .Values.accessControl.type "configmap" }}
         - name: access-control-volume

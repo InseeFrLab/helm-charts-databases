@@ -41,7 +41,7 @@ spec:
             - name: thrift
               containerPort: 9083
               protocol: TCP
-          {{ if .Values.listener.enabled }}    
+          {{ if .Values.listener.enabled }}
           env:
             - name: KAFKA_BROKER_URL
               value: {{ .Values.listener.kafkaBrokerUrl }}
@@ -51,7 +51,7 @@ spec:
               value: {{ .Values.listener.domainNamespace }}
             - name: HIVE_AUX_JARS_PATH
               value: {{ .Values.listener.jarPath }}
-          {{ end }} 
+          {{ end }}
           readinessProbe:
             tcpSocket:
               port: 9083
@@ -63,7 +63,7 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 20
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}         
+            {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
           - name: hive-config
             mountPath: /opt/hive/conf

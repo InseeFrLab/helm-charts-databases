@@ -32,6 +32,6 @@ spec:
             backend:
               service:
                 name: {{ include "elasticsearch.service.name" .Subcharts.elasticsearch }}
-                port: 
+                port:
                   number: {{ include "elasticsearch.service.ports.restAPI" .Subcharts.elasticsearch }}
 {{- end }}

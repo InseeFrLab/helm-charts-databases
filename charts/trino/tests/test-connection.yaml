@@ -16,4 +16,3 @@ spec:
       args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }}']
   restartPolicy: Never
 {{- end }}
-

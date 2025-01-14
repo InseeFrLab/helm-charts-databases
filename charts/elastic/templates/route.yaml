@@ -16,7 +16,7 @@ spec:
   to:
     kind: Service
     name:  {{ include "elasticsearch.service.name" .Subcharts.elasticsearch }}
-  port: 
+  port:
     targetPort: {{ $svcPort }}
   tls:
     termination: {{ .Values.route.tls.termination }}

@@ -72,10 +72,10 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-      
+
       volumes:
         - name: cb-config
-          configMap: 
+          configMap:
             name: {{ include "library-chart.fullname" . }}-cb-config
         - name: product-config
           configMap:
@@ -97,12 +97,12 @@ spec:
               until printf "." && nc -z -w 2 {{ .Values.postgresql.fullnameOverride }} 5432; do
                   sleep 2;
               done;
-              echo 'PostgreSQL OK ✓'  
+              echo 'PostgreSQL OK ✓'
           resources:
             requests:
               cpu: "0.05"
               memory: "128Mi"
-      {{- with .Values.nodeSelector }} 
+      {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}

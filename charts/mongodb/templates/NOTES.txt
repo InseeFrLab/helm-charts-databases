@@ -11,7 +11,7 @@
 {{- $pvcList = append $pvcList (printf "datadir-%s-%d" $fullname $i) }}
 {{- $mongoList = append $mongoList (printf "%s-%d.%s-headless:%d" $fullname $i $fullname $portNumber) }}
 {{- end }}
-- the connection string is : 
+- the connection string is :
 
 **`mongodb://{{ $user }}:{{ $password }}@{{ (include "mongoList" .)}}/{{ $db }}?authSource={{ $db }}`**
 - example for python :
@@ -25,7 +25,7 @@ db=client.{{ $db }}
 
   * as user in {{ $db }}
     `mongo -u {{ $user }} -p {{ $password }} --authenticationDatabase {{ $db }}`
-  * as root 
+  * as root
     `mongo -u root -p {{ $rootPassword }}`
 
 *NOTES about deletion :*

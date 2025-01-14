@@ -54,11 +54,11 @@ spec:
           {{- end }}
           command: ["/bin/sh","-c"]
           args: ["/opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer"]
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}        
+          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
           env:
             - name: SPARK_HISTORY_OPTS
               value: "-Dspark.history.fs.logDirectory={{ .Values.spark.directory }} -Dcom.amazonaws.sdk.disableCertChecking={{ .Values.spark.disabledCertChecking }}"
-          envFrom: 
+          envFrom:
             {{- if .Values.s3.enabled }}
             - secretRef:
                 name: {{ include "library-chart.secretNameS3" . }}

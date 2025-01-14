@@ -15,7 +15,7 @@ spec:
   to:
     kind: Service
     name: {{ include "common.names.fullname" .Subcharts.elasticsearch.Subcharts.kibana }}
-  port: 
+  port:
     targetPort: {{ include "elasticsearch.service.ports.restAPI" .Subcharts.elasticsearch }}
   tls:
     termination: {{ .Values.route.tls.termination }}

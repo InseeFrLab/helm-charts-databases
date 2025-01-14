@@ -67,9 +67,9 @@ spec:
               until printf "." && nc -z -w 2 {{ .Values.postgresql.fullnameOverride }} 5432; do
                   sleep 2;
               done;
-              echo 'PostgreSQL OK ✓'  
-              
-      {{- with .Values.nodeSelector }} 
+              echo 'PostgreSQL OK ✓'
+
+      {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}

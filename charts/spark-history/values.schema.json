@@ -20,6 +20,7 @@
               "description": "supported versions",
               "type": "string",
               "enum": [
+                "inseefrlab/onyxia-pyspark:py3.10.8-spark3.3.1",
                 "inseefrlab/jupyter-datascience:py3.9.7-spark3.2.0",
                 "inseefrlab/jupyter-datascience:py3.7.6-spark3.1.1"
               ],

@@ -2,7 +2,7 @@
 
 {{- define "pgadmin.configmap" -}}
 {{ printf "{" }}
-{{ printf "\"Servers\": {" | indent 2 }} 
+{{ printf "\"Servers\": {" | indent 2 }}
 {{- $virgule := 0 }}
 {{- $namespace:= .Release.Namespace }}
 {{- range $index, $secret := (lookup "v1" "Secret" $namespace "").items }}

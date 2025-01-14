@@ -32,6 +32,6 @@ spec:
             backend:
               service:
                 name: {{ include "common.names.fullname" .Subcharts.elasticsearch.Subcharts.kibana }}
-                port: 
+                port:
                   number: {{ .Values.elasticsearch.kibana.service.ports.http }}
 {{- end }}

@@ -14,14 +14,14 @@ data:
   tpcds.properties: |
     connector.name=tpcds
     tpcds.splits-per-node=4
-{{ $endpoint:= .Values.s3.endpoint }} 
+{{ $endpoint:= .Values.s3.endpoint }}
 {{ $namespace:= .Release.Namespace }}
 {{ $hive:= .Values.discovery.hive }}
 {{ $elastic:= .Values.discovery.elastic }}
 {{ $opensearch:= .Values.discovery.opensearch }}
 {{ $mongodb:= .Values.discovery.mongodb }}
 {{ $postgres:= .Values.discovery.postgres }}
-{{ $username:= .Values.security.username }} 
+{{ $username:= .Values.security.username }}
 {{ $password:= .Values.security.password }}
 {{ range $index, $secret := (lookup "v1" "Secret" $namespace "").items }}
 {{- if (index $secret "metadata" "annotations") }}

@@ -27,4 +27,4 @@ storage_options={
 
 {{- end }}
 
-NOTE: It may take a few minutes before the service is ready to accept connections 
+NOTE: It may take a few minutes before the service is ready to accept connections

@@ -106,4 +106,3 @@ routeDashboard:
     # caCertificate:
     # destinationCACertificate:
   wildcardPolicy: None
-

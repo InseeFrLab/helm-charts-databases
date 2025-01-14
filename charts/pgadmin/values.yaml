@@ -9,12 +9,12 @@ discovery:
 
 env:
   existingSecretName: ""
-  
+
 security:
   mail: example@example.com
   password: password
   maxLoginAttempts: 999
-  networkPolicy: 
+  networkPolicy:
     enabled: false
     from: []
   allowlist:
@@ -45,7 +45,7 @@ podAnnotations: {}
 
 podSecurityContext:
   runAsUser: 5050
-  
+
 securityContext:
   runAsUser: 5050
   # capabilities:
@@ -128,4 +128,3 @@ initContainer:
   image: "inseefrlab/onyxia-base"
   resources: {}
   securityContext: {}
-    

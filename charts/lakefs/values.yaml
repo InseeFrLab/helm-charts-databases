@@ -30,12 +30,12 @@ lakefs:
     authEncryptSecretKey: changeme
 
 security:
-  networkPolicy: 
+  networkPolicy:
     enabled: false
     from: []
   allowlist:
     enabled: true
-    ip: "0.0.0.0/0"  
+    ip: "0.0.0.0/0"
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -52,7 +52,7 @@ networking:
 ingress:
   enabled: true
   tls: true
-  ingressClassName: "" 
+  ingressClassName: ""
   annotations: []
     # kubernetes.io/tls-acme: "true"
   hostname: chart-example.local
