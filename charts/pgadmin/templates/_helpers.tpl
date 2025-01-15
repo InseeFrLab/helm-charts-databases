@@ -1,8 +1,8 @@
 {{/* vim: set filetype=mustache: */}}
 
-{{- define "pgadmin.configmap" -}}
+{{- define "pgadmin.servers" -}}
 {{ printf "{" }}
-{{ printf "\"Servers\": {" | indent 2 }} 
+{{ printf "\"Servers\": {" | indent 2 }}
 {{- $virgule := 0 }}
 {{- $namespace:= .Release.Namespace }}
 {{- range $index, $secret := (lookup "v1" "Secret" $namespace "").items }}
@@ -22,7 +22,9 @@
 {{ printf "\"Host\": \"%s\"," $service | indent 6}}
 {{ printf "\"Username\": \"%s\"," $username | indent 6}}
 {{ printf "\"SSLMode\": \"prefer\"," | indent 6 }}
-{{ printf "\"MaintenanceDB\": \"%s\"" $database | indent 6}}
+{{ printf "\"MaintenanceDB\": \"%s\"," $database | indent 6}}
+{{ printf "\"PassFile\": \"/pgpass.conf\"," | indent 6}}
+{{ printf "\"SavePassword\": true" | indent 6}}
 {{- $virgule = 1}}
 {{ printf "}" | indent 4}}
 {{- end }}
@@ -30,8 +32,24 @@
 {{- end }}
 {{ printf "}" | indent 2}}
 {{ printf "}" }}
-{{- end }}
+{{- end -}}
+
+{{- define "pgadmin.pgpass" -}}
+{{- $namespace:= .Release.Namespace -}}
+{{- range $index, $secret := (lookup "v1" "Secret" $namespace "").items -}}
+{{- if (index $secret "metadata" "annotations") -}}
+{{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "postgres" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) -}}
+{{- $service := ( index $secret.data "postgres-service" | default "") | b64dec  -}}
+{{- $username:= ( index $secret.data "postgres-username") | b64dec  -}}
+{{- $database:= ( index $secret.data "postgres-database") | b64dec  -}}
+{{- $password:= ( index $secret.data "password") | b64dec  -}}
+{{- $port    := ( index $secret.data "postgres-port")  -}}
+{{- printf "%s:%s:%s:%s:%s" $service $port $database $username $password }}
+{{ end -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
 
 {{- define "pgadmin.cleanemail" -}}
 {{ printf "%s" .Values.security.mail  |  replace "@" "_"}}
-{{- end }}
+{{- end -}}

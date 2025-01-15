@@ -88,9 +88,8 @@ spec:
         {{- end }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
-      {{- if .Values.s3.enabled }}
       initContainers:
-      - name: download-s3
+      - name: init-pgadmin
         image: {{ .Values.initContainer.image }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
@@ -99,20 +98,31 @@ spec:
         args:
         - |
           mkdir /data/{{ include "pgadmin.cleanemail" . }} ;
-          MC_HOST_s3=https://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY:$AWS_SESSION_TOKEN@$AWS_S3_ENDPOINT mc cp -r s3/{{ .Values.s3.path }} /data/{{ include "pgadmin.cleanemail" . }}
+          {{- if .Values.s3.enabled }}
+          MC_HOST_s3=https://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY:$AWS_SESSION_TOKEN@$AWS_S3_ENDPOINT mc cp -r s3/{{ .Values.s3.path }} /data/{{ include "pgadmin.cleanemail" . }} ;
+          {{- end -}}
+          {{- if .Values.discovery.postgres }}
+          cp /config/pgpass.conf "/data/{{ include "pgadmin.cleanemail" . }}/" ;
+          chmod 600 "/data/{{ include "pgadmin.cleanemail" . }}/pgpass.conf" ;
+          {{- end }}
           exit 0
+        {{- if .Values.s3.enabled }}
         envFrom:
         - secretRef:
             name: {{ include "library-chart.secretNameS3" . }}
+        {{- end }}
         env:
         - name: HOME
           value: /tmp
         volumeMounts:
         - name: data
           mountPath: "/data"
+        {{- if .Values.discovery.postgres }}
+        - name: config
+          mountPath: "/config"
+        {{- end }}
         securityContext:
           {{- toYaml .Values.initContainer.securityContext | nindent 10 }}
-      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
