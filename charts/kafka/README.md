@@ -1,6 +1,6 @@
 # kafka
 
-![Version: 0.2.9](https://img.shields.io/badge/Version-0.2.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 0.2.10](https://img.shields.io/badge/Version-0.2.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Apache Kafka is an event streaming platform for streaming analytics, data integration.
 
@@ -23,8 +23,8 @@ Apache Kafka is an event streaming platform for streaming analytics, data integr
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| discovery.enabled | bool | `true` |  |
 | fullnameOverride | string | `"kafka"` |  |
-| kafka.discoverable.allow | bool | `true` |  |
 | kafka.fullnameOverride | string | `"kafka"` |  |
 | kafka.listeners.client.protocol | string | `"PLAINTEXT"` |  |
 | kafka.listeners.controller.protocol | string | `"PLAINTEXT"` |  |

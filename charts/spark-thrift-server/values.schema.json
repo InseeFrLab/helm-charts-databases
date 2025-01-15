@@ -167,7 +167,7 @@
         "enabled": {
           "type": "boolean",
           "title": "Enable discovery of this database",
-          "description": "Allows clients to automatically preconfigure a connexion to this database",
+          "description": "Allows clients to automatically preconfigure a connection to this database",
           "default": true
         },
         "hive": {
