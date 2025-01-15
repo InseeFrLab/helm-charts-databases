@@ -1,6 +1,6 @@
 # postgresql
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 An object-relational database management system, a database server.
 
@@ -21,7 +21,7 @@ An object-relational database management system, a database server.
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| discoverable.allow | bool | `true` |  |
+| discovery.enabled | bool | `true` |  |
 | postgresql.auth.database | string | `"defaultdb"` |  |
 | postgresql.auth.password | string | `""` |  |
 | postgresql.auth.postgresPassword | string | `""` |  |

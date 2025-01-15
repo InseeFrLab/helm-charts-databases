@@ -1,6 +1,6 @@
 # hive-metastore
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Hive metastore manage the metadata relational entities  in a relational database.
 
@@ -27,7 +27,7 @@ Hive metastore manage the metadata relational entities  in a relational database
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| discoverable.allow | bool | `true` |  |
+| discovery.enabled | bool | `true` |  |
 | environment.s3 | bool | `true` |  |
 | fullnameOverride | string | `"hive-metastore"` |  |
 | global.postgresql.auth.database | string | `"metastore"` |  |
@@ -40,7 +40,6 @@ Hive metastore manage the metadata relational entities  in a relational database
 | listener.jarPath | string | `"/opt/hive/lib/hive-listener.jar"` |  |
 | listener.kafkaBrokerUrl | string | `"kafka-0.kafka-headless:9092"` |  |
 | listener.kafkaTopicName | string | `"hive-meta"` |  |
-| liveness.enabled | string | `"true"` |  |
 | nameOverride | string | `""` |  |
 | networking.port | int | `9083` |  |
 | networking.type | string | `"ClusterIP"` |  |
@@ -49,7 +48,6 @@ Hive metastore manage the metadata relational entities  in a relational database
 | podSecurityContext | object | `{}` |  |
 | postgresql.fullnameOverride | string | `"hive-metastore-db"` |  |
 | postgresql.image.tag | string | `"12"` |  |
-| readiness.enabled | string | `"true"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | s3.accessKeyId | string | `""` |  |

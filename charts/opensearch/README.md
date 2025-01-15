@@ -1,6 +1,6 @@
 # opensearch
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.17.0](https://img.shields.io/badge/AppVersion-2.17.0-informational?style=flat-square)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.17.0](https://img.shields.io/badge/AppVersion-2.17.0-informational?style=flat-square)
 
 Opensearch provides a full-text search engine with an HTTP web interface and schema-free JSON documents.
 
@@ -22,6 +22,7 @@ Opensearch provides a full-text search engine with an HTTP web interface and sch
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| discovery.enabled | bool | `true` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
@@ -39,7 +40,6 @@ Opensearch provides a full-text search engine with an HTTP web interface and sch
 | opensearch-dashboards.rbac.create | bool | `false` |  |
 | opensearch-dashboards.service.port | int | `5601` |  |
 | opensearch-dashboards.serviceAccount.create | bool | `false` |  |
-| opensearch.discoverable.allow | bool | `true` |  |
 | opensearch.envFrom[0].secretRef.name | string | `"opensearch-env-secret"` |  |
 | opensearch.httpPort | int | `9200` |  |
 | opensearch.networkPolicy.create | bool | `false` |  |

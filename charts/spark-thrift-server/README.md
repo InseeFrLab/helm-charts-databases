@@ -1,6 +1,6 @@
 # spark-thrift-server
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Spark SQL can also act as a distributed query engine using its JDBC/ODBC or command-line interface.
 
@@ -27,7 +27,7 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | coresite.configMapName | string | `""` |  |
-| discoverable.allow | bool | `true` |  |
+| discovery.enabled | bool | `true` |  |
 | discovery.hive | bool | `true` |  |
 | environment.s3 | bool | `true` |  |
 | fullnameOverride | string | `""` |  |
@@ -44,7 +44,6 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 | init.standardInit | string | `"https://git.lab.sspcloud.fr/innovation/plateforme-onyxia/services-ressources/-/raw/master/onyxia-init.sh"` |  |
 | kubernetes.enabled | bool | `true` |  |
 | kubernetes.role | string | `"edit"` |  |
-| liveness.enabled | string | `"true"` |  |
 | nameOverride | string | `""` |  |
 | networkPolicy.enabled | bool | `false` |  |
 | networking.clusterIP | string | `"None"` |  |
@@ -54,7 +53,6 @@ Spark SQL can also act as a distributed query engine using its JDBC/ODBC or comm
 | nodeSelector | object | `{}` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| readiness.enabled | string | `"true"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |

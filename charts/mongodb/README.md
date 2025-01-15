@@ -1,6 +1,6 @@
 # mongodb
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 NoSQL document-oriented database that stores JSON-like documents with dynamic schemas.
 
@@ -22,13 +22,13 @@ NoSQL document-oriented database that stores JSON-like documents with dynamic sc
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| discovery.enabled | bool | `true` |  |
 | fullnameOverride | string | `"mongodb"` |  |
 | mongodb.architecture | string | `"replicaset"` |  |
 | mongodb.auth.database | string | `"defaultdb"` |  |
 | mongodb.auth.password | string | `"changeme"` |  |
 | mongodb.auth.rootPassword | string | `"changeme"` |  |
 | mongodb.auth.username | string | `"username"` |  |
-| mongodb.discoverable.allow | bool | `true` |  |
 | mongodb.fullnameOverride | string | `"mongodb"` |  |
 | mongodb.image.tag | string | `"4.4"` |  |
 | mongodb.replicaCount | int | `2` |  |
