@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
   "properties": {
     "service": {
@@ -14,7 +14,11 @@
               "type": "string",
               "description": "option when pulling the docker image",
               "default": "IfNotPresent",
-              "enum": ["IfNotPresent", "Always", "Never"]
+              "enum": [
+                "IfNotPresent",
+                "Always",
+                "Never"
+              ]
             },
             "version": {
               "description": "supported versions",
@@ -59,31 +63,31 @@
       "type": "object",
       "properties": {
         "networkPolicy": {
-            "type": "object",
-            "description": "Define access policy to the service",
-            "x-onyxia": {
-                "overwriteSchemaWith": "network-policy.json"
+          "type": "object",
+          "description": "Define access policy to the service",
+          "x-onyxia": {
+            "overwriteSchemaWith": "network-policy.json"
+          },
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable network policy",
+              "description": "Only pod from the same namespace will be allowed",
+              "default": false,
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
             },
-            "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "title": "Enable network policy",
-                    "description": "Only pod from the same namespace will be allowed",
-                    "default": false,
-                    "x-onyxia": {
-                        "overwriteDefaultWith": "region.defaultNetworkPolicy"
-                    }
-                },
-                "from": {
-                    "type": "array",
-                    "description": "Array of source allowed to have network access to your service",
-                    "default": [],
-                    "x-onyxia": {
-                        "hidden": true,
-                        "overwriteDefaultWith": "region.from"
-                    }
-                }
+            "from": {
+              "type": "array",
+              "description": "Array of source allowed to have network access to your service",
+              "default": [],
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
+              }
             }
+          }
         }
       }
     },
@@ -156,9 +160,15 @@
       }
     },
     "discovery": {
-      "description": "configure your service to autodetect some ressources.",
+      "description": "Database discovery",
       "type": "object",
       "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enable discovery of this database",
+          "description": "Allows clients to automatically preconfigure a connection to this database",
+          "default": true
+        },
         "hive": {
           "type": "boolean",
           "title": "Enable hive metastore discovery",

@@ -10,9 +10,12 @@ mongodb:
     password: changeme
     database: defaultdb
   replicaCount: 2
-  discoverable:
-    allow: true
+
+discovery:
+  enabled: true
+
 fullnameOverride: mongodb
+
 security:
-  networkPolicy: 
+  networkPolicy:
     enabled: true

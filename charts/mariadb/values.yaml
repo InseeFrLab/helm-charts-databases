@@ -21,6 +21,5 @@ mariadb:
       ports:
         mysql: 3306
 
-discoverable:
-  allow: true
-
+discovery:
+  enabled: true

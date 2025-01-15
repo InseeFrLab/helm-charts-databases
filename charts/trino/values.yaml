@@ -217,7 +217,7 @@ securityContext:
 shareProcessNamespace:
   coordinator: false
   worker: false
-  
+
 networking:
   service:
     type: ClusterIP
@@ -432,6 +432,7 @@ s3:
   sessionToken: ""
 
 discovery:
+  enabled: true
   hive: true
   mongodb: true
   postgres: true
@@ -441,7 +442,7 @@ discovery:
 security:
   username: "admin"
   password: "changeme"
-  networkPolicy: 
+  networkPolicy:
     enabled: false
     from: []
   allowlist:
@@ -459,9 +460,6 @@ catalog:
 #  customelastic:
 #    connector.name=elasticsearch
 #    elasticsearch.host=elasticsearch-master
-
-discoverable:
-  allow: true
 
 coresite:
   secretName: ""

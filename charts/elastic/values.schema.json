@@ -58,16 +58,6 @@
             }
           }
         },
-        "discoverable": {
-          "type": "object",
-          "properties": {
-            "allow": {
-              "type": "boolean",
-              "description": "Allow discovery",
-              "default": true
-            }
-          }
-        },
         "kibana": {
           "description": "kibana specific configuration",
           "type": "object",
@@ -127,6 +117,18 @@
               }
             }
           }
+        }
+      }
+    },
+    "discovery": {
+      "description": "Database discovery",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enable discovery of this database",
+          "description": "Allows clients to automatically preconfigure a connection to this database",
+          "default": true
         }
       }
     },
