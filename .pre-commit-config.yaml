@@ -4,13 +4,11 @@ repos:
   hooks:
   # Validate schemas using the jsonschema.validators package
   - id: validate-json-schemas
-    exclude: "charts/(?!(library-chart|(jupyter-py(spark|thon)/.*)|(rstudio(-sparkr)?/.*)|(vscode-py(thon|spark)/.*)))"
     args:
     # Forbid legacy https://json-schema.org/draft/2020-12/schema schema validator and suggest Draft 7 instead
     - --forbid-legacy
   # Ensure technically facultative attribute (such as `type`) are systematically specified
   - id: missing-attributes-schemas
-    exclude: "charts/(?!(library-chart|(jupyter-py(spark|thon)/.*)|(rstudio(-sparkr)?/.*)|(vscode-py(thon|spark)/.*)))"
     args:
     # Also require `items` to be systematically specified for arrays
     - --check-items

@@ -198,6 +198,8 @@
             "custompg": "connector.name=postgresql connection-url=jdbc:postgresql://postgresql-457086:5432/defaultdb connection-user=admin connection-password=admin",
             "customelastic": "connector.name=elasticsearch elasticsearch.host=elasticsearch-master"
           },
+          "properties": {},
+          "additionalProperties": true,
           "hidden": {
             "value": false,
             "path": "catalog/enabled"
@@ -286,8 +288,12 @@
               }
             },
             "from": {
+              "description": "Array of sources allowed to have network access to your service",
               "type": "array",
-              "description": "Array of source allowed to have network access to your service",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              },
               "default": [],
               "x-onyxia": {
                 "hidden": true,

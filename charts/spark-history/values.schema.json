@@ -14,7 +14,11 @@
               "type": "string",
               "description": "option when pulling the docker image",
               "default": "IfNotPresent",
-              "enum": ["IfNotPresent", "Always", "Never"]
+              "enum": [
+                "IfNotPresent",
+                "Always",
+                "Never"
+              ]
             },
             "version": {
               "description": "supported versions",
@@ -170,31 +174,35 @@
           }
         },
         "networkPolicy": {
-            "type": "object",
-            "description": "Define access policy to the service",
-            "x-onyxia": {
-                "overwriteSchemaWith": "network-policy.json"
+          "type": "object",
+          "description": "Define access policy to the service",
+          "x-onyxia": {
+            "overwriteSchemaWith": "network-policy.json"
+          },
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable network policy",
+              "description": "Only pod from the same namespace will be allowed",
+              "default": false,
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
             },
-            "properties": {
-                "enabled": {
-                    "type": "boolean",
-                    "title": "Enable network policy",
-                    "description": "Only pod from the same namespace will be allowed",
-                    "default": false,
-                    "x-onyxia": {
-                        "overwriteDefaultWith": "region.defaultNetworkPolicy"
-                    }
-                },
-                "from": {
-                    "type": "array",
-                    "description": "Array of source allowed to have network access to your service",
-                    "default": [],
-                    "x-onyxia": {
-                        "hidden": true,
-                        "overwriteDefaultWith": "region.from"
-                    }
-                }
+            "from": {
+              "description": "Array of sources allowed to have network access to your service",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "default": [],
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
+              }
             }
+          }
         }
       }
     },

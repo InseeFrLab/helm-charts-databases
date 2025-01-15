@@ -1,190 +1,194 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema",
-    "type": "object",
-    "properties": {
-      "service": {
-        "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
-        "type": "object",
-        "properties": {
-            "memory": {
-                "description": "Java memory",
-                "type": "string",
-                "default": "1024M",
-                "render": "slider",
-                "sliderMin": 1024,
-                "sliderMax": 32768,
-                "sliderStep": 1024,
-                "sliderUnit": "M"
-            }
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "service": {
+      "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
+      "type": "object",
+      "properties": {
+        "memory": {
+          "description": "Java memory",
+          "type": "string",
+          "default": "1024M",
+          "render": "slider",
+          "sliderMin": 1024,
+          "sliderMax": 32768,
+          "sliderStep": 1024,
+          "sliderUnit": "M"
         }
-      },
-      "resources": {
-        "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
-        "type": "object",
-        "properties": {
-            "requests": {
-                "description": "Guaranteed resources",
-                "type": "object",
-                "properties": {
-                  "cpu": {
-                    "description": "The amount of cpu guaranteed",
-                    "title": "CPU",
-                    "type": "string",
-                    "default": "100m",
-                    "render": "slider",
-                    "sliderMin": 50,
-                    "sliderMax": 40000,
-                    "sliderStep": 50,
-                    "sliderUnit": "m",
-                    "sliderExtremity": "down",
-                    "sliderExtremitySemantic": "guaranteed",
-                    "sliderRangeId": "cpu"
-                  },
-                  "memory": {
-                    "description": "The amount of memory guaranteed",
-                    "title": "memory",
-                    "type": "string",
-                    "default": "2Gi",
-                    "render": "slider",
-                    "sliderMin": 1,
-                    "sliderMax": 200,
-                    "sliderStep": 1,
-                    "sliderUnit": "Gi",
-                    "sliderExtremity": "down",
-                    "sliderExtremitySemantic": "guaranteed",
-                    "sliderRangeId": "memory"
-                  }
-                }
-            },
-            "limits": {
-                "description": "max resources",
-                "type": "object",
-                "properties": {
-                    "cpu": {
-                        "description": "The maximum amount of cpu",
-                        "title": "CPU",
-                        "type": "string",
-                        "default": "30000m",
-                        "render": "slider",
-                        "sliderMin": 50,
-                        "sliderMax": 40000,
-                        "sliderStep": 50,
-                        "sliderUnit": "m",
-                        "sliderExtremity": "up",
-                        "sliderExtremitySemantic": "Maximum",
-                        "sliderRangeId": "cpu"
-                      },
-                      "memory": {
-                        "description": "The maximum amount of memory",
-                        "title": "Memory",
-                        "type": "string",
-                        "default": "50Gi",
-                        "render": "slider",
-                        "sliderMin": 1,
-                        "sliderMax": 200,
-                        "sliderStep": 1,
-                        "sliderUnit": "Gi",
-                        "sliderExtremity": "up",
-                        "sliderExtremitySemantic": "Maximum",
-                        "sliderRangeId": "memory"
-                      }
-                }
-            }
-        }
-      },
-      "persistence": {
-        "description": "Configuration for persistence",
-        "type": "object",
-        "properties": {
-            "enabled": {
-                "type": "boolean",
-                "description": "Create a persistent volume",
-                "default": true
-            },
-            "size": {
+      }
+    },
+    "resources": {
+      "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
+      "type": "object",
+      "properties": {
+        "requests": {
+          "description": "Guaranteed resources",
+          "type": "object",
+          "properties": {
+            "cpu": {
+              "description": "The amount of cpu guaranteed",
+              "title": "CPU",
               "type": "string",
-              "title": "Persistent volume size",
-              "description": "Size of the persistent volume",
-              "default": "10Gi",
-              "form": true,
+              "default": "100m",
+              "render": "slider",
+              "sliderMin": 50,
+              "sliderMax": 40000,
+              "sliderStep": 50,
+              "sliderUnit": "m",
+              "sliderExtremity": "down",
+              "sliderExtremitySemantic": "guaranteed",
+              "sliderRangeId": "cpu"
+            },
+            "memory": {
+              "description": "The amount of memory guaranteed",
+              "title": "memory",
+              "type": "string",
+              "default": "2Gi",
               "render": "slider",
               "sliderMin": 1,
-              "sliderMax": 100,
+              "sliderMax": 200,
               "sliderStep": 1,
               "sliderUnit": "Gi",
-              "hidden": {
-                "value": false,
-                "path": "persistence/enabled"
-              }
-          }
-        }
-      },
-      "security": {
-          "description": "security specific configuration",
-          "type": "object",
-          "properties": {
-            "networkPolicy": {
-                "type": "object",
-                "description": "Define access policy to the service",
-                "x-onyxia": {
-                    "overwriteSchemaWith": "network-policy.json"
-                },
-                "properties": {
-                    "enabled": {
-                        "type": "boolean",
-                        "title": "Enable network policy",
-                        "description": "Only pod from the same namespace will be allowed",
-                        "default": false,
-                        "x-onyxia": {
-                            "overwriteDefaultWith": "region.defaultNetworkPolicy"
-                        }
-                    },
-                    "from": {
-                        "type": "array",
-                        "description": "Array of source allowed to have network access to your service",
-                        "default": [],
-                        "x-onyxia": {
-                            "hidden": true,
-                            "overwriteDefaultWith": "region.from"
-                        }
-                    }
-                }
+              "sliderExtremity": "down",
+              "sliderExtremitySemantic": "guaranteed",
+              "sliderRangeId": "memory"
             }
           }
-      },
-      "ingress": {
+        },
+        "limits": {
+          "description": "max resources",
           "type": "object",
-          "form": true,
-          "title": "Ingress Details",
           "properties": {
-              "hostname": {
-                  "type": "string",
-                  "form": true,
-                  "title": "Hostname",
-                  "x-form": {
-                    "hidden": true,
-                    "value": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
-                  },
-                  "x-onyxia": {
-                      "hidden": true,
-                      "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
-                  }
-              },
-              "ingressClassName": {
-                  "type": "string",
-                  "form": true,
-                  "title": "ingressClassName",
-                  "default": "",
-                  "x-form": {
-                      "hidden": true,
-                      "value": "{{k8s.ingressClassName}}"
-                  },
-                  "x-onyxia": {
-                      "hidden": true,
-                      "overwriteDefaultWith": "{{k8s.ingressClassName}}"
-                  }
-              }
+            "cpu": {
+              "description": "The maximum amount of cpu",
+              "title": "CPU",
+              "type": "string",
+              "default": "30000m",
+              "render": "slider",
+              "sliderMin": 50,
+              "sliderMax": 40000,
+              "sliderStep": 50,
+              "sliderUnit": "m",
+              "sliderExtremity": "up",
+              "sliderExtremitySemantic": "Maximum",
+              "sliderRangeId": "cpu"
+            },
+            "memory": {
+              "description": "The maximum amount of memory",
+              "title": "Memory",
+              "type": "string",
+              "default": "50Gi",
+              "render": "slider",
+              "sliderMin": 1,
+              "sliderMax": 200,
+              "sliderStep": 1,
+              "sliderUnit": "Gi",
+              "sliderExtremity": "up",
+              "sliderExtremitySemantic": "Maximum",
+              "sliderRangeId": "memory"
+            }
           }
+        }
+      }
+    },
+    "persistence": {
+      "description": "Configuration for persistence",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Create a persistent volume",
+          "default": true
+        },
+        "size": {
+          "type": "string",
+          "title": "Persistent volume size",
+          "description": "Size of the persistent volume",
+          "default": "10Gi",
+          "form": true,
+          "render": "slider",
+          "sliderMin": 1,
+          "sliderMax": 100,
+          "sliderStep": 1,
+          "sliderUnit": "Gi",
+          "hidden": {
+            "value": false,
+            "path": "persistence/enabled"
+          }
+        }
+      }
+    },
+    "security": {
+      "description": "security specific configuration",
+      "type": "object",
+      "properties": {
+        "networkPolicy": {
+          "type": "object",
+          "description": "Define access policy to the service",
+          "x-onyxia": {
+            "overwriteSchemaWith": "network-policy.json"
+          },
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "title": "Enable network policy",
+              "description": "Only pod from the same namespace will be allowed",
+              "default": false,
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
+            },
+            "from": {
+              "description": "Array of sources allowed to have network access to your service",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "default": [],
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ingress": {
+      "type": "object",
+      "form": true,
+      "title": "Ingress Details",
+      "properties": {
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-form": {
+            "hidden": true,
+            "value": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
+          },
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
+          }
+        },
+        "ingressClassName": {
+          "type": "string",
+          "form": true,
+          "title": "ingressClassName",
+          "default": "",
+          "x-form": {
+            "hidden": true,
+            "value": "{{k8s.ingressClassName}}"
+          },
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+          }
+        }
       }
     }
+  }
 }
