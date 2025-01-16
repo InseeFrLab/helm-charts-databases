@@ -1,6 +1,6 @@
 # trino
 
-![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 458](https://img.shields.io/badge/AppVersion-458-informational?style=flat-square)
+![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 458](https://img.shields.io/badge/AppVersion-458-informational?style=flat-square)
 
 Fast distributed SQL query engine for big data analytics that helps you explore your data universe
 
@@ -28,8 +28,8 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 | additionalLogProperties | object | `{}` |  |
 | additionalNodeProperties | object | `{}` |  |
 | auth | object | `{}` |  |
-| catalog.additionalCatalogs | list | `[]` |  |
-| catalog.enabled | string | `nil` |  |
+| catalog.additionalCatalogs | object | `{}` |  |
+| catalog.enabled | bool | `false` |  |
 | commonLabels | object | `{}` |  |
 | coordinator.additionalConfigFiles | object | `{}` |  |
 | coordinator.additionalExposedPorts | object | `{}` |  |
@@ -69,6 +69,8 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 | initContainers | object | `{}` |  |
 | kafka.mountPath | string | `"/etc/trino/schemas"` |  |
 | kafka.tableDescriptions | object | `{}` |  |
+| networking.service.annotations | object | `{}` |  |
+| networking.service.nodePort | string | `""` |  |
 | networking.service.port | int | `8080` |  |
 | networking.service.type | string | `"ClusterIP"` |  |
 | resourceGroups | object | `{}` |  |
