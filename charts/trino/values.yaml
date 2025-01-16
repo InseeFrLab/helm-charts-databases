@@ -220,8 +220,13 @@ shareProcessNamespace:
 
 networking:
   service:
+    annotations: {}
     type: ClusterIP
     port: 8080
+    # service.nodePort -- The port the service listens on the host, for the `NodePort` type. If not set, Kubernetes will
+    # [allocate a port
+    # automatically](https://kubernetes.io/docs/concepts/services-networking/service/#nodeport-custom-port).
+    nodePort: ""
 
 auth: {}
   # Set username and password
@@ -450,14 +455,14 @@ security:
     ip: "0.0.0.0/0"
 
 catalog:
-  enabled:
-  additionalCatalogs: []
-#  custompg:
+  enabled: false
+  additionalCatalogs: {}
+#  custompg: |
 #    connector.name=postgresql
 #    connection-url=jdbc:postgresql://postgresql-457086:5432/defaultdb
 #    connection-user=admin
 #    connection-password=admin
-#  customelastic:
+#  customelastic: |
 #    connector.name=elasticsearch
 #    elasticsearch.host=elasticsearch-master
 

@@ -14,7 +14,7 @@ spec:
   to:
     kind: Service
     name: {{ include "opensearch.serviceName" .Subcharts.opensearch }}
-  port: 
+  port:
     targetPort: {{ .Values.opensearch.httpPort }}
   tls:
     termination: {{ .Values.route.tls.termination }}

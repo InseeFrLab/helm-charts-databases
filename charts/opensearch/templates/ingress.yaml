@@ -30,6 +30,6 @@ spec:
             backend:
               service:
                 name: {{ include "opensearch.serviceName" .Subcharts.opensearch }}
-                port: 
+                port:
                   number: {{ .Values.opensearch.httpPort }}
 {{- end }}

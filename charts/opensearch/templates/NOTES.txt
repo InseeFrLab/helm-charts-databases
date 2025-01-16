@@ -9,7 +9,7 @@
 {{ if .Values.ingressDashboard.enabled -}}
 - You can connect to opensearch dashboards with your browser on this [link](http{{ if .Values.ingressDashboard.tls }}s{{ end }}://{{ .Values.ingressDashboard.hostname }})
 {{ end -}}
-- You can connect to opensearch from inside the datalab at this url : **http{{ if $.Values.opensearch.ingress.tls }}s{{ end }}://{{ .Values.opensearch.masterService }}:{{ .Values.opensearch.httpPort }}** 
+- You can connect to opensearch from inside the datalab at this url : **http{{ if $.Values.opensearch.ingress.tls }}s{{ end }}://{{ .Values.opensearch.masterService }}:{{ .Values.opensearch.httpPort }}**
 {{ if .Values.ingress.enabled -}}
 - You can connect to  opensearch with your browser on this [link](http{{ if .Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }})
 {{- end }}
@@ -17,7 +17,7 @@
 - Each of the {{ .Values.opensearch.replicas }} nodes has a persistent volume with a size of {{ .Values.opensearch.persistence.size }}
 - Only one cluster of {{ .Chart.Name }} can be started in a project
 
-*NOTES about deletion :* 
+*NOTES about deletion :*
 
 - **You can safely delete this chart and recreate one later**
 - Data volumes will not be deleted

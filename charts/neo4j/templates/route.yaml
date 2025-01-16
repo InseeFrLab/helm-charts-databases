@@ -16,7 +16,7 @@ spec:
   to:
     kind: Service
     name: {{ $fullName }}
-  port: 
+  port:
     targetPort: {{ $svcPortUI }}
   tls:
     termination: {{ .Values.route.tls.termination }}
@@ -48,7 +48,7 @@ spec:
   to:
     kind: Service
     name: {{ $fullName }}
-  port: 
+  port:
     targetPort: {{ $svcPortBolt }}
   tls:
     termination: {{ .Values.route.tls.termination }}

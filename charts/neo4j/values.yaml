@@ -2,7 +2,7 @@
 
 security:
   password: password
-  networkPolicy: 
+  networkPolicy:
     enabled: false
     from: []
   allowlist:
@@ -59,7 +59,7 @@ networking:
 ingress:
   enabled: true
   tls: true
-  ingressClassName: ""  
+  ingressClassName: ""
   annotations: []
     # kubernetes.io/tls-acme: "true"
   hostnameUI: chart-example.local

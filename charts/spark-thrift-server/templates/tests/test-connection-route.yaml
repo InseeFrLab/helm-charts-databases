@@ -15,4 +15,4 @@ spec:
       command: ['curl']
       args: ['https://{{ .Values.route.sparkHostname }}']
   restartPolicy: Never
-{{- end }}  
+{{- end }}

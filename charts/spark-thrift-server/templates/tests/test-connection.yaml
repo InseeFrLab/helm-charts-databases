@@ -15,4 +15,4 @@ spec:
       command: ['curl']
       args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.sparkHostname }}']
   restartPolicy: Never
-{{- end }}  
+{{- end }}

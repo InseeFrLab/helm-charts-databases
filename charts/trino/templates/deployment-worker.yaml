@@ -53,7 +53,7 @@ spec:
           configMap:
             name:  {{ include "library-chart.fullname" . }}-schemas-volume-worker
         - name: secret-coresite
-          secret: 
+          secret:
             secretName:  {{ include "library-chart.secretNameCoreSite" . }}
         {{- range .Values.secretMounts }}
         - name: {{ .name }}

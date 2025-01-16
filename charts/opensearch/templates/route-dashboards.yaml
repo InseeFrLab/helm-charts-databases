@@ -14,7 +14,7 @@ spec:
   to:
     kind: Service
     name: {{ $fullName }}
-  port: 
+  port:
     targetPort: {{ (index .Values "opensearch-dashboards").service.port }}
   tls:
     termination: {{ .Values.routeDashboard.tls.termination }}

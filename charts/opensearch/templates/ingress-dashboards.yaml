@@ -29,6 +29,6 @@ spec:
             backend:
               service:
                 name: {{ $fullName }}
-                port: 
+                port:
                   number: {{ (index .Values "opensearch-dashboards").service.port }}
 {{- end }}

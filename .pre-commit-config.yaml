@@ -1,0 +1,40 @@
+repos:
+- repo: https://github.com/Gaspi/pre-commit-hooks
+  rev: v0.3
+  hooks:
+  # Validate schemas using the jsonschema.validators package
+  - id: validate-json-schemas
+    args:
+    # Forbid legacy https://json-schema.org/draft/2020-12/schema schema validator and suggest Draft 7 instead
+    - --forbid-legacy
+  # Ensure technically facultative attribute (such as `type`) are systematically specified
+  - id: missing-attributes-schemas
+    args:
+    # Also require `items` to be systematically specified for arrays
+    - --check-items
+    # Also require `properties` to be systematically specified for object
+    - --check-properties
+    # Also require `properties` to be systematically specified for object
+    - --check-defaults
+  - id: version-bump
+    args:
+    - --branch
+    - main
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  # Check yaml files except for Helm templates
+  - id: check-yaml
+    exclude: "/(templates|tests)/"
+  # Check empty new line before EOF (ignore generated charts)
+  - id: end-of-file-fixer
+  # Check trailing whitespaces (ignore generated charts)
+  - id: trailing-whitespace
+
+# Run `helm lint` on all (modified) charts: this may require a manual `helm dep update`:
+# ls charts | xargs -i{} bash -c "cd charts/{} && helm dep update"
+- repo: https://github.com/gruntwork-io/pre-commit
+  rev: v0.1.15
+  hooks:
+  - id: helmlint

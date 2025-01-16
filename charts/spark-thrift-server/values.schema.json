@@ -24,6 +24,7 @@
               "description": "supported versions",
               "type": "string",
               "enum": [
+                "inseefrlab/onyxia-pyspark:py3.11.6-spark3.5.0",
                 "inseefrlab/onyxia-jupyter-pyspark:py3.11.6-spark3.5.0",
                 "inseefrlab/onyxia-jupyter-pyspark:py3.10.13-spark3.5.0"
               ],
@@ -79,8 +80,12 @@
               }
             },
             "from": {
+              "description": "Array of sources allowed to have network access to your service",
               "type": "array",
-              "description": "Array of source allowed to have network access to your service",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              },
               "default": [],
               "x-onyxia": {
                 "hidden": true,

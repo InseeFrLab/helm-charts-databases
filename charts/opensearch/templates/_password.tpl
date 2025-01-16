@@ -3,5 +3,3 @@
 {{ $strongPassword := substr 1 (len $strongPassword) $strongPassword }}
 {{- printf $strongPassword -}}
 {{- end -}}
-
-

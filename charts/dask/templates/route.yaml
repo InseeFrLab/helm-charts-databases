@@ -15,7 +15,7 @@ spec:
   to:
     kind: Service
     name: {{ .Release.Name }}-scheduler
-  port: 
+  port:
     targetPort: {{ $svcPort }}
   tls:
     termination: {{ .Values.route.tls.termination }}
