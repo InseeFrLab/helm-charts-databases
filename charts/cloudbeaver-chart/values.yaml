@@ -2,7 +2,7 @@
 
 service:
   image:
-    version: "dbeaver/cloudbeaver:24.2.0"
+    version: "dbeaver/cloudbeaver:24.3.3"
     pullPolicy: IfNotPresent
 
 discovery:

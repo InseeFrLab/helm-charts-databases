@@ -2,7 +2,7 @@ apiVersion: v2
 name: cloudbeaver
 description: CloudBeaver is a light modern web-application for database management.
 icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/cloudbeaver.png
-keyworks:
+keywords:
   - Tool
   - Data
 home: https://cloudbeaver.io/
@@ -22,7 +22,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 2.0.6
+version: 2.0.8
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -31,7 +31,7 @@ appVersion: latest
 
 dependencies:
   - name: library-chart
-    version: 1.5.33
+    version: 1.5.41
     repository: https://inseefrlab.github.io/helm-charts-interactive-services
   - name: postgresql
     version: 15.5.32

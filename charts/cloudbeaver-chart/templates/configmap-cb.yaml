@@ -6,6 +6,11 @@ data:
   cloudbeaver.conf: |
     {
     server: {
+        productSettings: {
+            "core.localization.localization": "en",
+            "core.theming.theme": "{{- if .Values.userPreferences.darkMode }}dark{{else}}light{{end}}"
+        },
+
         serverPort: 8978,
 
         // Paths are absolute or relative to the server root folder

@@ -1,6 +1,6 @@
 # nocodb
 
-![Version: 2.0.5](https://img.shields.io/badge/Version-2.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.258.3](https://img.shields.io/badge/AppVersion-0.258.3-informational?style=flat-square)
+![Version: 2.0.6](https://img.shields.io/badge/Version-2.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.258.3](https://img.shields.io/badge/AppVersion-0.258.3-informational?style=flat-square)
 
 NocoDB is an open source NoCode platform that turns any database into a smart spreadsheet
 

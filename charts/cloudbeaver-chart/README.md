@@ -1,6 +1,6 @@
 # cloudbeaver
 
-![Version: 2.0.5](https://img.shields.io/badge/Version-2.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 2.0.8](https://img.shields.io/badge/Version-2.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 CloudBeaver is a light modern web-application for database management.
 
@@ -16,7 +16,7 @@ CloudBeaver is a light modern web-application for database management.
 | Repository | Name | Version |
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | postgresql | 15.5.32 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.41 |
 
 ## Values
 
@@ -73,7 +73,7 @@ CloudBeaver is a light modern web-application for database management.
 | security.username | string | `"onyxia"` |  |
 | securityContext | object | `{}` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.version | string | `"dbeaver/cloudbeaver:24.2.0"` |  |
+| service.image.version | string | `"dbeaver/cloudbeaver:24.3.3"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
