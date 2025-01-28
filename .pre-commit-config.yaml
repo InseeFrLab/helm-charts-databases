@@ -1,6 +1,6 @@
 repos:
 - repo: https://github.com/Gaspi/pre-commit-hooks
-  rev: v0.3
+  rev: v0.5
   hooks:
   # Validate schemas using the jsonschema.validators package
   - id: validate-json-schemas
@@ -20,6 +20,8 @@ repos:
     args:
     - --branch
     - main
+  # Run `helm dependency update` then `helm lint` on all (modified) charts
+  - id: helmlint
 
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v5.0.0
@@ -31,10 +33,3 @@ repos:
   - id: end-of-file-fixer
   # Check trailing whitespaces (ignore generated charts)
   - id: trailing-whitespace
-
-# Run `helm lint` on all (modified) charts: this may require a manual `helm dep update`:
-# ls charts | xargs -i{} bash -c "cd charts/{} && helm dep update"
-- repo: https://github.com/gruntwork-io/pre-commit
-  rev: v0.1.15
-  hooks:
-  - id: helmlint
