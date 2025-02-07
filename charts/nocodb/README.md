@@ -1,6 +1,6 @@
 # nocodb
 
-![Version: 2.0.6](https://img.shields.io/badge/Version-2.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.258.3](https://img.shields.io/badge/AppVersion-0.258.3-informational?style=flat-square)
+![Version: 2.0.7](https://img.shields.io/badge/Version-2.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.260.5](https://img.shields.io/badge/AppVersion-0.260.5-informational?style=flat-square)
 
 NocoDB is an open source NoCode platform that turns any database into a smart spreadsheet
 
@@ -15,8 +15,8 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 16.2.5 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
+| https://charts.bitnami.com/bitnami | postgresql | 16.4.6 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.42 |
 
 ## Values
 
@@ -47,7 +47,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.fullnameOverride | string | `"nocodb-pg"` |  |
-| postgresql.image.tag | string | `"15"` |  |
+| postgresql.image.tag | string | `"16"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |
@@ -65,7 +65,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 | securityContext | object | `{}` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
 | service.image.repository | string | `"nocodb/nocodb"` |  |
-| service.image.tag | string | `"0.258.3"` |  |
+| service.image.tag | string | `"0.260.5"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
