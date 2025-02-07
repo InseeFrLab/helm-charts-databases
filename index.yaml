@@ -1034,6 +1034,33 @@ entries:
     version: 0.1.0
   elastic:
   - apiVersion: v2
+    appVersion: 8.17.1
+    created: "2025-02-07T13:42:20.930822616Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.4.4
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.42
+    description: Elasticsearch provides a full-text search engine with an HTTP web
+      interface and schema-free JSON documents.
+    digest: 42af69db48796e33be841d0693a33944b5dc16a9801d5bddf3651ffbedaa561b
+    home: https://www.elastic.co/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/elk.png
+    keywords:
+    - Search
+    - Lucene
+    - Visualization
+    name: elastic
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/elastic
+    - https://github.com/bitnami/charts/blob/main/bitnami/elasticsearch
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/elastic-2.0.11/elastic-2.0.11.tgz
+    version: 2.0.11
+  - apiVersion: v2
     appVersion: 8.16.1
     created: "2025-02-07T13:14:55.173465149Z"
     dependencies:
@@ -4420,6 +4447,30 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/neo4j-0.0.1/neo4j-0.0.1.tgz
     version: 0.0.1
   nocodb:
+  - apiVersion: v2
+    appVersion: 0.260.5
+    created: "2025-02-07T13:42:21.090615854Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.42
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.6
+    description: NocoDB is an open source NoCode platform that turns any database
+      into a smart spreadsheet
+    digest: 714d3ee39c90ee73bbbaef7e4d4975abd983d2cbbf84958445d2ade901f09892
+    home: https://www.nocodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/nocodb.png
+    name: nocodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/nocodb
+    - https://hub.docker.com/r/nocodb/nocodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/nocodb-2.0.7/nocodb-2.0.7.tgz
+    version: 2.0.7
   - apiVersion: v2
     appVersion: 0.258.3
     created: "2025-01-16T10:21:52.645026434Z"
@@ -7854,4 +7905,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-02-07T13:14:55.173930467Z"
+generated: "2025-02-07T13:42:21.091272839Z"
