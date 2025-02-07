@@ -23,8 +23,9 @@
             "tag": {
               "description": "Tag Elasticsearch",
               "type": "string",
-              "default": "8.16.1-debian-12-r0",
+              "default": "8.17.1-debian-12-r4",
               "enum": [
+                "8.17.1-debian-12-r4",
                 "8.16.1-debian-12-r0",
                 "8.15.1-debian-12-r2",
                 "8.14.2-debian-12-r1"
