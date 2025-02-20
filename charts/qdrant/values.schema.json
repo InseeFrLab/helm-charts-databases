@@ -1,0 +1,122 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "qdrant": {
+      "title": "Qdrant",
+      "type": "object",
+      "properties": {
+        "image": {
+          "title": "Docker image",
+          "type": "object",
+          "properties": {
+            "pullPolicy": {
+              "title": "Pull image from registry",
+              "type": "string",
+              "default": "IfNotPresent",
+              "enum": [
+                "IfNotPresent",
+                "Always",
+                "Never"
+              ]
+            },
+            "tag": {
+              "type": "string",
+              "default": "v1.13.2-gpu-nvidia"
+            },
+            "repository": {
+              "type": "string",
+              "default": "docker.io/qdrant/qdrant"
+            }
+          }
+        },
+        "ingress": {
+          "type": "object",
+          "form": true,
+          "title": "Ingress Details",
+          "properties": {
+            "enabled": {
+              "description": "Enable Ingress",
+              "type": "boolean",
+              "default": true,
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "k8s.ingress"
+              }
+            },
+            "ingressClassName": {
+              "type": "string",
+              "title": "ingressClassName",
+              "default": "",
+              "x-onyxia": {
+                "overwriteDefaultWith": "k8s.ingressClassName",
+                "hidden": true
+              }
+            },
+            "hosts": {
+              "type": "array",
+              "x-onyxia": {
+                "hidden": true,
+                "default": [],
+                "overwriteDefaultWith": [
+                  {
+                    "host": "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}",
+                    "paths": [
+                      {
+                        "path": "/",
+                        "pathType": "Prefix",
+                        "servicePort": 6333
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            "tls": {
+              "type": "array",
+              "description": "TLS settings for ingress.",
+              "default": [],
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": [
+                  {
+                    "hosts": [
+                      "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}"
+                    ],
+                    "secretName": "tls-secret-name"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "persistence": {
+          "title": "Persistence",
+          "type": "object",
+          "properties": {
+            "size": {
+              "type": "string",
+              "title": "Persistent volume size",
+              "description": "Size of the persistent volume",
+              "default": "10Gi",
+              "form": true,
+              "render": "slider",
+              "sliderMin": 1,
+              "sliderMax": 100,
+              "sliderStep": 1,
+              "sliderUnit": "Gi"
+            }
+          }
+        },
+        "apiKey": {
+          "title": "Api Key",
+          "type": "string",
+          "default": "",
+          "x-onyxia":{
+            "overwriteDefaultWith": "service.oneTimePassword"
+          }
+        }
+      }
+    }
+  }
+}
