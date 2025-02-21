@@ -234,7 +234,7 @@ qdrant:
   #   secretKeyRef:
   #     name:
   #     key:
-  apiKey: false
+  apiKey: ""
 
   # read-only api key for authentication at qdrant
   # false: no read-only api key will be configured

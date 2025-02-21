@@ -60,7 +60,7 @@
                 "default": [],
                 "overwriteDefaultWith": [
                   {
-                    "host": "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}",
+                    "host": "{{project.id}}-{{k8s.randomSubdomain}}-qdrant.{{k8s.domain}}",
                     "paths": [
                       {
                         "path": "/",
@@ -81,7 +81,7 @@
                 "overwriteDefaultWith": [
                   {
                     "hosts": [
-                      "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}"
+                      "{{project.id}}-{{k8s.randomSubdomain}}-qdrant.{{k8s.domain}}"
                     ],
                     "secretName": "tls-secret-name"
                   }
@@ -112,6 +112,7 @@
           "title": "Api Key",
           "type": "string",
           "default": "",
+          "render": "password",
           "x-onyxia":{
             "overwriteDefaultWith": "service.oneTimePassword"
           }

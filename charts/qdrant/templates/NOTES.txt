@@ -3,10 +3,11 @@ Your api key is: **{{ .Values.qdrant.apiKey }}**
 {{ end }}
 
 {{- if .Values.qdrant.ingress.enabled }}
-You can connect to qdrant with your browser on this [link](https://{{ index .Values.qdrant.ingress.hosts 0 "host" }}/dashboard)
+You can connect to qdrant api with your browser on this [link](https://{{ index .Values.qdrant.ingress.hosts 0 "host" }})  
+and to [qdrant dashboard on this link](https://{{ index .Values.qdrant.ingress.hosts 0 "host" }}/dashboard)
 {{- end }}
 
-You can connect to qdrant from inside the datalab at this url : **https://{{ .Values.qdrant.fullnameOverride }}:6333**
+You can connect to qdrant from inside the datalab at this url : **http://{{ .Values.qdrant.fullnameOverride }}:6333**
 
 Only one chart of {{ .Chart.Name }} can be started in a namespace
 
