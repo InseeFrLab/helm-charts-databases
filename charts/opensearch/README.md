@@ -1,6 +1,6 @@
 # opensearch
 
-![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.17.0](https://img.shields.io/badge/AppVersion-2.17.0-informational?style=flat-square)
+![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.19.0](https://img.shields.io/badge/AppVersion-2.19.0-informational?style=flat-square)
 
 Opensearch provides a full-text search engine with an HTTP web interface and schema-free JSON documents.
 
@@ -15,8 +15,8 @@ Opensearch provides a full-text search engine with an HTTP web interface and sch
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://opensearch-project.github.io/helm-charts/ | opensearch | 2.25.0 |
-| https://opensearch-project.github.io/helm-charts/ | opensearch-dashboards | 2.23.0 |
+| https://opensearch-project.github.io/helm-charts/ | opensearch | 2.31.0 |
+| https://opensearch-project.github.io/helm-charts/ | opensearch-dashboards | 2.27.1 |
 
 ## Values
 
