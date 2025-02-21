@@ -25,7 +25,7 @@ Qdrant - Vector Database for the next generation of AI applications.
 | qdrant.additionalVolumeMounts | list | `[]` |  |
 | qdrant.additionalVolumes | list | `[]` |  |
 | qdrant.affinity | object | `{}` |  |
-| qdrant.apiKey | bool | `false` |  |
+| qdrant.apiKey | string | `""` |  |
 | qdrant.args[0] | string | `"./config/initialize.sh"` |  |
 | qdrant.config.cluster.consensus.tick_period_ms | int | `100` |  |
 | qdrant.config.cluster.enabled | bool | `true` |  |
