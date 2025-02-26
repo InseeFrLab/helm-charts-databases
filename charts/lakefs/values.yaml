@@ -41,7 +41,7 @@ security:
 
 postgresql:
   image:
-    tag: "12"
+    tag: "16"
   fullnameOverride: "lakefs-db"
 
 networking:
