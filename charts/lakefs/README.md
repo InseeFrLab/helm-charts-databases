@@ -1,6 +1,6 @@
 # lakefs
 
-![Version: 1.0.5](https://img.shields.io/badge/Version-1.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.3.21](https://img.shields.io/badge/AppVersion-1.3.21-informational?style=flat-square)
+![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.50.0](https://img.shields.io/badge/AppVersion-1.50.0-informational?style=flat-square)
 
 Data version control for data lakes.  It enables zero copy isolated environments, and more.
 
@@ -15,9 +15,9 @@ Data version control for data lakes.  It enables zero copy isolated environments
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 16.2.5 |
-| https://charts.lakefs.io | lakefs | 1.3.21 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
+| https://charts.bitnami.com/bitnami | postgresql | 16.4.14 |
+| https://charts.lakefs.io | lakefs | 1.4.3 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.6.1 |
 
 ## Values
 
@@ -51,7 +51,7 @@ Data version control for data lakes.  It enables zero copy isolated environments
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.fullnameOverride | string | `"lakefs-db"` |  |
-| postgresql.image.tag | string | `"12"` |  |
+| postgresql.image.tag | string | `"16"` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |
 | route.enabled | bool | `false` |  |
