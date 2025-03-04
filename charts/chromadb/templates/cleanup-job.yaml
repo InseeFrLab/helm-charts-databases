@@ -1,0 +1,66 @@
+{{- $cleanupServiceAccount := printf "%s-cleanup-sa" (include "library-chart.fullname" .) -}}
+{{- $cleanupRole := printf "%s-cleanup-role" (include "library-chart.fullname" .) -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ $cleanupServiceAccount | quote }}
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-weight": "-2" # Create ServiceAccount first...
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ $cleanupRole | quote }}
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-weight": "-2" # ...together with a fresh role...
+rules:
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims", "secrets"]
+  verbs: ["delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ printf "%s-cleanup-rolebinding" (include "library-chart.fullname" .) | quote }}
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-weight": "-1"  # ... then bind admin role to it...
+subjects:
+  - kind: ServiceAccount
+    name: {{ $cleanupServiceAccount | quote }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ $cleanupRole | quote }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ printf "%s-cleanup" (include "library-chart.fullname" .) | quote }}
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-weight": "0" # ... then use it in job's serviceAccountName
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    spec:
+      serviceAccountName: {{ $cleanupServiceAccount | quote }}
+      restartPolicy: Never
+      containers:
+        - name: cleanup
+          image: bitnami/kubectl:latest
+          command:
+            - /bin/sh
+          args:
+            - -c
+            - |
+              kubectl delete secret {{ .Values.chromadb.chromadb.auth.existingSecret | default "chromadb-auth" | quote }} --ignore-not-found --wait=false
+{{- if not .Values.savePersistentVolume }}
+              kubectl delete pvc {{ printf "data-%s-0" (include "chart.fullname" .Subcharts.chromadb) | quote }} --ignore-not-found --wait=false
+{{- end }}

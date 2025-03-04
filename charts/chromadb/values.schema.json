@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "fullnameOverride": {
+      "title": "Name of the ChromaDB service",
+      "description": "Will reuse data from a previous ChromaDB service with the same name",
+      "type": "string",
+      "default": ""
+    },
+    "savePersistentVolume": {
+      "title": "Save your data on service deletion",
+      "type": "boolean",
+      "default": false,
+      "hidden": {
+        "value": "",
+        "path": "fullnameOverride"
+      }
+    },
+    "chromadb": {
+      "title": "ChromaDB",
+      "type": "object",
+      "properties": {
+        "image": {
+          "title": "Docker image",
+          "type": "object",
+          "properties": {
+            "pullPolicy": {
+              "title": "Pull image from registry",
+              "type": "string",
+              "default": "IfNotPresent",
+              "enum": [
+                "IfNotPresent",
+                "Always",
+                "Never"
+              ]
+            },
+            "repository": {
+              "type": "string",
+              "default": "ghcr.io/chroma-core/chroma"
+            }
+          }
+        },
+        "chromadb": {
+          "title": "ChromaDB",
+          "type": "object",
+          "properties": {
+            "apiVersion": {
+              "title": "Image version",
+              "type": "string",
+              "default": "0.6.3",
+              "enum": [
+                "0.6.3"
+              ]
+            },
+            "serverHttpPort": {
+              "title": "Port of the backend service",
+              "type": "integer",
+              "default": 8000
+            },
+            "auth": {
+              "title": "Authentication",
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Enable authentication",
+                  "default": true
+                },
+                "type": {
+                  "title": "Type",
+                  "type": "string",
+                  "default": "basic",
+                  "enum": [
+                    "basic",
+                    "token"
+                  ],
+                  "hidden": {
+                    "value": false,
+                    "path": "chromadb/chromadb/auth/enabled"
+                  }
+                },
+                "basic": {
+                  "title": "Basic authentication",
+                  "type": "object",
+                  "hidden": {
+                    "value": "token",
+                    "path": "chromadb/chromadb/auth/type"
+                  },
+                  "properties": {
+                    "username": {
+                      "title": "Service user name",
+                      "type": "string",
+                      "default": "chroma",
+                      "hidden": {
+                        "value": false,
+                        "path": "chromadb/chromadb/auth/enabled"
+                      }
+                    },
+                    "password": {
+                      "title": "Service password",
+                      "type": "string",
+                      "default": "changeme",
+                      "render": "password",
+                      "x-onyxia": {
+                        "overwriteDefaultWith": "{{project.password}}"
+                      },
+                      "hidden": {
+                        "value": false,
+                        "path": "chromadb/chromadb/auth/enabled"
+                      }
+                    }
+                  }
+                },
+                "token": {
+                  "title": "Token authentication",
+                  "type": "object",
+                  "hidden": {
+                    "value": "basic",
+                    "path": "chromadb/chromadb/auth/type"
+                  },
+                  "properties": {
+                    "headerType": {
+                      "title": "Header",
+                      "type": "string",
+                      "default": "Authorization",
+                      "enum": [
+                        "Authorization",
+                        "X-Chroma-Token"
+                      ],
+                      "hidden": {
+                        "value": false,
+                        "path": "chromadb/chromadb/auth/enabled"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ingress": {
+      "type": "object",
+      "form": true,
+      "title": "Ingress Details",
+      "properties": {
+        "enabled": {
+          "description": "Enable Ingress",
+          "type": "boolean",
+          "default": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.ingress"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}"
+          }
+        },
+        "userHostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-user.{{k8s.domain}}"
+          }
+        },
+        "ingressClassName": {
+          "type": "string",
+          "form": true,
+          "title": "ingressClassName",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+          }
+        },
+        "useCertManager": {
+          "type": "boolean",
+          "description": "Whether CertManager should be used to generate a certificate",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.useCertManager"
+          }
+        },
+        "certManagerClusterIssuer": {
+          "type": "string",
+          "description": "certManager cluster issuer",
+          "title": "CertManager Cluster Issuer",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.certManagerClusterIssuer"
+          }
+        },
+        "useTlsSecret": {
+          "type": "boolean",
+          "description": "Whether you want to use the specified secretName in ingress tls",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "form": true,
+      "title": "Route details",
+      "properties": {
+        "enabled": {
+          "description": "Enable route",
+          "type": "boolean",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.route"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-0.{{k8s.domain}}"
+          }
+        },
+        "userHostname": {
+          "type": "string",
+          "form": true,
+          "title": "Hostname",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-user.{{k8s.domain}}"
+          }
+        }
+      }
+    },
+    "security": {
+      "title": "Security",
+      "type": "object",
+      "properties": {
+        "networkPolicy": {
+          "title": "Network access policy",
+          "type": "object",
+          "x-onyxia": {
+            "overwriteSchemaWith": "network-policy.json"
+          },
+          "properties": {
+            "enabled": {
+              "title": "Only allow access from the same namespace",
+              "type": "boolean",
+              "default": false,
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
+            },
+            "from": {
+              "description": "Array of sources allowed to have network access to your service",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "default": [],
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
+              }
+            }
+          }
+        }
+      }
+    },
+    "discovery": {
+      "title": "Database discovery",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enable discovery of this database",
+          "description": "Allows clients to automatically preconfigure a connection to this database",
+          "default": true
+        }
+      }
+    },
+    "userPreferences": {
+      "description": "User Preferences",
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string",
+          "description": "Preferred language",
+          "default": "en",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "user.lang"
+          }
+        }
+      }
+    }
+  }
+}

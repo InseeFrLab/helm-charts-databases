@@ -1,0 +1,55 @@
+chromadb:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/chroma-core/chroma
+    pullPolicy: IfNotPresent
+  chromadb:
+    apiVersion: "0.6.3"
+    serverHttpPort: 8000
+    auth:
+      enabled: true
+      type: basic # possible values: token, basic
+      basic:
+        username: chroma
+        password: changeme
+      token:
+        headerType: Authorization # possible values: Authorization, X-Chroma-Token
+  serviceAccount:
+    create: false # Not properly implemented
+  ingress:
+    enabled: false # Custom onyxia ingress
+  autoscaling:
+    enabled: false
+
+ingress:
+  host: "chart-example.local"
+  ingressClassName: ""
+  usecertManager: false
+  certManagerClusterIssuer: ""
+  tls: true
+  annotations: []
+
+route:
+  enabled: false
+  hostname: chart-example.local
+  tls:
+    termination: edge
+  wildcardPolicy: None
+  annotations: []
+
+security:
+  allowlist:
+    enabled: false
+  networkPolicy:
+    enabled: false
+    from: []
+
+discovery:
+  enabled: true
+
+userPreferences:
+  language: "en"
+
+nameOverride: ""
+fullnameOverride: ""
+savePersistentVolume: false

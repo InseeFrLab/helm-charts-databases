@@ -1,0 +1,33 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "library-chart.fullname" . }}
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    {{- include "library-chart.ingress.annotations" . | nindent 4 }}
+spec:
+  {{- if and .Values.ingress.ingressClassName (eq "true" (include "library-chart.ingress.supportsIngressClassname" .)) }}
+  ingressClassName: {{ .Values.ingress.ingressClassName | quote }}
+  {{- end }}
+  {{- if .Values.ingress.tls }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.hostname | quote }}
+      {{- if .Values.ingress.useCertManager }}
+      secretName: tls-cert-{{ include "library-chart.fullname" . }}
+      {{- end }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.hostname | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "chart.fullname" .Subcharts.chromadb }}
+                port:
+                  number: {{ .Values.chromadb.chromadb.serverHttpPort }}
+{{- end }}

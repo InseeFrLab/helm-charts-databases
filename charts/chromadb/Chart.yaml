@@ -1,0 +1,23 @@
+apiVersion: v2
+name: chromadb
+description: ChromaDB is an open-source vector database for storing, indexing, and querying high-dimensional embeddings efficiently.
+icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/chroma.png
+keywords:
+  - Vector Database
+  - Vector Store
+  - AI/ML
+  - Embedding
+home: https://www.trychroma.com/
+sources:
+  - https://github.com/chroma-core/chroma
+  - https://github.com/amikos-tech/chromadb-chart/
+type: application
+version: 1.0.0
+appVersion: "0.6.3"
+dependencies:
+- name: chromadb
+  version: 0.1.23
+  repository: https://amikos-tech.github.io/chromadb-chart
+- name: library-chart
+  version: 1.5.44
+  repository: https://inseefrlab.github.io/helm-charts-interactive-services
