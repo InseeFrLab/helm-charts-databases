@@ -1,5 +1,34 @@
 apiVersion: v1
 entries:
+  chromadb:
+  - apiVersion: v2
+    appVersion: 0.6.3
+    created: "2025-03-04T09:54:02.971051184Z"
+    dependencies:
+    - name: chromadb
+      repository: https://amikos-tech.github.io/chromadb-chart
+      version: 0.1.23
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.44
+    description: ChromaDB is an open-source vector database for storing, indexing,
+      and querying high-dimensional embeddings efficiently.
+    digest: 2b17bf364d2f72d021d0ba239ae35a648eb54c142805e5da5e38d37bf46c6005
+    home: https://www.trychroma.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/chroma.png
+    keywords:
+    - Vector Database
+    - Vector Store
+    - AI/ML
+    - Embedding
+    name: chromadb
+    sources:
+    - https://github.com/chroma-core/chroma
+    - https://github.com/amikos-tech/chromadb-chart/
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/chromadb-1.0.0/chromadb-1.0.0.tgz
+    version: 1.0.0
   cloudbeaver:
   - apiVersion: v2
     appVersion: latest
@@ -8050,4 +8079,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-02-26T00:53:55.040215611Z"
+generated: "2025-03-04T09:54:02.971762996Z"
