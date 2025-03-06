@@ -96,7 +96,7 @@ Create the name of the service account to use
 {{- . | mustToPrettyJson | printf "\nThe JSON output of the dumped var is: \n%s" | fail }}
 {{- end -}}
 
-{{- define "connector.postgres" -}}
+{{- define "connector.postgres" }}
   {{ .service }}.properties: |
     connector.name=postgresql
     connection-url={{ printf "jdbc:postgresql://%s:%s/%s" .service .port .database }}
@@ -104,7 +104,7 @@ Create the name of the service account to use
     connection-password={{ .password }}
 {{- end -}}
 
-{{- define "connector.hive" -}}
+{{- define "connector.hive" }}
   hive.properties: |
     connector.name=hive
     hive.config.resources=/etc/trino/hdfs/core-site.xml
@@ -125,14 +125,14 @@ Create the name of the service account to use
 {{/*   hive.non-managed-table-writes-enabled=true */}}
 {{- end -}}
 
-{{- define "connector.mongodb2" -}}
+{{- define "connector.mongodb2" }}
   {{ .name }}.properties: |
     connector.name=mongodb
     mongodb.seeds={{ join "," .service | trim }}
     mongodb.credentials={{ printf "%s:%s@%s" .username .password .database }}
 {{- end -}}
 
-{{- define "connector.elastic" -}}
+{{- define "connector.elastic" }}
   {{ .name }}.properties: |
     connector.name=elasticsearch
     elasticsearch.host={{ .service }}
@@ -145,7 +145,7 @@ Create the name of the service account to use
     elasticsearch.ignore-publish-address={{ .ignoreAddress }}
 {{- end -}}
 
-{{- define "connector.opensearch" -}}
+{{- define "connector.opensearch" }}
   {{ .name }}.properties: |
     connector.name=opensearch
     opensearch.host={{ .service }}
