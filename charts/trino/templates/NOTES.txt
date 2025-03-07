@@ -22,6 +22,28 @@
 - The login is **{{ .Values.security.username }}**
 - The password is **{{ .Values.security.password }}**
 
+{{- if or (and (.Values.ingress).enabled (.Values.ingress).tls) (.Values.route).enabled -}}
+
+{{- $catalogs := list -}}
+{{- range $secret := (lookup "v1" "Secret" .Release.Namespace "").items -}}
+  {{- $secretService := index (($secret.metadata).annotations | default dict) "onyxia/discovery" | default "" | toString -}}
+  {{- if $secretService -}}
+    {{- if eq "mongodb" $secretService -}}
+      {{- $catalogs = append $catalogs "mongodb" -}}
+    {{- else if eq "postgres" $secretService -}}
+      {{- $catalogs = append $catalogs "postgresql" -}}
+    {{- else if eq "hive" $secretService -}}
+      {{- $catalogs = append $catalogs "hive" -}}
+      {{- $catalogs = append $catalogs "iceberg" -}}
+      {{- $catalogs = append $catalogs "delta-lake" -}}
+    {{- else if eq "elastic" $secretService -}}
+      {{- $catalogs = append $catalogs "elasticsearch" -}}
+    {{- else if eq "opensearch" $secretService -}}
+      {{- $catalogs = append $catalogs "opensearch" -}}
+    {{- end -}}
+  {{- end -}}
+{{- end }}
+
 To use Trino with Python and the `trino` client (see [full doc](https://github.com/trinodb/trino-python-client)):
 ```bash
 pip install trino
@@ -32,22 +54,20 @@ from trino.dbapi import connect
 from trino.auth import BasicAuthentication
 
 conn = connect(
-{{- if or (.Values.ingress).enabled (.Values.route).enabled }}
     host={{ include "library-chart.service-url" . | quote }},
-  {{- if or (.Values.ingress).tls (.Values.route).enabled }}
     port="443",
     auth=BasicAuthentication("{{ .Values.security.username }}", "{{ .Values.security.password }}"),
-  {{- else }}
-    port="80",
-  {{- end }}
-{{- else }}
-    host={{ include "library-chart.fullname" . | quote }},
-    port={{ .Values.networking.service.port | quote }},
-{{- end }}
-    catalog="hive",
+    catalog="{{ first $catalogs }}",
+    {{- if gt (len $catalogs) 1 }}
+    # Available catalogs:
+      {{- range $catalogs }}
+    # catalog={{ quote . }}
+      {{- end }}
+    {{- end }}
     schema="default"
 )
 cur = conn.cursor()
 print(cur.execute("CREATE TABLE IF NOT EXISTS test(key bigint)").fetchall())
 print(cur.execute("SHOW TABLES").fetchall())
 ```
+{{- end -}}
