@@ -1,6 +1,6 @@
 # trino
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 458](https://img.shields.io/badge/AppVersion-458-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 472](https://img.shields.io/badge/AppVersion-472-informational?style=flat-square)
 
 Fast distributed SQL query engine for big data analytics that helps you explore your data universe
 
@@ -15,7 +15,7 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.6.7 |
 
 ## Values
 
@@ -60,12 +60,12 @@ Fast distributed SQL query engine for big data analytics that helps you explore 
 | eventListenerProperties | object | `{}` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"trinodb/trino"` |  |
-| image.tag | int | `458` |  |
+| image.tag | int | `472` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |
 | ingress.enabled | bool | `false` |  |
 | ingress.hosts | list | `[]` |  |
-| ingress.tls | list | `[]` |  |
+| ingress.tls | bool | `true` |  |
 | initContainers | object | `{}` |  |
 | kafka.mountPath | string | `"/etc/trino/schemas"` |  |
 | kafka.tableDescriptions | object | `{}` |  |
