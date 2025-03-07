@@ -107,22 +107,19 @@ Create the name of the service account to use
 {{- define "connector.hive" }}
   hive.properties: |
     connector.name=hive
+    fs.hadoop.enabled=true
     hive.config.resources=/etc/trino/hdfs/core-site.xml
     hive.metastore.uri=thrift://{{ .service }}:9083
-    hive.s3.endpoint={{ .endpoint }}
-{{/*   hive.non-managed-table-writes-enabled=true */}}
   iceberg.properties: |
     connector.name=iceberg
+    fs.hadoop.enabled=true
     hive.config.resources=/etc/trino/hdfs/core-site.xml
     hive.metastore.uri=thrift://{{ .service }}:9083
-    hive.s3.endpoint={{ .endpoint }}
-{{/*   hive.non-managed-table-writes-enabled=true */}}
   deltalake.properties: |
     connector.name=delta-lake
+    fs.hadoop.enabled=true
     hive.config.resources=/etc/trino/hdfs/core-site.xml
     hive.metastore.uri=thrift://{{ .service }}:9083
-    hive.s3.endpoint={{ .endpoint }}
-{{/*   hive.non-managed-table-writes-enabled=true */}}
 {{- end -}}
 
 {{- define "connector.mongodb2" }}

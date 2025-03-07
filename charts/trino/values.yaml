@@ -7,7 +7,7 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart version.
   # Same value as Chart.yaml#appVersion
-  tag: 458
+  tag: 472
 
 server:
   workers: 2
@@ -419,7 +419,7 @@ ingress:
   #    paths:
   #      - path: /
   #        pathType: ImplementationSpecific
-  tls: []
+  tls: true
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local

@@ -21,3 +21,33 @@
 {{- end }}
 - The login is **{{ .Values.security.username }}**
 - The password is **{{ .Values.security.password }}**
+
+To use Trino with Python and the `trino` client (see [full doc](https://github.com/trinodb/trino-python-client)):
+```bash
+pip install trino
+```
+
+```python
+from trino.dbapi import connect
+from trino.auth import BasicAuthentication
+
+conn = connect(
+{{- if or (.Values.ingress).enabled (.Values.route).enabled }}
+    host={{ include "library-chart.service-url" . | quote }},
+  {{- if or (.Values.ingress).tls (.Values.route).enabled }}
+    port="443",
+    auth=BasicAuthentication("{{ .Values.security.username }}", "{{ .Values.security.password }}"),
+  {{- else }}
+    port="80",
+  {{- end }}
+{{- else }}
+    host={{ include "library-chart.fullname" . | quote }},
+    port={{ .Values.networking.service.port | quote }},
+{{- end }}
+    catalog="hive",
+    schema="default"
+)
+cur = conn.cursor()
+print(cur.execute("CREATE TABLE IF NOT EXISTS test(key bigint)").fetchall())
+print(cur.execute("SHOW TABLES").fetchall())
+```
