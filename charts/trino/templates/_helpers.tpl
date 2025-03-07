@@ -81,6 +81,32 @@ app.kubernetes.io/name: {{ include "trino.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
+
+{{/*
+  Defines a discovery secret for given database.
+  Example to expose the "hive" database, as defined in the "hive.properties" file:
+    {{- include "trino.discovery-secret" (dict "context" . "database" "hive") -}}
+*/}}
+{{- define "trino.discovery-secret" }}
+{{- $username := .context.Values.security.username }}
+{{- $password := .context.Values.security.password }}
+{{- $hostname := (.context.Values.ingress).enabled | ternary .context.Values.ingress.hostname .context.Values.route.hostname }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ printf "discoverable-%s-%s" (include "library-chart.fullname" .context) .database }}
+  annotations:
+    onyxia/discovery: "trino"
+type: Opaque
+data:
+  trino-service:  {{ $hostname | b64enc | quote }}
+  trino-password: {{ $password | b64enc | quote }}
+  trino-username: {{ $username | b64enc | quote }}
+  trino-port:     {{     "443" | b64enc | quote }}
+  trino-database: {{ .database | b64enc | quote }}
+---
+{{- end -}}
+
 {{/*
 Create the name of the service account to use
 */}}
