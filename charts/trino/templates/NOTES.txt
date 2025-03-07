@@ -45,18 +45,25 @@
 {{- end }}
 
 To use Trino with Python and the `trino` client (see [full doc](https://github.com/trinodb/trino-python-client)):
+
+- First of all, setup the client using the commmand line:
 ```bash
 pip install trino
+export TRINO_HOSTNAME={{ include "library-chart.service-url" . | quote }}
+export TRINO_USERNAME={{ .Values.security.username | quote }}
+export TRINO_PASSWORD={{ .Values.security.password | quote }}
 ```
 
+- Then, in your Python script:
 ```python
+import os
 from trino.dbapi import connect
 from trino.auth import BasicAuthentication
 
 conn = connect(
-    host={{ include "library-chart.service-url" . | quote }},
+    host=os.getenv('TRINO_HOSTNAME'),
     port="443",
-    auth=BasicAuthentication("{{ .Values.security.username }}", "{{ .Values.security.password }}"),
+    auth=BasicAuthentication(os.getenv('TRINO_USERNAME'), os.getenv('TRINO_PASSWORD')),
     catalog="{{ first $catalogs }}",
     {{- if gt (len $catalogs) 1 }}
     # Available catalogs:
@@ -67,7 +74,6 @@ conn = connect(
     schema="default"
 )
 cur = conn.cursor()
-print(cur.execute("CREATE TABLE IF NOT EXISTS test(key bigint)").fetchall())
 print(cur.execute("SHOW TABLES").fetchall())
 ```
 {{- end -}}
