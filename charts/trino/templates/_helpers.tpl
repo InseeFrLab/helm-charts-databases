@@ -4,7 +4,7 @@ Expand the name of the chart.
 */}}
 {{- define "trino.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
-{{- end }}
+{{- end -}}
 
 {{/*
 Create a default fully qualified app name.
@@ -22,14 +22,14 @@ If release name contains chart name it will be used as a full name.
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
 {{- end }}
 {{- end }}
-{{- end }}
+{{- end -}}
 
 {{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "trino.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
-{{- end }}
+{{- end -}}
 
 {{- define "trino.coordinator" -}}
 {{- if .Values.coordinatorNameOverride }}
@@ -42,7 +42,7 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}-coordinator
 {{- end }}
 {{- end }}
-{{- end }}
+{{- end -}}
 
 {{- define "trino.worker" -}}
 {{- if .Values.workerNameOverride }}
@@ -55,8 +55,7 @@ Create chart name and version as used by the chart label.
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}-worker
 {{- end }}
 {{- end }}
-{{- end }}
-
+{{- end -}}
 
 {{- define "trino.catalog" -}}
 {{ template "trino.fullname" . }}-catalog
@@ -72,7 +71,7 @@ helm.sh/chart: {{ include "trino.chart" . }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-{{- end }}
+{{- end -}}
 
 {{/*
 Selector labels
@@ -97,115 +96,61 @@ Create the name of the service account to use
 {{- . | mustToPrettyJson | printf "\nThe JSON output of the dumped var is: \n%s" | fail }}
 {{- end -}}
 
-{{- define "connector.postgres" -}}
-{{ $postgres:= .postgres }}
-{{ $service:= .service }}
-{{ $index:= .index }}
-{{ $port:= .port }}
-{{ $username:= .username }}
-{{ $password:= .password }}
-{{ $database:= .database }}
-{{- if $postgres }}
-{{- printf "%s.properties: |" $service | indent 2}}
+{{- define "connector.postgres" }}
+  {{ .service }}.properties: |
     connector.name=postgresql
-{{ printf "connection-url=jdbc:postgresql://%s:%s/%s"  $service $port $database | indent 4}}
-{{ printf "connection-user=%s"  $username | indent 4}}
-{{ printf "connection-password=%s" $password | indent 4}}
-{{- end }}
+    connection-url={{ printf "jdbc:postgresql://%s:%s/%s" .service .port .database }}
+    connection-user={{ .username }}
+    connection-password={{ .password }}
 {{- end -}}
 
-{{- define "connector.hive" -}}
-{{ $hive:= .hive }}
-{{ $service:= .service }}
-{{ $index:= .index }}
-{{ $endpoint:= .endpoint}}
-{{- if $hive  }}
-{{- printf "hive.properties: |" | indent 2}}
+{{- define "connector.hive" }}
+  hive.properties: |
     connector.name=hive
+    fs.hadoop.enabled=true
     hive.config.resources=/etc/trino/hdfs/core-site.xml
-{{ printf "hive.metastore.uri=thrift://%s:9083" $service | indent 4}}
-{{ printf "hive.s3.endpoint=%s" $endpoint | indent 4 }}
-{{/*   hive.non-managed-table-writes-enabled=true */}}
-{{ printf "iceberg.properties: |" | indent 2}}
+    hive.metastore.uri=thrift://{{ .service }}:9083
+  iceberg.properties: |
     connector.name=iceberg
+    fs.hadoop.enabled=true
     hive.config.resources=/etc/trino/hdfs/core-site.xml
-{{ printf "hive.metastore.uri=thrift://%s:9083" $service | indent 4}}
-{{ printf "hive.s3.endpoint=%s" $endpoint | indent 4 }}
-{{/*   hive.non-managed-table-writes-enabled=true */}}
-{{ printf "deltalake.properties: |" | indent 2}}
+    hive.metastore.uri=thrift://{{ .service }}:9083
+  deltalake.properties: |
     connector.name=delta-lake
+    fs.hadoop.enabled=true
     hive.config.resources=/etc/trino/hdfs/core-site.xml
-{{ printf "hive.metastore.uri=thrift://%s:9083" $service | indent 4}}
-{{ printf "hive.s3.endpoint=%s" $endpoint | indent 4 }}
-{{/*   hive.non-managed-table-writes-enabled=true */}}
-{{- end }}
+    hive.metastore.uri=thrift://{{ .service }}:9083
 {{- end -}}
 
-{{- define "connector.mongodb2" -}}
-{{ $mongodb:= .mongodb }}
-{{ $service:= .service }}
-{{ $index:= .index }}
-{{ $username:= .username }}
-{{ $password:= .password }}
-{{ $database:= .database }}
-{{ $name:= .name }}
-{{ if $mongodb }}
-{{- printf "%s.properties: |" $name | indent 2}}
+{{- define "connector.mongodb2" }}
+  {{ .name }}.properties: |
     connector.name=mongodb
-{{ printf "mongodb.seeds=%s"  (join "," $service) | trim | indent 4}}
-{{ printf "mongodb.credentials=%s:%s@%s" $username $password $database  | indent 4}}
-{{- end -}}
+    mongodb.seeds={{ join "," .service | trim }}
+    mongodb.credentials={{ printf "%s:%s@%s" .username .password .database }}
 {{- end -}}
 
-
-{{- define "connector.elastic" -}}
-{{ $elastic:= .elastic }}
-{{ $service:= .service }}
-{{ $index:= .index }}
-{{ $port:= .port }}
-{{ $password:= .password }}
-{{ $name:= .name }}
-{{ $security:= .security }}
-{{ $username:= .username }}
-{{ $tls:= .tls }}
-{{ $ignoreAddress:= .ignoreAddress }}
-{{ $schema:= .schema }}
-{{- if $elastic }}
-{{- printf "%s.properties: |"  $name | indent 2}}
+{{- define "connector.elastic" }}
+  {{ .name }}.properties: |
     connector.name=elasticsearch
-{{ printf "elasticsearch.host=%s"  $service | indent 4}}
-{{ printf "elasticsearch.port=%s"  $port | indent 4}}
-{{ printf "elasticsearch.default-schema-name=%s" $schema | indent 4 }}
-{{ printf "elasticsearch.security=%s" $security | indent 4 }}
-{{ printf "elasticsearch.auth.user=%s" $username | indent 4 }}
-{{ printf "elasticsearch.auth.password=%s" $password | indent 4 }}
-{{ printf "elasticsearch.tls.enabled=%s" $tls | indent 4}}
-{{ printf "elasticsearch.ignore-publish-address=%s" $ignoreAddress | indent 4 }}
-{{- end }}
+    elasticsearch.host={{ .service }}
+    elasticsearch.port={{ .port }}
+    elasticsearch.default-schema-name={{ .schema }}
+    elasticsearch.security={{ .security }}
+    elasticsearch.auth.user={{ .username }}
+    elasticsearch.auth.password={{ .password }}
+    elasticsearch.tls.enabled={{ .tls }}
+    elasticsearch.ignore-publish-address={{ .ignoreAddress }}
 {{- end -}}
 
-{{- define "connector.opensearch" -}}
-{{ $opensearch:= .opensearch }}
-{{ $service:= .service }}
-{{ $index:= .index }}
-{{ $port:= .port }}
-{{ $password:= .password }}
-{{ $name:= .name }}
-{{ $security:= .security }}
-{{ $username:= .username }}
-{{ $tls:= .tls }}
-{{ $ignoreAddress:= .ignoreAddress }}
-{{ $schema:= .schema }}
-{{- if $opensearch }}
-{{- printf "%s.properties: |"  $name | indent 2}}
+{{- define "connector.opensearch" }}
+  {{ .name }}.properties: |
     connector.name=opensearch
-{{ printf "opensearch.host=%s"  $service | indent 4}}
-{{ printf "opensearch.port=%s"  $port | indent 4}}
-{{ printf "opensearch.default-schema-name=%s" $schema | indent 4 }}
-{{ printf "opensearch.security=%s" $security | indent 4 }}
-{{ printf "opensearch.auth.user=%s" $username | indent 4 }}
-{{ printf "opensearch.auth.password=%s" $password | indent 4 }}
-{{ printf "opensearch.tls.enabled=%s" $tls | indent 4}}
-{{ printf "opensearch.ignore-publish-address=%s" $ignoreAddress | indent 4 }}
-{{- end }}
+    opensearch.host={{ .service }}
+    opensearch.port={{ .port }}
+    opensearch.default-schema-name={{ .schema }}
+    opensearch.security={{ .security }}
+    opensearch.auth.user={{ .username }}
+    opensearch.auth.password={{ .password }}
+    opensearch.tls.enabled={{ .tls }}
+    opensearch.ignore-publish-address={{ .ignoreAddress }}
 {{- end -}}
