@@ -7491,6 +7491,30 @@ entries:
     version: 0.0.1
   trino:
   - apiVersion: v2
+    appVersion: "472"
+    created: "2025-03-07T10:24:32.61644009Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.6.7
+    description: Fast distributed SQL query engine for big data analytics that helps
+      you explore your data universe
+    digest: f505e7641791cf18593abfe5c827eb2227394fbc00837f8c2c67003be88833e1
+    home: https://trino.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/trino.png
+    keywords:
+    - SQL
+    - distributed
+    - python
+    name: trino
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/trino
+    - https://github.com/InseeFrLab/trino/blob/main/Dockerfile
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-1.0.7/trino-1.0.7.tgz
+    version: 1.0.7
+  - apiVersion: v2
     appVersion: "458"
     created: "2025-01-16T10:21:54.024984274Z"
     dependencies:
@@ -8079,4 +8103,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-03-04T09:54:02.971762996Z"
+generated: "2025-03-07T10:24:32.616967497Z"
