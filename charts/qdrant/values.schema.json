@@ -60,7 +60,7 @@
                 "default": [],
                 "overwriteDefaultWith": [
                   {
-                    "host": "{{project.id}}-{{k8s.randomSubdomain}}-qdrant.{{k8s.domain}}",
+                    "host": "{{project.id}}-qdrant.{{k8s.domain}}",
                     "paths": [
                       {
                         "path": "/",
@@ -81,7 +81,7 @@
                 "overwriteDefaultWith": [
                   {
                     "hosts": [
-                      "{{project.id}}-{{k8s.randomSubdomain}}-qdrant.{{k8s.domain}}"
+                      "{{project.id}}-qdrant.{{k8s.domain}}"
                     ],
                     "secretName": "tls-secret-name"
                   }
