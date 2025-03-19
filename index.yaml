@@ -4228,6 +4228,26 @@ entries:
   neo4j:
   - apiVersion: v2
     appVersion: latest
+    created: "2025-03-19T15:51:57.18644446Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.33
+    description: Neo4j is a graph database management system. It's ACID-compliant
+      transactional database with native graph storage.
+    digest: 224c7240d3dc6b883487de6db30aaafc71c9b47a3de6de7ac6c4ae68b0830100
+    home: https://neo4j.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/neo4j.png
+    name: neo4j
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/neo4j
+    - https://github.com/neo4j/docker-neo4j-publish
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/neo4j-1.0.5/neo4j-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-01-16T10:21:52.443986217Z"
     dependencies:
     - name: library-chart
@@ -8172,4 +8192,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-03-18T15:04:38.343159491Z"
+generated: "2025-03-19T15:51:57.187041624Z"
