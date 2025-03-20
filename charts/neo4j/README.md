@@ -1,6 +1,6 @@
 # neo4j
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 Neo4j is a graph database management system. It's ACID-compliant transactional database with native graph storage.
 
@@ -15,7 +15,7 @@ Neo4j is a graph database management system. It's ACID-compliant transactional d
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.6.8 |
 
 ## Values
 
@@ -64,7 +64,7 @@ Neo4j is a graph database management system. It's ACID-compliant transactional d
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
 | service.image.repository | string | `"neo4j"` |  |
 | service.image.tag | string | `""` |  |
-| service.version | string | `"4.4.41"` |  |
+| service.version | string | `"5.26.4"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
