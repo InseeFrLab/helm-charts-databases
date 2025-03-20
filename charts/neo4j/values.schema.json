@@ -255,9 +255,9 @@
           "description": "neo4j version",
           "type": "string",
           "enum": [
-            "4.4.41"
+            "5.26.4"
           ],
-          "default": "4.4.41"
+          "default": "5.26.4"
         }
       }
     }
