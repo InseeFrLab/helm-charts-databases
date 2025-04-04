@@ -17,15 +17,16 @@ Enable access to your service using port forwarding:
 kubectl port-forward service/{{ include "chart.fullname" .Subcharts.chromadb }} <port-local>:{{ .Values.chromadb.chromadb.serverHttpPort }}
 ```
 
-{{ end -}}
+{{ end }}
 
-{{- if .Values.chromadb.chromadb.auth.enabled -}}
+{{- if .Values.chromadb.chromadb.auth.enabled }}
+Authentication:
 {{- if eq .Values.chromadb.chromadb.auth.type "token" }}
-Your token: **{{ .Values.chromadb.chromadb.auth.token.value }}**
+- Your token: **{{ .Values.chromadb.chromadb.auth.token.value }}**
 {{- else }}
-Your username: **{{ .Values.chromadb.chromadb.auth.basic.username }}**
-Your password: **{{ .Values.chromadb.chromadb.auth.basic.password }}**
-{{- end -}}
+- Your username: **{{ .Values.chromadb.chromadb.auth.basic.username }}**
+- Your password: **{{ .Values.chromadb.chromadb.auth.basic.password }}**
+{{- end }}
 {{- else }}
 Access to your service is not authenticated.
 {{- end }}
@@ -49,7 +50,7 @@ export CHROMA_CLIENT_AUTH_PROVIDER=chromadb.auth.basic_authn.BasicAuthClientProv
 {{- end }}
 ```
 
-Then use the variables for authentication with Python:
+Using Python the variables are used automatically for authentication:
 ```python
 import chromadb
 from chromadb.config import Settings
@@ -59,7 +60,7 @@ client = chromadb.HttpClient(
     host="{{ $hostname }}",
     port={{ $httpport }},
     ssl={{ $ssl }},
-   settings=Settings()
+    settings=Settings()
 )
 
 # Create a dummy collection
