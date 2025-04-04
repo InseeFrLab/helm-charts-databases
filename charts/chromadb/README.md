@@ -1,6 +1,6 @@
 # chromadb
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
 
 ChromaDB is an open-source vector database for storing, indexing, and querying high-dimensional embeddings efficiently.
 
@@ -16,7 +16,7 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | Repository | Name | Version |
 |------------|------|---------|
 | https://amikos-tech.github.io/chromadb-chart | chromadb | 0.1.23 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.44 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.6.12 |
 
 ## Values
 
@@ -28,6 +28,7 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | chromadb.chromadb.auth.basic.username | string | `"chroma"` |  |
 | chromadb.chromadb.auth.enabled | bool | `true` |  |
 | chromadb.chromadb.auth.token.headerType | string | `"Authorization"` |  |
+| chromadb.chromadb.auth.token.value | string | `"changeme"` |  |
 | chromadb.chromadb.auth.type | string | `"basic"` |  |
 | chromadb.chromadb.serverHttpPort | int | `8000` |  |
 | chromadb.image.pullPolicy | string | `"IfNotPresent"` |  |
