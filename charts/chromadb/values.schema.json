@@ -132,6 +132,19 @@
                         "value": false,
                         "path": "chromadb/chromadb/auth/enabled"
                       }
+                    },
+                    "value": {
+                      "title": "Service token",
+                      "type": "string",
+                      "default": "changeme",
+                      "render": "password",
+                      "x-onyxia": {
+                        "overwriteDefaultWith": "{{project.password}}"
+                      },
+                      "hidden": {
+                        "value": false,
+                        "path": "chromadb/chromadb/auth/enabled"
+                      }
                     }
                   }
                 }

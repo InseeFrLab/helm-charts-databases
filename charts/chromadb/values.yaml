@@ -14,6 +14,7 @@ chromadb:
         password: changeme
       token:
         headerType: Authorization # possible values: Authorization, X-Chroma-Token
+        value: changeme
   serviceAccount:
     create: false # Not properly implemented
   ingress:

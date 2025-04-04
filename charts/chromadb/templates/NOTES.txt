@@ -19,20 +19,33 @@ kubectl port-forward service/{{ include "chart.fullname" .Subcharts.chromadb }} 
 
 {{ end -}}
 
+{{- if .Values.chromadb.chromadb.auth.enabled -}}
+{{- if eq .Values.chromadb.chromadb.auth.type "token" }}
+Your token: **{{ .Values.chromadb.chromadb.auth.token.value }}**
+{{- else }}
+Your username: **{{ .Values.chromadb.chromadb.auth.basic.username }}**
+Your password: **{{ .Values.chromadb.chromadb.auth.basic.password }}**
+{{- end -}}
+{{- else }}
+Access to your service is not authenticated.
+{{- end }}
+
 Configure the access to your service using environment variables:
 ```bash
 export CHROMA_SERVER_HOST={{ $hostname }}
 export CHROMA_SERVER_HTTP_PORT={{ $httpport }}
 
-{{- if .Values.chromadb.chromadb.auth.enabled -}}
+{{- if .Values.chromadb.chromadb.auth.enabled }}
 {{- if eq .Values.chromadb.chromadb.auth.type "token" }}
-export CHROMA_CLIENT_AUTH_CREDENTIALS=$(kubectl get secret chromadb-auth -o jsonpath="{.data.token}" | base64 --decode)
+export CHROMA_CLIENT_AUTH_CREDENTIALS=$(kubectl get secret chromadb-auth -o jsonpath="{.data.token}" | base64 -d)
 export CHROMA_CLIENT_AUTH_PROVIDER=chromadb.auth.token_authn.TokenAuthClientProvider
 export CHROMA_AUTH_TOKEN_TRANSPORT_HEADER={{ .Values.chromadb.chromadb.auth.token.headerType }}
 {{- else }}
-export CHROMA_CLIENT_AUTH_CREDENTIALS=$(kubectl get secret chromadb-auth -o jsonpath="{.data}" | yq '(.username|@base64d)+":"+(.password|@base64d)')
+export CHROMA_CLIENT_AUTH_USERNAME=$(kubectl get secret chromadb-auth -o jsonpath="{.data.username}" | base64 -d)
+export CHROMA_CLIENT_AUTH_PASSWORD=$(kubectl get secret chromadb-auth -o jsonpath="{.data.password}" | base64 -d)
+export CHROMA_CLIENT_AUTH_CREDENTIALS="${CHROMA_CLIENT_AUTH_USERNAME}:${CHROMA_CLIENT_AUTH_PASSWORD}"
 export CHROMA_CLIENT_AUTH_PROVIDER=chromadb.auth.basic_authn.BasicAuthClientProvider
-{{- end -}}
+{{- end }}
 {{- end }}
 ```
 

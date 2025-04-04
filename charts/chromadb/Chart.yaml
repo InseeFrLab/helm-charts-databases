@@ -12,12 +12,12 @@ sources:
   - https://github.com/chroma-core/chroma
   - https://github.com/amikos-tech/chromadb-chart/
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: "0.6.3"
 dependencies:
 - name: chromadb
   version: 0.1.23
   repository: https://amikos-tech.github.io/chromadb-chart
 - name: library-chart
-  version: 1.5.44
+  version: 1.6.12
   repository: https://inseefrlab.github.io/helm-charts-interactive-services
