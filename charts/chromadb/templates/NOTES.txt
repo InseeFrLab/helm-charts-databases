@@ -18,7 +18,7 @@ Enable access to your service using port forwarding:
 kubectl port-forward service/{{ include "chart.fullname" .Subcharts.chromadb }} <port-local>:{{ .Values.chromadb.chromadb.serverHttpPort }}
 ```
 {{ else -}}
-Your service is available at the following URI:
+Your service API is available at the following URI:
 - {{ $hostname }}
 {{ end -}}
 
@@ -27,8 +27,8 @@ Authentication:
 {{- if eq .Values.chromadb.chromadb.auth.type "token" }}
 - Your token: **{{ .Values.chromadb.chromadb.auth.token.value }}**
 {{- else }}
-- Your username: **{{ .Values.chromadb.chromadb.auth.basic.username }}**
-- Your password: **{{ .Values.chromadb.chromadb.auth.basic.password }}**
+- Username: **{{ .Values.chromadb.chromadb.auth.basic.username }}**
+- Password: **{{ .Values.chromadb.chromadb.auth.basic.password }}**
 {{- end }}
 {{- else }}
 Access to your service is not authenticated.
@@ -36,6 +36,7 @@ Access to your service is not authenticated.
 
 <details>
   <summary> Environment variable setup </summary>
+
 Configure the access to your service using environment variables:
 ```bash
 export CHROMA_SERVER_HOST={{ $hostname }}
@@ -62,6 +63,7 @@ export CHROMA_CLIENT_AUTH_PROVIDER=chromadb.auth.basic_authn.BasicAuthClientProv
 
 <details>
   <summary> Python client </summary>
+
 Install the ChromaDB client library first:
 ```bash
 uv pip install chromadb-client==0.6.3
