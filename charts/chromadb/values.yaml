@@ -6,6 +6,8 @@ chromadb:
   chromadb:
     apiVersion: "0.6.3"
     serverHttpPort: 8000
+    isPersistent: true
+    dataVolumeSize: "1Gi"
     auth:
       enabled: true
       type: basic # possible values: token, basic

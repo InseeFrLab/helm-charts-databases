@@ -58,6 +58,30 @@
               "type": "integer",
               "default": 8000
             },
+            "isPersistent": {
+              "title": "Create a persistent volume",
+              "type": "boolean",
+              "default": true
+            },
+            "dataVolumeSize": {
+              "title": "Persistent volume size",
+              "type": "string",
+              "default": "5Gi",
+              "form": true,
+              "render": "slider",
+              "sliderMin": 1,
+              "sliderMax": 100,
+              "sliderStep": 1,
+              "sliderUnit": "Gi",
+              "x-onyxia": {
+                "useRegionSliderConfig": "disk"
+              },
+              "hidden": {
+                "value": false,
+                "path": "isPersistent",
+                "isPathRelative": true
+              }
+            },
             "auth": {
               "title": "Authentication",
               "type": "object",
