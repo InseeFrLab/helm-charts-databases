@@ -3,6 +3,34 @@ entries:
   chromadb:
   - apiVersion: v2
     appVersion: 0.6.3
+    created: "2025-04-11T09:54:07.587957252Z"
+    dependencies:
+    - name: chromadb
+      repository: https://amikos-tech.github.io/chromadb-chart
+      version: 0.1.23
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.6.12
+    description: ChromaDB is an open-source vector database for storing, indexing,
+      and querying high-dimensional embeddings efficiently.
+    digest: 8e98969d4cd6c7a0fc7e97a9f99ca0d6bc38022f8eaff19709de3070e9438b0e
+    home: https://www.trychroma.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/chroma.png
+    keywords:
+    - Vector Database
+    - Vector Store
+    - AI/ML
+    - Embedding
+    name: chromadb
+    sources:
+    - https://github.com/chroma-core/chroma
+    - https://github.com/amikos-tech/chromadb-chart/
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/chromadb-1.0.4/chromadb-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 0.6.3
     created: "2025-04-11T09:05:17.709072054Z"
     dependencies:
     - name: chromadb
@@ -3863,6 +3891,35 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mariadb-0.0.1/mariadb-0.0.1.tgz
     version: 0.0.1
   milvus:
+  - apiVersion: v2
+    appVersion: 2.5.8
+    created: "2025-04-11T09:54:07.795353717Z"
+    dependencies:
+    - name: milvus
+      repository: https://zilliztech.github.io/milvus-helm
+      version: 4.2.44
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.6.13
+    description: Milvus is an open-source vector database built to power AI applications
+      and vector similarity search.
+    digest: dbe66e4bbd55d26123201f31a45a022b0b1e040b8842f91ad34a8f9583892942
+    home: https://milvus.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/milvus.png
+    keywords:
+    - Vector Database
+    - Vector Store
+    - AI/ML
+    - Embedding
+    - Elastic
+    name: milvus
+    sources:
+    - https://github.com/milvus-io/milvus
+    - https://github.com/zilliztech/milvus-helm/
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/milvus-1.0.1/milvus-1.0.1.tgz
+    version: 1.0.1
   - apiVersion: v2
     appVersion: 2.5.8
     created: "2025-04-11T09:05:17.907577875Z"
@@ -8346,4 +8403,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-04-11T09:05:17.908042358Z"
+generated: "2025-04-11T09:54:07.79584696Z"
