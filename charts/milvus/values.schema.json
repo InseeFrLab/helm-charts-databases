@@ -1,0 +1,379 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "milvus": {
+      "title": "Milvus",
+      "type": "object",
+      "properties": {
+        "extraConfigFiles": {
+          "title": "Configuration files",
+          "type": "object",
+          "hidden": true,
+          "properties": {
+            "user.yaml": {
+              "title": "User configuration file",
+              "type": "string",
+              "default": "common:\n  security:\n    authorizationEnabled: true\n    defaultRootPassword: \"Milvus\"",
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "common:\n  security:\n    authorizationEnabled: true\n    defaultRootPassword: \"{{project.password}}\""
+              }
+            }
+          }
+        },
+        "standalone": {
+          "title": "Milvus",
+          "type": "object",
+          "properties": {
+            "resources": {
+              "title": "Resources (CPU/RAM)",
+              "type": "object",
+              "properties": {
+                "requests": {
+                  "description": "Guaranteed resources",
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "description": "Guaranteed CPU allocation",
+                      "title": "CPU",
+                      "type": "string",
+                      "default": "100m",
+                      "render": "slider",
+                      "sliderMin": 50,
+                      "sliderMax": 40000,
+                      "sliderStep": 50,
+                      "sliderUnit": "m",
+                      "sliderExtremity": "down",
+                      "sliderExtremitySemantic": "guaranteed",
+                      "sliderRangeId": "cpu",
+                      "x-onyxia": {
+                        "overwriteDefaultWith": "region.resources.cpuRequest",
+                        "useRegionSliderConfig": "cpu"
+                      }
+                    },
+                    "memory": {
+                      "description": "Guaranteed memory allocation",
+                      "title": "memory",
+                      "type": "string",
+                      "default": "2Gi",
+                      "render": "slider",
+                      "sliderMin": 1,
+                      "sliderMax": 200,
+                      "sliderStep": 1,
+                      "sliderUnit": "Gi",
+                      "sliderExtremity": "down",
+                      "sliderExtremitySemantic": "guaranteed",
+                      "sliderRangeId": "memory",
+                      "x-onyxia": {
+                        "overwriteDefaultWith": "region.resources.memoryRequest",
+                        "useRegionSliderConfig": "memory"
+                      }
+                    }
+                  }
+                },
+                "limits": {
+                  "description": "max resources",
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "description": "Maximum CPU allocation",
+                      "title": "CPU",
+                      "type": "string",
+                      "default": "30000m",
+                      "render": "slider",
+                      "sliderMin": 50,
+                      "sliderMax": 40000,
+                      "sliderStep": 50,
+                      "sliderUnit": "m",
+                      "sliderExtremity": "up",
+                      "sliderExtremitySemantic": "Maximum",
+                      "sliderRangeId": "cpu",
+                      "x-onyxia": {
+                        "overwriteDefaultWith": "region.resources.cpuLimit",
+                        "useRegionSliderConfig": "cpu"
+                      }
+                    },
+                    "memory": {
+                      "description": "Maximum memory allocation",
+                      "title": "Memory",
+                      "type": "string",
+                      "default": "50Gi",
+                      "render": "slider",
+                      "sliderMin": 1,
+                      "sliderMax": 200,
+                      "sliderStep": 1,
+                      "sliderUnit": "Gi",
+                      "sliderExtremity": "up",
+                      "sliderExtremitySemantic": "Maximum",
+                      "sliderRangeId": "memory",
+                      "x-onyxia": {
+                        "overwriteDefaultWith": "region.resources.memoryLimit",
+                        "useRegionSliderConfig": "memory"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "persistence": {
+              "title": "Persistence",
+              "type": "object",
+              "properties": {
+                "persistentVolumeClaim": {
+                  "title": "Persistent volume",
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "title": "Create a persistent volume",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "size": {
+                      "title": "Persistent volume size",
+                      "type": "string",
+                      "default": "50Gi",
+                      "form": true,
+                      "render": "slider",
+                      "sliderMin": 1,
+                      "sliderMax": 100,
+                      "sliderStep": 1,
+                      "sliderUnit": "Gi",
+                      "x-onyxia": {
+                        "useRegionSliderConfig": "disk"
+                      },
+                      "hidden": {
+                        "value": false,
+                        "path": "enabled",
+                        "isPathRelative": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "minio": {
+          "title": "MinIO Backend",
+          "type": "object",
+          "properties": {
+            "persistence": {
+              "title": "Persistence",
+              "type": "object",
+              "properties": {
+                "persistentVolumeClaim": {
+                  "title": "Persistent volume",
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "title": "Create a persistent volume",
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "size": {
+                      "title": "Persistent volume size",
+                      "type": "string",
+                      "default": "50Gi",
+                      "form": true,
+                      "render": "slider",
+                      "sliderMin": 1,
+                      "sliderMax": 500,
+                      "sliderStep": 1,
+                      "sliderUnit": "Gi",
+                      "x-onyxia": {
+                        "useRegionSliderConfig": "disk"
+                      },
+                      "hidden": {
+                        "value": false,
+                        "path": "enabled",
+                        "isPathRelative": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ingress": {
+      "type": "object",
+      "form": true,
+      "title": "Ingress Details",
+      "properties": {
+        "enabled": {
+          "description": "Enable Ingress",
+          "type": "boolean",
+          "default": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.ingress"
+          }
+        },
+        "hostnameGRPC": {
+          "title": "GRPC API hostname",
+          "type": "string",
+          "form": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-grpc.{{k8s.domain}}"
+          }
+        },
+        "hostnameREST": {
+          "title": "REST API hostname",
+          "type": "string",
+          "form": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-rest.{{k8s.domain}}"
+          }
+        },
+        "hostnameWebUI": {
+          "title": "Web UI hostname",
+          "type": "string",
+          "form": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-webui.{{k8s.domain}}"
+          }
+        },
+        "ingressClassName": {
+          "type": "string",
+          "form": true,
+          "title": "ingressClassName",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{k8s.ingressClassName}}"
+          }
+        },
+        "useCertManager": {
+          "type": "boolean",
+          "description": "Whether CertManager should be used to generate a certificate",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.useCertManager"
+          }
+        },
+        "certManagerClusterIssuer": {
+          "type": "string",
+          "description": "certManager cluster issuer",
+          "title": "CertManager Cluster Issuer",
+          "default": "",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.certManagerClusterIssuer"
+          }
+        },
+        "useTlsSecret": {
+          "type": "boolean",
+          "description": "Whether you want to use the specified secretName in ingress tls",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true
+          }
+        }
+      }
+    },
+    "route": {
+      "type": "object",
+      "form": true,
+      "title": "Route details",
+      "properties": {
+        "enabled": {
+          "description": "Enable route",
+          "type": "boolean",
+          "default": false,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "k8s.route"
+          }
+        },
+        "hostname": {
+          "title": "API hostname",
+          "type": "string",
+          "form": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}.{{k8s.domain}}"
+          }
+        },
+        "hostnameWebUI": {
+          "title": "Web UI hostname",
+          "type": "string",
+          "form": true,
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "{{project.id}}-{{k8s.randomSubdomain}}-webui.{{k8s.domain}}"
+          }
+        }
+      }
+    },
+    "security": {
+      "title": "Security",
+      "type": "object",
+      "properties": {
+        "networkPolicy": {
+          "title": "Network access policy",
+          "type": "object",
+          "x-onyxia": {
+            "overwriteSchemaWith": "network-policy.json"
+          },
+          "properties": {
+            "enabled": {
+              "title": "Only allow access from the same namespace",
+              "type": "boolean",
+              "default": false,
+              "x-onyxia": {
+                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+              }
+            },
+            "from": {
+              "description": "Array of sources allowed to have network access to your service",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true
+              },
+              "default": [],
+              "x-onyxia": {
+                "hidden": true,
+                "overwriteDefaultWith": "region.from"
+              }
+            }
+          }
+        }
+      }
+    },
+    "discovery": {
+      "title": "Database discovery",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "title": "Enable discovery of this database",
+          "description": "Allows clients to automatically preconfigure a connection to this database",
+          "default": true
+        }
+      }
+    },
+    "userPreferences": {
+      "description": "User Preferences",
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string",
+          "description": "Preferred language",
+          "default": "en",
+          "x-onyxia": {
+            "hidden": true,
+            "overwriteDefaultWith": "user.lang"
+          }
+        }
+      }
+    }
+  }
+}

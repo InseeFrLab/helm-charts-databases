@@ -1,0 +1,123 @@
+milvus:
+  ## Enable or disable Milvus Cluster mode
+  cluster:
+    enabled: false
+  extraConfigFiles:
+    user.yaml: |+
+      common:
+        security:
+          authorizationEnabled: true
+          defaultRootPassword: "Milvus"
+  ingress:
+    enabled: false # Custom onyxia ingress
+  serviceAccount:
+    create: true
+  metrics:
+    enabled: false
+    serviceMonitor:
+      enabled: false
+  log:
+    level: "info"
+    format: "text"    # text/json
+    persistence:
+      enabled: false
+
+  standalone:
+    replicas: 1  # Run standalone mode with replication disabled
+    resources: {}
+    heaptrack:
+      enabled: false
+    disk:
+      enabled: true
+    profiling:
+      enabled: false
+
+    ## Default message queue for milvus standalone
+    ## Supported value: rocksmq, natsmq, pulsar, kafka and woodpecker
+    messageQueue: rocksmq
+    persistence:
+      enabled: true
+      annotations:
+        helm.sh/resource-policy: delete
+      persistentVolumeClaim:
+        size: 50Gi
+
+  proxy:
+    enabled: true
+    replicas: 1
+    heaptrack:
+      enabled: false
+    profiling:
+      enabled: false
+    http:
+      enabled: true  # whether to enable http rest server
+      debugMode:
+        enabled: false
+    hpa:
+      enabled: false
+
+  attu:
+    enabled: true
+    ingress:
+      enabled: false
+
+  minio:
+    mode: standalone
+    resources:
+      requests:
+        memory: 2Gi
+    persistence:
+      enabled: true
+      size: 50Gi
+      annotations:
+        helm.sh/resource-policy: delete
+
+  etcd:
+    replicaCount: 1
+
+  queryNode:
+    enabled: false
+  indexNode:
+    enabled: false
+  dataNode:
+    enabled: false
+  pulsarv3:
+    enabled: false
+  pulsar:
+    enabled: false
+  kafka:
+    enabled: false
+  woodpecker:
+    enabled: false
+
+ingress:
+  enabled: true
+  hostnameGRPC: "chart-example-grpc.local"
+  hostnameREST: "chart-example-rest.local"
+  hostnameWebUI: "chart-example-webui.local"
+  ingressClassName: ""
+  usecertManager: false
+  certManagerClusterIssuer: ""
+  tls: true
+  annotations: {}
+
+route:
+  enabled: false
+  hostname: chart-example.local
+  tls:
+    termination: edge
+  wildcardPolicy: None
+  annotations: {}
+
+security:
+  allowlist:
+    enabled: false
+  networkPolicy:
+    enabled: false
+    from: []
+
+discovery:
+  enabled: true
+
+userPreferences:
+  language: "en"

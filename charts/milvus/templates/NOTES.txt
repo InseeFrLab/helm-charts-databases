@@ -1,0 +1,59 @@
+{{- $password := (fromYaml (index .Values.milvus.extraConfigFiles "user.yaml")).common.security.defaultRootPassword -}}
+### Service access
+
+{{ if ((.Values.milvus).attu).enabled -}}
+You may manage your database through [the Attu web interface](https://{{ .Values.ingress.hostnameWebUI }}).
+{{- end }}
+
+- Username: **root**
+- Password: **{{ $password }}**
+- Token: **`root:{{ $password }}`**
+
+Your Milvus database GRPC API is hosted at https://{{ .Values.ingress.hostnameGRPC }}
+
+Your Milvus database REST API is hosted at https://{{ .Values.ingress.hostnameREST }}
+
+Both are also accessible from within your namespace using http://{{ template "milvus.fullname" .Subcharts.milvus }}:{{ .Values.milvus.service.port }}
+
+### Clients
+
+<details>
+  <summary>Environment variables</summary>
+
+Start by defining environment variables with your credentials:
+```bash
+export MILVUS_GRPC_URI="https://{{ .Values.ingress.hostnameGRPC }}"
+export MILVUS_REST_URI="https://{{ .Values.ingress.hostnameREST }}"
+export MILVUS_TOKEN="root:{{ $password }}"
+```
+</details>
+
+
+<details>
+  <summary>Python client</summary>
+
+Then use them in your Python script to setup a MilvusClient:
+```py
+import os
+from pymilvus import MilvusClient
+
+client = MilvusClient(
+    uri=os.getenv("MILVUS_GRPC_URI"),
+    token=os.getenv("MILVUS_TOKEN")
+)
+
+client.create_database(db_name="my_database")
+```
+</details>
+
+
+<details>
+  <summary>RESTful API</summary>
+
+```bash
+curl --request POST \
+    --url "${MILVUS_REST_URI}/v2/vectordb/collections/list" \
+    --header "Authorization: Bearer ${MILVUS_TOKEN}" \
+    -d '{ "dbName": "default" }'
+```
+</details>

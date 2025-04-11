@@ -1,0 +1,34 @@
+{{- if and (.Values.ingress).enabled (not ((.Values.milvus).ingress).enabled) -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "library-chart.fullname" . }}-rest
+  labels:
+    {{- include "library-chart.labels" . | nindent 4 }}
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    {{- include "library-chart.ingress.annotations" . | nindent 4 }}
+spec:
+  {{- if and .Values.ingress.ingressClassName (eq "true" (include "library-chart.ingress.supportsIngressClassname" .)) }}
+  ingressClassName: {{ .Values.ingress.ingressClassName | quote }}
+  {{- end }}
+  {{- if .Values.ingress.tls }}
+  tls:
+    - hosts:
+        - {{ .Values.ingress.hostnameREST | quote }}
+      {{- if .Values.ingress.useCertManager }}
+      secretName: tls-cert-{{ include "library-chart.fullname" . }}
+      {{- end }}
+  {{- end }}
+  rules:
+    - host: {{ .Values.ingress.hostnameREST | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "milvus.fullname" .Subcharts.milvus }}
+                port:
+                  number: {{ .Values.milvus.service.port }}
+{{- end }}

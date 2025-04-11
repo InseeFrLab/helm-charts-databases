@@ -23,7 +23,7 @@ chromadb:
     enabled: false
 
 ingress:
-  host: "chart-example.local"
+  hostname: "chart-example.local"
   ingressClassName: ""
   usecertManager: false
   certManagerClusterIssuer: ""

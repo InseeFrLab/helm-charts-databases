@@ -1,0 +1,24 @@
+apiVersion: v2
+name: milvus
+description: Milvus is an open-source vector database built to power AI applications and vector similarity search.
+icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/milvus.png
+keywords:
+  - Vector Database
+  - Vector Store
+  - AI/ML
+  - Embedding
+  - Elastic
+home: https://milvus.io/
+sources:
+  - https://github.com/milvus-io/milvus
+  - https://github.com/zilliztech/milvus-helm/
+type: application
+version: 1.0.0
+appVersion: "2.5.8"
+dependencies:
+- name: milvus
+  version: 4.2.44
+  repository: https://zilliztech.github.io/milvus-helm
+- name: library-chart
+  version: 1.6.13
+  repository: https://inseefrlab.github.io/helm-charts-interactive-services
