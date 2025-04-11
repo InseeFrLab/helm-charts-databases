@@ -1,6 +1,6 @@
 # chromadb
 
-![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
+![Version: 1.0.4](https://img.shields.io/badge/Version-1.0.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
 
 ChromaDB is an open-source vector database for storing, indexing, and querying high-dimensional embeddings efficiently.
 
@@ -30,6 +30,8 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | chromadb.chromadb.auth.token.headerType | string | `"Authorization"` |  |
 | chromadb.chromadb.auth.token.value | string | `"changeme"` |  |
 | chromadb.chromadb.auth.type | string | `"basic"` |  |
+| chromadb.chromadb.dataVolumeSize | string | `"1Gi"` |  |
+| chromadb.chromadb.isPersistent | bool | `true` |  |
 | chromadb.chromadb.serverHttpPort | int | `8000` |  |
 | chromadb.image.pullPolicy | string | `"IfNotPresent"` |  |
 | chromadb.image.repository | string | `"ghcr.io/chroma-core/chroma"` |  |
