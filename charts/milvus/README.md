@@ -1,56 +1,82 @@
-# chromadb
+# milvus
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
+![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5.8](https://img.shields.io/badge/AppVersion-2.5.8-informational?style=flat-square)
 
-ChromaDB is an open-source vector database for storing, indexing, and querying high-dimensional embeddings efficiently.
+Milvus is an open-source vector database built to power AI applications and vector similarity search.
 
-**Homepage:** <https://www.trychroma.com/>
+**Homepage:** <https://milvus.io/>
 
 ## Source Code
 
-* <https://github.com/chroma-core/chroma>
-* <https://github.com/amikos-tech/chromadb-chart/>
+* <https://github.com/milvus-io/milvus>
+* <https://github.com/zilliztech/milvus-helm/>
 
 ## Requirements
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://amikos-tech.github.io/chromadb-chart | chromadb | 0.1.23 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.6.12 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.6.13 |
+| https://zilliztech.github.io/milvus-helm | milvus | 4.2.44 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| chromadb.autoscaling.enabled | bool | `false` |  |
-| chromadb.chromadb.apiVersion | string | `"0.6.3"` |  |
-| chromadb.chromadb.auth.basic.password | string | `"changeme"` |  |
-| chromadb.chromadb.auth.basic.username | string | `"chroma"` |  |
-| chromadb.chromadb.auth.enabled | bool | `true` |  |
-| chromadb.chromadb.auth.token.headerType | string | `"Authorization"` |  |
-| chromadb.chromadb.auth.token.value | string | `"changeme"` |  |
-| chromadb.chromadb.auth.type | string | `"basic"` |  |
-| chromadb.chromadb.serverHttpPort | int | `8000` |  |
-| chromadb.image.pullPolicy | string | `"IfNotPresent"` |  |
-| chromadb.image.repository | string | `"ghcr.io/chroma-core/chroma"` |  |
-| chromadb.ingress.enabled | bool | `false` |  |
-| chromadb.replicaCount | int | `1` |  |
-| chromadb.serviceAccount.create | bool | `false` |  |
 | discovery.enabled | bool | `true` |  |
-| fullnameOverride | string | `""` |  |
-| ingress.annotations | list | `[]` |  |
+| ingress.annotations | object | `{}` |  |
 | ingress.certManagerClusterIssuer | string | `""` |  |
-| ingress.host | string | `"chart-example.local"` |  |
+| ingress.enabled | bool | `true` |  |
+| ingress.hostnameGRPC | string | `"chart-example-grpc.local"` |  |
+| ingress.hostnameREST | string | `"chart-example-rest.local"` |  |
+| ingress.hostnameWebUI | string | `"chart-example-webui.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
 | ingress.usecertManager | bool | `false` |  |
-| nameOverride | string | `""` |  |
-| route.annotations | list | `[]` |  |
+| milvus.attu.enabled | bool | `true` |  |
+| milvus.attu.ingress.enabled | bool | `false` |  |
+| milvus.cluster.enabled | bool | `false` |  |
+| milvus.dataNode.enabled | bool | `false` |  |
+| milvus.etcd.replicaCount | int | `1` |  |
+| milvus.extraConfigFiles."user.yaml" | string | `"common:\n  security:\n    authorizationEnabled: true\n    defaultRootPassword: \"Milvus\"\n"` |  |
+| milvus.indexNode.enabled | bool | `false` |  |
+| milvus.ingress.enabled | bool | `false` |  |
+| milvus.kafka.enabled | bool | `false` |  |
+| milvus.log.format | string | `"text"` |  |
+| milvus.log.level | string | `"info"` |  |
+| milvus.log.persistence.enabled | bool | `false` |  |
+| milvus.metrics.enabled | bool | `false` |  |
+| milvus.metrics.serviceMonitor.enabled | bool | `false` |  |
+| milvus.minio.mode | string | `"standalone"` |  |
+| milvus.minio.persistence.annotations."helm.sh/resource-policy" | string | `"delete"` |  |
+| milvus.minio.persistence.enabled | bool | `true` |  |
+| milvus.minio.persistence.size | string | `"50Gi"` |  |
+| milvus.minio.resources.requests.memory | string | `"2Gi"` |  |
+| milvus.proxy.enabled | bool | `true` |  |
+| milvus.proxy.heaptrack.enabled | bool | `false` |  |
+| milvus.proxy.hpa.enabled | bool | `false` |  |
+| milvus.proxy.http.debugMode.enabled | bool | `false` |  |
+| milvus.proxy.http.enabled | bool | `true` |  |
+| milvus.proxy.profiling.enabled | bool | `false` |  |
+| milvus.proxy.replicas | int | `1` |  |
+| milvus.pulsar.enabled | bool | `false` |  |
+| milvus.pulsarv3.enabled | bool | `false` |  |
+| milvus.queryNode.enabled | bool | `false` |  |
+| milvus.serviceAccount.create | bool | `true` |  |
+| milvus.standalone.disk.enabled | bool | `true` |  |
+| milvus.standalone.heaptrack.enabled | bool | `false` |  |
+| milvus.standalone.messageQueue | string | `"rocksmq"` |  |
+| milvus.standalone.persistence.annotations."helm.sh/resource-policy" | string | `"delete"` |  |
+| milvus.standalone.persistence.enabled | bool | `true` |  |
+| milvus.standalone.persistence.persistentVolumeClaim.size | string | `"50Gi"` |  |
+| milvus.standalone.profiling.enabled | bool | `false` |  |
+| milvus.standalone.replicas | int | `1` |  |
+| milvus.standalone.resources | object | `{}` |  |
+| milvus.woodpecker.enabled | bool | `false` |  |
+| route.annotations | object | `{}` |  |
 | route.enabled | bool | `false` |  |
 | route.hostname | string | `"chart-example.local"` |  |
 | route.tls.termination | string | `"edge"` |  |
 | route.wildcardPolicy | string | `"None"` |  |
-| savePersistentVolume | bool | `false` |  |
 | security.allowlist.enabled | bool | `false` |  |
 | security.networkPolicy.enabled | bool | `false` |  |
 | security.networkPolicy.from | list | `[]` |  |
