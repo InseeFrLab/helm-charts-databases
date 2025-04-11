@@ -10,14 +10,17 @@
 {{-   end -}}
 {{- end -}}
 
+### Access
 
-{{- if not (or (.Values.ingress).enabled (.Values.route).enabled) -}}
+{{ if not (or (.Values.ingress).enabled (.Values.route).enabled) -}}
 Enable access to your service using port forwarding:
 ```bash
 kubectl port-forward service/{{ include "chart.fullname" .Subcharts.chromadb }} <port-local>:{{ .Values.chromadb.chromadb.serverHttpPort }}
 ```
-
-{{ end }}
+{{ else -}}
+Your service is available at the following URI:
+- {{ $hostname }}
+{{ end -}}
 
 {{- if .Values.chromadb.chromadb.auth.enabled }}
 Authentication:
@@ -31,10 +34,13 @@ Authentication:
 Access to your service is not authenticated.
 {{- end }}
 
+<details>
+  <summary> Environment variable setup </summary>
 Configure the access to your service using environment variables:
 ```bash
 export CHROMA_SERVER_HOST={{ $hostname }}
 export CHROMA_SERVER_HTTP_PORT={{ $httpport }}
+export CHROMA_SERVER_SSL_ENABLED={{ $ssl }}
 
 {{- if .Values.chromadb.chromadb.auth.enabled }}
 {{- if eq .Values.chromadb.chromadb.auth.type "token" }}
@@ -49,17 +55,28 @@ export CHROMA_CLIENT_AUTH_PROVIDER=chromadb.auth.basic_authn.BasicAuthClientProv
 {{- end }}
 {{- end }}
 ```
+</details>
 
-Using Python the variables are used automatically for authentication:
+
+### Clients
+
+<details>
+  <summary> Python client </summary>
+Install the ChromaDB client library first:
+```bash
+uv pip install chromadb-client==0.6.3
+```
+
+Environment variables are then automatically used for authentication:
 ```python
+import os
 import chromadb
 from chromadb.config import Settings
 
 # Setup client using environment variables
 client = chromadb.HttpClient(
-    host="{{ $hostname }}",
-    port={{ $httpport }},
-    ssl={{ $ssl }},
+    host=os.getenv("CHROMA_SERVER_HOST"),
+    port=int(os.getenv("CHROMA_SERVER_HTTP_PORT")),
     settings=Settings()
 )
 
@@ -69,3 +86,4 @@ client.get_or_create_collection("test", metadata={"key": "value"})
 # Print out all existing collections
 print("This should print ['test']:", client.list_collections())
 ```
+</details>
