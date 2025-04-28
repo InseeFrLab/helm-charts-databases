@@ -34,8 +34,10 @@
 {{ printf "}" }}
 {{- end -}}
 
+
 {{- define "pgadmin.pgpass" -}}
-{{- $namespace:= .Release.Namespace -}}
+# hostname:port:database:username:password
+{{ $namespace:= .Release.Namespace -}}
 {{- range $index, $secret := (lookup "v1" "Secret" $namespace "").items -}}
 {{- if (index $secret "metadata" "annotations") -}}
 {{- if and (index $secret "metadata" "annotations" "onyxia/discovery") (eq "postgres" (index $secret "metadata" "annotations" "onyxia/discovery" | toString)) -}}
@@ -49,6 +51,7 @@
 {{- end -}}
 {{- end -}}
 {{- end -}}
+
 
 {{- define "pgadmin.cleanemail" -}}
 {{ printf "%s" .Values.security.mail  |  replace "@" "_"}}
