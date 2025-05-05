@@ -1,4 +1,6 @@
 chromadb:
+  fullnameOverride: "chromadb"
+  savePersistentVolume: true
   replicaCount: 1
   image:
     repository: ghcr.io/chroma-core/chroma
@@ -52,7 +54,3 @@ discovery:
 
 userPreferences:
   language: "en"
-
-nameOverride: ""
-fullnameOverride: "ChromaDB"
-savePersistentVolume: true

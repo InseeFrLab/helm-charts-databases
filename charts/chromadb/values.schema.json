@@ -2,25 +2,25 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
   "properties": {
-    "fullnameOverride": {
-      "title": "Name of the ChromaDB service",
-      "description": "Will reuse data from a previous ChromaDB service with the same name",
-      "type": "string",
-      "default": "ChromaDB"
-    },
-    "savePersistentVolume": {
-      "title": "Save your data on service deletion",
-      "type": "boolean",
-      "default": true,
-      "hidden": {
-        "value": "",
-        "path": "fullnameOverride"
-      }
-    },
     "chromadb": {
       "title": "ChromaDB",
       "type": "object",
       "properties": {
+        "fullnameOverride": {
+          "title": "Name of the ChromaDB service",
+          "description": "Will reuse data from a previous ChromaDB service with the same name",
+          "type": "string",
+          "default": "chromadb"
+        },
+        "savePersistentVolume": {
+          "title": "Save your data on service deletion",
+          "type": "boolean",
+          "default": true,
+          "hidden": {
+            "value": "",
+            "path": "fullnameOverride"
+          }
+        },
         "image": {
           "title": "Docker image",
           "type": "object",
