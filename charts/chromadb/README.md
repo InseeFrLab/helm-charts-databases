@@ -1,6 +1,6 @@
 # chromadb
 
-![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
+![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
 
 ChromaDB is an open-source vector database for storing, indexing, and querying high-dimensional embeddings efficiently.
 
@@ -33,26 +33,25 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | chromadb.chromadb.dataVolumeSize | string | `"1Gi"` |  |
 | chromadb.chromadb.isPersistent | bool | `true` |  |
 | chromadb.chromadb.serverHttpPort | int | `8000` |  |
+| chromadb.fullnameOverride | string | `"chromadb"` |  |
 | chromadb.image.pullPolicy | string | `"IfNotPresent"` |  |
 | chromadb.image.repository | string | `"ghcr.io/chroma-core/chroma"` |  |
 | chromadb.ingress.enabled | bool | `false` |  |
 | chromadb.replicaCount | int | `1` |  |
+| chromadb.savePersistentVolume | bool | `true` |  |
 | chromadb.serviceAccount.create | bool | `false` |  |
 | discovery.enabled | bool | `true` |  |
-| fullnameOverride | string | `"ChromaDB"` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
 | ingress.ingressClassName | string | `""` |  |
 | ingress.tls | bool | `true` |  |
 | ingress.usecertManager | bool | `false` |  |
-| nameOverride | string | `""` |  |
 | route.annotations | list | `[]` |  |
 | route.enabled | bool | `false` |  |
 | route.hostname | string | `"chart-example.local"` |  |
 | route.tls.termination | string | `"edge"` |  |
 | route.wildcardPolicy | string | `"None"` |  |
-| savePersistentVolume | bool | `true` |  |
 | security.allowlist.enabled | bool | `false` |  |
 | security.networkPolicy.enabled | bool | `false` |  |
 | security.networkPolicy.from | list | `[]` |  |
