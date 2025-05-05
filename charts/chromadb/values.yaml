@@ -54,5 +54,5 @@ userPreferences:
   language: "en"
 
 nameOverride: ""
-fullnameOverride: ""
-savePersistentVolume: false
+fullnameOverride: "ChromaDB"
+savePersistentVolume: true

@@ -6,12 +6,12 @@
       "title": "Name of the ChromaDB service",
       "description": "Will reuse data from a previous ChromaDB service with the same name",
       "type": "string",
-      "default": ""
+      "default": "ChromaDB"
     },
     "savePersistentVolume": {
       "title": "Save your data on service deletion",
       "type": "boolean",
-      "default": false,
+      "default": true,
       "hidden": {
         "value": "",
         "path": "fullnameOverride"
