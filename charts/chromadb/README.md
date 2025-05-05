@@ -1,6 +1,6 @@
 # chromadb
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
 
 ChromaDB is an open-source vector database for storing, indexing, and querying high-dimensional embeddings efficiently.
 
@@ -16,7 +16,7 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | Repository | Name | Version |
 |------------|------|---------|
 | https://amikos-tech.github.io/chromadb-chart | chromadb | 0.1.23 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.6.12 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.7.0 |
 
 ## Values
 
@@ -39,7 +39,7 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | chromadb.replicaCount | int | `1` |  |
 | chromadb.serviceAccount.create | bool | `false` |  |
 | discovery.enabled | bool | `true` |  |
-| fullnameOverride | string | `""` |  |
+| fullnameOverride | string | `"ChromaDB"` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |
@@ -52,7 +52,7 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | route.hostname | string | `"chart-example.local"` |  |
 | route.tls.termination | string | `"edge"` |  |
 | route.wildcardPolicy | string | `"None"` |  |
-| savePersistentVolume | bool | `false` |  |
+| savePersistentVolume | bool | `true` |  |
 | security.allowlist.enabled | bool | `false` |  |
 | security.networkPolicy.enabled | bool | `false` |  |
 | security.networkPolicy.from | list | `[]` |  |
