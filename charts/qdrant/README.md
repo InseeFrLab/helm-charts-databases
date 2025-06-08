@@ -1,6 +1,6 @@
 # qdrant
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.13.2](https://img.shields.io/badge/AppVersion-1.13.2-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.14.1](https://img.shields.io/badge/AppVersion-1.14.1-informational?style=flat-square)
 
 Qdrant - Vector Database for the next generation of AI applications.
 
@@ -15,7 +15,7 @@ Qdrant - Vector Database for the next generation of AI applications.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://qdrant.github.io/qdrant-helm | qdrant | 1.13.2 |
+| https://qdrant.github.io/qdrant-helm | qdrant | 1.14.1 |
 
 ## Values
 
@@ -40,7 +40,7 @@ Qdrant - Vector Database for the next generation of AI applications.
 | qdrant.fullnameOverride | string | `"qdrant"` |  |
 | qdrant.image.pullPolicy | string | `"IfNotPresent"` |  |
 | qdrant.image.repository | string | `"docker.io/qdrant/qdrant"` |  |
-| qdrant.image.tag | string | `"v1.13.2-gpu-nvidia"` |  |
+| qdrant.image.tag | string | `"v1.14.1-gpu-nvidia"` |  |
 | qdrant.image.useUnprivilegedImage | bool | `false` |  |
 | qdrant.imagePullSecrets | list | `[]` |  |
 | qdrant.ingress.additionalLabels | object | `{}` |  |
