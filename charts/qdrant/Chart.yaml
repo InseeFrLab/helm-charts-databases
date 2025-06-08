@@ -32,5 +32,5 @@ appVersion: "1.14.1"
 
 dependencies:
   - name: qdrant
-    version: 1.14.1
+    version: 1.14.0
     repository: https://qdrant.github.io/qdrant-helm
