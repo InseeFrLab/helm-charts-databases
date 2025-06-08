@@ -15,7 +15,7 @@ Qdrant - Vector Database for the next generation of AI applications.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://qdrant.github.io/qdrant-helm | qdrant | 1.14.1 |
+| https://qdrant.github.io/qdrant-helm | qdrant | 1.14.0 |
 
 ## Values
 
