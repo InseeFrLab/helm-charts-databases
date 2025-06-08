@@ -4,7 +4,7 @@ qdrant:
   image:
     repository: docker.io/qdrant/qdrant
     pullPolicy: IfNotPresent
-    tag: "v1.13.2-gpu-nvidia"
+    tag: "v1.14.1-gpu-nvidia"
     useUnprivilegedImage: false
 
   imagePullSecrets: []

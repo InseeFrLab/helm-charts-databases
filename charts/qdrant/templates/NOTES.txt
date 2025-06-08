@@ -1,10 +1,9 @@
 {{- if .Values.qdrant.apiKey }}
-Your api key is: **{{ .Values.qdrant.apiKey }}**  
+Your password: **{{ .Values.qdrant.apiKey }}**  
 {{ end }}
 
 {{- if .Values.qdrant.ingress.enabled }}
-You can connect to qdrant api with your browser on this [link](https://{{ index .Values.qdrant.ingress.hosts 0 "host" }})  
-and to [qdrant dashboard on this link](https://{{ index .Values.qdrant.ingress.hosts 0 "host" }}/dashboard)
+You can use the following links to connect to [qdrant dashboard](https://{{ index .Values.qdrant.ingress.hosts 0 "host" }}/dashboard) and to [qdrant api](https://{{ index .Values.qdrant.ingress.hosts 0 "host" }})
 {{- end }}
 
 You can connect to qdrant from inside the datalab at this url : **http://{{ .Values.qdrant.fullnameOverride }}:6333**

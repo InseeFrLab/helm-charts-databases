@@ -22,7 +22,7 @@
             },
             "tag": {
               "type": "string",
-              "default": "v1.13.2-gpu-nvidia"
+              "default": "v1.14.1-gpu-nvidia"
             },
             "repository": {
               "type": "string",
