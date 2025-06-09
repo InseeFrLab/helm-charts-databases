@@ -14,10 +14,10 @@ sources:
   - https://github.com/zilliztech/milvus-helm/
 type: application
 version: 1.0.2
-appVersion: "2.5.12"
+appVersion: "2.5.13"
 dependencies:
 - name: milvus
-  version: 4.2.50
+  version: 4.2.51
   repository: https://zilliztech.github.io/milvus-helm
 - name: library-chart
   version: 1.6.13
