@@ -4004,6 +4004,35 @@ entries:
     version: 0.0.1
   milvus:
   - apiVersion: v2
+    appVersion: 2.5.13
+    created: "2025-06-09T13:45:13.73318405Z"
+    dependencies:
+    - name: milvus
+      repository: https://zilliztech.github.io/milvus-helm
+      version: 4.2.51
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.6.13
+    description: Milvus is an open-source vector database built to power AI applications
+      and vector similarity search.
+    digest: 866533df5e2b99315d22a0d41796c1b091799a19b206acbc425ac929ffba9e07
+    home: https://milvus.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/milvus.png
+    keywords:
+    - Vector Database
+    - Vector Store
+    - AI/ML
+    - Embedding
+    - Elastic
+    name: milvus
+    sources:
+    - https://github.com/milvus-io/milvus
+    - https://github.com/zilliztech/milvus-helm/
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/milvus-1.0.2/milvus-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
     appVersion: 2.5.8
     created: "2025-04-11T09:54:07.795353717Z"
     dependencies:
@@ -8557,4 +8586,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-06-08T19:58:54.667732351Z"
+generated: "2025-06-09T13:45:13.733682389Z"
