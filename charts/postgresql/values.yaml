@@ -1,3 +1,6 @@
+global:
+  security:
+    allowInsecureImages: true
 postgresql:
   image:
     repository: "bitnami/postgresql"

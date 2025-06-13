@@ -2,16 +2,34 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "type": "object",
   "properties": {
+    "global": {
+      "title": "Global configuration",
+      "type": "object",
+      "properties": {
+        "security": {
+          "title": "Security",
+          "type": "object",
+          "properties": {
+            "allowInsecureImages": {
+              "title": "Allow custom insecure images",
+              "description": "Must be ticked to change the PostgreSQL image",
+              "type": "boolean",
+              "default": true
+            }
+          }
+        }
+      }
+    },
     "postgresql": {
-      "description": "postgres specific configuration",
+      "title": "PostgreSQL",
       "type": "object",
       "properties": {
         "image": {
-          "description": "image specific configuration",
+          "title": "Image",
           "type": "object",
           "properties": {
             "repository": {
-              "description": "PostgreSQL image",
+              "title": "Image name",
               "type": "string",
               "enum": [
                 "bitnami/postgresql",
@@ -20,7 +38,7 @@
               "default": "bitnami/postgresql"
             },
             "tag": {
-              "description": "postgresql major version",
+              "title": "Version",
               "type": "string",
               "enum": [
                 "17",
@@ -37,23 +55,21 @@
           }
         },
         "primary": {
-          "description": "primary configuration",
-          "type": "object",
           "title": "Resources",
+          "type": "object",
           "properties": {
             "persistence": {
-              "description": "Configuration for persistence",
+              "title": "Persistence",
               "type": "object",
               "properties": {
                 "enabled": {
+                  "title": "Create a persistent volume",
                   "type": "boolean",
-                  "description": "Create a persistent volume",
                   "default": true
                 },
                 "size": {
-                  "type": "string",
                   "title": "Persistent volume size",
-                  "description": "Size of the persistent volume",
+                  "type": "string",
                   "default": "10Gi",
                   "form": true,
                   "render": "slider",
@@ -69,7 +85,8 @@
               }
             },
             "resources": {
-              "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
+              "title": "Resources (CPU/RAM)",
+              "description": "Requested resources are reserved, even if unused, please be considerate of others. Limits are strict and may cause slowdowns or out-of-memory errors.",
               "type": "object",
               "properties": {
                 "requests": {
@@ -77,7 +94,7 @@
                   "type": "object",
                   "properties": {
                     "cpu": {
-                      "description": "The amount of cpu guaranteed",
+                      "description": "Guaranteed CPU allocation",
                       "title": "CPU",
                       "type": "string",
                       "default": "250m",
@@ -91,7 +108,7 @@
                       "sliderRangeId": "cpu"
                     },
                     "memory": {
-                      "description": "The amount of memory guaranteed",
+                      "description": "Guaranteed memory allocation",
                       "title": "memory",
                       "type": "string",
                       "default": "1Gi",
@@ -111,7 +128,7 @@
                   "type": "object",
                   "properties": {
                     "cpu": {
-                      "description": "The maximum amount of cpu",
+                      "description": "Maximum CPU allocation",
                       "title": "CPU",
                       "type": "string",
                       "default": "30000m",
@@ -125,7 +142,7 @@
                       "sliderRangeId": "cpu"
                     },
                     "memory": {
-                      "description": "The maximum amount of memory",
+                      "description": "Maximum memory allocation",
                       "title": "Memory",
                       "type": "string",
                       "default": "50Gi",
@@ -145,13 +162,12 @@
           }
         },
         "auth": {
-          "description": "postgres authentification configuration",
+          "title": "Database authentication",
           "type": "object",
-          "title": "Database",
           "properties": {
             "postgresPassword": {
-              "type": "string",
               "title": "Admin password",
+              "type": "string",
               "default": "changeme",
               "render": "password",
               "x-form": {
@@ -162,8 +178,8 @@
               }
             },
             "username": {
+              "title": "User name",
               "type": "string",
-              "title": "User",
               "default": "admin",
               "x-form": {
                 "value": "{{project.id}}"
@@ -173,8 +189,8 @@
               }
             },
             "password": {
-              "type": "string",
               "title": "User password",
+              "type": "string",
               "default": "changeme",
               "render": "password",
               "x-form": {
@@ -185,20 +201,20 @@
               }
             },
             "database": {
-              "description": "Name for the default database to create.",
+              "title": "Name for the default database",
+              "description": "(will be created)",
               "type": "string",
-              "title": "Database",
               "default": "defaultdb"
             }
           }
         },
         "extensions": {
-          "description": "Postgres extensions to enable",
+          "title": "Postgres extensions",
           "type": "object",
           "properties": {
             "postgis": {
+              "title": "Enable PostGIS",
               "type": "boolean",
-              "title": "PostGIS",
               "default": false
             }
           }
@@ -206,27 +222,27 @@
       }
     },
     "security": {
-      "description": "Security specific configuration",
+      "title": "Security",
       "type": "object",
       "properties": {
         "networkPolicy": {
+          "title": "Access to the service",
           "type": "object",
-          "description": "Define access policy to the service",
           "x-onyxia": {
             "overwriteSchemaWith": "network-policy.json"
           },
           "properties": {
             "enabled": {
-              "type": "boolean",
               "title": "Enable network policy",
               "description": "Only pod from the same namespace will be allowed",
+              "type": "boolean",
               "default": false,
               "x-onyxia": {
                 "overwriteDefaultWith": "region.defaultNetworkPolicy"
               }
             },
             "from": {
-              "description": "Array of sources allowed to have network access to your service",
+              "title": "Sources allowed to access to your service",
               "type": "array",
               "items": {
                 "type": "object",
@@ -243,24 +259,24 @@
       }
     },
     "discovery": {
-      "description": "Database discovery",
+      "title": "Database discovery",
       "type": "object",
       "properties": {
         "enabled": {
-          "type": "boolean",
-          "title": "Enable discovery of this database",
+          "title": "Enabled discovery",
           "description": "Allows clients to automatically preconfigure a connection to this database",
+          "type": "boolean",
           "default": true
         }
       }
     },
     "userPreferences": {
-      "description": "User Preferences",
+      "title": "User Preferences",
       "type": "object",
       "properties": {
         "language": {
+          "title": "Preferred language",
           "type": "string",
-          "description": "Preferred language",
           "default": "en",
           "x-onyxia": {
             "hidden": true,
