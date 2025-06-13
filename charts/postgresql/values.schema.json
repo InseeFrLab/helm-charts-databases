@@ -10,19 +10,29 @@
           "description": "image specific configuration",
           "type": "object",
           "properties": {
+            "repository": {
+              "description": "PostgreSQL image",
+              "type": "string",
+              "enum": [
+                "bitnami/postgresql",
+                "inseefrlab/onyxia-postgresql-pgvector"
+              ],
+              "default": "bitnami/postgresql"
+            },
             "tag": {
               "description": "postgresql major version",
               "type": "string",
               "enum": [
-                "10",
-                "11",
-                "12",
-                "13",
-                "14",
+                "17",
+                "16",
                 "15",
-                "16"
+                "14",
+                "13",
+                "12",
+                "11",
+                "10"
               ],
-              "default": "16"
+              "default": "17"
             }
           }
         },

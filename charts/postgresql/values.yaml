@@ -1,6 +1,7 @@
 postgresql:
   image:
-    tag: "16"
+    repository: "bitnami/postgresql"
+    tag: "17"
     pullPolicy: IfNotPresent
   service:
     ports:
