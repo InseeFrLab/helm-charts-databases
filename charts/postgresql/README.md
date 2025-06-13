@@ -1,6 +1,6 @@
 # postgresql
 
-![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 17.5.0](https://img.shields.io/badge/AppVersion-17.5.0-informational?style=flat-square)
 
 An object-relational database management system, a database server.
 
@@ -14,21 +14,23 @@ An object-relational database management system, a database server.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 16.2.5 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.33 |
+| https://charts.bitnami.com/bitnami | postgresql | 16.7.11 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.7.3 |
 
 ## Values
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | discovery.enabled | bool | `true` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | postgresql.auth.database | string | `"defaultdb"` |  |
 | postgresql.auth.password | string | `""` |  |
 | postgresql.auth.postgresPassword | string | `""` |  |
 | postgresql.auth.username | string | `""` |  |
 | postgresql.extensions.postgis | bool | `false` |  |
 | postgresql.image.pullPolicy | string | `"IfNotPresent"` |  |
-| postgresql.image.tag | string | `"16"` |  |
+| postgresql.image.repository | string | `"bitnami/postgresql"` |  |
+| postgresql.image.tag | string | `"17"` |  |
 | postgresql.primary.initdb.scriptsConfigMap | string | `"{{ include \"library-chart.fullname\" . }}"` |  |
 | postgresql.primary.networkPolicy.enabled | bool | `false` |  |
 | postgresql.primary.resources.limits | object | `{}` |  |
