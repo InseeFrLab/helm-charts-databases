@@ -1,18 +1,18 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "library-chart.fullname" . }}
+  name: {{ include "library-chart.fullname" .Subcharts.postgresql }}
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
 data:
-  {{- if .Values.postgresql.extensions.postgis }}
   enable-extensions.sh: |
     #!/bin/sh
     export PGPASSWORD=$POSTGRES_PASSWORD
+  {{- if .Values.postgresql.extensions.postgis }}
     psql -U postgres -d $POSTGRES_DATABASE -c "CREATE EXTENSION postgis;"
     psql -U postgres -d $POSTGRES_DATABASE -c "CREATE EXTENSION postgis_topology;"
-  {{ else }}
-  enable-extensions.sh: |
-    #!/bin/sh
-    echo "No additional extensions created."
   {{- end -}}
+  {{- if contains "vector" .Values.postgresql.image.repository }}
+    psql -U postgres -d $POSTGRES_DATABASE -c "CREATE EXTENSION vector;"
+  {{- end -}}
+    echo "All extensions created."
