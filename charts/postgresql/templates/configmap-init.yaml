@@ -14,5 +14,5 @@ data:
   {{- end -}}
   {{- if contains "vector" .Values.postgresql.image.repository }}
     psql -U postgres -d $POSTGRES_DATABASE -c "CREATE EXTENSION vector;"
-  {{- end -}}
+  {{- end }}
     echo "All extensions created."
