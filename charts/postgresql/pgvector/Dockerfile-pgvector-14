@@ -1,0 +1,6 @@
+FROM pgvector/pgvector:pg14 AS builder
+
+FROM bitnami/postgresql:14
+
+COPY --from=builder /usr/lib/postgresql/14/lib/vector.so /opt/bitnami/postgresql/lib/
+COPY --from=builder /usr/share/postgresql/14/extension/vector* /opt/bitnami/postgresql/share/extension/
