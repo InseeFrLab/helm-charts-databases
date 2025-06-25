@@ -1,6 +1,6 @@
 # cloudbeaver
 
-![Version: 2.0.9](https://img.shields.io/badge/Version-2.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 2.0.10](https://img.shields.io/badge/Version-2.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 CloudBeaver is a light modern web-application for database management.
 
@@ -15,8 +15,8 @@ CloudBeaver is a light modern web-application for database management.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 15.5.32 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.5.41 |
+| https://charts.bitnami.com/bitnami | postgresql | 16.7.13 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.7.5 |
 
 ## Values
 
@@ -50,7 +50,7 @@ CloudBeaver is a light modern web-application for database management.
 | postgresql.auth.postgresPassword | string | `"changeme"` |  |
 | postgresql.auth.username | string | `"admin"` |  |
 | postgresql.fullnameOverride | string | `"cloudbeaver-db"` |  |
-| postgresql.image.tag | string | `"15"` |  |
+| postgresql.image.tag | string | `"17"` |  |
 | postgresql.primary.persistence.enabled | bool | `true` |  |
 | postgresql.primary.persistence.size | string | `"8Gi"` |  |
 | postgresql.primary.resources.limits.cpu | string | `"1000m"` |  |
@@ -73,7 +73,7 @@ CloudBeaver is a light modern web-application for database management.
 | security.username | string | `"onyxia"` |  |
 | securityContext | object | `{}` |  |
 | service.image.pullPolicy | string | `"IfNotPresent"` |  |
-| service.image.version | string | `"dbeaver/cloudbeaver:24.3.3"` |  |
+| service.image.version | string | `"dbeaver/cloudbeaver:25.1.1"` |  |
 | serviceAccount.annotations | object | `{}` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.name | string | `""` |  |
