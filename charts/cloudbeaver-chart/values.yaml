@@ -2,7 +2,7 @@
 
 service:
   image:
-    version: "dbeaver/cloudbeaver:24.3.3"
+    version: "dbeaver/cloudbeaver:25.1.1"
     pullPolicy: IfNotPresent
 
 discovery:
@@ -12,7 +12,7 @@ discovery:
 
 postgresql:
   image:
-    tag: "15"
+    tag: "17"
   auth:
     username: "admin"
     password: "changeme"
