@@ -9,6 +9,47 @@
 - Si vous avez besoin d'un accès admin à cette base de données (par exemple pour ajouter des extensions), les informations de connexion sont :
     - Admin username : **postgres**
     - Admin password : **{{ .Values.postgresql.auth.postgresPassword }}**
+
+<details>
+  <summary>Renseigner les variables d'environment</summary>
+
+⚠️ Ces lignes ne doivent pas faire partie du code de votre projet ni être rendues publiques ⚠️
+
+```sh
+export PGHOST="{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}"
+export PGDATABASE="{{ .Values.postgresql.auth.database }}"
+export PGUSER="{{ .Values.postgresql.auth.username }}"
+export PGPASSWORD="{{ .Values.postgresql.auth.password }}"
+export PGPORT="{{ .Values.postgresql.service.ports.postgresql }}"
+```
+</details>
+
+<details>
+  <summary>Se connecter avec Python</summary>
+
+Commencer par renseigner les variables d'environment.
+
+```python
+import psycopg
+conn = psycopg.connect()
+with conn.cursor() as cur:
+    print(cur.execute("SELECT version();").fetchone())
+conn.close()
+```
+</details>
+
+<details>
+  <summary>Se connecter avec R</summary>
+
+Commencer par renseigner les variables d'environment.
+
+```r
+library(DBI)
+conn <- dbConnect(RPostgres::Postgres())
+print(dbGetQuery(conn, "SELECT version();"))
+dbDisconnect(conn)
+```
+</details>
 {{- else }}
   {{- if ne .Values.userPreferences.language "en" -}}
 *NOTES are not supported for language `{{ .Values.userPreferences.language }}`... Defaulting to english.*
@@ -24,4 +65,45 @@
 - If you need admin access to this database (e.g. to add extensions), the connection information are :
     - Admin username : **postgres**
     - Admin password : **{{ .Values.postgresql.auth.postgresPassword }}**
+
+<details>
+  <summary>Setup environment variables</summary>
+
+⚠️ These lines must not be included in your project's codebase, or otherwise published ⚠️
+
+```sh
+export PGHOST="{{ template "common.names.fullname" . }}.{{ .Release.Namespace }}"
+export PGDATABASE="{{ .Values.postgresql.auth.database }}"
+export PGUSER="{{ .Values.postgresql.auth.username }}"
+export PGPASSWORD="{{ .Values.postgresql.auth.password }}"
+export PGPORT="{{ .Values.postgresql.service.ports.postgresql }}"
+```
+</details>
+
+<details>
+  <summary>Connect with Python</summary>
+
+First set environment variables.
+
+```python
+import psycopg
+conn = psycopg.connect()
+with conn.cursor() as cur:
+    print(cur.execute("SELECT version();").fetchone())
+conn.close()
+```
+</details>
+
+<details>
+  <summary>Connect with R</summary>
+
+First set environment variables.
+
+```r
+library(DBI)
+conn <- dbConnect(RPostgres::Postgres())
+print(dbGetQuery(conn, "SELECT version();"))
+dbDisconnect(conn)
+```
+</details>
 {{- end -}}
