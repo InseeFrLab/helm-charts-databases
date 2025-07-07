@@ -29,10 +29,10 @@ data:
         develMode: false,
 
         database: {
-            driver: "postgres-jdbc" ,
-            url : "jdbc:postgresql://{{ .Values.postgresql.fullnameOverride }}:5432/{{ .Values.postgresql.auth.database }}" ,
-            user : {{ .Values.postgresql.auth.username }} ,
-            password : {{ .Values.postgresql.auth.password }} ,
+            driver: "h2_embedded_v2",
+            url: "jdbc:h2:${workspace}/.data/cb.h2v2.dat}",
+            user : {{ .Values.security.username }} ,
+            password : {{ .Values.security.password }} ,
             initialDataConfiguration: "conf/initial-data.conf",
             pool: {
                 minIdleConnections: 4,
