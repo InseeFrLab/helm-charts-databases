@@ -38,6 +38,28 @@
         }
       }
     },
+    "persistence": {
+      "title": "Persistence",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Create a persistent volume",
+          "type": "boolean",
+          "default": true
+        },
+        "size": {
+          "title": "Persistent volume size",
+          "type": "string",
+          "default": "10Gi",
+          "form": true,
+          "render": "slider",
+          "sliderMin": 1,
+          "sliderMax": 100,
+          "sliderStep": 1,
+          "sliderUnit": "Gi"
+        }
+      }
+    },
     "resources": {
       "description": "Your service will have at least the requested resources and never more than its limits. No limit for a resource and you can consume everything left on the host machine.",
       "type": "object",
@@ -167,78 +189,6 @@
                 "hidden": true,
                 "overwriteDefaultWith": "region.from"
               }
-            }
-          }
-        }
-      }
-    },
-    "postgresql": {
-      "description": "postgres specific configuration",
-      "type": "object",
-      "title": "Database",
-      "properties": {
-        "image": {
-          "description": "image specific configuration",
-          "type": "object",
-          "properties": {
-            "tag": {
-              "description": "postgresql major version",
-              "type": "string",
-              "enum": [
-                "12",
-                "13",
-                "14",
-                "15",
-                "16",
-                "17"
-              ],
-              "default": "17"
-            }
-          }
-        },
-        "auth": {
-          "description": "postgres specific configuration",
-          "type": "object",
-          "title": "Authentification",
-          "properties": {
-            "username": {
-              "type": "string",
-              "title": "User",
-              "default": "user",
-              "x-form": {
-                "value": "{{project.id}}"
-              },
-              "x-onyxia": {
-                "overwriteDefaultWith": "{{project.id}}"
-              }
-            },
-            "password": {
-              "type": "string",
-              "title": "User Password",
-              "default": "changeme",
-              "x-form": {
-                "value": "{{project.password}}"
-              },
-              "x-onyxia": {
-                "overwriteDefaultWith": "{{project.password}}"
-              }
-            },
-            "postgresPassword": {
-              "type": "string",
-              "title": "Admin Password",
-              "default": "changeme",
-              "x-form": {
-                "value": "{{project.password}}"
-              },
-              "x-onyxia": {
-                "overwriteDefaultWith": "{{project.password}}"
-              }
-            },
-            "database": {
-              "description": "Name for the default database that is created when the image is first started.",
-              "type": "string",
-              "title": "Database",
-              "default": "cloudbeaver"
             }
           }
         }

@@ -36,6 +36,10 @@ spec:
           image: "{{ .Values.service.image.version }}"
           imagePullPolicy: {{ .Values.service.image.pullPolicy }}
           volumeMounts:
+          {{- if .Values.persistence.enabled }}
+          - name: cloudbeaver-data
+            mountPath: /opt/cloudbeaver/workspace
+          {{- end }}
           - name: cb-config
             mountPath: /opt/cloudbeaver/conf/cloudbeaver.conf
             subPath: cloudbeaver.conf
@@ -47,7 +51,6 @@ spec:
             mountPath: /opt/cloudbeaver/conf/initial-data-sources.conf
             subPath: initial-data-sources.conf
           {{- end }}
-
           env:
           - name: CB_ADMIN_NAME
             value: "{{ .Values.security.username }}"
@@ -57,7 +60,6 @@ spec:
             value: "{{ .Values.cloudbeaver.serverName }}"
           - name: CB_SERVER_URL
             value: "https://{{ .Values.ingress.hostname }}"
-
           ports:
             - name: http
               containerPort: {{ .Values.networking.beaver.port}}
@@ -72,8 +74,12 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-
       volumes:
+      {{- if .Values.persistence.enabled }}
+        - name: cloudbeaver-data
+          persistentVolumeClaim:
+            claimName: {{ include "library-chart.fullname" . }}
+      {{- end }}
         - name: cb-config
           configMap:
             name: {{ include "library-chart.fullname" . }}-cb-config
@@ -85,23 +91,6 @@ spec:
           secret:
             secretName: {{ include "library-chart.fullname" . }}
         {{- end }}
-
-      initContainers:
-        - name: wait-for-postgresql
-          image: "alpine"
-          imagePullPolicy: IfNotPresent
-          command:
-            - sh
-            - -c
-            - |
-              until printf "." && nc -z -w 2 {{ .Values.postgresql.fullnameOverride }} 5432; do
-                  sleep 2;
-              done;
-              echo 'PostgreSQL OK ✓'
-          resources:
-            requests:
-              cpu: "0.05"
-              memory: "128Mi"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
