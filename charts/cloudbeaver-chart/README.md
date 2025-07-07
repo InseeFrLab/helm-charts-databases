@@ -1,6 +1,6 @@
 # cloudbeaver
 
-![Version: 2.0.10](https://img.shields.io/badge/Version-2.0.10-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
+![Version: 2.0.11](https://img.shields.io/badge/Version-2.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: latest](https://img.shields.io/badge/AppVersion-latest-informational?style=flat-square)
 
 CloudBeaver is a light modern web-application for database management.
 
@@ -15,8 +15,7 @@ CloudBeaver is a light modern web-application for database management.
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | postgresql | 16.7.13 |
-| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.7.5 |
+| https://inseefrlab.github.io/helm-charts-interactive-services | library-chart | 1.7.11 |
 
 ## Values
 
@@ -43,20 +42,10 @@ CloudBeaver is a light modern web-application for database management.
 | networking.service.port | int | `80` |  |
 | networking.type | string | `"ClusterIP"` |  |
 | nodeSelector | object | `{}` |  |
+| persistence.enabled | bool | `true` |  |
+| persistence.size | string | `"10Gi"` |  |
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
-| postgresql.auth.database | string | `"cloudbeaver"` |  |
-| postgresql.auth.password | string | `"changeme"` |  |
-| postgresql.auth.postgresPassword | string | `"changeme"` |  |
-| postgresql.auth.username | string | `"admin"` |  |
-| postgresql.fullnameOverride | string | `"cloudbeaver-db"` |  |
-| postgresql.image.tag | string | `"17"` |  |
-| postgresql.primary.persistence.enabled | bool | `true` |  |
-| postgresql.primary.persistence.size | string | `"8Gi"` |  |
-| postgresql.primary.resources.limits.cpu | string | `"1000m"` |  |
-| postgresql.primary.resources.limits.memory | string | `"2000Mi"` |  |
-| postgresql.primary.resources.requests.cpu | string | `"250m"` |  |
-| postgresql.primary.resources.requests.memory | string | `"256Mi"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |
