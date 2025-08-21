@@ -8,6 +8,8 @@ service:
     tag: "0.260.5"
 
 global:
+  security:
+    allowInsecureImages: true
   postgresql:
     auth:
       username: "admin"
@@ -17,6 +19,7 @@ global:
 postgresql:
   image:
     tag: "16"
+    repository: "bitnamilegacy/postgresql"
   fullnameOverride: "nocodb-pg"
 
 security:

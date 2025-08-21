@@ -1,3 +1,6 @@
+global:
+  security:
+    allowInsecureImages: true
 chromadb:
   fullnameOverride: "chromadb"
   savePersistentVolume: true

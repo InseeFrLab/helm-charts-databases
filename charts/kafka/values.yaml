@@ -1,4 +1,9 @@
+global:
+  security:
+    allowInsecureImages: true
 kafka:
+  image:
+    repository: bitnamilegacy/kafka
   fullnameOverride: kafka
   replicaCount: 3
   zookeeper:

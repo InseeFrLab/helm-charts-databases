@@ -13,7 +13,7 @@ metadata:
 spec:
   containers:
   - name: {{ include "library-chart.fullname" . }}-test-connection-custom-user
-    image: "bitnami/mongodb:7.0.2"
+    image: "bitnamilegacy/mongodb:7.0.2" {{ .Values.mongodb.repository}}
     env:
       - name: DATABASE_NAME
         value: {{ .Values.mongodb.auth.database }}

@@ -32,10 +32,11 @@
               "title": "Image name",
               "type": "string",
               "enum": [
+                "bitnamilegacy/postgresql",
                 "bitnami/postgresql",
                 "inseefrlab/onyxia-postgresql-pgvector"
               ],
-              "default": "bitnami/postgresql"
+              "default": "bitnamilegacy/postgresql"
             },
             "tag": {
               "title": "Version",

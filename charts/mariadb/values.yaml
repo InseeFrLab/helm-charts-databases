@@ -1,6 +1,10 @@
+global:
+  security:
+    allowInsecureImages: true
 mariadb:
   image:
     tag: "11.5.2"
+    repository: bitnamilegacy/mariadb
     pullPolicy: IfNotPresent
   auth:
     rootPassword: ""
@@ -10,6 +14,8 @@ mariadb:
     existingSecret: ""
   volumePermissions:
     enabled: true
+    image: 
+      repository: bitnamilegacy/os-shell
   primary:
     existingConfigmap: ""
     resources:

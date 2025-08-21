@@ -10,7 +10,7 @@ metadata:
 spec:
   containers:
   - name: {{ include "library-chart.fullname" . }}-test-connection
-    image: "bitnami/kafka:3.8"
+    image: "bitnamilegacy/kafka:3.8"
     env:
       - name: HOST
         value: {{ include "library-chart.fullname" . }}

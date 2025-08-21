@@ -2,6 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
+  security:
+    allowInsecureImages: true
   postgresql:
     auth:
       username: "admin"
@@ -42,6 +44,7 @@ security:
 postgresql:
   image:
     tag: "16"
+    repository: "bitnamilegacy/postgresql"
   fullnameOverride: "lakefs-db"
 
 networking:
