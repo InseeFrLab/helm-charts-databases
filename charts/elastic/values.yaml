@@ -13,9 +13,11 @@ elasticsearch:
     ## ref: http://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
     ##
     pullPolicy: IfNotPresent
-
   sysctlImage:
     enabled: false
+  copyTlsCerts:
+    image:
+      repository: bitnamilegacy/os-shell
 
   fullnameOverride: elastic-elasticsearch
 
@@ -64,7 +66,7 @@ elasticsearch:
     volumePermissions:
       image: 
         repository: bitnamilegacy/os-shell
-
+        
 discovery:
   allow: true
 
