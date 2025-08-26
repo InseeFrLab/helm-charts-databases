@@ -2,6 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global:
+  security:
+    allowInsecureImages: true
   postgresql:
     auth:
       username: "admin"
@@ -44,6 +46,7 @@ security:
 postgresql:
   image:
     tag: "12"
+    repository: "bitnamilegacy/postgresql"
   fullnameOverride: "hive-metastore-db"
 
 listener:

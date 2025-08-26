@@ -54,7 +54,7 @@ spec:
       restartPolicy: Never
       containers:
         - name: cleanup
-          image: bitnami/kubectl:latest
+          image: bitnamilegacy/kubectl:latest
           command:
             - /bin/sh
           args:

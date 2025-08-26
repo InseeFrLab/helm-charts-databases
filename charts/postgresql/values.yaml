@@ -3,7 +3,7 @@ global:
     allowInsecureImages: true
 postgresql:
   image:
-    repository: "bitnami/postgresql"
+    repository: "bitnamilegacy/postgresql"
     tag: "17"
     pullPolicy: IfNotPresent
   service:

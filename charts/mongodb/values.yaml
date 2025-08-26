@@ -1,16 +1,19 @@
+global:
+  security:
+    allowInsecureImages: true
 mongodb:
   resources: {}
   fullnameOverride: mongodb
   architecture: replicaset
   image:
     tag: "4.4"
+    repository: bitnamilegacy/mongodb
   auth:
     rootPassword: changeme
     username: username
     password: changeme
     database: defaultdb
   replicaCount: 2
-
 discovery:
   enabled: true
 

@@ -31,16 +31,17 @@
             "repository": {
               "title": "Image name",
               "type": "string",
-              "enum": [
+              "listEnum": [
+                "bitnamilegacy/postgresql",
                 "bitnami/postgresql",
                 "inseefrlab/onyxia-postgresql-pgvector"
               ],
-              "default": "bitnami/postgresql"
+              "default": "bitnamilegacy/postgresql"
             },
             "tag": {
               "title": "Version",
               "type": "string",
-              "enum": [
+              "listEnum": [
                 "17",
                 "16",
                 "15",
