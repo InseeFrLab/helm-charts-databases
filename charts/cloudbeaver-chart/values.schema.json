@@ -24,6 +24,7 @@
               "description": "supported versions",
               "type": "string",
               "listEnum": [
+                "dbeaver/cloudbeaver:25.1.5",
                 "dbeaver/cloudbeaver:25.1.1",
                 "dbeaver/cloudbeaver:24.3.3",
                 "dbeaver/cloudbeaver:23.3.5",
@@ -32,7 +33,7 @@
               ],
               "render": "list",
               "pattern": "^[a-z0-9-_./]+(:[a-z0-9-_.]+)?$",
-              "default": "dbeaver/cloudbeaver:25.1.1"
+              "default": "dbeaver/cloudbeaver:25.1.5"
             }
           }
         }
