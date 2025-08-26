@@ -3,6 +3,34 @@ entries:
   chromadb:
   - apiVersion: v2
     appVersion: 0.6.3
+    created: "2025-08-26T08:58:23.323634319Z"
+    dependencies:
+    - name: chromadb
+      repository: https://amikos-tech.github.io/chromadb-chart
+      version: 0.1.23
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.7.0
+    description: ChromaDB is an open-source vector database for storing, indexing,
+      and querying high-dimensional embeddings efficiently.
+    digest: b54f89f86efd7a797741c1dbfe46ab93ffa2014b63657e0e293525f41edbe989
+    home: https://www.trychroma.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/chroma.png
+    keywords:
+    - Vector Database
+    - Vector Store
+    - AI/ML
+    - Embedding
+    name: chromadb
+    sources:
+    - https://github.com/chroma-core/chroma
+    - https://github.com/amikos-tech/chromadb-chart/
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/chromadb-1.0.9/chromadb-1.0.9.tgz
+    version: 1.0.9
+  - apiVersion: v2
+    appVersion: 0.6.3
     created: "2025-05-05T10:03:03.324736197Z"
     dependencies:
     - name: chromadb
@@ -1336,6 +1364,33 @@ entries:
   elastic:
   - apiVersion: v2
     appVersion: 8.17.1
+    created: "2025-08-26T08:58:23.594697378Z"
+    dependencies:
+    - name: elasticsearch
+      repository: https://charts.bitnami.com/bitnami
+      version: 21.4.4
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.42
+    description: Elasticsearch provides a full-text search engine with an HTTP web
+      interface and schema-free JSON documents.
+    digest: c985af02cb7b698c31bae322c2c137750a6d155d29f67f5e1133cc4c08c9c68f
+    home: https://www.elastic.co/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/elk.png
+    keywords:
+    - Search
+    - Lucene
+    - Visualization
+    name: elastic
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/elastic
+    - https://github.com/bitnami/charts/blob/main/bitnami/elasticsearch
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/elastic-2.0.12/elastic-2.0.12.tgz
+    version: 2.0.12
+  - apiVersion: v2
+    appVersion: 8.17.1
     created: "2025-02-07T13:42:20.930822616Z"
     dependencies:
     - name: elasticsearch
@@ -2278,6 +2333,30 @@ entries:
   hive-metastore:
   - apiVersion: v2
     appVersion: "1"
+    created: "2025-08-26T08:58:23.96666631Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.5.17
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.33
+    description: Hive metastore manage the metadata relational entities  in a relational
+      database.
+    digest: 1e2cc46abd8c1d0a87a2079380f72b507f5034f2ff3c7fbc86b9a62b7faf996a
+    home: https://hive.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/hive.png
+    name: hive-metastore
+    sources:
+    - https://github.com/InseeFrLab/jupyter-datascience
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/hive-metastore
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/hive-metastore-1.1.4/hive-metastore-1.1.4.tgz
+    version: 1.1.4
+  - apiVersion: v2
+    appVersion: "1"
     created: "2025-01-16T10:21:51.594383216Z"
     dependencies:
     - enabled: true
@@ -2688,6 +2767,33 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/hive-metastore-0.0.1/hive-metastore-0.0.1.tgz
     version: 0.0.1
   kafka:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2025-08-26T08:58:24.225133044Z"
+    dependencies:
+    - name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: 31.4.0
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.6.0
+    description: Apache Kafka is an event streaming platform for streaming analytics,
+      data integration.
+    digest: 2f68dbdb4db923effd0cdc5c1bb30f9557f03dcde2b96956bc5e9bcc79a60bfd
+    home: https://kafka.apache.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/kafka.png
+    keywords:
+    - streaming
+    - messaging
+    name: kafka
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/kafka
+    - https://github.com/bitnami/charts/tree/master/bitnami/kafka
+    - https://github.com/bitnami/bitnami-docker-kafka
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/kafka-0.2.13/kafka-0.2.13.tgz
+    version: 0.2.13
   - apiVersion: v2
     appVersion: "1"
     created: "2025-02-26T00:04:57.18750561Z"
@@ -3128,6 +3234,34 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/kafka-0.0.1/kafka-0.0.1.tgz
     version: 0.0.1
   lakefs:
+  - apiVersion: v2
+    appVersion: 1.50.0
+    created: "2025-08-26T08:58:24.494214963Z"
+    dependencies:
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.14
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.6.1
+    - enabled: true
+      name: lakefs
+      repository: https://charts.lakefs.io
+      version: 1.4.3
+    description: Data version control for data lakes.  It enables zero copy isolated
+      environments, and more.
+    digest: db1efae08cba701145f69534be3a48d51337ece3f7cd70ddd145a6a2e9010570
+    home: https://lakefs.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/lakefs.jpg
+    name: lakefs
+    sources:
+    - https://github.com/treeverse/charts/tree/master/charts/lakefs
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/lakefs
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/lakefs-1.0.7/lakefs-1.0.7.tgz
+    version: 1.0.7
   - apiVersion: v2
     appVersion: 1.50.0
     created: "2025-02-26T00:39:02.556301753Z"
@@ -3691,6 +3825,28 @@ entries:
   mariadb:
   - apiVersion: v2
     appVersion: "1"
+    created: "2025-08-26T08:58:24.755991339Z"
+    dependencies:
+    - name: mariadb
+      repository: https://charts.bitnami.com/bitnami
+      version: 19.1.2
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.33
+    description: MariaDB is a SQL database server. It's MySQL but libre.
+    digest: fdacb01dd486245a14ca673e5534a487d7692e00accaba62b72a3c33d5c7f6ed
+    home: https://mariadb.org
+    icon: https://bitnami.com/assets/stacks/mariadb/img/mariadb-stack-220x234.png
+    name: mariadb
+    sources:
+    - https://github.com/bitnami/bitnami-docker-mariadb
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/mariadb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mariadb-0.2.10/mariadb-0.2.10.tgz
+    version: 0.2.10
+  - apiVersion: v2
+    appVersion: "1"
     created: "2025-01-15T14:38:29.358056038Z"
     dependencies:
     - name: mariadb
@@ -4139,6 +4295,33 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/milvus-1.0.0/milvus-1.0.0.tgz
     version: 1.0.0
   mongodb:
+  - apiVersion: v2
+    appVersion: "1"
+    created: "2025-08-26T08:58:24.994876816Z"
+    dependencies:
+    - name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.18.5
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.33
+    description: NoSQL document-oriented database that stores JSON-like documents
+      with dynamic schemas.
+    digest: 271cdb5921af5173ac9665151863c1450d5b9690e6a87d7a0611629b4c03d125
+    home: https://www.mongodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/mongodb.png
+    keywords:
+    - nosql
+    - Database
+    - json
+    name: mongodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/mongodb
+    - https://github.com/bitnami/bitnami-docker-mongodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/mongodb-1.0.5/mongodb-1.0.5.tgz
+    version: 1.0.5
   - apiVersion: v2
     appVersion: "1"
     created: "2025-01-16T10:21:52.273255321Z"
@@ -4951,6 +5134,30 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/neo4j-0.0.1/neo4j-0.0.1.tgz
     version: 0.0.1
   nocodb:
+  - apiVersion: v2
+    appVersion: 0.260.5
+    created: "2025-08-26T08:58:25.31256178Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.5.42
+    - enabled: true
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.6
+    description: NocoDB is an open source NoCode platform that turns any database
+      into a smart spreadsheet
+    digest: 114e6a3143bdd29efcb0428fa92b8a970a04a005a8843fd4fd56007c160f3832
+    home: https://www.nocodb.com/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/nocodb.png
+    name: nocodb
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/nocodb
+    - https://hub.docker.com/r/nocodb/nocodb
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/nocodb-2.0.8/nocodb-2.0.8.tgz
+    version: 2.0.8
   - apiVersion: v2
     appVersion: 0.260.5
     created: "2025-02-07T13:42:21.090615854Z"
@@ -6569,6 +6776,30 @@ entries:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pgadmin-0.0.1/pgadmin-0.0.1.tgz
     version: 0.0.1
   postgresql:
+  - apiVersion: v2
+    appVersion: 17.5.0
+    created: "2025-08-26T08:58:25.700487082Z"
+    dependencies:
+    - name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.7.11
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.7.3
+    description: An object-relational database management system, a database server.
+    digest: a143734c539a1ce3d81f4ae4559c4fd63ffdc00254f57624deb98c1d363e0e55
+    home: https://www.postgresql.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    - Database
+    name: postgresql
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/postgresql
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-1.0.12/postgresql-1.0.12.tgz
+    version: 1.0.12
   - apiVersion: v2
     appVersion: 17.5.0
     created: "2025-07-08T11:49:54.004028977Z"
@@ -8706,4 +8937,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-07-08T11:49:54.005025115Z"
+generated: "2025-08-26T08:58:25.701468232Z"
