@@ -1,6 +1,6 @@
 # hive-metastore
 
-![Version: 1.1.3](https://img.shields.io/badge/Version-1.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
+![Version: 1.1.4](https://img.shields.io/badge/Version-1.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1](https://img.shields.io/badge/AppVersion-1-informational?style=flat-square)
 
 Hive metastore manage the metadata relational entities  in a relational database.
 
@@ -33,6 +33,7 @@ Hive metastore manage the metadata relational entities  in a relational database
 | global.postgresql.auth.database | string | `"metastore"` |  |
 | global.postgresql.auth.password | string | `"changeme"` |  |
 | global.postgresql.auth.username | string | `"admin"` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | imagePullSecrets | list | `[]` |  |
 | listener.className | string | `"org.pengfei.hive.listener.CustomHiveListener"` |  |
 | listener.domainNamespace | string | `"user-pengfei"` |  |
@@ -47,6 +48,7 @@ Hive metastore manage the metadata relational entities  in a relational database
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.fullnameOverride | string | `"hive-metastore-db"` |  |
+| postgresql.image.repository | string | `"bitnamilegacy/postgresql"` |  |
 | postgresql.image.tag | string | `"12"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |

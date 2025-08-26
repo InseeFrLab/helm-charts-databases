@@ -1,6 +1,6 @@
 # chromadb
 
-![Version: 1.0.8](https://img.shields.io/badge/Version-1.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
+![Version: 1.0.9](https://img.shields.io/badge/Version-1.0.9-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.6.3](https://img.shields.io/badge/AppVersion-0.6.3-informational?style=flat-square)
 
 ChromaDB is an open-source vector database for storing, indexing, and querying high-dimensional embeddings efficiently.
 
@@ -41,6 +41,7 @@ ChromaDB is an open-source vector database for storing, indexing, and querying h
 | chromadb.savePersistentVolume | bool | `true` |  |
 | chromadb.serviceAccount.create | bool | `false` |  |
 | discovery.enabled | bool | `true` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.certManagerClusterIssuer | string | `""` |  |
 | ingress.hostname | string | `"chart-example.local"` |  |

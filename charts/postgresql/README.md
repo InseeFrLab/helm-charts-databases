@@ -1,6 +1,6 @@
 # postgresql
 
-![Version: 1.0.11](https://img.shields.io/badge/Version-1.0.11-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 17.5.0](https://img.shields.io/badge/AppVersion-17.5.0-informational?style=flat-square)
+![Version: 1.0.12](https://img.shields.io/badge/Version-1.0.12-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 17.5.0](https://img.shields.io/badge/AppVersion-17.5.0-informational?style=flat-square)
 
 An object-relational database management system, a database server.
 
@@ -29,7 +29,7 @@ An object-relational database management system, a database server.
 | postgresql.auth.username | string | `""` |  |
 | postgresql.extensions.postgis | bool | `false` |  |
 | postgresql.image.pullPolicy | string | `"IfNotPresent"` |  |
-| postgresql.image.repository | string | `"bitnami/postgresql"` |  |
+| postgresql.image.repository | string | `"bitnamilegacy/postgresql"` |  |
 | postgresql.image.tag | string | `"17"` |  |
 | postgresql.primary.initdb.scriptsConfigMap | string | `"{{ include \"library-chart.fullname\" . }}"` |  |
 | postgresql.primary.networkPolicy.enabled | bool | `false` |  |

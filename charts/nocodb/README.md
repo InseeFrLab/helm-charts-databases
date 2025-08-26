@@ -1,6 +1,6 @@
 # nocodb
 
-![Version: 2.0.7](https://img.shields.io/badge/Version-2.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.260.5](https://img.shields.io/badge/AppVersion-0.260.5-informational?style=flat-square)
+![Version: 2.0.8](https://img.shields.io/badge/Version-2.0.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.260.5](https://img.shields.io/badge/AppVersion-0.260.5-informational?style=flat-square)
 
 NocoDB is an open source NoCode platform that turns any database into a smart spreadsheet
 
@@ -31,6 +31,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 | global.postgresql.auth.database | string | `"nocodb-metadata"` |  |
 | global.postgresql.auth.password | string | `"changeme"` |  |
 | global.postgresql.auth.username | string | `"admin"` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.certManagerClusterIssuer | string | `""` |  |
@@ -47,6 +48,7 @@ NocoDB is an open source NoCode platform that turns any database into a smart sp
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.fullnameOverride | string | `"nocodb-pg"` |  |
+| postgresql.image.repository | string | `"bitnamilegacy/postgresql"` |  |
 | postgresql.image.tag | string | `"16"` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |

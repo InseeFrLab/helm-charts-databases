@@ -1,6 +1,6 @@
 # lakefs
 
-![Version: 1.0.6](https://img.shields.io/badge/Version-1.0.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.50.0](https://img.shields.io/badge/AppVersion-1.50.0-informational?style=flat-square)
+![Version: 1.0.7](https://img.shields.io/badge/Version-1.0.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.50.0](https://img.shields.io/badge/AppVersion-1.50.0-informational?style=flat-square)
 
 Data version control for data lakes.  It enables zero copy isolated environments, and more.
 
@@ -28,6 +28,7 @@ Data version control for data lakes.  It enables zero copy isolated environments
 | global.postgresql.auth.database | string | `"lakefs"` |  |
 | global.postgresql.auth.password | string | `"changeme"` |  |
 | global.postgresql.auth.username | string | `"admin"` |  |
+| global.security.allowInsecureImages | bool | `true` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | list | `[]` |  |
 | ingress.certManagerClusterIssuer | string | `""` |  |
@@ -51,6 +52,7 @@ Data version control for data lakes.  It enables zero copy isolated environments
 | podAnnotations | object | `{}` |  |
 | podSecurityContext | object | `{}` |  |
 | postgresql.fullnameOverride | string | `"lakefs-db"` |  |
+| postgresql.image.repository | string | `"bitnamilegacy/postgresql"` |  |
 | postgresql.image.tag | string | `"16"` |  |
 | resources | object | `{}` |  |
 | route.annotations | list | `[]` |  |
