@@ -159,6 +159,9 @@
     "ingress": {
       "type": "object",
       "form": true,
+      "x-onyxia": {
+        "overwriteSchemaWith": "db/ingress.json"
+      },
       "title": "Ingress Details",
       "properties": {
         "hostname": {
