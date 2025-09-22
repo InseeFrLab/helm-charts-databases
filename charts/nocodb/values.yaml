@@ -5,7 +5,7 @@ service:
     repository: "nocodb/nocodb"
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "0.260.5"
+    tag: "0.264.9"
 
 global:
   security:
