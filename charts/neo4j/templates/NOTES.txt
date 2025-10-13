@@ -4,6 +4,9 @@
 {{- if .Values.route.enabled }}
 - You can connect to this neo4j with your browser on this [link](https://{{ .Values.route.hostnameUI }})
 {{- end }}
+- You can access the service from within the cluster using the following URI:  
+neo4j://{{ include "library-chart.fullname" . }}:7687  
+bolt://{{ include "library-chart.fullname" . }}:7687  
 - The username is **neo4j**
 - The password is **{{ .Values.security.password }}**
 
