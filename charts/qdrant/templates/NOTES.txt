@@ -1,5 +1,5 @@
 {{- if .Values.qdrant.apiKey }}
-Your password: **{{ .Values.qdrant.apiKey }}**  
+Your password: **`{{ .Values.qdrant.apiKey }}`**  
 {{ end }}
 
 {{- if .Values.qdrant.ingress.enabled }}
