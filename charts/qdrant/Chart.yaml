@@ -1,6 +1,6 @@
 apiVersion: v2
 name: qdrant
-description: Qdrant - Vector Database for the next generation of AI applications.
+description: Qdrant - Vector Database for the next generation of AI applications with vector similarity search technology.
 home: https://qdrant.tech
 sources:
   - https://github.com/qdrant/qdrant
