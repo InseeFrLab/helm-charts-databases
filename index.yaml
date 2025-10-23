@@ -7564,6 +7564,28 @@ entries:
   qdrant:
   - apiVersion: v2
     appVersion: 1.14.1
+    created: "2025-10-23T15:56:15.368839807Z"
+    dependencies:
+    - name: qdrant
+      repository: https://qdrant.github.io/qdrant-helm
+      version: 1.14.0
+    description: Qdrant - Vector Database for the next generation of AI applications
+      with vector similarity search technology.
+    digest: 3346f96f0ad8c92c9e3288ffdb4924e3cc1245c3d1f406925a80f6a64cdafabd
+    home: https://qdrant.tech
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/qdrant.png
+    keywords:
+    - vector database
+    name: qdrant
+    sources:
+    - https://github.com/qdrant/qdrant
+    - https://github.com/qdrant/qdrant-helm
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/qdrant-0.1.5/qdrant-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
+    appVersion: 1.14.1
     created: "2025-10-20T11:59:48.661583672Z"
     dependencies:
     - name: qdrant
@@ -9000,4 +9022,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2025-10-20T11:59:48.66209884Z"
+generated: "2025-10-23T15:56:15.369496647Z"
