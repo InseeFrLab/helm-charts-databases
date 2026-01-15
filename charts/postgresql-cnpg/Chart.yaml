@@ -6,7 +6,6 @@ keywords:
   - SQL
   - Database
 home: https://www.postgresql.org/
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
 type: application
 
 # This is the chart version. This version number should be incremented each time you make changes
