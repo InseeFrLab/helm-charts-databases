@@ -1,6 +1,6 @@
 {{- if eq .Values.userPreferences.language "fr" }}
 - Vous pouvez vous connecter à ce service (depuis l'intérieur du cluster) avec les informations de connexion suivantes :
-    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw** (read write)
+    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r.{{ .Release.Namespace }}** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}** (read write)
     - Port : **{{ (index .Values.ports 0).port }}**
     - Database : **{{ .Values.auth.database }}**
     - Username : **{{ .Values.auth.username }}**
@@ -12,7 +12,7 @@
 ⚠️ Ces lignes ne doivent pas faire partie du code de votre projet ni être rendues publiques ⚠️
 
 ```sh
-export PGHOST="{{ include "postgres-cnpg.fullname" . }}-rw"
+export PGHOST="{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}"
 export PGDATABASE="{{ .Values.auth.database }}"
 export PGUSER="{{ .Values.auth.username }}"
 export PGPASSWORD="{{ .Values.auth.password }}"
@@ -52,7 +52,7 @@ dbDisconnect(conn)
 
   {{ end -}}
 - You can connect to this service (within the cluster itself) using the following connection information :
-    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw** (read write)
+    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r.{{ .Release.Namespace }}** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}** (read write)
     - Port : **{{ (index .Values.ports 0).port }}**
     - Database : **{{ .Values.auth.database }}**
     - Username : **{{ .Values.auth.username }}**
@@ -64,7 +64,7 @@ dbDisconnect(conn)
 ⚠️ These lines must not be included in your project's codebase, or otherwise published ⚠️
 
 ```sh
-export PGHOST="{{ include "postgres-cnpg.fullname" . }}-rw"
+export PGHOST="{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}"
 export PGDATABASE="{{ .Values.auth.database }}"
 export PGUSER="{{ .Values.auth.username }}"
 export PGPASSWORD="{{ .Values.auth.password }}"
