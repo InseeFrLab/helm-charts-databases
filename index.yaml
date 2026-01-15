@@ -7561,6 +7561,21 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-0.0.1/postgresql-0.0.1.tgz
     version: 0.0.1
+  postgresql-cnpg:
+  - apiVersion: v2
+    created: "2026-01-15T17:19:42.869513077Z"
+    description: An object-relational database management system, a database server.
+    digest: 57812d99b053dfc2940e83a68f89a515307d477d1dbb5b0fabcf3566d698f4bf
+    home: https://www.postgresql.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    - Database
+    name: postgresql-cnpg
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-cnpg-0.1.0/postgresql-cnpg-0.1.0.tgz
+    version: 0.1.0
   qdrant:
   - apiVersion: v2
     appVersion: 1.14.1
@@ -9044,4 +9059,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2026-01-15T14:23:08.123955943Z"
+generated: "2026-01-15T17:19:42.870056397Z"
