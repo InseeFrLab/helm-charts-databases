@@ -1,0 +1,38 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ include "postgres-cnpg.fullname" . }}
+  annotations:
+  {{- if .Values.global.suspend }}
+    cnpg.io/hibernation: "on"
+  {{- else }}
+    cnpg.io/hibernation: "off"
+  {{- end }}
+spec:
+  instances: 1
+  imageCatalogRef:
+    apiGroup: postgresql.cnpg.io
+    kind: ClusterImageCatalog
+    name: {{ .Values.imageCatalog.name }}
+    major: {{ .Values.imageCatalog.major }}
+  {{ if .Values.extension.pgvector }}
+  extensions:
+    - name: vector
+  {{- end }}
+
+  storage:
+    size: {{ .Values.storage.size }} 
+  
+  resources:
+    {{- toYaml .Values.resources | nindent 4 }}
+
+  bootstrap:
+    initdb:
+      database: {{ .Values.auth.database }}
+      owner: {{ .Values.auth.username }}
+      secret:
+        name: {{ include "postgres-cnpg.fullname" . }}
+
+  managed:
+    services:
+      disabledDefaultServices: ["ro"]

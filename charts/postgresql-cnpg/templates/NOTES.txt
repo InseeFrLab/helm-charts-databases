@@ -1,0 +1,101 @@
+{{- if eq .Values.userPreferences.language "fr" }}
+- Vous pouvez vous connecter à ce service (depuis l'intérieur du cluster) avec les informations de connexion suivantes :
+    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw** (read write)
+    - Port : **{{ (index .Values.ports 0).port }}**
+    - Database : **{{ .Values.auth.database }}**
+    - Username : **{{ .Values.auth.username }}**
+    - Password : **{{ .Values.auth.password }}**
+
+<details>
+  <summary>Renseigner les variables d'environment</summary>
+
+⚠️ Ces lignes ne doivent pas faire partie du code de votre projet ni être rendues publiques ⚠️
+
+```sh
+export PGHOST="{{ include "postgres-cnpg.fullname" . }}-rw"
+export PGDATABASE="{{ .Values.auth.database }}"
+export PGUSER="{{ .Values.auth.username }}"
+export PGPASSWORD="{{ .Values.auth.password }}"
+export PGPORT="{{ (index .Values.ports 0).port }}"
+```
+</details>
+
+<details>
+  <summary>Se connecter avec Python</summary>
+
+Commencer par renseigner les variables d'environment.
+
+```python
+import psycopg
+conn = psycopg.connect()
+with conn.cursor() as cur:
+    print(cur.execute("SELECT version();").fetchone())
+conn.close()
+```
+</details>
+
+<details>
+  <summary>Se connecter avec R</summary>
+
+Commencer par renseigner les variables d'environment.
+
+```r
+library(DBI)
+conn <- dbConnect(RPostgres::Postgres())
+print(dbGetQuery(conn, "SELECT version();"))
+dbDisconnect(conn)
+```
+</details>
+{{- else }}
+  {{- if ne .Values.userPreferences.language "en" -}}
+*NOTES are not supported for language `{{ .Values.userPreferences.language }}`... Defaulting to english.*
+
+  {{ end -}}
+- You can connect to this service (within the cluster itself) using the following connection information :
+    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw** (read write)
+    - Port : **{{ (index .Values.ports 0).port }}**
+    - Database : **{{ .Values.auth.database }}**
+    - Username : **{{ .Values.auth.username }}**
+    - Password : **{{ .Values.auth.password }}**
+
+<details>
+  <summary>Setup environment variables</summary>
+
+⚠️ These lines must not be included in your project's codebase, or otherwise published ⚠️
+
+```sh
+export PGHOST="{{ include "postgres-cnpg.fullname" . }}-rw"
+export PGDATABASE="{{ .Values.auth.database }}"
+export PGUSER="{{ .Values.auth.username }}"
+export PGPASSWORD="{{ .Values.auth.password }}"
+export PGPORT="{{ (index .Values.ports 0).port }}"
+```
+</details>
+
+<details>
+  <summary>Connect with Python</summary>
+
+First set environment variables.
+
+```python
+import psycopg
+conn = psycopg.connect()
+with conn.cursor() as cur:
+    print(cur.execute("SELECT version();").fetchone())
+conn.close()
+```
+</details>
+
+<details>
+  <summary>Connect with R</summary>
+
+First set environment variables.
+
+```r
+library(DBI)
+conn <- dbConnect(RPostgres::Postgres())
+print(dbGetQuery(conn, "SELECT version();"))
+dbDisconnect(conn)
+```
+</details>
+{{- end -}}

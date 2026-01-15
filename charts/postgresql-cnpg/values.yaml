@@ -1,0 +1,39 @@
+global:
+  suspend: false
+
+imageCatalog:
+  name: postgresql-standard-trixie
+  major: 18
+
+extension:
+  pgvector: false
+
+auth:
+  username: changeme
+  password: changeme
+  database: defaultdb
+
+ports:
+  - name: pgbouncer
+    port: 5432
+    protocol: TCP
+    targetPort: pgbouncer
+
+storage:
+  size: 10Gi
+
+resources:
+  limits: {}
+  requests:
+    memory: 256Mi
+    cpu: 250m
+
+security:
+  networkPolicy:
+    enabled: false
+
+userPreferences:
+  language: en
+
+discovery:
+  enabled: false

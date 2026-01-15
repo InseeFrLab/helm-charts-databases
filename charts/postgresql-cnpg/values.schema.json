@@ -1,0 +1,226 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "imageCatalog": {
+            "title": "Image Catalog",
+            "type": "object",
+            "properties": {
+                "name": {
+                    "title": "Image Catalog name",
+                    "type": "string",
+                    "listEnum": [
+                        "postgresql-standard-trixie",
+                        "postgis-standard-trixie"
+                    ],
+                    "default": "postgresql-standard-trixie"
+                },
+                "tag": {
+                    "title": "Version",
+                    "type": "string",
+                    "listEnum": [
+                        "18",
+                        "17",
+                        "16",
+                        "15",
+                        "14",
+                        "13"
+                    ],
+                    "default": "18"
+                }
+            }
+        },
+        "extension": {
+            "title": "Extension",
+            "type": "object",
+            "properties": {
+                "pgvector": {
+                    "type": "boolean",
+                    "description": "Install pg_vector",
+                    "default": false
+                }
+            }
+        },
+        "storage": {
+            "title": "Storage",
+            "type": "object",
+            "properties": {
+                "size": {
+                    "title": "Persistent volume size",
+                    "type": "string",
+                    "default": "10Gi",
+                    "form": true,
+                    "render": "slider",
+                    "sliderMin": 1,
+                    "sliderMax": 100,
+                    "sliderStep": 1,
+                    "sliderUnit": "Gi",
+                    "hidden": {
+                        "value": false,
+                        "path": "postgresql/primary/persistence/enabled"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "title": "Resources (CPU/RAM)",
+            "type": "object",
+            "properties": {
+                "requests": {
+                    "description": "Guaranteed resources",
+                    "type": "object",
+                    "properties": {
+                        "cpu": {
+                            "description": "Guaranteed CPU allocation",
+                            "title": "CPU",
+                            "type": "string",
+                            "default": "250m",
+                            "render": "slider",
+                            "sliderMin": 50,
+                            "sliderMax": 40000,
+                            "sliderStep": 50,
+                            "sliderUnit": "m",
+                            "sliderExtremity": "down",
+                            "sliderExtremitySemantic": "guaranteed",
+                            "sliderRangeId": "cpu"
+                        },
+                        "memory": {
+                            "description": "Guaranteed memory allocation",
+                            "title": "memory",
+                            "type": "string",
+                            "default": "1Gi",
+                            "render": "slider",
+                            "sliderMin": 1,
+                            "sliderMax": 200,
+                            "sliderStep": 1,
+                            "sliderUnit": "Gi",
+                            "sliderExtremity": "down",
+                            "sliderExtremitySemantic": "guaranteed",
+                            "sliderRangeId": "memory"
+                        }
+                    }
+                },
+                "limits": {
+                    "description": "max resources",
+                    "type": "object",
+                    "properties": {
+                        "cpu": {
+                            "description": "Maximum CPU allocation",
+                            "title": "CPU",
+                            "type": "string",
+                            "default": "30000m",
+                            "render": "slider",
+                            "sliderMin": 50,
+                            "sliderMax": 40000,
+                            "sliderStep": 50,
+                            "sliderUnit": "m",
+                            "sliderExtremity": "up",
+                            "sliderExtremitySemantic": "Maximum",
+                            "sliderRangeId": "cpu"
+                        },
+                        "memory": {
+                            "description": "Maximum memory allocation",
+                            "title": "Memory",
+                            "type": "string",
+                            "default": "50Gi",
+                            "render": "slider",
+                            "sliderMin": 1,
+                            "sliderMax": 200,
+                            "sliderStep": 1,
+                            "sliderUnit": "Gi",
+                            "sliderExtremity": "up",
+                            "sliderExtremitySemantic": "Maximum",
+                            "sliderRangeId": "memory"
+                        }
+                    }
+                }
+            }
+        },
+        "auth": {
+            "title": "Database authentication",
+            "type": "object",
+            "properties": {
+                "username": {
+                    "title": "User name",
+                    "type": "string",
+                    "default": "admin",
+                    "x-form": {
+                        "value": "{{project.id}}"
+                    },
+                    "x-onyxia": {
+                        "overwriteDefaultWith": "{{project.id}}"
+                    }
+                },
+                "password": {
+                    "title": "User password",
+                    "type": "string",
+                    "default": "changeme",
+                    "render": "password",
+                    "x-form": {
+                        "value": "{{project.password}}"
+                    },
+                    "x-onyxia": {
+                        "overwriteDefaultWith": "{{project.password}}"
+                    }
+                },
+                "database": {
+                    "title": "Name for the default database",
+                    "description": "(will be created)",
+                    "type": "string",
+                    "default": "defaultdb"
+                }
+            }
+        },
+        "security": {
+            "title": "Security",
+            "type": "object",
+            "properties": {
+                "networkPolicy": {
+                    "title": "Access to the service",
+                    "type": "object",
+                    "x-onyxia": {
+                        "overwriteSchemaWith": "network-policy.json"
+                    },
+                    "properties": {
+                        "enabled": {
+                            "title": "Enable network policy",
+                            "description": "Only pod from the same namespace will be allowed",
+                            "type": "boolean",
+                            "default": false,
+                            "x-onyxia": {
+                                "overwriteDefaultWith": "region.defaultNetworkPolicy"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "discovery": {
+            "title": "Database discovery",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "title": "Enabled discovery",
+                    "description": "Allows clients to automatically preconfigure a connection to this database",
+                    "type": "boolean",
+                    "default": true
+                }
+            }
+        },
+        "userPreferences": {
+            "title": "User Preferences",
+            "type": "object",
+            "properties": {
+                "language": {
+                    "title": "Preferred language",
+                    "type": "string",
+                    "default": "en",
+                    "x-onyxia": {
+                        "hidden": true,
+                        "overwriteDefaultWith": "user.lang"
+                    }
+                }
+            }
+        }
+    }
+}
