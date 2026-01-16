@@ -6,6 +6,12 @@
     - Username : **{{ .Values.auth.username }}**
     - Password : **{{ .Values.auth.password }}**
 
+Si vous avez besoin d'un accès admin à cette base de données, les informations de connexion sont :
+
+Admin username : postgres
+Admin password : **{{ .Values.auth.password }}**
+
+
 <details>
   <summary>Renseigner les variables d'environment</summary>
 
@@ -57,6 +63,11 @@ dbDisconnect(conn)
     - Database : **{{ .Values.auth.database }}**
     - Username : **{{ .Values.auth.username }}**
     - Password : **{{ .Values.auth.password }}**
+
+If you need admin access to this database, the connection information are :
+
+Admin username : postgres
+Admin password : **{{ .Values.auth.password }}**
 
 <details>
   <summary>Setup environment variables</summary>

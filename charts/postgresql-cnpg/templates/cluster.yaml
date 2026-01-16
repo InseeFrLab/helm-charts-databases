@@ -33,6 +33,10 @@ spec:
       secret:
         name: {{ include "postgres-cnpg.fullname" . }}
 
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: {{ include "postgres-cnpg.fullname" . }}-superuser
+
   managed:
     services:
       disabledDefaultServices: ["ro"]
