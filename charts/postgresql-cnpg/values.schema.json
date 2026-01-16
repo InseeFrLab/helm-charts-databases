@@ -2,6 +2,20 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "type": "object",
     "properties": {
+        "global": {
+            "description": "Suspend",
+            "type": "object",
+            "properties": {
+                "suspend": {
+                    "type": "boolean",
+                    "description": "Suspend this service",
+                    "default": false,
+                    "x-onyxia": {
+                        "hidden": true
+                    }
+                }
+            }
+        },
         "imageCatalog": {
             "title": "Image Catalog",
             "type": "object",
