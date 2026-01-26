@@ -15,28 +15,20 @@ spec:
     kind: ClusterImageCatalog
     name: {{ .Values.imageCatalog.name }}
     major: {{ .Values.imageCatalog.major }}
-  {{ if .Values.extension.pgvector }}
-  extensions:
-    - name: vector
-  {{- end }}
-
   storage:
-    size: {{ .Values.storage.size }} 
-  
+    size: {{ .Values.storage.size }}
   resources:
     {{- toYaml .Values.resources | nindent 4 }}
-
-  bootstrap:
-    initdb:
-      database: {{ .Values.auth.database }}
-      owner: {{ .Values.auth.username }}
-      secret:
-        name: {{ include "postgres-cnpg.fullname" . }}
-
   enableSuperuserAccess: true
   superuserSecret:
     name: {{ include "postgres-cnpg.fullname" . }}-superuser
-
   managed:
+    roles:
+    - name: {{ .Values.auth.username }}
+      ensure: present
+      login: true
+      superuser: false
+      passwordSecret:
+        name: {{ include "postgres-cnpg.fullname" . }}-user
     services:
       disabledDefaultServices: ["ro"]
