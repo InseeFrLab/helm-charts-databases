@@ -1,0 +1,15 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: {{ include "postgres-cnpg.fullname" . }}
+spec:
+  name: {{ .Values.auth.database }}
+  owner: {{ .Values.auth.username }}
+  cluster:
+    name: {{ include "postgres-cnpg.fullname" . }}
+  {{ if .Values.extension.pgvector }}
+  extensions:
+    - name: vector
+  {{- end }}
+
+
