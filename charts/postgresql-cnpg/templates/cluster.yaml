@@ -32,4 +32,4 @@ spec:
       passwordSecret:
         name: {{ include "postgres-cnpg.fullname" . }}-user
     services:
-      disabledDefaultServices: ["ro"]
+      disabledDefaultServices: ["ro", "r"]

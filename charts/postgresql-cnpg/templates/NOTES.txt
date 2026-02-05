@@ -1,6 +1,6 @@
 {{- if eq .Values.userPreferences.language "fr" }}
 - Vous pouvez vous connecter à ce service (depuis l'intérieur du cluster) avec les informations de connexion suivantes :
-    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r.{{ .Release.Namespace }}** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}** (read write)
+    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}** 
     - Port : **{{ (index .Values.ports 0).port }}**
     - Database : **{{ .Values.auth.database }}**
     - Username : **{{ .Values.auth.username }}**
@@ -58,7 +58,7 @@ dbDisconnect(conn)
 
   {{ end -}}
 - You can connect to this service (within the cluster itself) using the following connection information :
-    - Hostname : **{{ include "postgres-cnpg.fullname" . }}-r.{{ .Release.Namespace }}** (read only) or **{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}** (read write)
+    - Hostname :**{{ include "postgres-cnpg.fullname" . }}-rw.{{ .Release.Namespace }}**
     - Port : **{{ (index .Values.ports 0).port }}**
     - Database : **{{ .Values.auth.database }}**
     - Username : **{{ .Values.auth.username }}**
