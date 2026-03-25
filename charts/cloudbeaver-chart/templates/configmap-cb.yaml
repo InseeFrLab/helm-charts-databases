@@ -63,7 +63,8 @@ data:
             "local"
         ],
         enabledDrivers: [
-            "generic:duckdb_jdbc"
+            "generic:duckdb_jdbc",
+            "duckdb:duckdb_jdbc"
         ],
         disabledDrivers: [
             "sqlite:sqlite_jdbc",
