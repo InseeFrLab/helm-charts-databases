@@ -23,11 +23,7 @@
                 "name": {
                     "title": "Image Catalog name",
                     "type": "string",
-                    "listEnum": [
-                        "postgresql-standard-trixie",
-                        "postgis-standard-trixie"
-                    ],
-                    "default": "postgresql-standard-trixie"
+                    "default": "postgresql-minimal-trixie"
                 },
                 "tag": {
                     "title": "Version",
@@ -51,6 +47,16 @@
                 "pgvector": {
                     "type": "boolean",
                     "description": "Install pg_vector",
+                    "default": false
+                },
+                "postgis": {
+                    "type": "boolean",
+                    "description": "Install postgis",
+                    "default": false
+                },
+                "pgaudit": {
+                    "type": "boolean",
+                    "description": "Install pgaudit",
                     "default": false
                 }
             }
