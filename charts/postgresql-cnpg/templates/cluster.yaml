@@ -33,3 +33,23 @@ spec:
         name: {{ include "postgres-cnpg.fullname" . }}-user
     services:
       disabledDefaultServices: ["ro", "r"]
+  {{ if or .Values.extension.postgis .Values.extension.pgvector .Values.extension.pgaudit }}
+  postgresql:
+    extensions:
+    {{ if .Values.extension.postgis }}
+      - name: postgis
+    {{- end }}
+    {{ if .Values.extension.pgvector }}
+      - name: pgvector
+    {{- end }}
+    {{ if .Values.extension.pgaudit }}
+      - name: pgaudit
+    {{- end }}
+    {{ if .Values.extension.pgaudit }}
+    parameters:
+      pgaudit.log: "all, -misc"
+      pgaudit.log_catalog: "off"
+      pgaudit.log_parameter: "on"
+      pgaudit.log_relation: "on"
+    {{- end }}
+  {{- end }}

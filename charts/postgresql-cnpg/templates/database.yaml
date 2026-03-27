@@ -7,9 +7,15 @@ spec:
   owner: {{ .Values.auth.username }}
   cluster:
     name: {{ include "postgres-cnpg.fullname" . }}
-  {{ if .Values.extension.pgvector }}
+  {{ if or .Values.extension.pgvector .Values.extension.postgis .Values.extension.pgaudit }}
   extensions:
+    {{ if .Values.extension.pgvector }}
     - name: vector
+    {{- end }}
+    {{ if .Values.extension.pgaudit }}
+    - name: pgaudit
+    {{- end }}
+    {{ if .Values.extension.postgis }}
+    - name: postgis
+    {{- end }}
   {{- end }}
-
-

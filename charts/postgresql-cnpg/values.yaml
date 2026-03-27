@@ -2,11 +2,13 @@ global:
   suspend: false
 
 imageCatalog:
-  name: postgresql-standard-trixie
+  name: postgresql-minimal-trixie
   major: 18
 
 extension:
   pgvector: false
+  postgis: false
+  pgaudit: false
 
 auth:
   username: changeme
