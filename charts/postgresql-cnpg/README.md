@@ -1,6 +1,6 @@
 # postgresql-cnpg
 
-![Version: 0.4.2](https://img.shields.io/badge/Version-0.4.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.5.0](https://img.shields.io/badge/Version-0.5.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 An object-relational database management system, a database server.
 
@@ -14,10 +14,12 @@ An object-relational database management system, a database server.
 | auth.password | string | `"changeme"` |  |
 | auth.username | string | `"changeme"` |  |
 | discovery.enabled | bool | `false` |  |
+| extension.pgaudit | bool | `false` |  |
 | extension.pgvector | bool | `false` |  |
+| extension.postgis | bool | `false` |  |
 | global.suspend | bool | `false` |  |
 | imageCatalog.major | int | `18` |  |
-| imageCatalog.name | string | `"postgresql-standard-trixie"` |  |
+| imageCatalog.name | string | `"postgresql-minimal-trixie"` |  |
 | ports[0].name | string | `"pgbouncer"` |  |
 | ports[0].port | int | `5432` |  |
 | ports[0].protocol | string | `"TCP"` |  |
