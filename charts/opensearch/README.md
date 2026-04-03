@@ -15,8 +15,8 @@ Opensearch provides a full-text search engine with an HTTP web interface and sch
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://opensearch-project.github.io/helm-charts/ | opensearch | 2.31.0 |
-| https://opensearch-project.github.io/helm-charts/ | opensearch-dashboards | 2.27.1 |
+| https://opensearch-project.github.io/helm-charts/ | opensearch | 3.5.0 |
+| https://opensearch-project.github.io/helm-charts/ | opensearch-dashboards | 3.5.0 |
 
 ## Values
 
