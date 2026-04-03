@@ -5976,6 +5976,32 @@ entries:
     version: 3.6.0
   opensearch:
   - apiVersion: v2
+    appVersion: 3.5.0
+    created: "2026-04-03T08:20:30.607482429Z"
+    dependencies:
+    - name: opensearch-dashboards
+      repository: https://opensearch-project.github.io/helm-charts/
+      version: 3.5.0
+    - name: opensearch
+      repository: https://opensearch-project.github.io/helm-charts/
+      version: 3.5.0
+    description: Opensearch provides a full-text search engine with an HTTP web interface
+      and schema-free JSON documents.
+    digest: a847770fca0fcedf5ac6df6bc5fad82d09ef670072fd847a773a6be44113f532
+    home: https://opensearch.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/opensearch.png
+    keywords:
+    - BI
+    - Visualization
+    name: opensearch
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/opensearch
+    - https://github.com/opensearch-project/helm-charts
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/opensearch-1.0.6/opensearch-1.0.6.tgz
+    version: 1.0.6
+  - apiVersion: v2
     appVersion: 2.19.0
     created: "2025-02-21T12:19:23.907870314Z"
     dependencies:
@@ -8546,6 +8572,30 @@ entries:
     version: 0.0.1
   trino:
   - apiVersion: v2
+    appVersion: "480"
+    created: "2026-04-03T08:20:30.745953806Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.6.7
+    description: Fast distributed SQL query engine for big data analytics that helps
+      you explore your data universe
+    digest: a15df8cdfbc0e8f357e8ec963672f2cfa0dad7a83175249f40cf9e2282d53643
+    home: https://trino.io/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/trino.png
+    keywords:
+    - SQL
+    - distributed
+    - python
+    name: trino
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/trino
+    - https://github.com/InseeFrLab/trino/blob/main/Dockerfile
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-1.0.10/trino-1.0.10.tgz
+    version: 1.0.10
+  - apiVersion: v2
     appVersion: "472"
     created: "2025-03-07T13:35:44.81116353Z"
     dependencies:
@@ -9206,4 +9256,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2026-03-27T12:43:10.883219865Z"
+generated: "2026-04-03T08:20:30.746585943Z"
