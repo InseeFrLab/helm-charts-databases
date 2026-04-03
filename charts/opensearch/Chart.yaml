@@ -30,8 +30,8 @@ version: 1.0.5
 appVersion: "2.19.0"
 dependencies:
   - name: opensearch-dashboards
-    version: 2.27.1
+    version: 3.5.0
     repository:  https://opensearch-project.github.io/helm-charts/
   - name: opensearch
-    version: 2.31.0
+    version: 3.5.0
     repository:  https://opensearch-project.github.io/helm-charts/
