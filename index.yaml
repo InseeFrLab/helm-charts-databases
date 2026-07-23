@@ -7660,6 +7660,20 @@ entries:
     version: 0.0.1
   postgresql-cnpg:
   - apiVersion: v2
+    created: "2026-07-23T07:54:38.755136592Z"
+    description: An object-relational database management system, a database server.
+    digest: 0b55661b77b23105567df8796dc9be13579ce9ecf0be25bc8e220ccd6f3e7ae2
+    home: https://www.postgresql.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    - Database
+    name: postgresql-cnpg
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/postgresql-cnpg-0.5.1/postgresql-cnpg-0.5.1.tgz
+    version: 0.5.1
+  - apiVersion: v2
     created: "2026-03-27T12:43:10.882629565Z"
     description: An object-relational database management system, a database server.
     digest: 93f43ba7d404b7b09bf699d3ca68de321e21346606e4f080171521de2faf1cf6
@@ -9278,4 +9292,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2026-07-15T23:52:17.536768514Z"
+generated: "2026-07-23T07:54:38.75551381Z"
