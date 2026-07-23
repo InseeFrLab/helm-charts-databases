@@ -25,7 +25,7 @@
                     "type": "string",
                     "default": "postgresql-minimal-trixie"
                 },
-                "tag": {
+                "major": {
                     "title": "Version",
                     "type": "string",
                     "listEnum": [
