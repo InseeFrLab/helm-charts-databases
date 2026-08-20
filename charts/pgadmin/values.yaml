@@ -57,6 +57,7 @@ securityContext:
 
 networking:
   type: ClusterIP
+  containerPort: 80
   service:
     port: 8080
 
