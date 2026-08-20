@@ -6256,6 +6256,27 @@ entries:
   pgadmin:
   - apiVersion: v2
     appVersion: latest
+    created: "2026-08-20T10:12:41.376614656Z"
+    dependencies:
+    - name: library-chart
+      repository: https://inseefrlab.github.io/helm-charts-interactive-services
+      version: 1.7.0
+    description: pgAdmin is an administration and development platform for PostgreSQL.
+      It's a GUI for Postgress SQL.
+    digest: f99e8b893588415dd4454f11c0362a872ec83d6043860dca31f81b8e33541287
+    home: https://www.pgadmin.org/
+    icon: https://minio.lab.sspcloud.fr/projet-onyxia/assets/servicesImg/post.png
+    keywords:
+    - SQL
+    name: pgadmin
+    sources:
+    - https://github.com/InseeFrLab/helm-charts-databases/tree/master/charts/pgadmin
+    type: application
+    urls:
+    - https://github.com/InseeFrLab/helm-charts-databases/releases/download/pgadmin-1.0.11/pgadmin-1.0.11.tgz
+    version: 1.0.11
+  - apiVersion: v2
+    appVersion: latest
     created: "2025-04-28T14:43:35.31613564Z"
     dependencies:
     - name: library-chart
@@ -9292,4 +9313,4 @@ entries:
     urls:
     - https://github.com/InseeFrLab/helm-charts-databases/releases/download/trino-0.0.1/trino-0.0.1.tgz
     version: 0.0.1
-generated: "2026-07-23T07:54:38.75551381Z"
+generated: "2026-08-20T10:12:41.377312661Z"
