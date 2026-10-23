@@ -5,17 +5,17 @@ metadata:
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.networking.service.type }}
+  type: {{ .Values.networking.service.type | quote }}
   ports:
-    - port: {{ .Values.networking.service.port }}
+    - port: {{ .Values.networking.service.port | int }}
       targetPort: http
       protocol: TCP
       name: http
     {{- range $key, $value := .Values.coordinator.additionalExposedPorts }}
-    - port: {{ $value.servicePort }}
-      name: {{ $value.name }}
-      targetPort: {{ $value.port }}
-      protocol: {{ $value.protocol }}
+    - port: {{ $value.servicePort | int }}
+      name: {{ $value.name | quote }}
+      targetPort: {{ $value.port | int }}
+      protocol: {{ $value.protocol | quote }}
     {{- end }}
   selector:
     {{- include "library-chart.selectorLabels" . | nindent 4 }}

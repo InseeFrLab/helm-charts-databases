@@ -8,7 +8,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   selector:
     matchLabels:
@@ -33,18 +33,18 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.service.image.repository }}:{{ .Values.service.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          image: {{ printf "%v:%v" .Values.service.image.repository (.Values.service.image.tag | default .Chart.AppVersion) | quote }}
+          imagePullPolicy: {{ .Values.service.image.pullPolicy | quote }}
           env:
           - name: NC_ADMIN_EMAIL
-            value: {{ .Values.security.mail }}
+            value: {{ .Values.security.mail | quote }}
           - name: NC_ADMIN_PASSWORD
-            value: {{ .Values.security.password }}
+            value: {{ .Values.security.password | quote }}
           - name: DATABASE_URL
-            value: "pg://{{ .Values.postgresql.fullnameOverride }}:5432?u={{ .Values.global.postgresql.auth.username }}&p={{ .Values.global.postgresql.auth.password }}&db={{ .Values.global.postgresql.auth.database}}"
+            value: {{ printf "pg://%v:5432?u=%v&p=%v&db=%v" .Values.postgresql.fullnameOverride .Values.global.postgresql.auth.username .Values.global.postgresql.auth.password .Values.global.postgresql.auth.database | quote }}
           ports:
             - name: http
-              containerPort: {{ .Values.networking.nocodb.port}}
+              containerPort: {{ .Values.networking.nocodb.port | int }}
               protocol: TCP
           livenessProbe:
             httpGet:

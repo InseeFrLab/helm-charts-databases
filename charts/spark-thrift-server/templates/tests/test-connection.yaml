@@ -13,6 +13,6 @@ spec:
     - name: curl
       image: alpine/curl
       command: ['curl']
-      args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.sparkHostname }}']
+      args: [{{ printf "%v://%v" (ternary "https" "http" (not (empty $.Values.ingress.tls))) .Values.ingress.sparkHostname | quote }}]
   restartPolicy: Never
 {{- end }}

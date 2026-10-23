@@ -8,7 +8,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   selector:
     matchLabels:
@@ -42,14 +42,14 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           {{- if .Values.service.image.custom.enabled }}
-          image: "{{ .Values.service.image.custom.version }}"
+          image: {{ .Values.service.image.custom.version | quote }}
           {{- else }}
-          image: "{{ .Values.service.image.version }}"
+          image: {{ .Values.service.image.version | quote }}
           {{- end }}
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.service.image.pullPolicy | quote }}
           env:
             - name: ADMIN_PASSWORD
-              value: {{ .Values.security.password }}
+              value: {{ .Values.security.password | quote }}
           ports:
             - name: http
               containerPort: 3030

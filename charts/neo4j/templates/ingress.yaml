@@ -5,7 +5,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName | quote }}
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
@@ -33,9 +33,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}
+                name: {{ $fullName | quote }}
                 port:
-                  number: {{ $svcPortUI }}
+                  number: {{ $svcPortUI | int }}
     - host: {{ .Values.ingress.hostnameBolt | quote }}
       http:
         paths:
@@ -43,7 +43,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $fullName }}
+                name: {{ $fullName | quote }}
                 port:
-                  number: {{ $svcPortBolt }}
+                  number: {{ $svcPortBolt | int }}
 {{- end }}

@@ -30,5 +30,5 @@ spec:
               service:
                 name: {{ include "milvus.fullname" .Subcharts.milvus }}
                 port:
-                  number: {{ .Values.milvus.service.port }}
+                  number: {{ .Values.milvus.service.port | int }}
 {{- end }}

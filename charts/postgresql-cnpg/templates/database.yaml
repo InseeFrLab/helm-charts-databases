@@ -3,8 +3,8 @@ kind: Database
 metadata:
   name: {{ include "postgres-cnpg.fullname" . }}
 spec:
-  name: {{ .Values.auth.database }}
-  owner: {{ .Values.auth.username }}
+  name: {{ .Values.auth.database | quote }}
+  owner: {{ .Values.auth.username | quote }}
   cluster:
     name: {{ include "postgres-cnpg.fullname" . }}
   {{ if or .Values.extension.pgvector .Values.extension.postgis .Values.extension.pgaudit }}

@@ -9,7 +9,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   selector:
     matchLabels:
@@ -31,7 +31,7 @@ spec:
         {{- else }}
           emptyDir: {}
         {{- end }}
-        - name: {{$volumeName}}
+        - name: {{ $volumeName | quote }}
           emptyDir: {}
         - name: secret-coresite
           secret:
@@ -48,16 +48,16 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           {{- if .Values.service.image.custom.enabled }}
-          image: "{{ .Values.service.image.custom.version }}"
+          image: {{ .Values.service.image.custom.version | quote }}
           {{- else }}
-          image: "{{ .Values.service.image.version }}"
+          image: {{ .Values.service.image.version | quote }}
           {{- end }}
           command: ["/bin/sh","-c"]
           args: ["/opt/spark/bin/spark-class org.apache.spark.deploy.history.HistoryServer"]
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.service.image.pullPolicy | quote }}
           env:
             - name: SPARK_HISTORY_OPTS
-              value: "-Dspark.history.fs.logDirectory={{ .Values.spark.directory }} -Dcom.amazonaws.sdk.disableCertChecking={{ .Values.spark.disabledCertChecking }}"
+              value: {{ printf "-Dspark.history.fs.logDirectory=%v -Dcom.amazonaws.sdk.disableCertChecking=%v" .Values.spark.directory .Values.spark.disabledCertChecking | quote }}
           envFrom:
             {{- if .Values.s3.enabled }}
             - secretRef:

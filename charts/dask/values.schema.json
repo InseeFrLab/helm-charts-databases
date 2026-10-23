@@ -17,11 +17,13 @@
                 "repository": {
                   "description": "image of the dask scheduler",
                   "type": "string",
+                  "pattern": "^[^\\n\\r]*$",
                   "default": "inseefrlab/onyxia-python-datascience"
                 },
                 "tag": {
                   "description": "tag of the dask scheduler image",
                   "type": "string",
+                  "pattern": "^[^\\n\\r]*$",
                   "listEnum": [
                     "py3.11.8",
                     "py3.12.2"
@@ -54,11 +56,13 @@
                 "repository": {
                   "description": "image of the dask worker",
                   "type": "string",
+                  "pattern": "^[^\\n\\r]*$",
                   "default": "inseefrlab/onyxia-python-datascience"
                 },
                 "tag": {
                   "description": "tag of the dask worker image",
                   "type": "string",
+                  "pattern": "^[^\\n\\r]*$",
                   "listEnum": [
                     "py3.11.8",
                     "py3.12.2"

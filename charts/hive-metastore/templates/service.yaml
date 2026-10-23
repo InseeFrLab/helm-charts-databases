@@ -5,12 +5,12 @@ metadata:
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.networking.type }}
+  type: {{ .Values.networking.type | quote }}
   {{- if .Values.networking.clusterIP }}
-  clusterIP: {{ .Values.networking.clusterIP }}
+  clusterIP: {{ .Values.networking.clusterIP | quote }}
   {{- end }}
   ports:
-    - port: {{ .Values.networking.port }}
+    - port: {{ .Values.networking.port | int }}
       targetPort: thrift
       protocol: TCP
       name: thrift

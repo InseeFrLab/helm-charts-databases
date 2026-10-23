@@ -132,6 +132,7 @@
                     "size": {
                       "title": "Persistent volume size",
                       "type": "string",
+                      "pattern": "^[^\\n\\r]*$",
                       "default": "50Gi",
                       "form": true,
                       "render": "slider",
