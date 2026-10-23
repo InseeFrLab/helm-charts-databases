@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ .Values.ingress.hostname }}:{{ .Values.networking.service.port }}']
+      args: [{{ printf "%v:%v" .Values.ingress.hostname .Values.networking.service.port | quote }}]
   restartPolicy: Never

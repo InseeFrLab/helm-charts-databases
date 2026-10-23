@@ -31,5 +31,5 @@ spec:
               service:
                 name: {{ include "opensearch.serviceName" .Subcharts.opensearch }}
                 port:
-                  number: {{ .Values.opensearch.httpPort }}
+                  number: {{ .Values.opensearch.httpPort | int }}
 {{- end }}

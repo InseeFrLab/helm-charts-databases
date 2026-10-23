@@ -6,7 +6,7 @@
     {{- toYaml . }}
 {{- end }}
 {{- if .Values.security.allowlist.enabled }}
-haproxy.router.openshift.io/ip_whitelist: {{ .Values.security.allowlist.ip }}
+haproxy.router.openshift.io/ip_whitelist: {{ .Values.security.allowlist.ip | quote }}
 {{- end }}
 {{- end }}
 
@@ -16,6 +16,6 @@ haproxy.router.openshift.io/ip_whitelist: {{ .Values.security.allowlist.ip }}
     {{- toYaml . }}
 {{- end }}
 {{- if .Values.security.allowlist.enabled }}
-haproxy.router.openshift.io/ip_whitelist: {{ .Values.security.allowlist.ip }}
+haproxy.router.openshift.io/ip_whitelist: {{ .Values.security.allowlist.ip | quote }}
 {{- end }}
 {{- end }}

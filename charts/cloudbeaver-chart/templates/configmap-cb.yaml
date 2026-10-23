@@ -31,8 +31,8 @@ data:
         database: {
             driver: "h2_embedded_v2",
             url: "jdbc:h2:${workspace}/.data/cb.h2v2.dat}",
-            user : {{ .Values.security.username }} ,
-            password : {{ .Values.security.password }} ,
+            user : {{ .Values.security.username | toJson }} ,
+            password : {{ .Values.security.password | toJson }} ,
             initialDataConfiguration: "conf/initial-data.conf",
             pool: {
                 minIdleConnections: 4,

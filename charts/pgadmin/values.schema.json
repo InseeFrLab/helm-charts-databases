@@ -94,6 +94,7 @@
       "properties": {
         "mail": {
           "type": "string",
+          "pattern": "^[^\\n\\r]*$",
           "form": true,
           "title": "Login",
           "x-form": {
@@ -232,6 +233,7 @@
         "path": {
           "description": "recursive s3 path to download into /data",
           "type": "string",
+          "pattern": "^[^\\n\\r]*$",
           "x-form": {
             "value": "{{s3.AWS_BUCKET_NAME}}/directory-to-download"
           },

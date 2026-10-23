@@ -16,11 +16,11 @@ spec:
       - name: HOST
         value: {{ include "library-chart.fullname" . }}
       - name: DATABASE_NAME
-        value: {{ .Values.mariadb.auth.database }}
+        value: {{ .Values.mariadb.auth.database | quote }}
       - name: USER
-        value: {{ .Values.mariadb.auth.username }}
+        value: {{ .Values.mariadb.auth.username | quote }}
       - name: PASSWORD
-        value: {{ .Values.mariadb.auth.password }}
+        value: {{ .Values.mariadb.auth.password | quote }}
       - name: PORT
         value: {{ .Values.mariadb.primary.service.ports.mysql | quote }}
     command: ["sh", "-c", " mariadb --user=$USER --password=$PASSWORD --host=$HOST --port=$PORT $DATABASE_NAME "]

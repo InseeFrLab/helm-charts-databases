@@ -9,7 +9,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   selector:
     matchLabels:
@@ -30,13 +30,13 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           {{- if .Values.service.image.custom.enabled }}
-          image: "{{ .Values.service.image.custom.version }}"
+          image: {{ .Values.service.image.custom.version | quote }}
           {{- else }}
-          image: "{{ .Values.service.image.version }}"
+          image: {{ .Values.service.image.version | quote }}
           {{- end }}
           command: ["/bin/sh","-c"]
           args: ["$HIVE_HOME/bin/schematool -dbType postgres -initSchema ; $HIVE_HOME/bin/hiveserver2 --service metastore"]
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.service.image.pullPolicy | quote }}
           ports:
             - name: thrift
               containerPort: 9083
@@ -44,13 +44,13 @@ spec:
           {{ if .Values.listener.enabled }}
           env:
             - name: KAFKA_BROKER_URL
-              value: {{ .Values.listener.kafkaBrokerUrl }}
+              value: {{ .Values.listener.kafkaBrokerUrl | quote }}
             - name: KAFKA_TOPIC_NAME
-              value: {{ .Values.listener.kafkaTopicName }}
+              value: {{ .Values.listener.kafkaTopicName | quote }}
             - name: DOMAIN_NAMESPACE
-              value: {{ .Values.listener.domainNamespace }}
+              value: {{ .Values.listener.domainNamespace | quote }}
             - name: HIVE_AUX_JARS_PATH
-              value: {{ .Values.listener.jarPath }}
+              value: {{ .Values.listener.jarPath | quote }}
           {{ end }}
           readinessProbe:
             tcpSocket:

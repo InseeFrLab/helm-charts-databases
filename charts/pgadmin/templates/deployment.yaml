@@ -6,7 +6,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   selector:
     matchLabels:
@@ -39,11 +39,11 @@ spec:
       - name: {{ .Chart.Name }}
         securityContext:
           {{- toYaml .Values.securityContext | nindent 10 }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        image: {{ printf "%v:%v" .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) | quote }}
+        imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         ports:
           - name: http
-            containerPort: {{ .Values.networking.containerPort }}
+            containerPort: {{ .Values.networking.containerPort | int }}
             protocol: TCP
         livenessProbe:
           failureThreshold: 30
@@ -67,16 +67,16 @@ spec:
         {{- if .Values.env.existingSecretName }}
         envFrom:
         - secretRef:
-            name: {{ .Values.env.existingSecretName }}
+            name: {{ .Values.env.existingSecretName | quote }}
         {{- end }}
         env:
         {{- if .Values.security.mail }}
         - name: PGADMIN_DEFAULT_EMAIL
-          value: {{ .Values.security.mail }}
+          value: {{ .Values.security.mail | quote }}
         {{- end }}
         {{- if .Values.security.password }}
         - name: PGADMIN_DEFAULT_PASSWORD
-          value: {{ .Values.security.password }}
+          value: {{ .Values.security.password | quote }}
         {{- end }}
         {{- if .Values.discovery.postgres }}
         - name: PGADMIN_SERVER_JSON_FILE
@@ -90,7 +90,7 @@ spec:
           {{- toYaml .Values.resources | nindent 10 }}
       initContainers:
       - name: init-pgadmin
-        image: {{ .Values.initContainer.image }}
+        image: {{ .Values.initContainer.image | quote }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
         imagePullPolicy: IfNotPresent

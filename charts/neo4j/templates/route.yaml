@@ -5,7 +5,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName | quote }}
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
   annotations:
@@ -15,24 +15,24 @@ spec:
   path: /
   to:
     kind: Service
-    name: {{ $fullName }}
+    name: {{ $fullName | quote }}
   port:
-    targetPort: {{ $svcPortUI }}
+    targetPort: {{ $svcPortUI | int }}
   tls:
-    termination: {{ .Values.route.tls.termination }}
+    termination: {{ .Values.route.tls.termination | quote }}
     {{- if .Values.route.tls.key }}
-    key: {{- .Values.route.tls.key }}
+    key: {{ .Values.route.tls.key | quote }}
     {{- end }}
     {{- if .Values.route.tls.certificate }}
-    certificate: {{- .Values.route.tls.certificate }}
+    certificate: {{ .Values.route.tls.certificate | quote }}
     {{- end }}
     {{- if .Values.route.tls.caCertificate }}
-    caCertificate: {{- .Values.route.tls.caCertificate }}
+    caCertificate: {{ .Values.route.tls.caCertificate | quote }}
     {{- end }}
     {{- if .Values.route.tls.destinationCACertificate }}
-    destinationCACertificate: {{- .Values.route.tls.destinationCACertificate }}
+    destinationCACertificate: {{ .Values.route.tls.destinationCACertificate | quote }}
     {{- end }}
-  wildcardPolicy: {{ .Values.route.wildcardPolicy }}
+  wildcardPolicy: {{ .Values.route.wildcardPolicy | quote }}
 ---
 apiVersion: route.openshift.io/v1
 kind: Route
@@ -47,22 +47,22 @@ spec:
   path: /
   to:
     kind: Service
-    name: {{ $fullName }}
+    name: {{ $fullName | quote }}
   port:
-    targetPort: {{ $svcPortBolt }}
+    targetPort: {{ $svcPortBolt | int }}
   tls:
-    termination: {{ .Values.route.tls.termination }}
+    termination: {{ .Values.route.tls.termination | quote }}
     {{- if .Values.route.tls.key }}
-    key: {{- .Values.route.tls.key }}
+    key: {{ .Values.route.tls.key | quote }}
     {{- end }}
     {{- if .Values.route.tls.certificate }}
-    certificate: {{- .Values.route.tls.certificate }}
+    certificate: {{ .Values.route.tls.certificate | quote }}
     {{- end }}
     {{- if .Values.route.tls.caCertificate }}
-    caCertificate: {{- .Values.route.tls.caCertificate }}
+    caCertificate: {{ .Values.route.tls.caCertificate | quote }}
     {{- end }}
     {{- if .Values.route.tls.destinationCACertificate }}
-    destinationCACertificate: {{- .Values.route.tls.destinationCACertificate }}
+    destinationCACertificate: {{ .Values.route.tls.destinationCACertificate | quote }}
     {{- end }}
-  wildcardPolicy: {{ .Values.route.wildcardPolicy }}
+  wildcardPolicy: {{ .Values.route.wildcardPolicy | quote }}
 {{- end }}

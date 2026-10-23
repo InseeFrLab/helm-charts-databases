@@ -17,20 +17,20 @@ spec:
     kind: Service
     name:  {{ include "elasticsearch.service.name" .Subcharts.elasticsearch }}
   port:
-    targetPort: {{ $svcPort }}
+    targetPort: {{ $svcPort | int }}
   tls:
-    termination: {{ .Values.route.tls.termination }}
+    termination: {{ .Values.route.tls.termination | quote }}
     {{- if .Values.route.tls.key }}
-    key: {{- .Values.route.tls.key }}
+    key: {{ .Values.route.tls.key | quote }}
     {{- end }}
     {{- if .Values.route.tls.certificate }}
-    certificate: {{- .Values.route.tls.certificate }}
+    certificate: {{ .Values.route.tls.certificate | quote }}
     {{- end }}
     {{- if .Values.route.tls.caCertificate }}
-    caCertificate: {{- .Values.route.tls.caCertificate }}
+    caCertificate: {{ .Values.route.tls.caCertificate | quote }}
     {{- end }}
     {{- if .Values.route.tls.destinationCACertificate }}
-    destinationCACertificate: {{- .Values.route.tls.destinationCACertificate }}
+    destinationCACertificate: {{ .Values.route.tls.destinationCACertificate | quote }}
     {{- end }}
-  wildcardPolicy: {{ .Values.route.wildcardPolicy }}
+  wildcardPolicy: {{ .Values.route.wildcardPolicy | quote }}
 {{- end }}

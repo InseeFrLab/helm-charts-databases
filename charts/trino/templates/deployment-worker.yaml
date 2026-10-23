@@ -11,7 +11,7 @@ metadata:
     component: worker
 spec:
   {{- if not .Values.server.autoscaling.enabled }}
-  replicas: {{ .Values.server.workers }}
+  replicas: {{ .Values.server.workers | int }}
   {{- end }}
   selector:
     matchLabels:
@@ -40,7 +40,7 @@ spec:
         runAsGroup: {{ .runAsGroup }}
       {{- end }}
       {{- if .Values.shareProcessNamespace.worker }}
-      shareProcessNamespace: {{ .Values.shareProcessNamespace.worker }}
+      shareProcessNamespace: {{ .Values.shareProcessNamespace.worker | quote }}
       {{- end }}
       volumes:
         - name: config-volume
@@ -73,18 +73,18 @@ spec:
         {{- toYaml .Values.imagePullSecrets | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}-worker
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: {{ printf "%v:%v" .Values.image.repository (.Values.image.tag | default .Chart.AppVersion) | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
           envFrom:
             {{- toYaml .Values.envFrom | nindent 12 }}
           volumeMounts:
-            - mountPath: {{ .Values.server.config.path }}
+            - mountPath: {{ .Values.server.config.path | quote }}
               name: config-volume
             - mountPath: {{ .Values.server.config.path }}/catalog
               name: catalog-volume
-            - mountPath: {{ .Values.kafka.mountPath }}
+            - mountPath: {{ .Values.kafka.mountPath | quote }}
               name: schemas-volume
             - mountPath: {{ .Values.server.config.path }}/hdfs
               name: secret-coresite
@@ -98,12 +98,12 @@ spec:
             {{- end }}
           ports:
             - name: http
-              containerPort: {{ .Values.networking.service.port }}
+              containerPort: {{ .Values.networking.service.port | int }}
               protocol: TCP
           {{- range $key, $value := .Values.worker.additionalExposedPorts }}
-            - name: {{ $value.name }}
-              containerPort: {{ $value.port }}
-              protocol: {{ $value.protocol }}
+            - name: {{ $value.name | quote }}
+              containerPort: {{ $value.port | int }}
+              protocol: {{ $value.protocol | quote }}
           {{- end }}
           livenessProbe:
             httpGet:

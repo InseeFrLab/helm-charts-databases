@@ -5,13 +5,13 @@ metadata:
   labels:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.networking.type }}
+  type: {{ .Values.networking.type | quote }}
   ports:
-    - port: {{ .Values.networking.neo4jUI.port }}
+    - port: {{ .Values.networking.neo4jUI.port | int }}
       targetPort: ui
       protocol: TCP
       name: ui
-    - port: {{ .Values.networking.neo4jBolt.port }}
+    - port: {{ .Values.networking.neo4jBolt.port | int }}
       targetPort: bolt
       protocol: TCP
       name: bolt

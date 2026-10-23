@@ -33,5 +33,5 @@ spec:
               service:
                 name: {{ include "common.names.fullname" .Subcharts.elasticsearch.Subcharts.kibana }}
                 port:
-                  number: {{ .Values.elasticsearch.kibana.service.ports.http }}
+                  number: {{ .Values.elasticsearch.kibana.service.ports.http | int }}
 {{- end }}

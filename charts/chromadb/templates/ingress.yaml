@@ -29,5 +29,5 @@ spec:
               service:
                 name: {{ include "chart.fullname" .Subcharts.chromadb }}
                 port:
-                  number: {{ .Values.chromadb.chromadb.serverHttpPort }}
+                  number: {{ .Values.chromadb.chromadb.serverHttpPort | int }}
 {{- end }}

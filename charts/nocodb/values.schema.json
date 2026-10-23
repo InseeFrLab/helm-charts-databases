@@ -184,6 +184,7 @@
               "properties": {
                 "username": {
                   "type": "string",
+                  "pattern": "^[^\\n\\r]*$",
                   "title": "Admin user",
                   "default": "admin",
                   "x-form": {
@@ -207,6 +208,7 @@
                 "database": {
                   "description": "Name for the default database that is created when the image is first started.",
                   "type": "string",
+                  "pattern": "^[^\\n\\r]*$",
                   "title": "Database",
                   "default": "nocodb-metadata"
                 }

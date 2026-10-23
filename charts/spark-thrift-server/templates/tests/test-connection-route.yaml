@@ -13,6 +13,6 @@ spec:
     - name: curl
       image: alpine/curl
       command: ['curl']
-      args: ['https://{{ .Values.route.sparkHostname }}']
+      args: [{{ printf "https://%v" .Values.route.sparkHostname | quote }}]
   restartPolicy: Never
 {{- end }}
