@@ -1,6 +1,6 @@
 # milvus
 
-![Version: 1.0.2](https://img.shields.io/badge/Version-1.0.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5.13](https://img.shields.io/badge/AppVersion-2.5.13-informational?style=flat-square)
+![Version: 1.0.3](https://img.shields.io/badge/Version-1.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5.13](https://img.shields.io/badge/AppVersion-2.5.13-informational?style=flat-square)
 
 Milvus is an open-source vector database built to power AI applications and vector similarity search.
 
