@@ -18,12 +18,12 @@ spec:
       # Minimal OpenSearch Python API sample program
       # Cf https://opensearch.org/docs/latest/clients/python-low-level/
       from opensearchpy import OpenSearch
-      host = "{{ .Values.opensearch.masterService }}"
-      port = {{ .Values.opensearch.httpPort }}
+      host = {{ .Values.opensearch.masterService | toJson }}
+      port = {{ .Values.opensearch.httpPort | int }}
       # Create the client with SSL/TLS and hostname verification disabled.
       client = OpenSearch(
           hosts = [{'host': host, 'port': port}],
-          http_auth = ('admin', '{{ include "opensearch.StrongPassword" . }}'),
+          http_auth = ('admin', {{ include "opensearch.StrongPassword" . | toJson }}),
           use_ssl = True,
           verify_certs = False,
           ssl_show_warn = False

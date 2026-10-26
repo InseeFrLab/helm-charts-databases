@@ -8,7 +8,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   selector:
     matchLabels:
@@ -33,8 +33,8 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.service.image.version }}"
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          image: {{ .Values.service.image.version | quote }}
+          imagePullPolicy: {{ .Values.service.image.pullPolicy | quote }}
           volumeMounts:
           {{- if .Values.persistence.enabled }}
           - name: cloudbeaver-data
@@ -53,16 +53,16 @@ spec:
           {{- end }}
           env:
           - name: CB_ADMIN_NAME
-            value: "{{ .Values.security.username }}"
+            value: {{ .Values.security.username | quote }}
           - name: CB_ADMIN_PASSWORD
-            value: "{{ .Values.security.password }}"
+            value: {{ .Values.security.password | quote }}
           - name: CB_SERVER_NAME
-            value: "{{ .Values.cloudbeaver.serverName }}"
+            value: {{ .Values.cloudbeaver.serverName | quote }}
           - name: CB_SERVER_URL
-            value: "https://{{ .Values.ingress.hostname }}"
+            value: {{ printf "https://%s" .Values.ingress.hostname | quote }}
           ports:
             - name: http
-              containerPort: {{ .Values.networking.beaver.port}}
+              containerPort: {{ .Values.networking.beaver.port | int }}
               protocol: TCP
           livenessProbe:
             httpGet:

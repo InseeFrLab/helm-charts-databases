@@ -11,7 +11,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   serviceName: {{ include "library-chart.fullname" . }}
   selector:
@@ -35,10 +35,10 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: {{$image}}
+          image: {{ $image | quote }}
           command: ["/bin/sh","-c"]
           args: ["/data/{{ .Values.init.filename}} $SPARK_HOME/sbin/start-thriftserver.sh"]
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          imagePullPolicy: {{ .Values.service.image.pullPolicy | quote }}
           env:
             - name: SPARK_NO_DAEMONIZE
               value: "true"
@@ -68,7 +68,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
             - mountPath: /data
-              name: {{$volumeName}}
+              name: {{ $volumeName | quote }}
             {{- if .Values.spark.default }}
             - name: secret-sparkconf
               mountPath: /opt/spark/conf/spark-defaults.conf
@@ -87,9 +87,9 @@ spec:
           args: ["wget -O /data/{{ .Values.init.filename}} {{ .Values.init.standardInit}} && chmod +x /data/{{ .Values.init.filename}}"]
           volumeMounts:
           - mountPath: /data
-            name: {{$volumeName}}
+            name: {{ $volumeName | quote }}
       volumes:
-        - name: {{$volumeName}}
+        - name: {{ $volumeName | quote }}
           emptyDir: {}
         - name: secret-coresite
           secret:

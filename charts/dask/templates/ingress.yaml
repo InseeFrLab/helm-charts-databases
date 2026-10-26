@@ -31,5 +31,5 @@ spec:
               service:
                 name: {{ .Release.Name }}-scheduler
                 port:
-                  number: {{ $svcPort }}
+                  number: {{ $svcPort | int }}
 {{- end }}

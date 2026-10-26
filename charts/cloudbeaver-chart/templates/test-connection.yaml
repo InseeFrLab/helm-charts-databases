@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['http{{ if $.Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.hostname }}']
+      args: [{{ printf "%v://%v" (ternary "https" "http" (not (empty $.Values.ingress.tls))) .Values.ingress.hostname | quote }}]
   restartPolicy: Never

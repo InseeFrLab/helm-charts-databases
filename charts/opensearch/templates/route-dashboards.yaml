@@ -3,7 +3,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ $fullName }}
+  name: {{ $fullName | quote }}
   labels:
     {{- include "opensearch.labels" .Subcharts.opensearch | nindent 4 }}
   annotations:
@@ -13,22 +13,22 @@ spec:
   path: /
   to:
     kind: Service
-    name: {{ $fullName }}
+    name: {{ $fullName | quote }}
   port:
     targetPort: {{ (index .Values "opensearch-dashboards").service.port }}
   tls:
-    termination: {{ .Values.routeDashboard.tls.termination }}
+    termination: {{ .Values.routeDashboard.tls.termination | quote }}
     {{- if .Values.routeDashboard.tls.key }}
-    key: {{- .Values.routeDashboard.tls.key }}
+    key: {{ .Values.routeDashboard.tls.key | quote }}
     {{- end }}
     {{- if .Values.routeDashboard.tls.certificate }}
-    certificate: {{- .Values.routeDashboard.tls.certificate }}
+    certificate: {{ .Values.routeDashboard.tls.certificate | quote }}
     {{- end }}
     {{- if .Values.routeDashboard.tls.caCertificate }}
-    caCertificate: {{- .Values.routeDashboard.tls.caCertificate }}
+    caCertificate: {{ .Values.routeDashboard.tls.caCertificate | quote }}
     {{- end }}
     {{- if .Values.routeDashboard.tls.destinationCACertificate }}
-    destinationCACertificate: {{- .Values.routeDashboard.tls.destinationCACertificate }}
+    destinationCACertificate: {{ .Values.routeDashboard.tls.destinationCACertificate | quote }}
     {{- end }}
-  wildcardPolicy: {{ .Values.routeDashboard.wildcardPolicy }}
+  wildcardPolicy: {{ .Values.routeDashboard.wildcardPolicy | quote }}
 {{- end }}

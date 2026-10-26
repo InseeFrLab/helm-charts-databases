@@ -13,11 +13,13 @@
             "registry": {
               "description": "registry",
               "type": "string",
+              "pattern": "^[^\\n\\r]*$",
               "default": "docker.io"
             },
             "repository": {
               "description": "repository",
               "type": "string",
+              "pattern": "^[^\\n\\r]*$",
               "default": "bitnami/elasticsearch"
             },
             "tag": {

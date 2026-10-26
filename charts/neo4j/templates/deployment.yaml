@@ -8,7 +8,7 @@ metadata:
     {{- include "library-chart.labels" . | nindent 4 }}
 spec:
 {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.replicaCount | int }}
 {{- end }}
   selector:
     matchLabels:
@@ -41,13 +41,13 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.service.image.repository }}:{{ .Values.service.version | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.service.image.pullPolicy }}
+          image: {{ printf "%v:%v" .Values.service.image.repository (.Values.service.version | default .Chart.AppVersion) | quote }}
+          imagePullPolicy: {{ .Values.service.image.pullPolicy | quote }}
           env:
             - name: NEO4J_AUTH
-              value: neo4j/{{ .Values.security.password }}
+              value: {{ printf "neo4j/%v" .Values.security.password | quote }}
             - name: NEO4J_dbms_connector_bolt_advertised__address
-              value: {{ .Values.ingress.hostnameBolt }}:443
+              value: {{ printf "%v:443" .Values.ingress.hostnameBolt | quote }}
             - name: NEO4JLABS_PLUGINS
               value: "[\"apoc\"]"
             {{- if .Values.service.apoc }}

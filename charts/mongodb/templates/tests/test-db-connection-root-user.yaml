@@ -11,10 +11,10 @@ metadata:
 spec:
   containers:
   - name: {{ include "library-chart.fullname" . }}-test-connection-root-user
-    image: {{ .Values.mongodb.image.repository}}:{{ .Values.mongodb.image.tag}} 
+    image: {{ printf "%v:%v" .Values.mongodb.image.repository .Values.mongodb.image.tag | quote }}
     env:
       - name: ROOT_USER
-        value: {{ .Values.mongodb.auth.rootUser }}
+        value: {{ .Values.mongodb.auth.rootUser | quote }}
       - name: PASSWORD
         valueFrom:
           secretKeyRef:

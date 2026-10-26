@@ -31,6 +31,7 @@
             "repository": {
               "title": "Image name",
               "type": "string",
+              "pattern": "^[^\\n\\r]*$",
               "listEnum": [
                 "bitnamilegacy/postgresql",
                 "bitnami/postgresql",
@@ -41,6 +42,7 @@
             "tag": {
               "title": "Version",
               "type": "string",
+              "pattern": "^[^\\n\\r]*$",
               "listEnum": [
                 "17",
                 "16",
@@ -181,6 +183,7 @@
             "username": {
               "title": "User name",
               "type": "string",
+              "pattern": "^[^\\n\\r]*$",
               "default": "admin",
               "x-form": {
                 "value": "{{project.id}}"
@@ -205,6 +208,7 @@
               "title": "Name for the default database",
               "description": "(will be created)",
               "type": "string",
+              "pattern": "^[^\\n\\r]*$",
               "default": "defaultdb"
             }
           }

@@ -218,6 +218,7 @@
         "accessKeyId": {
           "description": "AWS Access Key",
           "type": "string",
+          "pattern": "^[^\\n\\r]*$",
           "x-form": {
             "value": "{{s3.AWS_ACCESS_KEY_ID}}"
           },
@@ -232,6 +233,7 @@
         "endpoint": {
           "description": "AWS S3 Endpoint",
           "type": "string",
+          "pattern": "^[^\\n\\r]*$",
           "x-form": {
             "value": "{{s3.AWS_S3_ENDPOINT}}"
           },
@@ -246,6 +248,7 @@
         "defaultRegion": {
           "description": "AWS S3 default region",
           "type": "string",
+          "pattern": "^[^\\n\\r]*$",
           "x-form": {
             "value": "{{s3.AWS_DEFAULT_REGION}}"
           },
@@ -260,6 +263,7 @@
         "secretAccessKey": {
           "description": "AWS S3 secret access key",
           "type": "string",
+          "pattern": "^[^\\n\\r]*$",
           "x-form": {
             "value": "{{s3.AWS_SECRET_ACCESS_KEY}}"
           },
@@ -274,6 +278,7 @@
         "sessionToken": {
           "description": "AWS S3 session Token",
           "type": "string",
+          "pattern": "^[^\\n\\r]*$",
           "x-form": {
             "value": "{{s3.AWS_SESSION_TOKEN}}"
           },

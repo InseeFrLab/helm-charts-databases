@@ -14,10 +14,10 @@ spec:
   imageCatalogRef:
     apiGroup: postgresql.cnpg.io
     kind: ClusterImageCatalog
-    name: {{ .Values.imageCatalog.name }}
-    major: {{ .Values.imageCatalog.major }}
+    name: {{ .Values.imageCatalog.name | quote }}
+    major: {{ .Values.imageCatalog.major | int }}
   storage:
-    size: {{ .Values.storage.size }}
+    size: {{ .Values.storage.size | quote }}
   resources:
     {{- toYaml .Values.resources | nindent 4 }}
   enableSuperuserAccess: true
@@ -25,7 +25,7 @@ spec:
     name: {{ include "postgres-cnpg.fullname" . }}-superuser
   managed:
     roles:
-    - name: {{ .Values.auth.username }}
+    - name: {{ .Values.auth.username | quote }}
       ensure: present
       login: true
       superuser: false

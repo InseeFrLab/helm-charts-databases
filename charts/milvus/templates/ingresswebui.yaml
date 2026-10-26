@@ -29,5 +29,5 @@ spec:
               service:
                 name: {{ include "milvus.attu.fullname" .Subcharts.milvus }}
                 port:
-                  number: {{ .Values.milvus.attu.service.port }}
+                  number: {{ .Values.milvus.attu.service.port | int }}
 {{- end }}

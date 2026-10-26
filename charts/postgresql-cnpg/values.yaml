@@ -3,7 +3,7 @@ global:
 
 imageCatalog:
   name: postgresql-minimal-trixie
-  major: 18
+  major: "18"
 
 extension:
   pgvector: false
