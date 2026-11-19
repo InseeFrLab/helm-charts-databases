@@ -81,8 +81,8 @@ spec:
             claimName: {{ include "library-chart.fullname" . }}
       {{- end }}
         - name: cb-config
-          configMap:
-            name: {{ include "library-chart.fullname" . }}-cb-config
+          secret:
+            secretName: {{ include "library-chart.fullname" . }}-cb-config
         - name: product-config
           configMap:
             name: {{ include "library-chart.fullname" . }}-product-config
