@@ -195,7 +195,7 @@
       }
     },
     "discovery": {
-      "description": "configure your service to autodetect some ressources.",
+      "description": "configure your service to autodetect some ressources. Note: discovered connections are seeded from the secrets of the namespace via helm `lookup`, which is only populated on upgrade, so on a fresh install they appear after the first re-deployment.",
       "type": "object",
       "properties": {
         "postgres": {
