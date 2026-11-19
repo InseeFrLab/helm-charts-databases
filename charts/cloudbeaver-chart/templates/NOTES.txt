@@ -5,4 +5,3 @@
 - You can connect to cloudbeaver with your browser on this [link](https://{{ .Values.route.hostname }})
 {{- end }}
 - Your username is **{{ .Values.security.username }}**
-- Your password is **{{ .Values.security.password }}**
