@@ -1,4 +1,4 @@
-# Default values for nocodb.
+# Default values for cloudbeaver.
 
 service:
   image:
@@ -16,13 +16,9 @@ cloudbeaver:
 security:
   username: "onyxia"
   password: "password"
-  maxLoginAttempts: 999
   networkPolicy:
     enabled: false
     from: []
-  allowlist:
-    enabled: true
-    ip: "0.0.0.0/0"
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 replicaCount: 1
@@ -99,13 +95,6 @@ resources: {}
 persistence:
   enabled: true
   size: 10Gi
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
