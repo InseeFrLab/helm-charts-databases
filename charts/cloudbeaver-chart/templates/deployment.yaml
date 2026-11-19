@@ -53,9 +53,15 @@ spec:
           {{- end }}
           env:
           - name: CB_ADMIN_NAME
-            value: {{ .Values.security.username | quote }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "library-chart.fullname" . }}-admin
+                key: CB_ADMIN_NAME
           - name: CB_ADMIN_PASSWORD
-            value: {{ .Values.security.password | quote }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "library-chart.fullname" . }}-admin
+                key: CB_ADMIN_PASSWORD
           - name: CB_SERVER_NAME
             value: {{ .Values.cloudbeaver.serverName | quote }}
           - name: CB_SERVER_URL
