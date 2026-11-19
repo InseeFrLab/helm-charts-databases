@@ -6,6 +6,10 @@ service:
     pullPolicy: IfNotPresent
 
 discovery:
+  # NOTE: discovered connections are seeded from the secrets of the namespace
+  # via helm `lookup`, which is only populated on `helm upgrade`. On a fresh
+  # install no connections are seeded yet; they appear after the first
+  # re-deployment (upgrade) of the release.
   postgres: true
   mariadb: true
   trino: true
