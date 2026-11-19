@@ -65,6 +65,18 @@ data:
         enabledDrivers: [
             "generic:duckdb_jdbc",
             "duckdb:duckdb_jdbc"
+            {{- if .Values.discovery.postgres }}
+            ,
+            "postgresql:postgres-jdbc"
+            {{- end }}
+            {{- if .Values.discovery.mariadb }}
+            ,
+            "mysql:mariaDB"
+            {{- end }}
+            {{- if .Values.discovery.trino }}
+            ,
+            "generic:trino_jdbc"
+            {{- end }}
         ],
         disabledDrivers: [
             "sqlite:sqlite_jdbc",
