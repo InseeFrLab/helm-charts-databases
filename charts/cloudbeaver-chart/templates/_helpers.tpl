@@ -75,7 +75,12 @@
 {{- $service:= ( index $secret.data "trino-service" | default "") | b64dec  }}
 {{- $username:= ( index $secret.data "trino-username") | b64dec  }}
 {{- $password:= ( index $secret.data "trino-password") | b64dec  }}
-{{- $database:= ( index $secret.data "trino-database") | b64dec  }}
+{{- $database:= ( index $secret.data "trino-database" | default "") | b64dec  }}
+{{- $port:= b64dec (index $secret.data "trino-port" | default (b64enc "443")) }}
+{{- $url := printf "jdbc:trino://%s:%s/?SSL=true" $service $port }}
+{{- if $database }}
+{{- $url = printf "%s&catalog=%s" $url $database }}
+{{- end }}
 {{- if $comma }}
 {{ printf "," }}
 {{- end }}
@@ -88,7 +93,7 @@
 {{ printf "\"configuration\": {" | indent 6 }}
 {{ printf "\"user\": \"%s\"," $username | indent 8 }}
 {{ printf "\"password\": \"%s\"," $password | indent 8 }}
-{{ printf "\"url\": \"jdbc:trino://%s:443/?SSL=true\"," $service | indent 8 }}
+{{ printf "\"url\": \"%s\"," $url | indent 8 }}
 {{ printf "\"configurationType\": \"URL\"," | indent 8 }}
 {{ printf "\"type\": \"dev\"," | indent 8 }}
 {{ printf "\"provider-properties\": {" | indent 8}}
