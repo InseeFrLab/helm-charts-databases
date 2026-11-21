@@ -34,6 +34,6 @@ dependencies:
     version: 1.5.42
     repository: https://inseefrlab.github.io/helm-charts-interactive-services
   - name: postgresql
-    version: 16.4.6
+    version: 16.7.27
     repository:  https://charts.bitnami.com/bitnami
     enabled: true
