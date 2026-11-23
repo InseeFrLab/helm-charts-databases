@@ -99,7 +99,7 @@ spec:
         - |
           mkdir /data/{{ include "pgadmin.cleanemail" . }} ;
           {{- if .Values.s3.enabled }}
-          MC_HOST_s3=https://$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY:$AWS_SESSION_TOKEN@$AWS_S3_ENDPOINT mc cp -r s3/{{ .Values.s3.path }} /data/{{ include "pgadmin.cleanemail" . }} ;
+          aws s3 cp --recursive --endpoint-url "$AWS_S3_ENDPOINT" "s3://{{ .Values.s3.path }}" /data/{{ include "pgadmin.cleanemail" . }} ;
           {{- end -}}
           {{- if .Values.discovery.postgres }}
           cp /config/pgpass.conf "/data/{{ include "pgadmin.cleanemail" . }}/" ;
