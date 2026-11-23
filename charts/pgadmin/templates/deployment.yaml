@@ -99,7 +99,7 @@ spec:
         - |
           mkdir /data/{{ include "pgadmin.cleanemail" . }} ;
           {{- if .Values.s3.enabled }}
-          aws s3 cp --recursive --endpoint-url "$AWS_S3_ENDPOINT" "s3://{{ .Values.s3.path }}" /data/{{ include "pgadmin.cleanemail" . }} ;
+          aws s3 cp --recursive "s3://{{ .Values.s3.path }}" /data/{{ include "pgadmin.cleanemail" . }} ;
           {{- end -}}
           {{- if .Values.discovery.postgres }}
           cp /config/pgpass.conf "/data/{{ include "pgadmin.cleanemail" . }}/" ;
